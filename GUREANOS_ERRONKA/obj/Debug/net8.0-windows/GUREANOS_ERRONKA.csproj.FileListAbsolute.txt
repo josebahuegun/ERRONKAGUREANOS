@@ -28,4 +28,6 @@ C:\Users\josebahuegun\Desktop\ERRONKAK\3\PROGRAMAZIOA\GUREANOS_ERRONKA\obj\Debug
 C:\Users\josebahuegun\Desktop\ERRONKAK\3\PROGRAMAZIOA\GUREANOS_ERRONKA\obj\Debug\net8.0-windows\GUREANOS_ERRONKA.pdb
 C:\Users\josebahuegun\Desktop\ERRONKAK\3\PROGRAMAZIOA\GUREANOS_ERRONKA\obj\Debug\net8.0-windows\GUREANOS_ERRONKA.genruntimeconfig.cache
 C:\Users\josebahuegun\Desktop\ERRONKAK\3\PROGRAMAZIOA\GUREANOS_ERRONKA\obj\Debug\net8.0-windows\ref\GUREANOS_ERRONKA.dll
-C:\Users\josebahuegun\Desktop\ERRONKAK\3\PROGRAMAZIOA\GUREANOS_ERRONKA\obj\Debug\net8.0-windows\GUREANOS_ERRONKA.MENUA.resources
+C:\Users\josebahuegun\Desktop\ERRONKAK\3\PROGRAMAZIOA\GUREANOS_ERRONKA\obj\Debug\net8.0-windows\GUREANOS_ERRONKA.FORMS.GEHITU.resources
+C:\Users\josebahuegun\Desktop\ERRONKAK\3\PROGRAMAZIOA\GUREANOS_ERRONKA\obj\Debug\net8.0-windows\GUREANOS_ERRONKA.FORMS.IKUSI.resources
+C:\Users\josebahuegun\Desktop\ERRONKAK\3\PROGRAMAZIOA\GUREANOS_ERRONKA\obj\Debug\net8.0-windows\GUREANOS_ERRONKA.PANELA.resources

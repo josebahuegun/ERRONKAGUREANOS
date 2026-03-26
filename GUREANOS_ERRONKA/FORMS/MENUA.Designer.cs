@@ -1,6 +1,6 @@
 ﻿namespace GUREANOS_ERRONKA
 {
-    partial class MENUA
+    partial class PANELA
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MENUA));
-            menuStrip1 = new MenuStrip();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PANELA));
+            menu1 = new MenuStrip();
             gAILUKKUDEATUToolStripMenuItem = new ToolStripMenuItem();
             iKUSIToolStripMenuItem = new ToolStripMenuItem();
             gEHITUToolStripMenuItem = new ToolStripMenuItem();
@@ -41,18 +41,18 @@
             sORTUToolStripMenuItem = new ToolStripMenuItem();
             aLDATUToolStripMenuItem1 = new ToolStripMenuItem();
             eZABATUToolStripMenuItem1 = new ToolStripMenuItem();
-            menuStrip1.SuspendLayout();
+            menu1.SuspendLayout();
             SuspendLayout();
             // 
-            // menuStrip1
+            // menu1
             // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gAILUKKUDEATUToolStripMenuItem, eRABILTZAILEAKKUDEATUToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 28);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
+            menu1.ImageScalingSize = new Size(20, 20);
+            menu1.Items.AddRange(new ToolStripItem[] { gAILUKKUDEATUToolStripMenuItem, eRABILTZAILEAKKUDEATUToolStripMenuItem });
+            menu1.Location = new Point(0, 0);
+            menu1.Name = "menu1";
+            menu1.Size = new Size(800, 28);
+            menu1.TabIndex = 0;
+            menu1.Text = "menuStrip1";
             // 
             // gAILUKKUDEATUToolStripMenuItem
             // 
@@ -66,12 +66,14 @@
             iKUSIToolStripMenuItem.Name = "iKUSIToolStripMenuItem";
             iKUSIToolStripMenuItem.Size = new Size(252, 26);
             iKUSIToolStripMenuItem.Text = "IKUSI";
+            iKUSIToolStripMenuItem.Click += iKUSIToolStripMenuItem_Click;
             // 
             // gEHITUToolStripMenuItem
             // 
             gEHITUToolStripMenuItem.Name = "gEHITUToolStripMenuItem";
             gEHITUToolStripMenuItem.Size = new Size(252, 26);
             gEHITUToolStripMenuItem.Text = "GEHITU";
+            gEHITUToolStripMenuItem.Click += gEHITUToolStripMenuItem_Click;
             // 
             // aLDATUToolStripMenuItem
             // 
@@ -101,48 +103,49 @@
             // iKUSIToolStripMenuItem1
             // 
             iKUSIToolStripMenuItem1.Name = "iKUSIToolStripMenuItem1";
-            iKUSIToolStripMenuItem1.Size = new Size(224, 26);
+            iKUSIToolStripMenuItem1.Size = new Size(155, 26);
             iKUSIToolStripMenuItem1.Text = "IKUSI";
             // 
             // sORTUToolStripMenuItem
             // 
             sORTUToolStripMenuItem.Name = "sORTUToolStripMenuItem";
-            sORTUToolStripMenuItem.Size = new Size(224, 26);
+            sORTUToolStripMenuItem.Size = new Size(155, 26);
             sORTUToolStripMenuItem.Text = "SORTU";
             // 
             // aLDATUToolStripMenuItem1
             // 
             aLDATUToolStripMenuItem1.Name = "aLDATUToolStripMenuItem1";
-            aLDATUToolStripMenuItem1.Size = new Size(224, 26);
+            aLDATUToolStripMenuItem1.Size = new Size(155, 26);
             aLDATUToolStripMenuItem1.Text = "ALDATU";
             // 
             // eZABATUToolStripMenuItem1
             // 
             eZABATUToolStripMenuItem1.Name = "eZABATUToolStripMenuItem1";
-            eZABATUToolStripMenuItem1.Size = new Size(224, 26);
+            eZABATUToolStripMenuItem1.Size = new Size(155, 26);
             eZABATUToolStripMenuItem1.Text = "EZABATU";
             // 
-            // MENUA
+            // PANELA
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
-            Controls.Add(menuStrip1);
+            Controls.Add(menu1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MainMenuStrip = menuStrip1;
-            Name = "MENUA";
+            MainMenuStrip = menu1;
+            Name = "PANELA";
             Text = "MENUA";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            Load += PANELA_Load;
+            menu1.ResumeLayout(false);
+            menu1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private MenuStrip menuStrip1;
+        private MenuStrip menu1;
         private ToolStripMenuItem gAILUKKUDEATUToolStripMenuItem;
         private ToolStripMenuItem iKUSIToolStripMenuItem;
         private ToolStripMenuItem gEHITUToolStripMenuItem;
