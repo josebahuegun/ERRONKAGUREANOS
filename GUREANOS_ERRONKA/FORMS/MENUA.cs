@@ -27,7 +27,7 @@ namespace GUREANOS_ERRONKA
         {
             PANELA.ActiveForm.Hide();
             GEHITU gehitu = new GEHITU();
-            gehitu.Show();
+            gehitu.Show(); 
         }
 
         private void PANELA_Load(object sender, EventArgs e)
