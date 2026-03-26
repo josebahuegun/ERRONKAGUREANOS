@@ -21,5 +21,10 @@ namespace GUREANOS_ERRONKA.FORMS
         {
 
         }
+
+        private void IKUSI_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

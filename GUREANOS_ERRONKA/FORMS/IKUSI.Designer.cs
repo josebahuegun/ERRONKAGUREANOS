@@ -74,6 +74,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "IKUSI";
             Text = "IKUSI";
+            Load += IKUSI_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }

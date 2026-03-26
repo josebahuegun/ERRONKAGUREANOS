@@ -206,6 +206,7 @@
             btnGehitu.TabIndex = 9;
             btnGehitu.Text = "GEHITU";
             btnGehitu.UseVisualStyleBackColor = true;
+            btnGehitu.Click += btnGehitu_Click;
             // 
             // label2
             // 

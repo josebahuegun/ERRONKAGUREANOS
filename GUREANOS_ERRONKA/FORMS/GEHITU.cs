@@ -40,19 +40,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             panelOrdenagailua.Visible = false;
             panelInprimagailua.Visible = false;
-            if (txtmarka.Text == "" || txtkokalekua.Text == "")
-            {
-                MessageBox.Show("Bete datu guztiak");
-                return;
-            }
-            if (radioordenagailua.Checked)
-            {
-                if (txtram.Text == "" || txtcpu.Text == "" || txtrom.Text == "")
-                {
-                    MessageBox.Show("Bete ordenagailuaren datuak");
-                    return;
-                }
-            }
+
         }
 
         private void panelInprimagailua_Paint(object sender, PaintEventArgs e)
@@ -72,6 +60,23 @@ namespace GUREANOS_ERRONKA.FORMS
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnGehitu_Click(object sender, EventArgs e)
+        {
+            if (txtmarka.Text == "" || txtkokalekua.Text == "")
+            {
+                MessageBox.Show("Bete datu guztiak");
+                return;
+            }
+            if (radioordenagailua.Checked)
+            {
+                if (txtram.Text == "" || txtcpu.Text == "" || txtrom.Text == "")
+                {
+                    MessageBox.Show("Bete ordenagailuaren datuak");
+                    return;
+                }
+            }
         }
     }
 }
