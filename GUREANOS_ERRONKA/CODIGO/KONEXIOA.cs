@@ -9,12 +9,31 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     public class Konexioa
     {
-        private string connectionString = "server=localhost;database=inbentarioa;user=root;password=root;";
+        private static string connectionString = "server=localhost;database=inbentarioa;user=root;password=root;";
+        public static MySqlConnection konektatu = new MySqlConnection(connectionString);
 
-        public MySqlConnection GetConnection()
+        public static void Konektatu()
         {
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            return conn;
+            try 
+            { 
+                konektatu.Open();
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
+        public static void Deskonektatu()
+        {
+            try
+            {
+                konektatu.Close();
+            }
+            catch (Exception e)
+            {
+
+            }
         }
     }
 }
