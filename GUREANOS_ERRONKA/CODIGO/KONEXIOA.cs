@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace GUREANOS_ERRONKA.CODIGO
 {
-    public class Konexioa
+    public class KONEXIOA
     {
         private static string connectionString = "server=localhost;database=inbentarioa;user=root;password=root;";
         public static MySqlConnection konektatu = new MySqlConnection(connectionString);
