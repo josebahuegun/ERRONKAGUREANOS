@@ -8,5 +8,9 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     internal class DBKONEXIOA
     {
+        public static void ikusiGailuak()
+        {
+            string sqlie = "SELECT * FROM gailuak";
+        }
     }
 }
