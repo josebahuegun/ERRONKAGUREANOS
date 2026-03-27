@@ -20,7 +20,9 @@ namespace GUREANOS_ERRONKA
 
         private void iKUSIToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            PANELA.ActiveForm.Hide();
+            IKUSI ikusi = new IKUSI();
+            ikusi.Show();
         }
 
         private void gEHITUToolStripMenuItem_Click(object sender, EventArgs e)
