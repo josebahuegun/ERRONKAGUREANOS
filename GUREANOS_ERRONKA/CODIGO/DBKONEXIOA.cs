@@ -97,7 +97,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             return num;
         }
 
-        static public int kontaktuaGehitu(Gailua g)
+        static public int gailuaGehitu(Gailua g)
         {
             int num;
             //1.- Konektatu
