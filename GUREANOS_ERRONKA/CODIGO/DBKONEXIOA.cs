@@ -10,7 +10,7 @@ namespace GUREANOS_ERRONKA.CODIGO
     internal class DBKONEXIOA
     {
        
-        static public List<Gailua> ikusiGailuak()
+        static public List<Gailua> ikusiGailuak(Gailua g)
         {
             KONEXIOA.Konektatu();
             List<Gailua> gk = new List<Gailua>();
@@ -29,7 +29,6 @@ namespace GUREANOS_ERRONKA.CODIGO
                         //gk.Add(g);
                     }
                 }
-                //using gabe erabilita, beraz komandoa itxi egin behar da.
                 resultauek.Close();
             }
             catch (MySqlException e)
@@ -41,6 +40,34 @@ namespace GUREANOS_ERRONKA.CODIGO
                 KONEXIOA.Deskonektatu();
             }
             return gk;
+        }
+
+        static public int aldatuGailuak(Gailua g)
+        {
+            int num;
+            KONEXIOA.Konektatu();
+            try
+            {
+                string sqlie = "UPDATE gailua set telefonoa=@telefonoa WHERE izena=@izena;";
+                using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
+                {
+                    //komandue.Parameters.AddWithValue("@izena", g.Izena);
+                   // komandue.Parameters.AddWithValue("@telefonoa", g.Telefonoa);
+                    num = komandue.ExecuteNonQuery();
+                }
+            }
+            catch (MySqlException ex)
+            {
+                num = ex.Number;
+            }
+            finally
+            {
+                //deskonektatu
+                KONEXIOA.Deskonektatu();
+            }
+            //3.- Bueltatu zenbakia: 0 edo 1 querytik, edo bestela errore zenbakia          
+            return num;
+
         }
     }
 }
