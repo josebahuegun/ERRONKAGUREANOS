@@ -30,5 +30,12 @@ namespace GUREANOS_ERRONKA.CODIGO
             mapa = map;
             aktibo = aktiboa;
         }
+        public Gailua(DateTime eDataa, string kokaa, string mapp, bool aktiboaa)
+        {
+            erosteData = eDataa;
+            kokalekua = kokaa;
+            mapa = mapp;
+            aktibo = aktiboaa;
+        }
     }
 }
