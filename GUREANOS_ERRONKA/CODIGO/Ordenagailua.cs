@@ -21,9 +21,9 @@ namespace GUREANOS_ERRONKA.CODIGO
         public Ordenagailua(int ida, DateTime eData, string koka, string map, bool aktiboa, string ram, string rom, string cpu)
             : base(ida, eData, koka, map, aktiboa) // Aitaren konstruktoreari deitzen dio
         {
-            RAM1 = ram;
-            ROM1 = rom;
-            CPU1 = cpu;
+            RAM = ram;
+            ROM = rom;
+            CPU = cpu;
         }
     }
 }
