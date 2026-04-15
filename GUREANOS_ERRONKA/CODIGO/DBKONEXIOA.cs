@@ -9,7 +9,7 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     internal class DBKONEXIOA
     {
-       
+
         static public List<Gailua> ikusiGailuak()
         {
             KONEXIOA.Konektatu();
@@ -29,7 +29,8 @@ namespace GUREANOS_ERRONKA.CODIGO
                                               resultauek.GetDateTime(3),   // 3 zutabea data gisa irakurri
                                               resultauek.GetString(2),     // 2 zutabea testu gisa irakurri
                                               resultauek.GetString(1),     // 1 zutabea testu gisa irakurri
-                                              resultauek.GetBoolean(4)    // 4 zutabea boolear gisa irakurri);
+                                              resultauek.GetBoolean(4),    // 4 zutabea boolear gisa irakurri);
+                                              resultauek.GetInt32(5)
                         );
                         gk.Add(g);
                     }
@@ -57,7 +58,7 @@ namespace GUREANOS_ERRONKA.CODIGO
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
                     //komandue.Parameters.AddWithValue("@izena", g.Izena);
-                   // komandue.Parameters.AddWithValue("@telefonoa", g.Telefonoa);
+                    // komandue.Parameters.AddWithValue("@telefonoa", g.Telefonoa);
                     num = komandue.ExecuteNonQuery();
                 }
             }
@@ -104,36 +105,99 @@ namespace GUREANOS_ERRONKA.CODIGO
 
         static public int gailuaGehitu(Gailua g)
         {
-            int num;
+            int txertatutakoId = -1;
             //1.- Konektatu
             KONEXIOA.Konektatu();
             //2. inserta egin
-            
+
             try
             {
                 //inserta, PARAMETRO BIDEZ, PRAKTIKA ONA
-                string sqlie = "INSERT INTO gailua (izena, telefonoa) VALUES (@izena, @telefonoa);";
-                //using erabilita komandue aldagia "hustu" egiten da agindua amaitzena, baina ez konexioa adibidez, nik egin behar close horrela jarrita
+                string sqlie = "INSERT INTO gailua (marka, kokalekua, oeroste_data, aktibo, mintegia_id) VALUES (@marka, @kokalekua, @eroste_data, @aktibo, @mintegia_id);";
+
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
                     // Parametroak gehitu
-                    //komandue.Parameters.AddWithValue("@izena", g.Izena);
-                    //komandue.Parameters.AddWithValue("@telefonoa", g.Telefonoa);
-                    num = komandue.ExecuteNonQuery();
+                    komandue.Parameters.AddWithValue("@marka", g.Marka);
+                    komandue.Parameters.AddWithValue("@kokalekua", g.Kokalekua);
+                    komandue.Parameters.AddWithValue("@eroste_data", g.ErosteData);
+                    komandue.Parameters.AddWithValue("@aktibo", g.Aktibo);
+                    komandue.Parameters.AddWithValue("@mintegia_id", g.Idmintegia);
+
+                    // ExecuteScalar()-ek lehen zutabeko lehen datua bueltatzen du (Gure ID-a!)
+                    txertatutakoId = Convert.ToInt32(komandue.ExecuteScalar());
                 }
             }
             catch (MySqlException ex)
             {
-                num = ex.Number;
+
             }
             finally // try edo catchera joan, beti konexioa izteko. Beste aukera bat, hau gabe, return aurretik close
             {
                 //deskonektatu
                 KONEXIOA.Deskonektatu();
             }
-            //3.- Bueltatu zenbakia: 0 edo 1 querytik, edo bestela errore zenbakia          
-            return num;
+            return txertatutakoId;
         }
 
+        public static bool TxertatuOrdenagailua(int gailuId, string ram, string rom, string cpu)
+        {
+            bool ondo = false;
+            try
+            {
+                KONEXIOA.Konektatu();
+                string sqlie = "INSERT INTO ordenagailua (id, ram, rom, cpu) VALUES (@id, @ram, @rom, @cpu);";
+                MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu);
+                komandue.Parameters.AddWithValue("@id", gailuId);
+                komandue.Parameters.AddWithValue("@ram", ram);
+                komandue.Parameters.AddWithValue("@rom", rom);
+                komandue.Parameters.AddWithValue("@cpu", cpu);
+                if (komandue.ExecuteNonQuery() > 0)
+                {
+                    ondo = true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                // Erroreak kudeatu
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+            return ondo;
+        }
+        public static bool TxertatuInprimagailua(int gailuId, bool koloretakoa, string teknologia)
+        {
+            bool ondo = false;
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                // Zure datu-baseko zutabe zehatzak jarri ditugu hemen:
+                string sql = "INSERT INTO inprimagailua (id, koloretakoa, teknologia) VALUES (@id, @kolorea, @tekno)";
+                MySqlCommand komandoa = new MySqlCommand(sql, KONEXIOA.konektatu);
+
+                // Parametroak lotu
+                komandoa.Parameters.AddWithValue("@id", gailuId);
+                komandoa.Parameters.AddWithValue("@kolorea", koloretakoa);
+                komandoa.Parameters.AddWithValue("@tekno", teknologia);
+
+                if (komandoa.ExecuteNonQuery() > 0)
+                {
+                    ondo = true;
+                }
+            }
+            catch (MySqlException e)
+            {
+                
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
     }
 }
