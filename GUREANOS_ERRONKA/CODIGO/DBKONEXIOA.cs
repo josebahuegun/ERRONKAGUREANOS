@@ -10,11 +10,11 @@ namespace GUREANOS_ERRONKA.CODIGO
     internal class DBKONEXIOA
     {
        
-        static public List<Gailua> ikusiGailuak(Gailua g)
+        static public List<Gailua> ikusiGailuak()
         {
             KONEXIOA.Konektatu();
             List<Gailua> gk = new List<Gailua>();
-            string sqlie = "select * from kontaktua";
+            string sqlie = "select * from GAILUA";
             try
             {
                 MySqlCommand neresqlkomandue = new MySqlCommand(sqlie, KONEXIOA.konektatu);
@@ -25,8 +25,13 @@ namespace GUREANOS_ERRONKA.CODIGO
                     {
                         //getName > kanpoan izena ateratzen du
                         //getValue > balorea ateratzen du
-                        //Gailua g = new Gailua();
-                        //gk.Add(g);
+                        Gailua g = new Gailua(resultauek.GetInt32(0),      // 0 zutabea zenbaki oso gisa irakurri
+                                              resultauek.GetDateTime(1),   // 1 zutabea data gisa irakurri
+                                              resultauek.GetString(2),     // 2 zutabea testu gisa irakurri
+                                              resultauek.GetString(3),     // 3 zutabea testu gisa irakurri
+                                              resultauek.GetBoolean(4)    // 4 zutabea boolear gisa irakurri);
+                        );
+                        gk.Add(g);
                     }
                 }
                 resultauek.Close();
