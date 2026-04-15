@@ -21,20 +21,20 @@ namespace GUREANOS_ERRONKA.CODIGO
         public string Marka { get => marka; set => marka = value; }
         public bool Aktibo { get => aktibo; set => aktibo = value; }
 
-        public Gailua(int ida, DateTime eData, string koka, string map, bool aktiboa)
+        public Gailua(int ida, DateTime eData, string koka, string mark, bool aktiboa)
         {
 
             id = ida;
-            marka = map;
+            marka = mark;
             kokalekua = koka;
             erosteData = eData;
             aktibo = aktiboa;
         }
-        public Gailua(DateTime eDataa, string kokaa, string mapp, bool aktiboaa)
+        public Gailua(DateTime eDataa, string kokaa, string markk, bool aktiboaa)
         {
             erosteData = eDataa;
             kokalekua = kokaa;
-            mapa = mapp;
+            marka = markk;
             aktibo = aktiboaa;
         }
     }
