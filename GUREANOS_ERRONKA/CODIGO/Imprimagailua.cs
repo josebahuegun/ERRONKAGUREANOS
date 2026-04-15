@@ -13,8 +13,8 @@ namespace GUREANOS_ERRONKA.CODIGO
 
         public bool Koloretakoa { get => koloretakoa; set => koloretakoa = value; }
         public string Teknologia { get => teknologia; set => teknologia = value; }
-        public Inprimagailua(int ida, DateTime eData, string koka, string map, bool aktiboa, bool kolor, string tek)
-            : base(ida, eData, koka, map, aktiboa)
+        public Inprimagailua(int ida, DateTime eData, string koka, string mark, int idmint, bool aktiboa, bool kolor, string tek)
+            : base(ida, eData, koka, mark, aktiboa, idmint)
         {
             koloretakoa = kolor;
             teknologia = tek;
