@@ -21,14 +21,14 @@ namespace GUREANOS_ERRONKA.CODIGO
                 MySqlDataReader resultauek = neresqlkomandue.ExecuteReader();
                 if (resultauek.HasRows)
                 {
-                    //while (resultauek.Read())
+                    while (resultauek.Read())
                     {
                         //getName > kanpoan izena ateratzen du
                         //getValue > balorea ateratzen du
                         Gailua g = new Gailua(resultauek.GetInt32(0),      // 0 zutabea zenbaki oso gisa irakurri
-                                              resultauek.GetDateTime(1),   // 1 zutabea data gisa irakurri
+                                              resultauek.GetDateTime(3),   // 3 zutabea data gisa irakurri
                                               resultauek.GetString(2),     // 2 zutabea testu gisa irakurri
-                                              resultauek.GetString(3),     // 3 zutabea testu gisa irakurri
+                                              resultauek.GetString(1),     // 1 zutabea testu gisa irakurri
                                               resultauek.GetBoolean(4)    // 4 zutabea boolear gisa irakurri);
                         );
                         gk.Add(g);
