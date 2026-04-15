@@ -12,22 +12,22 @@ namespace GUREANOS_ERRONKA.CODIGO
         private int id;
         private DateTime erosteData;
         private string kokalekua;
-        private string mapa;
+        private string marka;
         private bool aktibo;
 
         public int Id { get => id; set => id = value; }
         public DateTime ErosteData { get => erosteData; set => erosteData = value; }
         public string Kokalekua { get => kokalekua; set => kokalekua = value; }
-        public string Mapa { get => mapa; set => mapa = value; }
+        public string Marka { get => marka; set => marka = value; }
         public bool Aktibo { get => aktibo; set => aktibo = value; }
 
         public Gailua(int ida, DateTime eData, string koka, string map, bool aktiboa)
         {
 
             id = ida;
-            erosteData = eData;
+            marka = map;
             kokalekua = koka;
-            mapa = map;
+            erosteData = eData;
             aktibo = aktiboa;
         }
         public Gailua(DateTime eDataa, string kokaa, string mapp, bool aktiboaa)
