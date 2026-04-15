@@ -14,14 +14,15 @@ namespace GUREANOS_ERRONKA.CODIGO
         private string kokalekua;
         private string marka;
         private bool aktibo;
-
+        private int idmintegia;
         public int Id { get => id; set => id = value; }
         public DateTime ErosteData { get => erosteData; set => erosteData = value; }
         public string Kokalekua { get => kokalekua; set => kokalekua = value; }
         public string Marka { get => marka; set => marka = value; }
         public bool Aktibo { get => aktibo; set => aktibo = value; }
+        public int Idmintegia { get => idmintegia; set => idmintegia = value; }
 
-        public Gailua(int ida, DateTime eData, string koka, string mark, bool aktiboa)
+        public Gailua(int ida, DateTime eData, string koka, string mark, bool aktiboa, int idmint)
         {
 
             id = ida;
@@ -29,6 +30,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             kokalekua = koka;
             erosteData = eData;
             aktibo = aktiboa;
+            idmintegia = idmint;
         }
         public Gailua(DateTime eDataa, string kokaa, string markk, bool aktiboaa)
         {
