@@ -14,7 +14,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         {
             KONEXIOA.Konektatu();
             List<Gailua> gk = new List<Gailua>();
-            string sqlie = "select * from GAILUA";
+            string sqlie = "select * from gailua";
             try
             {
                 MySqlCommand neresqlkomandue = new MySqlCommand(sqlie, KONEXIOA.konektatu);
