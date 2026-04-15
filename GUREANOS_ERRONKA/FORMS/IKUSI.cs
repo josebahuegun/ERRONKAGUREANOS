@@ -24,12 +24,12 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void IKUSI_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.DataSource = CODIGO.DBKONEXIOA.ikusiGailuak();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.DataSource = CODIGO.DBKONEXIOA.ikusiGailuak();
+            
         }
     }
 }
