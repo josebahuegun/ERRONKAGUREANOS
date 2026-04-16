@@ -1,3 +1,5 @@
+using GUREANOS_ERRONKA.FORMS;
+
 namespace GUREANOS_ERRONKA
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace GUREANOS_ERRONKA
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new PANELA());
+            Application.Run(new LOGIN());
         }
     }
 }
