@@ -14,7 +14,22 @@ namespace GUREANOS_ERRONKA.CODIGO
         {
             KONEXIOA.Konektatu();
             List<Gailua> gk = new List<Gailua>();
-            string sqlie = "select * from gailua";
+            string sqlie = @"
+                SELECT 
+                    CASE 
+                        WHEN o.id IS NOT NULL THEN 'Ordenagailua'
+                        WHEN i.id IS NOT NULL THEN 'Inprimagailua'
+                        ELSE 'Gailu Ezezaguna'
+                    END AS Mota,
+                    g.marka,
+                    g.kokalekua,
+                    g.eroste_data,
+                    g.aktibo,
+                    m.izena AS Mintegia
+                FROM gailua g
+                LEFT JOIN mintegia m ON g.mintegia_id = m.id
+                LEFT JOIN ordenagailua o ON g.id = o.id
+                LEFT JOIN inprimagailua i ON g.id = i.id;";
             try
             {
                 MySqlCommand neresqlkomandue = new MySqlCommand(sqlie, KONEXIOA.konektatu);
@@ -25,12 +40,12 @@ namespace GUREANOS_ERRONKA.CODIGO
                     {
                         //getName > kanpoan izena ateratzen du
                         //getValue > balorea ateratzen du
-                        Gailua g = new Gailua(resultauek.GetInt32(0),      // 0 zutabea zenbaki oso gisa irakurri
-                                              resultauek.GetDateTime(3),   // 3 zutabea data gisa irakurri
+                        Gailua g = new Gailua(resultauek.GetString(0),     // 0 zutabea testu gisa irakurri
+                                              resultauek.GetString(1),   // 3 zutabea data gisa irakurri
                                               resultauek.GetString(2),     // 2 zutabea testu gisa irakurri
-                                              resultauek.GetString(1),     // 1 zutabea testu gisa irakurri
+                                              resultauek.GetDateTime(3),     // 1 zutabea testu gisa irakurri
                                               resultauek.GetBoolean(4),    // 4 zutabea boolear gisa irakurri);
-                                              resultauek.GetInt32(5)
+                                              resultauek.GetString(5) 
                         );
                         gk.Add(g);
                     }
@@ -113,7 +128,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             try
             {
                 //inserta, PARAMETRO BIDEZ, PRAKTIKA ONA
-                string sqlie = "INSERT INTO gailua (marka, kokalekua, oeroste_data, aktibo, mintegia_id) VALUES (@marka, @kokalekua, @eroste_data, @aktibo, @mintegia_id);";
+                string sqlie = "INSERT INTO gailua (marka, kokalekua, oeroste_data, aktibo, mintegia_id) VALUES (@marka, @kokalekua, @eroste_data, @aktibo, (SELECT id FROM mintegia WHERE izena = @mintegia_izena));";
 
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
@@ -122,7 +137,7 @@ namespace GUREANOS_ERRONKA.CODIGO
                     komandue.Parameters.AddWithValue("@kokalekua", g.Kokalekua);
                     komandue.Parameters.AddWithValue("@eroste_data", g.ErosteData);
                     komandue.Parameters.AddWithValue("@aktibo", g.Aktibo);
-                    komandue.Parameters.AddWithValue("@mintegia_id", g.Idmintegia);
+                    komandue.Parameters.AddWithValue("@mintegia_id", g.Mintegia);
 
                     // ExecuteScalar()-ek lehen zutabeko lehen datua bueltatzen du (Gure ID-a!)
                     txertatutakoId = Convert.ToInt32(komandue.ExecuteScalar());

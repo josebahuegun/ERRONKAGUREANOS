@@ -18,8 +18,8 @@ namespace GUREANOS_ERRONKA.CODIGO
         public string CPU1 { get => CPU; set => CPU = value; }
 
         // Konstruktorea: Gailuaren datuak + Ordenagailuaren datu espezifikoak
-        public Ordenagailua(int ida, DateTime eData, string koka, string mark, bool aktiboa, int idmint, string ram, string rom, string cpu)
-            : base(ida, eData, koka, mark, aktiboa, idmint) // Aitaren konstruktoreari deitzen dio
+        public Ordenagailua(string markk, string kokaa, DateTime eDataa, bool aktiboaa, string mintt, string ram, string rom, string cpu)
+            : base("Ordenagailua", markk, kokaa, eDataa, aktiboaa, mintt) // Aitaren konstruktoreari deitzen dio
         {
             RAM = ram;
             ROM = rom;
