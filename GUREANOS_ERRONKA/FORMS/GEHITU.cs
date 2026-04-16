@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUREANOS_ERRONKA.CODIGO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,6 +70,13 @@ namespace GUREANOS_ERRONKA.FORMS
                 MessageBox.Show("Bete datu guztiak");
                 return;
             }
+
+            if (!radioordenagailua.Checked && !radioinprimagailua.Checked)
+            {
+                MessageBox.Show("Aukeratu mota bat");
+                return;
+            }
+
             if (radioordenagailua.Checked)
             {
                 if (txtram.Text == "" || txtcpu.Text == "" || txtrom.Text == "")
@@ -77,6 +85,43 @@ namespace GUREANOS_ERRONKA.FORMS
                     return;
                 }
             }
+            Gailua g = new Gailua(
+                erostedata.Value,
+                txtkokalekua.Text,
+                txtmarka.Text,
+                true
+            );
+
+            int id = DBKONEXIOA.gailuaGehitu(g);
+
+            if (id == -1)
+            {
+                MessageBox.Show("Errorea gailua gehitzean");
+                return;
+            }
+
+            if (radioordenagailua.Checked)
+            {
+                DBKONEXIOA.TxertatuOrdenagailua(id, txtram.Text, txtrom.Text, txtcpu.Text);
+            }
+            else if (radioinprimagailua.Checked)
+            {
+                DBKONEXIOA.TxertatuInprimagailua(id, chkKolore.Checked, txtTeknologia.Text);
+            }
+
+            MessageBox.Show("Gailua gehituta!");
+
+            txtmarka.Clear();
+            txtkokalekua.Clear();
+            txtram.Clear();
+            txtcpu.Clear();
+            txtrom.Clear();
+            txtTeknologia.Clear();
+        }
+
+        private void erostedata_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

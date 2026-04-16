@@ -39,7 +39,6 @@
             eRABILTZAILEAKKUDEATUToolStripMenuItem = new ToolStripMenuItem();
             iKUSIToolStripMenuItem1 = new ToolStripMenuItem();
             sORTUToolStripMenuItem = new ToolStripMenuItem();
-            aLDATUToolStripMenuItem1 = new ToolStripMenuItem();
             eZABATUToolStripMenuItem1 = new ToolStripMenuItem();
             menu1.SuspendLayout();
             SuspendLayout();
@@ -80,22 +79,25 @@
             aLDATUToolStripMenuItem.Name = "aLDATUToolStripMenuItem";
             aLDATUToolStripMenuItem.Size = new Size(252, 26);
             aLDATUToolStripMenuItem.Text = "ALDATU";
+            aLDATUToolStripMenuItem.Click += aLDATUToolStripMenuItem_Click;
             // 
             // eZABATUToolStripMenuItem
             // 
             eZABATUToolStripMenuItem.Name = "eZABATUToolStripMenuItem";
             eZABATUToolStripMenuItem.Size = new Size(252, 26);
             eZABATUToolStripMenuItem.Text = "EZABATU";
+            eZABATUToolStripMenuItem.Click += eZABATUToolStripMenuItem_Click;
             // 
             // zABORRONTZIANIKUSIToolStripMenuItem
             // 
             zABORRONTZIANIKUSIToolStripMenuItem.Name = "zABORRONTZIANIKUSIToolStripMenuItem";
             zABORRONTZIANIKUSIToolStripMenuItem.Size = new Size(252, 26);
             zABORRONTZIANIKUSIToolStripMenuItem.Text = "ZABORRONTZIAN IKUSI";
+            zABORRONTZIANIKUSIToolStripMenuItem.Click += zABORRONTZIANIKUSIToolStripMenuItem_Click;
             // 
             // eRABILTZAILEAKKUDEATUToolStripMenuItem
             // 
-            eRABILTZAILEAKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIToolStripMenuItem1, sORTUToolStripMenuItem, aLDATUToolStripMenuItem1, eZABATUToolStripMenuItem1 });
+            eRABILTZAILEAKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIToolStripMenuItem1, sORTUToolStripMenuItem, eZABATUToolStripMenuItem1 });
             eRABILTZAILEAKKUDEATUToolStripMenuItem.Name = "eRABILTZAILEAKKUDEATUToolStripMenuItem";
             eRABILTZAILEAKKUDEATUToolStripMenuItem.Size = new Size(203, 24);
             eRABILTZAILEAKKUDEATUToolStripMenuItem.Text = "ERABILTZAILEAK KUDEATU";
@@ -103,26 +105,23 @@
             // iKUSIToolStripMenuItem1
             // 
             iKUSIToolStripMenuItem1.Name = "iKUSIToolStripMenuItem1";
-            iKUSIToolStripMenuItem1.Size = new Size(155, 26);
+            iKUSIToolStripMenuItem1.Size = new Size(224, 26);
             iKUSIToolStripMenuItem1.Text = "IKUSI";
+            iKUSIToolStripMenuItem1.Click += iKUSIToolStripMenuItem1_Click;
             // 
             // sORTUToolStripMenuItem
             // 
             sORTUToolStripMenuItem.Name = "sORTUToolStripMenuItem";
-            sORTUToolStripMenuItem.Size = new Size(155, 26);
+            sORTUToolStripMenuItem.Size = new Size(224, 26);
             sORTUToolStripMenuItem.Text = "SORTU";
-            // 
-            // aLDATUToolStripMenuItem1
-            // 
-            aLDATUToolStripMenuItem1.Name = "aLDATUToolStripMenuItem1";
-            aLDATUToolStripMenuItem1.Size = new Size(155, 26);
-            aLDATUToolStripMenuItem1.Text = "ALDATU";
+            sORTUToolStripMenuItem.Click += sORTUToolStripMenuItem_Click;
             // 
             // eZABATUToolStripMenuItem1
             // 
             eZABATUToolStripMenuItem1.Name = "eZABATUToolStripMenuItem1";
-            eZABATUToolStripMenuItem1.Size = new Size(155, 26);
+            eZABATUToolStripMenuItem1.Size = new Size(224, 26);
             eZABATUToolStripMenuItem1.Text = "EZABATU";
+            eZABATUToolStripMenuItem1.Click += eZABATUToolStripMenuItem1_Click;
             // 
             // PANELA
             // 
@@ -155,7 +154,6 @@
         private ToolStripMenuItem eRABILTZAILEAKKUDEATUToolStripMenuItem;
         private ToolStripMenuItem iKUSIToolStripMenuItem1;
         private ToolStripMenuItem sORTUToolStripMenuItem;
-        private ToolStripMenuItem aLDATUToolStripMenuItem1;
         private ToolStripMenuItem eZABATUToolStripMenuItem1;
     }
 }

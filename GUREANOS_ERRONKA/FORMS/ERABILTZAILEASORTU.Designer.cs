@@ -46,7 +46,7 @@
             btngehituerabilatzera.Name = "btngehituerabilatzera";
             btngehituerabilatzera.Size = new Size(133, 46);
             btngehituerabilatzera.TabIndex = 16;
-            btngehituerabilatzera.Text = "AZTERA";
+            btngehituerabilatzera.Text = "ATZERA";
             btngehituerabilatzera.UseVisualStyleBackColor = true;
             // 
             // btnsortuerabil

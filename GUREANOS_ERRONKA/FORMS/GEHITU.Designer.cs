@@ -59,6 +59,7 @@
             erostedata.Name = "erostedata";
             erostedata.Size = new Size(250, 27);
             erostedata.TabIndex = 0;
+            erostedata.ValueChanged += erostedata_ValueChanged;
             // 
             // txtmarka
             // 
