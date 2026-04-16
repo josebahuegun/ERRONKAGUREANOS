@@ -9,20 +9,22 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     public class Gailua
     {
+        private string mota;
         private int id;
         private DateTime erosteData;
         private string kokalekua;
         private string marka;
         private bool aktibo;
-        private int idmintegia;
+        private string mintegia;
         public int Id { get => id; set => id = value; }
         public DateTime ErosteData { get => erosteData; set => erosteData = value; }
         public string Kokalekua { get => kokalekua; set => kokalekua = value; }
         public string Marka { get => marka; set => marka = value; }
         public bool Aktibo { get => aktibo; set => aktibo = value; }
-        public int Idmintegia { get => idmintegia; set => idmintegia = value; }
+        public string Mintegia { get => mintegia; set => mintegia = value; }
+        public string Mota { get => mota; set => mota = value; }
 
-        public Gailua(int ida, DateTime eData, string koka, string mark, bool aktiboa, int idmint)
+        public Gailua(int ida, DateTime eData, string koka, string mark, bool aktiboa, string mint)
         {
 
             id = ida;
@@ -30,14 +32,16 @@ namespace GUREANOS_ERRONKA.CODIGO
             kokalekua = koka;
             erosteData = eData;
             aktibo = aktiboa;
-            idmintegia = idmint;
+            mintegia = mint;
         }
-        public Gailua(DateTime eDataa, string kokaa, string markk, bool aktiboaa)
+        public Gailua(string mott, string markk, string kokaa, DateTime eDataa, bool aktiboaa, string mintt)
         {
-            erosteData = eDataa;
-            kokalekua = kokaa;
+            mota = mott;
             marka = markk;
+            kokalekua = kokaa;
+            erosteData = eDataa;
             aktibo = aktiboaa;
+            mintegia = mintt;
         }
     }
 }
