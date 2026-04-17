@@ -9,18 +9,18 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     public class KONEXIOA
     {
-        private static string connectionString = "server=localhost;database=inbentarioa;user=root;password=root;";
+        private static string connectionString = "server=10.33.28.57;database=GureanosErronkaDB;user=joseba;password=1234;";
         public static MySqlConnection konektatu = new MySqlConnection(connectionString);
 
         public static void Konektatu()
         {
-            try 
-            { 
+            try
+            {
                 konektatu.Open();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 

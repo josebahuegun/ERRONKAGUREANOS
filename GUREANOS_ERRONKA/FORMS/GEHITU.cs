@@ -63,7 +63,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
         }
 
-        private void btnGehitu_Click(object sender, EventArgs e)
+        /*private void btnGehitu_Click(object sender, EventArgs e)
         {
             if (txtmarka.Text == "" || txtkokalekua.Text == "")
             {
@@ -117,7 +117,7 @@ namespace GUREANOS_ERRONKA.FORMS
             txtcpu.Clear();
             txtrom.Clear();
             txtTeknologia.Clear();
-        }
+        }*/
 
         private void erostedata_ValueChanged(object sender, EventArgs e)
         {
