@@ -60,6 +60,7 @@
             datazabor.RowHeadersWidth = 51;
             datazabor.Size = new Size(641, 292);
             datazabor.TabIndex = 3;
+            datazabor.CellContentClick += datazabor_CellContentClick;
             // 
             // ZABORRONTZIAIKUSI
             // 
@@ -73,6 +74,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ZABORRONTZIAIKUSI";
             Text = "ZABORRONTZIAIKUSI";
+            Load += ZABORRONTZIAIKUSI_Load;
             ((System.ComponentModel.ISupportInitialize)datazabor).EndInit();
             ResumeLayout(false);
         }

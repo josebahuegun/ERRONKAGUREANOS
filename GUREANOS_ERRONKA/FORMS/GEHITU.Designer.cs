@@ -144,7 +144,7 @@
             panelOrdenagailua.Controls.Add(txtcpu);
             panelOrdenagailua.Controls.Add(txtrom);
             panelOrdenagailua.Controls.Add(txtram);
-            panelOrdenagailua.Location = new Point(463, 202);
+            panelOrdenagailua.Location = new Point(463, 199);
             panelOrdenagailua.Name = "panelOrdenagailua";
             panelOrdenagailua.Size = new Size(250, 125);
             panelOrdenagailua.TabIndex = 8;

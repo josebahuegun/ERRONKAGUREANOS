@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUREANOS_ERRONKA.CODIGO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,16 @@ namespace GUREANOS_ERRONKA.FORMS
         public ZABORRONTZIAIKUSI()
         {
             InitializeComponent();
+        }
+
+        private void datazabor_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ZABORRONTZIAIKUSI_Load(object sender, EventArgs e)
+        {
+            datazabor.DataSource = DBKONEXIOA.IkusiZaborrontzia();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -318,6 +319,71 @@ VALUES (@marka, @kokalekua, @eroste_data, @aktibo,
             }
 
             return ondo;
+        }
+        public static void AldatuOrdenagailua(int id, string ram, string rom, string cpu)
+        {
+            KONEXIOA.Konektatu();
+
+            string sql = "UPDATE ordenagailua SET ram=@ram, rom=@rom, cpu=@cpu WHERE id=@id";
+            MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+
+            cmd.Parameters.AddWithValue("@ram", ram);
+            cmd.Parameters.AddWithValue("@rom", rom);
+            cmd.Parameters.AddWithValue("@cpu", cpu);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+
+            KONEXIOA.Deskonektatu();
+        }
+        public static void AldatuInprimagailua(int id, bool kolorea, string teknologia)
+        {
+            KONEXIOA.Konektatu();
+
+            string sql = "UPDATE inprimagailua SET koloretakoa=@kol, teknologia=@tek WHERE id=@id";
+            MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+
+            cmd.Parameters.AddWithValue("@kol", kolorea);
+            cmd.Parameters.AddWithValue("@tek", teknologia);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+
+            KONEXIOA.Deskonektatu();
+        }
+        static public DataTable IkusiZaborrontzia()
+        {
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"
+        SELECT 
+            z.id_zaborrontzia,
+            g.marka,
+            g.kokalekua,
+            z.ezabatze_data,
+            e.izena AS erabiltzailea
+        FROM zaborrontzia z
+        JOIN gailua g ON z.gailua_id = g.id
+        JOIN erabiltzailea e ON z.erabiltzaile_id = e.id;
+        ";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, KONEXIOA.konektatu);
+                adapter.Fill(tabla);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return tabla;
         }
     }
 }
