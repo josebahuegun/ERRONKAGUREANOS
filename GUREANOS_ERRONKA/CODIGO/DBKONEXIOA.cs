@@ -35,7 +35,8 @@ namespace GUREANOS_ERRONKA.CODIGO
                 FROM gailua g
                 LEFT JOIN mintegia m ON g.mintegia_id = m.id
                 LEFT JOIN ordenagailua o ON g.id = o.id
-                LEFT JOIN inprimagailua i ON g.id = i.id;";
+                LEFT JOIN inprimagailua i ON g.id = i.id
+                WHERE g.aktibo = 1;";
             try
             {
                 MySqlCommand neresqlkomandue = new MySqlCommand(sqlie, KONEXIOA.konektatu);
@@ -90,7 +91,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             KONEXIOA.Konektatu();
             try
             {
-                string sqlie = "UPDATE gailua set telefonoa=@telefonoa WHERE izena=@izena;";
+                string sqlie = "UPDATE gailua set aktiboa=@telefonoa WHERE izena=@izena;";
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
                     //komandue.Parameters.AddWithValue("@izena", g.Izena);
@@ -118,11 +119,10 @@ namespace GUREANOS_ERRONKA.CODIGO
             KONEXIOA.Konektatu();
             try
             {
-                string sqlie = "DELETE FROM kontaktua where izena=@izena and telefonoa=@telefonoa;";
+                string sqlie = "UPDATE Gailua where id=@id set aktibo = 0;";
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
-                    //komandue.Parameters.AddWithValue("@izena", g.Izena);
-                    //komandue.Parameters.AddWithValue("@telefonoa", g.Telefonoa);
+                    komandue.Parameters.AddWithValue("@id", g.Id);
                     num = komandue.ExecuteNonQuery();
                 }
             }

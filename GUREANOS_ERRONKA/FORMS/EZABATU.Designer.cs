@@ -61,6 +61,7 @@
             ezabatudata.RowHeadersWidth = 51;
             ezabatudata.Size = new Size(641, 292);
             ezabatudata.TabIndex = 3;
+            ezabatudata.CellContentClick += ezabatudata_CellContentClick;
             // 
             // btnezabatu
             // 
