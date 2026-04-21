@@ -146,7 +146,7 @@ namespace GUREANOS_ERRONKA.FORMS
                     txtmarka.Text,
                     txtkokalekua.Text,
                     erostedata.Value,
-                    true,
+                    "aktibo",
                     "Informatika", // ajusta a tu mintegia
                     txtram.Text,
                     txtrom.Text,
@@ -169,7 +169,7 @@ namespace GUREANOS_ERRONKA.FORMS
                     txtmarka.Text,
                     txtkokalekua.Text,
                     erostedata.Value,
-                    true,
+                    "aktibo",
                     "Informatika",
                     chkKolore.Checked,
                     txtTeknologia.Text

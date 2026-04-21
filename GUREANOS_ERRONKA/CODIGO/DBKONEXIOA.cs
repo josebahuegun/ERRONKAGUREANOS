@@ -28,7 +28,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             g.marka,
             g.kokalekua,
             g.eroste_data,
-            g.aktibo,
+            g.egoera,
             m.izena AS Mintegia,
             o.ram,
             o.rom,
@@ -39,7 +39,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         LEFT JOIN mintegia m ON g.mintegia_id = m.id
         LEFT JOIN ordenagailua o ON g.id = o.id
         LEFT JOIN inprimagailua i ON g.id = i.id
-        WHERE g.aktibo = 1;";
+        WHERE g.egoera = aktibo;";
 
             try
             {
@@ -55,7 +55,7 @@ namespace GUREANOS_ERRONKA.CODIGO
                         string marka = r.GetString(2);
                         string kokalekua = r.GetString(3);
                         DateTime erosteData = r.GetDateTime(4);
-                        bool aktibo = r.GetBoolean(5);
+                        string egoera = r.GetString(5);
                         string mintegia = r.GetString(6);
 
                         // 🖨️ INPRIMAGAILUA
@@ -65,7 +65,7 @@ namespace GUREANOS_ERRONKA.CODIGO
                             string teknologia = r.IsDBNull(11) ? "" : r.GetString(11);
 
                             Inprimagailua i = new Inprimagailua(
-                                marka, kokalekua, erosteData, aktibo, mintegia,
+                                marka, kokalekua, erosteData, egoera, mintegia,
                                 koloretakoa, teknologia
                             );
 
@@ -81,7 +81,7 @@ namespace GUREANOS_ERRONKA.CODIGO
                             string cpu = r.IsDBNull(9) ? "" : r.GetString(9);
 
                             Ordenagailua o = new Ordenagailua(
-                                marka, kokalekua, erosteData, aktibo, mintegia,
+                                marka, kokalekua, erosteData, egoera, mintegia,
                                 ram, rom, cpu
                             );
 
@@ -229,7 +229,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             KONEXIOA.Konektatu();
             try
             {
-                string sqlie = "UPDATE Gailua where id=@id set aktibo = 0;";
+                string sqlie = "UPDATE Gailua where id=@id set egoera = baja;";
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
                     komandue.Parameters.AddWithValue("@id", g.Id);
@@ -259,7 +259,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             {
                 string sqlie = @"INSERT INTO gailua 
 (marka, kokalekua, eroste_data, aktibo, mintegia_id) 
-VALUES (@marka, @kokalekua, @eroste_data, @aktibo, 
+VALUES (@marka, @kokalekua, @eroste_data, @egoera, 
 (SELECT id FROM mintegia WHERE izena = @mintegia_izena));";
 
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
@@ -267,7 +267,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @aktibo,
                     komandue.Parameters.AddWithValue("@marka", g.Marka);
                     komandue.Parameters.AddWithValue("@kokalekua", g.Kokalekua);
                     komandue.Parameters.AddWithValue("@eroste_data", g.ErosteData);
-                    komandue.Parameters.AddWithValue("@aktibo", g.Aktibo);
+                    komandue.Parameters.AddWithValue("@aktibo", g.Egoera);
                     komandue.Parameters.AddWithValue("@mintegia_izena", g.Mintegia);
 
                     komandue.ExecuteNonQuery();
@@ -359,7 +359,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @aktibo,
                 cmd2.ExecuteNonQuery();
 
                 // gero desaktibatu gailua
-                string sql = "UPDATE gailua SET aktibo = 0 WHERE id = @id";
+                string sql = "UPDATE gailua SET egoera = 'matxura' WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
