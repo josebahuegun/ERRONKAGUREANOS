@@ -17,27 +17,29 @@ namespace GUREANOS_ERRONKA.CODIGO
             List<Gailua> gk = new List<Gailua>();
 
             string sqlie = @"
-                SELECT 
-                    CASE 
-                        WHEN o.id IS NOT NULL THEN 'Ordenagailua'
-                        WHEN i.id IS NOT NULL THEN 'Inprimagailua'
-                        ELSE 'Gailu Ezezaguna'
-                    END AS Mota,
-                    g.marka,
-                    g.kokalekua,
-                    g.eroste_data,
-                    g.aktibo,
-                    m.izena AS Mintegia,
-                    o.ram,
-                    o.rom,
-                    o.cpu,  
-                    i.koloretakoa,
-                    i.teknologia
-                FROM gailua g
-                LEFT JOIN mintegia m ON g.mintegia_id = m.id
-                LEFT JOIN ordenagailua o ON g.id = o.id
-                LEFT JOIN inprimagailua i ON g.id = i.id
-                WHERE g.aktibo = 1;";
+        SELECT 
+            g.id,
+            CASE 
+                WHEN o.id IS NOT NULL THEN 'Ordenagailua'
+                WHEN i.id IS NOT NULL THEN 'Inprimagailua'
+                ELSE 'Gailu Ezezaguna'
+            END AS Mota,
+            g.marka,
+            g.kokalekua,
+            g.eroste_data,
+            g.aktibo,
+            m.izena AS Mintegia,
+            o.ram,
+            o.rom,
+            o.cpu,  
+            i.koloretakoa,
+            i.teknologia
+        FROM gailua g
+        LEFT JOIN mintegia m ON g.mintegia_id = m.id
+        LEFT JOIN ordenagailua o ON g.id = o.id
+        LEFT JOIN inprimagailua i ON g.id = i.id
+        WHERE g.aktibo = 1;";
+
             try
             {
                 MySqlCommand cmd = new MySqlCommand(sqlie, KONEXIOA.konektatu);
@@ -333,6 +335,71 @@ VALUES (@marka, @kokalekua, @eroste_data, @aktibo,
             }
             catch (MySqlException e)
             {
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        public static bool EzabatuGailua(int id)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                // insertar zaborrontzia
+                string sql2 = "INSERT INTO zaborrontzia (ezabatze_data, gailua_id, erabiltzaile_id) VALUES (NOW(), @id, 1)";
+                MySqlCommand cmd2 = new MySqlCommand(sql2, KONEXIOA.konektatu);
+                cmd2.Parameters.AddWithValue("@id", id);
+                cmd2.ExecuteNonQuery();
+
+                // gero desaktibatu gailua
+                string sql = "UPDATE gailua SET aktibo = 0 WHERE id = @id";
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.ExecuteNonQuery();
+
+                ondo = true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        public static bool AldatuGailua(Gailua g)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"UPDATE gailua 
+                       SET marka=@marka, kokalekua=@koka, eroste_data=@data 
+                       WHERE id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@marka", g.Marka);
+                cmd.Parameters.AddWithValue("@koka", g.Kokalekua);
+                cmd.Parameters.AddWithValue("@data", g.ErosteData);
+                cmd.Parameters.AddWithValue("@id", g.Id);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             finally
             {
