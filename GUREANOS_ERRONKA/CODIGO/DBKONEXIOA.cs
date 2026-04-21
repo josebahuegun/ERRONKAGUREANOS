@@ -15,6 +15,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         {
             KONEXIOA.Konektatu();
             List<Gailua> gk = new List<Gailua>();
+
             string sqlie = @"
                 SELECT 
                     CASE 
@@ -39,49 +40,65 @@ namespace GUREANOS_ERRONKA.CODIGO
                 WHERE g.aktibo = 1;";
             try
             {
-                MySqlCommand neresqlkomandue = new MySqlCommand(sqlie, KONEXIOA.konektatu);
-                MySqlDataReader resultauek = neresqlkomandue.ExecuteReader();
-                if (resultauek.HasRows)
+                MySqlCommand cmd = new MySqlCommand(sqlie, KONEXIOA.konektatu);
+                MySqlDataReader r = cmd.ExecuteReader();
+
+                if (r.HasRows)
                 {
-                    while (resultauek.Read())
+                    while (r.Read())
                     {
-                        //getName > kanpoan izena ateratzen du
-                        //getValue > balorea ateratzen du
-                        string mota = resultauek.GetString(0);    // 0 zutabea testu gisa irakurri
-                        string marka = resultauek.GetString(1);
-                        string kokalekua = resultauek.GetString(2);     // 2 zutabea testu gisa irakurri
-                        DateTime erosteData = resultauek.GetDateTime(3);
-                        bool aktibo = resultauek.GetBoolean(4);    // 4 zutabea boolear gisa irakurri
-                        string mintegia = resultauek.GetString(5);
+                        int id = r.GetInt32(0);
+                        string mota = r.GetString(1);
+                        string marka = r.GetString(2);
+                        string kokalekua = r.GetString(3);
+                        DateTime erosteData = r.GetDateTime(4);
+                        bool aktibo = r.GetBoolean(5);
+                        string mintegia = r.GetString(6);
 
-
-                        if (mota == "Imprimagailua")
+                        // 🖨️ INPRIMAGAILUA
+                        if (mota == "Inprimagailua")
                         {
-                            bool koloretakoa = resultauek.GetBoolean(7);
-                            string teknologia = resultauek.GetString(8);
-                            Inprimagailua i = new Inprimagailua(marka, kokalekua, erosteData, aktibo, mintegia, koloretakoa, teknologia);
+                            bool koloretakoa = r.IsDBNull(10) ? false : r.GetBoolean(10);
+                            string teknologia = r.IsDBNull(11) ? "" : r.GetString(11);
+
+                            Inprimagailua i = new Inprimagailua(
+                                marka, kokalekua, erosteData, aktibo, mintegia,
+                                koloretakoa, teknologia
+                            );
+
+                            i.Id = id; // 🔥 CLAVE
                             gk.Add(i);
                         }
-                        if(mota == "Ordenagailua")
+
+                        // 💻 ORDENAGAILUA
+                        else if (mota == "Ordenagailua")
                         {
-                            string ram = resultauek.GetString(6);
-                            string rom = resultauek.GetString(7);
-                            string cpu = resultauek.GetString(8);
-                            Ordenagailua o = new Ordenagailua(marka, kokalekua, erosteData, aktibo, mintegia, ram, rom, cpu);
+                            string ram = r.IsDBNull(7) ? "" : r.GetString(7);
+                            string rom = r.IsDBNull(8) ? "" : r.GetString(8);
+                            string cpu = r.IsDBNull(9) ? "" : r.GetString(9);
+
+                            Ordenagailua o = new Ordenagailua(
+                                marka, kokalekua, erosteData, aktibo, mintegia,
+                                ram, rom, cpu
+                            );
+
+                            o.Id = id; // 🔥 CLAVE
                             gk.Add(o);
                         }
                     }
                 }
-                resultauek.Close();
+
+                r.Close();
             }
-            catch (MySqlException e)
+            catch (MySqlException ex)
             {
+                MessageBox.Show(ex.Message);
             }
             finally
             {
-                //deskonektatu
                 KONEXIOA.Deskonektatu();
             }
+
             return gk;
         }
 

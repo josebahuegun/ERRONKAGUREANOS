@@ -71,6 +71,7 @@
             btnezabatu.TabIndex = 6;
             btnezabatu.Text = "EZABATU";
             btnezabatu.UseVisualStyleBackColor = true;
+            btnezabatu.Click += btnezabatu_Click;
             // 
             // EZABATU
             // 
@@ -85,6 +86,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "EZABATU";
             Text = "EZABATU";
+            Load += EZABATU_Load;
             ((System.ComponentModel.ISupportInitialize)ezabatudata).EndInit();
             ResumeLayout(false);
         }
