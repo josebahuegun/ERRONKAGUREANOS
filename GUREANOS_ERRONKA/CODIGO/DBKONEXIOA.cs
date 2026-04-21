@@ -287,5 +287,37 @@ VALUES (@marka, @kokalekua, @eroste_data, @aktibo,
 
             return ondo;
         }
+        public static bool AldatuGailua(Gailua g)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"UPDATE gailua 
+                       SET marka=@marka, kokalekua=@koka, eroste_data=@data 
+                       WHERE id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@marka", g.Marka);
+                cmd.Parameters.AddWithValue("@koka", g.Kokalekua);
+                cmd.Parameters.AddWithValue("@data", g.ErosteData);
+                cmd.Parameters.AddWithValue("@id", g.Id);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
     }
 }

@@ -16,5 +16,10 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             InitializeComponent();
         }
+
+        private void dataaldatu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
