@@ -56,6 +56,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
             // 4. Ezkutatu Id zutabea hasieran ez agertzeko
             dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["Aktibo"].Visible = false; // Aktibo ezkutatu, ez da beharrezkoa ikusteko
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

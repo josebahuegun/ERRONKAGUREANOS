@@ -105,32 +105,122 @@ namespace GUREANOS_ERRONKA.CODIGO
             return gk;
         }
 
-        static public int aldatuGailuak(Gailua g)
+ 
+        static public bool aldatuOrdenagailua(Ordenagailua o)
         {
-            int num;
+            bool aldatuta = false;
             KONEXIOA.Konektatu();
+
             try
             {
-                string sqlie = "UPDATE gailua set telefonoa=@telefonoa WHERE izena=@izena;";
-                using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
+                // 1. Datu komunak (Gailua) eta espezifikoak (Ordenagailua) eguneratu.
+                // Oharra: Datu-basean taula egitura nolakoa den, SQL hau desberdina izan daiteke.
+                // Adibide honetan suposatzen da bi taula dituzula (gailua eta ordenagailua).
+
+                string sqlGailua = @"UPDATE gailua 
+                             SET marka = @marka, kokalekua = @kokalekua, 
+                                 eroste_data = @eroste_data 
+                             WHERE id = @id;";
+
+                string sqlOrdenagailua = @"UPDATE ordenagailua 
+                                   SET ram = @ram, rom = @rom, cpu = @cpu 
+                                   WHERE gailua_id = @id;";
+
+                // Lehenengo, gailuaren datu orokorrak eguneratu
+                using (MySqlCommand cmdGailua = new MySqlCommand(sqlGailua, KONEXIOA.konektatu))
                 {
-                    //komandue.Parameters.AddWithValue("@izena", g.Izena);
-                    // komandue.Parameters.AddWithValue("@telefonoa", g.Telefonoa);
-                    num = komandue.ExecuteNonQuery();
+                    cmdGailua.Parameters.AddWithValue("@id", o.Id);
+                    cmdGailua.Parameters.AddWithValue("@marka", o.Marka);
+                    cmdGailua.Parameters.AddWithValue("@kokalekua", o.Kokalekua);
+                    cmdGailua.Parameters.AddWithValue("@eroste_data", o.ErosteData);
+
+                    cmdGailua.ExecuteNonQuery();
+                }
+
+                // Ondoren, ordenagailuaren datu espezifikoak eguneratu
+                using (MySqlCommand cmdOrdenagailua = new MySqlCommand(sqlOrdenagailua, KONEXIOA.konektatu))
+                {
+                    cmdOrdenagailua.Parameters.AddWithValue("@id", o.Id);
+                    cmdOrdenagailua.Parameters.AddWithValue("@ram", o.RAM1); // Adibidea
+                    cmdOrdenagailua.Parameters.AddWithValue("@rom", o.ROM1); // Adibidea
+                    cmdOrdenagailua.Parameters.AddWithValue("@cpu", o.CPU1); // Adibidea
+
+                    int eraginDutenErrenkadak = cmdOrdenagailua.ExecuteNonQuery();
+                    if (eraginDutenErrenkadak > 0)
+                    {
+                        aldatuta = true;
+                    }
                 }
             }
             catch (MySqlException ex)
             {
-                num = ex.Number;
+                MessageBox.Show("Errorea ordenagailua aldatzean: " + ex.Message);
             }
             finally
             {
-                //deskonektatu
-                KONEXIOA.Deskonektatu();
+                // KONEXIOA.Deskonektatu();
             }
-            //3.- Bueltatu zenbakia: 0 edo 1 querytik, edo bestela errore zenbakia          
-            return num;
 
+            return aldatuta;
+        }
+
+        static public bool aldatuInprimagailua(Inprimagailua i)
+        {
+            bool aldatuta = false;
+            KONEXIOA.Konektatu();
+
+            try
+            {
+                // 1. Gailuaren datu orokorrak eguneratzeko SQL-a
+                string sqlGailua = @"UPDATE gailua 
+                             SET marka = @marka, kokalekua = @kokalekua, 
+                                 eroste_data = @eroste_data)
+                             WHERE id = @id;";
+
+                // 2. Inprimagailuaren datu espezifikoak eguneratzeko SQL-a
+                // Irudian ikusten den bezala, zutabeak 'koloretakoa' eta 'teknologia' dira
+                string sqlInprimagailua = @"UPDATE inprimagailua 
+                                    SET koloretakoa = @koloretakoa, teknologia = @teknologia 
+                                    WHERE id = @id;";
+
+                // Lehenengo, gailuaren taula nagusia eguneratu
+                using (MySqlCommand cmdGailua = new MySqlCommand(sqlGailua, KONEXIOA.konektatu))
+                {
+                    cmdGailua.Parameters.AddWithValue("@id", i.Id);
+                    cmdGailua.Parameters.AddWithValue("@marka", i.Marka);
+                    cmdGailua.Parameters.AddWithValue("@kokalekua", i.Kokalekua);
+                    cmdGailua.Parameters.AddWithValue("@eroste_data", i.ErosteData);
+
+                    cmdGailua.ExecuteNonQuery();
+                }
+
+                // Ondoren, inprimagailuaren taula eguneratu
+                using (MySqlCommand cmdInprimagailua = new MySqlCommand(sqlInprimagailua, KONEXIOA.konektatu))
+                {
+                    cmdInprimagailua.Parameters.AddWithValue("@id", i.Id);
+                    cmdInprimagailua.Parameters.AddWithValue("@koloretakoa", i.Koloretakoa); // boolean bat (true/false) edo 1/0 izan ohi da
+                    cmdInprimagailua.Parameters.AddWithValue("@teknologia", i.Teknologia);   // Adibidez: "Laser" edo "Tinta"
+
+                    int eraginDutenErrenkadak = cmdInprimagailua.ExecuteNonQuery();
+
+                    // Inprimagailuaren taulan lerro bat eguneratu bada, dena ondo joan dela suposatuko dugu
+                    if (eraginDutenErrenkadak > 0)
+                    {
+                        aldatuta = true;
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Errorea inprimagailua aldatzean: " + ex.Message);
+            }
+            finally
+            {
+                // Garrantzitsua konexioa ixtea, zure programan egituratuta duzun moduan
+                // KONEXIOA.Deskonektatu();
+            }
+
+            return aldatuta;
         }
 
         static public int gailuaEzabatu(Gailua g)
@@ -139,11 +229,10 @@ namespace GUREANOS_ERRONKA.CODIGO
             KONEXIOA.Konektatu();
             try
             {
-                string sqlie = "DELETE FROM kontaktua where izena=@izena and telefonoa=@telefonoa;";
+                string sqlie = "UPDATE Gailua where id=@id set aktibo = 0;";
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
-                    //komandue.Parameters.AddWithValue("@izena", g.Izena);
-                    //komandue.Parameters.AddWithValue("@telefonoa", g.Telefonoa);
+                    komandue.Parameters.AddWithValue("@id", g.Id);
                     num = komandue.ExecuteNonQuery();
                 }
             }

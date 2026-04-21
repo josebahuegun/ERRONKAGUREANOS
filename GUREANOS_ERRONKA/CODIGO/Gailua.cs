@@ -43,5 +43,9 @@ namespace GUREANOS_ERRONKA.CODIGO
             aktibo = aktiboaa;
             mintegia = mintt;
         }
+        public Gailua(int idd)
+        {
+            id = idd;
+        }
     }
 }
