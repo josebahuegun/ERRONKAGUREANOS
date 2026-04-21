@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,7 +26,12 @@ namespace GUREANOS_ERRONKA.CODIGO
                     g.kokalekua,
                     g.eroste_data,
                     g.aktibo,
-                    m.izena AS Mintegia
+                    m.izena AS Mintegia,
+                    o.ram,
+                    o.rom,
+                    o.cpu,  
+                    i.koloretakoa,
+                    i.teknologia
                 FROM gailua g
                 LEFT JOIN mintegia m ON g.mintegia_id = m.id
                 LEFT JOIN ordenagailua o ON g.id = o.id
@@ -40,14 +46,29 @@ namespace GUREANOS_ERRONKA.CODIGO
                     {
                         //getName > kanpoan izena ateratzen du
                         //getValue > balorea ateratzen du
-                        Gailua g = new Gailua(resultauek.GetString(0),     // 0 zutabea testu gisa irakurri
-                                              resultauek.GetString(1),   // 3 zutabea data gisa irakurri
-                                              resultauek.GetString(2),     // 2 zutabea testu gisa irakurri
-                                              resultauek.GetDateTime(3),     // 1 zutabea testu gisa irakurri
-                                              resultauek.GetBoolean(4),    // 4 zutabea boolear gisa irakurri);
-                                              resultauek.GetString(5) 
-                        );
-                        gk.Add(g);
+                        string mota = resultauek.GetString(0);    // 0 zutabea testu gisa irakurri
+                        string marka = resultauek.GetString(1);
+                        string kokalekua = resultauek.GetString(2);     // 2 zutabea testu gisa irakurri
+                        DateTime erosteData = resultauek.GetDateTime(3);
+                        bool aktibo = resultauek.GetBoolean(4);    // 4 zutabea boolear gisa irakurri
+                        string mintegia = resultauek.GetString(5);
+
+
+                        if (mota == "Imprimagailua")
+                        {
+                            bool koloretakoa = resultauek.GetBoolean(7);
+                            string teknologia = resultauek.GetString(8);
+                            Inprimagailua i = new Inprimagailua(marka, kokalekua, erosteData, aktibo, mintegia, koloretakoa, teknologia);
+                            gk.Add(i);
+                        }
+                        if(mota == "Ordenagailua")
+                        {
+                            string ram = resultauek.GetString(6);
+                            string rom = resultauek.GetString(7);
+                            string cpu = resultauek.GetString(8);
+                            Ordenagailua o = new Ordenagailua(marka, kokalekua, erosteData, aktibo, mintegia, ram, rom, cpu);
+                            gk.Add(o);
+                        }
                     }
                 }
                 resultauek.Close();
