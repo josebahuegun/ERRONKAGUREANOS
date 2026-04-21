@@ -121,37 +121,39 @@ namespace GUREANOS_ERRONKA.CODIGO
         static public int gailuaGehitu(Gailua g)
         {
             int txertatutakoId = -1;
-            //1.- Konektatu
+
             KONEXIOA.Konektatu();
-            //2. inserta egin
 
             try
             {
-                //inserta, PARAMETRO BIDEZ, PRAKTIKA ONA
-                string sqlie = "INSERT INTO gailua (marka, kokalekua, oeroste_data, aktibo, mintegia_id) VALUES (@marka, @kokalekua, @eroste_data, @aktibo, (SELECT id FROM mintegia WHERE izena = @mintegia_izena));";
+                string sqlie = @"INSERT INTO gailua 
+(marka, kokalekua, eroste_data, aktibo, mintegia_id) 
+VALUES (@marka, @kokalekua, @eroste_data, @aktibo, 
+(SELECT id FROM mintegia WHERE izena = @mintegia_izena));";
 
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
-                    // Parametroak gehitu
                     komandue.Parameters.AddWithValue("@marka", g.Marka);
                     komandue.Parameters.AddWithValue("@kokalekua", g.Kokalekua);
                     komandue.Parameters.AddWithValue("@eroste_data", g.ErosteData);
                     komandue.Parameters.AddWithValue("@aktibo", g.Aktibo);
-                    komandue.Parameters.AddWithValue("@mintegia_id", g.Mintegia);
+                    komandue.Parameters.AddWithValue("@mintegia_izena", g.Mintegia);
 
-                    // ExecuteScalar()-ek lehen zutabeko lehen datua bueltatzen du (Gure ID-a!)
-                    txertatutakoId = Convert.ToInt32(komandue.ExecuteScalar());
+                    komandue.ExecuteNonQuery();
+
+                    MySqlCommand cmdId = new MySqlCommand("SELECT LAST_INSERT_ID()", KONEXIOA.konektatu);
+                    txertatutakoId = Convert.ToInt32(cmdId.ExecuteScalar());
                 }
             }
             catch (MySqlException ex)
             {
-
+                MessageBox.Show(ex.Message); // 🔥 IMPORTANTE
             }
-            finally // try edo catchera joan, beti konexioa izteko. Beste aukera bat, hau gabe, return aurretik close
+            finally
             {
-                //deskonektatu
                 KONEXIOA.Deskonektatu();
             }
+
             return txertatutakoId;
         }
 
@@ -161,51 +163,48 @@ namespace GUREANOS_ERRONKA.CODIGO
             try
             {
                 KONEXIOA.Konektatu();
+
                 string sqlie = "INSERT INTO ordenagailua (id, ram, rom, cpu) VALUES (@id, @ram, @rom, @cpu);";
                 MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu);
+
                 komandue.Parameters.AddWithValue("@id", gailuId);
                 komandue.Parameters.AddWithValue("@ram", ram);
                 komandue.Parameters.AddWithValue("@rom", rom);
                 komandue.Parameters.AddWithValue("@cpu", cpu);
+
                 if (komandue.ExecuteNonQuery() > 0)
-                {
                     ondo = true;
-                }
             }
             catch (MySqlException ex)
             {
-                // Erroreak kudeatu
             }
             finally
             {
                 KONEXIOA.Deskonektatu();
             }
+
             return ondo;
         }
         public static bool TxertatuInprimagailua(int gailuId, bool koloretakoa, string teknologia)
         {
             bool ondo = false;
+
             try
             {
                 KONEXIOA.Konektatu();
 
-                // Zure datu-baseko zutabe zehatzak jarri ditugu hemen:
                 string sql = "INSERT INTO inprimagailua (id, koloretakoa, teknologia) VALUES (@id, @kolorea, @tekno)";
                 MySqlCommand komandoa = new MySqlCommand(sql, KONEXIOA.konektatu);
 
-                // Parametroak lotu
                 komandoa.Parameters.AddWithValue("@id", gailuId);
                 komandoa.Parameters.AddWithValue("@kolorea", koloretakoa);
                 komandoa.Parameters.AddWithValue("@tekno", teknologia);
 
                 if (komandoa.ExecuteNonQuery() > 0)
-                {
                     ondo = true;
-                }
             }
             catch (MySqlException e)
             {
-                
             }
             finally
             {

@@ -81,6 +81,7 @@
             Controls.Add(btnaldatuirten);
             Controls.Add(btnaldatuatzera);
             Controls.Add(dataaldatu);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "ALDATU";
             Text = "ALDATU";
             ((System.ComponentModel.ISupportInitialize)dataaldatu).EndInit();

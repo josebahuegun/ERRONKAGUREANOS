@@ -123,5 +123,70 @@ namespace GUREANOS_ERRONKA.FORMS
         {
 
         }
+
+        private void btnGehitu_Click(object sender, EventArgs e)
+        {
+            // VALIDACIÓN
+            if (txtmarka.Text == "" || txtkokalekua.Text == "")
+            {
+                MessageBox.Show("Bete datu guztiak");
+                return;
+            }
+
+            // 💻 ORDENAGAILUA
+            if (radioordenagailua.Checked)
+            {
+                if (txtram.Text == "" || txtrom.Text == "" || txtcpu.Text == "")
+                {
+                    MessageBox.Show("Bete ordenagailuaren datuak");
+                    return;
+                }
+
+                Ordenagailua o = new Ordenagailua(
+                    txtmarka.Text,
+                    txtkokalekua.Text,
+                    erostedata.Value,
+                    true,
+                    "Informatika", // ajusta a tu mintegia
+                    txtram.Text,
+                    txtrom.Text,
+                    txtcpu.Text
+                );
+
+                int id = DBKONEXIOA.gailuaGehitu(o);
+
+                if (id > 0)
+                {
+                    DBKONEXIOA.TxertatuOrdenagailua(id, o.RAM1, o.ROM1, o.CPU1);
+                    MessageBox.Show("Ordenagailua gehituta");
+                }
+            }
+
+            // INPRIMAGAILUA
+            else if (radioinprimagailua.Checked)
+            {
+                Inprimagailua i = new Inprimagailua(
+                    txtmarka.Text,
+                    txtkokalekua.Text,
+                    erostedata.Value,
+                    true,
+                    "Informatika",
+                    chkKolore.Checked,
+                    txtTeknologia.Text
+                );
+
+                int id = DBKONEXIOA.gailuaGehitu(i);
+
+                if (id > 0)
+                {
+                    DBKONEXIOA.TxertatuInprimagailua(id, i.Koloretakoa, i.Teknologia);
+                    MessageBox.Show("Inprimagailua gehituta");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Aukeratu mota");
+            }
+        }
     }
 }
