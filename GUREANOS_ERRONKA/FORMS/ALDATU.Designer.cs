@@ -70,6 +70,7 @@
             dataaldatu.RowHeadersWidth = 51;
             dataaldatu.Size = new Size(641, 292);
             dataaldatu.TabIndex = 7;
+            dataaldatu.CellContentClick += dataaldatu_CellContentClick;
             // 
             // ALDATU
             // 
@@ -81,6 +82,7 @@
             Controls.Add(btnaldatuirten);
             Controls.Add(btnaldatuatzera);
             Controls.Add(dataaldatu);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "ALDATU";
             Text = "ALDATU";
             ((System.ComponentModel.ISupportInitialize)dataaldatu).EndInit();

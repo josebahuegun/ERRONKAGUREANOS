@@ -144,7 +144,7 @@
             panelOrdenagailua.Controls.Add(txtcpu);
             panelOrdenagailua.Controls.Add(txtrom);
             panelOrdenagailua.Controls.Add(txtram);
-            panelOrdenagailua.Location = new Point(466, 202);
+            panelOrdenagailua.Location = new Point(463, 202);
             panelOrdenagailua.Name = "panelOrdenagailua";
             panelOrdenagailua.Size = new Size(250, 125);
             panelOrdenagailua.TabIndex = 8;
@@ -171,7 +171,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(11, 6);
+            label5.Location = new Point(12, 6);
             label5.Name = "label5";
             label5.Size = new Size(41, 20);
             label5.TabIndex = 14;
@@ -207,7 +207,7 @@
             btnGehitu.TabIndex = 9;
             btnGehitu.Text = "GEHITU";
             btnGehitu.UseVisualStyleBackColor = true;
-            //btnGehitu.Click += btnGehitu_Click;
+            btnGehitu.Click += btnGehitu_Click;
             // 
             // label2
             // 
@@ -254,8 +254,8 @@
             Controls.Add(btngehituatzera);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(panelOrdenagailua);
+            Controls.Add(label2);
             Controls.Add(btnGehitu);
             Controls.Add(panelInprimagailua);
             Controls.Add(radioinprimagailua);
