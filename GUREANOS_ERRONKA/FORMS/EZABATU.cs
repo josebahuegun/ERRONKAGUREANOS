@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUREANOS_ERRONKA.CODIGO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,31 @@ namespace GUREANOS_ERRONKA.FORMS
         public EZABATU()
         {
             InitializeComponent();
+        }
+
+        private void btnezabatu_Click(object sender, EventArgs e)
+        {
+            if (ezabatudata.CurrentRow != null)
+            {
+                int id = Convert.ToInt32(ezabatudata.CurrentRow.Cells["id"].Value);
+
+                DBKONEXIOA.EzabatuGailua(id);
+
+                MessageBox.Show("Ezabatuta!");
+
+                ezabatudata.DataSource = DBKONEXIOA.ikusiGailuak();
+            }
+        }
+
+        private void ezabatudata_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void EZABATU_Load(object sender, EventArgs e)
+        {
+            ezabatudata.DataSource = DBKONEXIOA.ikusiGailuak();
+            ezabatudata.Columns["id"].Visible = false;
         }
     }
 }

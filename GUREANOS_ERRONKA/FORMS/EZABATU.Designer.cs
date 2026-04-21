@@ -61,6 +61,7 @@
             ezabatudata.RowHeadersWidth = 51;
             ezabatudata.Size = new Size(641, 292);
             ezabatudata.TabIndex = 3;
+            ezabatudata.CellContentClick += ezabatudata_CellContentClick;
             // 
             // btnezabatu
             // 
@@ -70,6 +71,7 @@
             btnezabatu.TabIndex = 6;
             btnezabatu.Text = "EZABATU";
             btnezabatu.UseVisualStyleBackColor = true;
+            btnezabatu.Click += btnezabatu_Click;
             // 
             // EZABATU
             // 
@@ -84,6 +86,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "EZABATU";
             Text = "EZABATU";
+            Load += EZABATU_Load;
             ((System.ComponentModel.ISupportInitialize)ezabatudata).EndInit();
             ResumeLayout(false);
         }
