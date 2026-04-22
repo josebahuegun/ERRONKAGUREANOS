@@ -9,7 +9,7 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     public class KONEXIOA
     {
-        private static string connectionString = "server=10.33.28.209;database=GureanosErronkaDB;user=joseba;password=1234;";
+        private static string connectionString = "server=192.168.1.123;database=GureanosErronkaDB;user=joseba;password=1234;";
         //private static string connectionString = "server=localhost;database=inbentarioa;user=root;password=root;";
         public static MySqlConnection konektatu = new MySqlConnection(connectionString);
 

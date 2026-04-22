@@ -39,7 +39,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         LEFT JOIN mintegia m ON g.mintegia_id = m.id
         LEFT JOIN ordenagailua o ON g.id = o.id
         LEFT JOIN inprimagailua i ON g.id = i.id
-        WHERE g.egoera = aktibo;";
+        WHERE g.egoera = 'aktibo';";
 
             try
             {
