@@ -69,5 +69,17 @@ namespace GUREANOS_ERRONKA.FORMS
                 comborola.SelectedIndex = 0;
             }
         }
+
+        private void btngehituerabilatzera_Click(object sender, EventArgs e)
+        {
+            PANELA p = new PANELA();
+            p.Show();
+            this.Close(); // 🔥 importante (no Hide)
+        }
+
+        private void irten_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

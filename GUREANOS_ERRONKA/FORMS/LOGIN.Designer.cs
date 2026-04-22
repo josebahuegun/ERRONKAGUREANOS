@@ -103,6 +103,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "LOGIN";
             Text = "LOGIN";
+            Load += LOGIN_Load;
             ResumeLayout(false);
             PerformLayout();
         }

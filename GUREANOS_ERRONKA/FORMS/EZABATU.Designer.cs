@@ -43,6 +43,7 @@
             btnezabatuirten.TabIndex = 5;
             btnezabatuirten.Text = "IRTEN";
             btnezabatuirten.UseVisualStyleBackColor = true;
+            btnezabatuirten.Click += btnezabatuirten_Click;
             // 
             // btnezabatuatzera
             // 
@@ -52,6 +53,7 @@
             btnezabatuatzera.TabIndex = 4;
             btnezabatuatzera.Text = "ATZERA";
             btnezabatuatzera.UseVisualStyleBackColor = true;
+            btnezabatuatzera.Click += btnezabatuatzera_Click;
             // 
             // ezabatudata
             // 
@@ -65,7 +67,7 @@
             // 
             // btnezabatu
             // 
-            btnezabatu.Location = new Point(325, 361);
+            btnezabatu.Location = new Point(329, 361);
             btnezabatu.Name = "btnezabatu";
             btnezabatu.Size = new Size(150, 44);
             btnezabatu.TabIndex = 6;

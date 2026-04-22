@@ -1,4 +1,5 @@
-﻿using GUREANOS_ERRONKA.FORMS;
+﻿using GUREANOS_ERRONKA.CODIGO;
+using GUREANOS_ERRONKA.FORMS;
 using System;
 using System.Windows.Forms;
 
@@ -13,7 +14,37 @@ namespace GUREANOS_ERRONKA
 
         private void PANELA_Load(object sender, EventArgs e)
         {
+            if (sesioa.Rola == "Irakaslea")
+            {
+                // GAILUAK
+                gEHITUToolStripMenuItem.Visible = false;
+                aLDATUToolStripMenuItem.Visible = false;
+                eZABATUToolStripMenuItem.Visible = false;
 
+                // ERABILTZAILEAK
+                sORTUToolStripMenuItem.Visible = false;
+                eZABATUToolStripMenuItem1.Visible = false;
+
+                // MINTEGIAK
+                sORTUToolStripMenuItem1.Visible = false;
+                iKUSIEZABATUToolStripMenuItem.Visible = false;
+            }
+
+            else if (sesioa.Rola == "Mintegiburua")
+            {
+                // usuarios fuera
+                sORTUToolStripMenuItem.Visible = false;
+                eZABATUToolStripMenuItem1.Visible = false;
+
+                // mintegiak fuera
+                sORTUToolStripMenuItem1.Visible = false;
+                iKUSIEZABATUToolStripMenuItem.Visible = false;
+            }
+
+            else if (sesioa.Rola == "IKTarduraduna")
+            {
+                // todo permitido
+            }
         }
 
         // 🔍 IKUSI GAILUAK

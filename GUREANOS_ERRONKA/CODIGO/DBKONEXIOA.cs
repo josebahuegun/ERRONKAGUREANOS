@@ -11,35 +11,35 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     internal class DBKONEXIOA
     {
-
         static public List<Gailua> ikusiGailuak()
         {
             KONEXIOA.Konektatu();
             List<Gailua> gk = new List<Gailua>();
 
             string sqlie = @"
-        SELECT 
-            g.id,
-            CASE 
-                WHEN o.id IS NOT NULL THEN 'Ordenagailua'
-                WHEN i.id IS NOT NULL THEN 'Inprimagailua'
-                ELSE 'Gailu Ezezaguna'
-            END AS Mota,
-            g.marka,
-            g.kokalekua,
-            g.eroste_data,
-            g.egoera,
-            m.izena AS Mintegia,
-            o.ram,
-            o.rom,
-            o.cpu,  
-            i.koloretakoa,
-            i.teknologia
-        FROM gailua g
-        LEFT JOIN mintegia m ON g.mintegia_id = m.id
-        LEFT JOIN ordenagailua o ON g.id = o.id
-        LEFT JOIN inprimagailua i ON g.id = i.id
-        WHERE g.egoera = 'aktibo';";
+SELECT 
+    g.id,
+    g.mintegia_id,
+    CASE 
+        WHEN o.id IS NOT NULL THEN 'Ordenagailua'
+        WHEN i.id IS NOT NULL THEN 'Inprimagailua'
+        ELSE 'Gailu Ezezaguna'
+    END AS Mota,
+    g.marka,
+    g.kokalekua,
+    g.eroste_data,
+    g.egoera,
+    m.izena AS Mintegia,
+    o.ram,
+    o.rom,
+    o.cpu,  
+    i.koloretakoa,
+    i.teknologia
+FROM gailua g
+LEFT JOIN mintegia m ON g.mintegia_id = m.id
+LEFT JOIN ordenagailua o ON g.id = o.id
+LEFT JOIN inprimagailua i ON g.id = i.id
+WHERE g.egoera = 'aktibo';";
 
             try
             {
@@ -51,41 +51,42 @@ namespace GUREANOS_ERRONKA.CODIGO
                     while (r.Read())
                     {
                         int id = r.GetInt32(0);
-                        string mota = r.GetString(1);
-                        string marka = r.GetString(2);
-                        string kokalekua = r.GetString(3);
-                        DateTime erosteData = r.GetDateTime(4);
-                        string egoera = r.GetString(5);
-                        string mintegia = r.GetString(6);
+                        int mintegiaId = r.GetInt32(1); // 🔥 NUEVO
+                        string mota = r.GetString(2);
+                        string marka = r.GetString(3);
+                        string kokalekua = r.GetString(4);
+                        DateTime erosteData = r.GetDateTime(5);
+                        string egoera = r.GetString(6);
+                        string mintegia = r.GetString(7);
 
                         // 🖨️ INPRIMAGAILUA
                         if (mota == "Inprimagailua")
                         {
-                            bool koloretakoa = r.IsDBNull(10) ? false : r.GetBoolean(10);
-                            string teknologia = r.IsDBNull(11) ? "" : r.GetString(11);
+                            bool koloretakoa = r.IsDBNull(11) ? false : r.GetBoolean(11);
+                            string teknologia = r.IsDBNull(12) ? "" : r.GetString(12);
 
                             Inprimagailua i = new Inprimagailua(
                                 marka, kokalekua, erosteData, egoera, mintegia,
                                 koloretakoa, teknologia
                             );
 
-                            i.Id = id; // 🔥 CLAVE
+                            i.Id = id;
                             gk.Add(i);
                         }
 
                         // 💻 ORDENAGAILUA
                         else if (mota == "Ordenagailua")
                         {
-                            string ram = r.IsDBNull(7) ? "" : r.GetString(7);
-                            string rom = r.IsDBNull(8) ? "" : r.GetString(8);
-                            string cpu = r.IsDBNull(9) ? "" : r.GetString(9);
+                            string ram = r.IsDBNull(8) ? "" : r.GetString(8);
+                            string rom = r.IsDBNull(9) ? "" : r.GetString(9);
+                            string cpu = r.IsDBNull(10) ? "" : r.GetString(10);
 
                             Ordenagailua o = new Ordenagailua(
                                 marka, kokalekua, erosteData, egoera, mintegia,
                                 ram, rom, cpu
                             );
 
-                            o.Id = id; // 🔥 CLAVE
+                            o.Id = id;
                             gk.Add(o);
                         }
                     }
@@ -107,45 +108,41 @@ namespace GUREANOS_ERRONKA.CODIGO
 
 
         static public bool aldatuOrdenagailua(Ordenagailua o)
+
+        static public bool aldatuInprimagailua(Inprimagailua i)
         {
             bool aldatuta = false;
             KONEXIOA.Konektatu();
 
             try
             {
-                // 1. Datu komunak (Gailua) eta espezifikoak (Ordenagailua) eguneratu.
-                // Oharra: Datu-basean taula egitura nolakoa den, SQL hau desberdina izan daiteke.
-                // Adibide honetan suposatzen da bi taula dituzula (gailua eta ordenagailua).
-
+                // 🔧 FIX (quitado paréntesis)
                 string sqlGailua = @"UPDATE gailua 
-                             SET marka = @marka, kokalekua = @kokalekua, 
-                                 eroste_data = @eroste_data 
-                             WHERE id = @id;";
+                     SET marka = @marka, kokalekua = @kokalekua, 
+                         eroste_data = @eroste_data
+                     WHERE id = @id;";
 
-                string sqlOrdenagailua = @"UPDATE ordenagailua 
-                                   SET ram = @ram, rom = @rom, cpu = @cpu 
-                                   WHERE gailua_id = @id;";
+                string sqlInprimagailua = @"UPDATE inprimagailua 
+                            SET koloretakoa = @koloretakoa, teknologia = @teknologia 
+                            WHERE id = @id;";
 
-                // Lehenengo, gailuaren datu orokorrak eguneratu
                 using (MySqlCommand cmdGailua = new MySqlCommand(sqlGailua, KONEXIOA.konektatu))
                 {
-                    cmdGailua.Parameters.AddWithValue("@id", o.Id);
-                    cmdGailua.Parameters.AddWithValue("@marka", o.Marka);
-                    cmdGailua.Parameters.AddWithValue("@kokalekua", o.Kokalekua);
-                    cmdGailua.Parameters.AddWithValue("@eroste_data", o.ErosteData);
-
+                    cmdGailua.Parameters.AddWithValue("@id", i.Id);
+                    cmdGailua.Parameters.AddWithValue("@marka", i.Marka);
+                    cmdGailua.Parameters.AddWithValue("@kokalekua", i.Kokalekua);
+                    cmdGailua.Parameters.AddWithValue("@eroste_data", i.ErosteData);
                     cmdGailua.ExecuteNonQuery();
                 }
 
-                // Ondoren, ordenagailuaren datu espezifikoak eguneratu
-                using (MySqlCommand cmdOrdenagailua = new MySqlCommand(sqlOrdenagailua, KONEXIOA.konektatu))
+                using (MySqlCommand cmdInprimagailua = new MySqlCommand(sqlInprimagailua, KONEXIOA.konektatu))
                 {
-                    cmdOrdenagailua.Parameters.AddWithValue("@id", o.Id);
-                    cmdOrdenagailua.Parameters.AddWithValue("@ram", o.RAM1); // Adibidea
-                    cmdOrdenagailua.Parameters.AddWithValue("@rom", o.ROM1); // Adibidea
-                    cmdOrdenagailua.Parameters.AddWithValue("@cpu", o.CPU1); // Adibidea
+                    cmdInprimagailua.Parameters.AddWithValue("@id", i.Id);
+                    cmdInprimagailua.Parameters.AddWithValue("@koloretakoa", i.Koloretakoa);
+                    cmdInprimagailua.Parameters.AddWithValue("@teknologia", i.Teknologia);
 
-                    int eraginDutenErrenkadak = cmdOrdenagailua.ExecuteNonQuery();
+                    int eraginDutenErrenkadak = cmdInprimagailua.ExecuteNonQuery();
+
                     if (eraginDutenErrenkadak > 0)
                     {
                         aldatuta = true;
@@ -154,7 +151,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Errorea ordenagailua aldatzean: " + ex.Message);
+                MessageBox.Show("Errorea inprimagailua aldatzean: " + ex.Message);
             }
             finally
             {
@@ -164,7 +161,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             return aldatuta;
         }
 
-        static public bool aldatuInprimagailua(Inprimagailua i)
+        static public bool aldatuinprimagailua(Inprimagailua i)
         {
             bool aldatuta = false;
             KONEXIOA.Konektatu();
@@ -229,7 +226,8 @@ namespace GUREANOS_ERRONKA.CODIGO
             KONEXIOA.Konektatu();
             try
             {
-                string sqlie = "UPDATE Gailua where id=@id set egoera = baja;";
+                // 🔧 FIX SQL
+                string sqlie = "UPDATE gailua SET egoera = 'baja' WHERE id=@id;";
                 using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
                 {
                     komandue.Parameters.AddWithValue("@id", g.Id);
@@ -242,10 +240,9 @@ namespace GUREANOS_ERRONKA.CODIGO
             }
             finally
             {
-                //deskonektatu
                 KONEXIOA.Deskonektatu();
             }
-            //3.- Bueltatu zenbakia: 0 edo 1 querytik, edo bestela errore zenbakia          
+
             return num;
         }
 
@@ -253,12 +250,35 @@ namespace GUREANOS_ERRONKA.CODIGO
         {
             int txertatutakoId = -1;
 
+            if (string.IsNullOrWhiteSpace(g.Marka) || string.IsNullOrWhiteSpace(g.Kokalekua))
+            {
+                MessageBox.Show("Datuak falta dira");
+                return -1;
+            }
+
             KONEXIOA.Konektatu();
 
             try
             {
+                // 🔥 COMPROBAR DUPLICADO
+                string check = @"SELECT COUNT(*) FROM gailua 
+                         WHERE marka = @marka AND kokalekua = @kokalekua AND egoera = 'aktibo'";
+
+                MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
+                cmdCheck.Parameters.AddWithValue("@marka", g.Marka);
+                cmdCheck.Parameters.AddWithValue("@kokalekua", g.Kokalekua);
+
+                int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                if (existe > 0)
+                {
+                    MessageBox.Show("Gailua existitzen da!");
+                    return -1;
+                }
+
+                // 🔹 INSERT
                 string sqlie = @"INSERT INTO gailua 
-(marka, kokalekua, eroste_data, aktibo, mintegia_id) 
+(marka, kokalekua, eroste_data, egoera, mintegia_id) 
 VALUES (@marka, @kokalekua, @eroste_data, @egoera, 
 (SELECT id FROM mintegia WHERE izena = @mintegia_izena));";
 
@@ -267,7 +287,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
                     komandue.Parameters.AddWithValue("@marka", g.Marka);
                     komandue.Parameters.AddWithValue("@kokalekua", g.Kokalekua);
                     komandue.Parameters.AddWithValue("@eroste_data", g.ErosteData);
-                    komandue.Parameters.AddWithValue("@aktibo", g.Egoera);
+                    komandue.Parameters.AddWithValue("@egoera", g.Egoera);
                     komandue.Parameters.AddWithValue("@mintegia_izena", g.Mintegia);
 
                     komandue.ExecuteNonQuery();
@@ -278,7 +298,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message); // 🔥 IMPORTANTE
+                MessageBox.Show(ex.Message);
             }
             finally
             {
@@ -385,9 +405,30 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             {
                 KONEXIOA.Konektatu();
 
+                // 🔥 COMPROBAR DUPLICADO (excepto el mismo ID)
+                string check = @"SELECT COUNT(*) FROM gailua 
+                         WHERE marka=@marka 
+                         AND kokalekua=@koka 
+                         AND id <> @id 
+                         AND egoera='aktibo'";
+
+                MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
+                cmdCheck.Parameters.AddWithValue("@marka", g.Marka);
+                cmdCheck.Parameters.AddWithValue("@koka", g.Kokalekua);
+                cmdCheck.Parameters.AddWithValue("@id", g.Id);
+
+                int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                if (existe > 0)
+                {
+                    MessageBox.Show("Gailu berdina existitzen da!");
+                    return false;
+                }
+
+                // 🔹 UPDATE NORMAL
                 string sql = @"UPDATE gailua 
-                       SET marka=@marka, kokalekua=@koka, eroste_data=@data 
-                       WHERE id=@id";
+               SET marka=@marka, kokalekua=@koka, eroste_data=@data 
+               WHERE id=@id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@marka", g.Marka);
@@ -510,10 +551,30 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
         {
             bool ondo = false;
 
+            if (string.IsNullOrWhiteSpace(izena) || string.IsNullOrWhiteSpace(pass))
+            {
+                MessageBox.Show("Datuak falta dira");
+                return false;
+            }
+
             try
             {
                 KONEXIOA.Konektatu();
 
+                // 🔥 COMPROBAR DUPLICADO
+                string check = "SELECT COUNT(*) FROM erabiltzailea WHERE izena = @izena AND aktibo = 1";
+                MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
+                cmdCheck.Parameters.AddWithValue("@izena", izena);
+
+                int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                if (existe > 0)
+                {
+                    MessageBox.Show("Erabiltzailea existitzen da!");
+                    return false;
+                }
+
+                // 🔹 INSERT
                 string sql = @"INSERT INTO erabiltzailea 
         (izena, pasahitza, rola, aktibo, mintegia_id)
         VALUES (@izena, @pass, @rola, 1, @mintegia)";
@@ -594,13 +655,32 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
         {
             bool ondo = false;
 
+            if (string.IsNullOrWhiteSpace(izena))
+            {
+                MessageBox.Show("Izena hutsik");
+                return false;
+            }
+
             try
             {
                 KONEXIOA.Konektatu();
 
+                // 🔥 COMPROBAR DUPLICADO
+                string check = "SELECT COUNT(*) FROM mintegia WHERE izena = @izena";
+                MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
+                cmdCheck.Parameters.AddWithValue("@izena", izena);
+
+                int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
+
+                if (existe > 0)
+                {
+                    MessageBox.Show("Mintegia existitzen da!");
+                    return false;
+                }
+
+                // 🔹 INSERT
                 string sql = "INSERT INTO mintegia (izena) VALUES (@izena)";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
-
                 cmd.Parameters.AddWithValue("@izena", izena);
 
                 if (cmd.ExecuteNonQuery() > 0)
@@ -647,7 +727,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
                 if (cmdDelete.ExecuteNonQuery() > 0)
                     ondo = true;
-            }
+            }       
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);

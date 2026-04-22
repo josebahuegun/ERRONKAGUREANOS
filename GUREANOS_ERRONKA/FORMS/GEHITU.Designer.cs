@@ -31,7 +31,6 @@
             erostedata = new DateTimePicker();
             txtmarka = new TextBox();
             radioordenagailua = new RadioButton();
-            txtkokalekua = new TextBox();
             radioinprimagailua = new RadioButton();
             panelInprimagailua = new Panel();
             label8 = new Label();
@@ -49,13 +48,14 @@
             label3 = new Label();
             label4 = new Label();
             btngehituatzera = new Button();
+            combomintegia = new ComboBox();
             panelInprimagailua.SuspendLayout();
             panelOrdenagailua.SuspendLayout();
             SuspendLayout();
             // 
             // erostedata
             // 
-            erostedata.Location = new Point(141, 222);
+            erostedata.Location = new Point(151, 222);
             erostedata.Name = "erostedata";
             erostedata.Size = new Size(250, 27);
             erostedata.TabIndex = 0;
@@ -79,13 +79,6 @@
             radioordenagailua.Text = "Ordenagailua";
             radioordenagailua.UseVisualStyleBackColor = true;
             radioordenagailua.CheckedChanged += radioButton1_CheckedChanged;
-            // 
-            // txtkokalekua
-            // 
-            txtkokalekua.Location = new Point(151, 128);
-            txtkokalekua.Name = "txtkokalekua";
-            txtkokalekua.Size = new Size(125, 27);
-            txtkokalekua.TabIndex = 4;
             // 
             // radioinprimagailua
             // 
@@ -223,9 +216,9 @@
             label3.AutoSize = true;
             label3.Location = new Point(39, 135);
             label3.Name = "label3";
-            label3.Size = new Size(77, 20);
+            label3.Size = new Size(68, 20);
             label3.TabIndex = 12;
-            label3.Text = "Kokalekua";
+            label3.Text = "Mintegia";
             // 
             // label4
             // 
@@ -244,6 +237,16 @@
             btngehituatzera.TabIndex = 14;
             btngehituatzera.Text = "AZTERA";
             btngehituatzera.UseVisualStyleBackColor = true;
+            btngehituatzera.Click += btngehituatzera_Click;
+            // 
+            // combomintegia
+            // 
+            combomintegia.FormattingEnabled = true;
+            combomintegia.Location = new Point(151, 132);
+            combomintegia.Name = "combomintegia";
+            combomintegia.Size = new Size(151, 28);
+            combomintegia.TabIndex = 15;
+            combomintegia.SelectedIndexChanged += combomintegia_SelectedIndexChanged;
             // 
             // GEHITU
             // 
@@ -251,6 +254,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(combomintegia);
             Controls.Add(btngehituatzera);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -259,7 +263,6 @@
             Controls.Add(btnGehitu);
             Controls.Add(panelInprimagailua);
             Controls.Add(radioinprimagailua);
-            Controls.Add(txtkokalekua);
             Controls.Add(radioordenagailua);
             Controls.Add(txtmarka);
             Controls.Add(erostedata);
@@ -280,7 +283,6 @@
         private DateTimePicker erostedata;
         private TextBox txtmarka;
         private RadioButton radioordenagailua;
-        private TextBox txtkokalekua;
         private RadioButton radioinprimagailua;
         private Panel panelInprimagailua;
         private Panel panelOrdenagailua;
@@ -298,5 +300,6 @@
         private Label label6;
         private Label label5;
         private Button btngehituatzera;
+        private ComboBox combomintegia;
     }
 }

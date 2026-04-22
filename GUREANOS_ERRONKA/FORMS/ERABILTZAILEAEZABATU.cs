@@ -47,5 +47,17 @@ namespace GUREANOS_ERRONKA.FORMS
             // refrescar tabla
             dataerabilezabatu.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
         }
+
+        private void btnerabilezabatuatzera_Click(object sender, EventArgs e)
+        {
+            PANELA p = new PANELA();
+            p.Show();
+            this.Close(); // 🔥 importante (no Hide)
+        }
+
+        private void btnerabilezabatuirten_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

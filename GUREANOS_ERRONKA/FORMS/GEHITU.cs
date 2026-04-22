@@ -42,6 +42,17 @@ namespace GUREANOS_ERRONKA.FORMS
             panelOrdenagailua.Visible = false;
             panelInprimagailua.Visible = false;
 
+            // 🔹 CARGAR MINTEGIAK
+            combomintegia.DataSource = DBKONEXIOA.LortuMintegiak();
+            combomintegia.DisplayMember = "izena";
+            combomintegia.ValueMember = "id";
+
+            // 🔹 SI ES MINTEGIBURUA
+            if (sesioa.Rola == "Mintegiburua")
+            {
+                combomintegia.SelectedValue = sesioa.MintegiaId;
+                combomintegia.Enabled = false;
+            }
         }
 
         private void panelInprimagailua_Paint(object sender, PaintEventArgs e)
@@ -127,7 +138,7 @@ namespace GUREANOS_ERRONKA.FORMS
         private void btnGehitu_Click(object sender, EventArgs e)
         {
             // VALIDACIÓN
-            if (txtmarka.Text == "" || txtkokalekua.Text == "")
+            if (txtmarka.Text == "" || combomintegia.Text == "")
             {
                 MessageBox.Show("Bete datu guztiak");
                 return;
@@ -144,7 +155,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 Ordenagailua o = new Ordenagailua(
                     txtmarka.Text,
-                    txtkokalekua.Text,
+                    combomintegia.Text,
                     erostedata.Value,
                     "aktibo",
                     "Informatika", // ajusta a tu mintegia
@@ -167,7 +178,7 @@ namespace GUREANOS_ERRONKA.FORMS
             {
                 Inprimagailua i = new Inprimagailua(
                     txtmarka.Text,
-                    txtkokalekua.Text,
+                    combomintegia.Text,
                     erostedata.Value,
                     "aktibo",
                     "Informatika",
@@ -187,6 +198,18 @@ namespace GUREANOS_ERRONKA.FORMS
             {
                 MessageBox.Show("Aukeratu mota");
             }
+        }
+
+        private void combomintegia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btngehituatzera_Click(object sender, EventArgs e)
+        {
+            PANELA p = new PANELA();
+            p.Show();
+            this.Close(); // 🔥 importante (no Hide)
         }
     }
 }

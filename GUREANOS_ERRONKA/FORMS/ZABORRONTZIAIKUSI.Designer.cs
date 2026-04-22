@@ -42,6 +42,7 @@
             btnzaborirten.TabIndex = 5;
             btnzaborirten.Text = "IRTEN";
             btnzaborirten.UseVisualStyleBackColor = true;
+            btnzaborirten.Click += btnzaborirten_Click;
             // 
             // btnzaboratzera
             // 
@@ -51,6 +52,7 @@
             btnzaboratzera.TabIndex = 4;
             btnzaboratzera.Text = "ATZERA";
             btnzaboratzera.UseVisualStyleBackColor = true;
+            btnzaboratzera.Click += btnzaboratzera_Click;
             // 
             // datazabor
             // 

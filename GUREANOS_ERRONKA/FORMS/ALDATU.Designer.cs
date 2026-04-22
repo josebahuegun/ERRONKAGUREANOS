@@ -33,8 +33,8 @@
             btnaldatuatzera = new Button();
             dataaldatu = new DataGridView();
             panel1 = new Panel();
+            txtkokalekua = new ComboBox();
             data = new DateTimePicker();
-            txtkokalekua = new TextBox();
             txtMarka = new TextBox();
             label3 = new Label();
             label2 = new Label();
@@ -76,6 +76,7 @@
             btnaldatuirten.TabIndex = 9;
             btnaldatuirten.Text = "IRTEN";
             btnaldatuirten.UseVisualStyleBackColor = true;
+            btnaldatuirten.Click += btnaldatuirten_Click;
             // 
             // btnaldatuatzera
             // 
@@ -85,6 +86,7 @@
             btnaldatuatzera.TabIndex = 8;
             btnaldatuatzera.Text = "ATZERA";
             btnaldatuatzera.UseVisualStyleBackColor = true;
+            btnaldatuatzera.Click += btnaldatuatzera_Click;
             // 
             // dataaldatu
             // 
@@ -98,8 +100,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(data);
             panel1.Controls.Add(txtkokalekua);
+            panel1.Controls.Add(data);
             panel1.Controls.Add(txtMarka);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -109,19 +111,21 @@
             panel1.Size = new Size(363, 125);
             panel1.TabIndex = 11;
             // 
+            // txtkokalekua
+            // 
+            txtkokalekua.FormattingEnabled = true;
+            txtkokalekua.Location = new Point(113, 53);
+            txtkokalekua.Name = "txtkokalekua";
+            txtkokalekua.Size = new Size(151, 28);
+            txtkokalekua.TabIndex = 6;
+            txtkokalekua.SelectedIndexChanged += txtkokalekua_SelectedIndexChanged;
+            // 
             // data
             // 
             data.Location = new Point(113, 93);
             data.Name = "data";
             data.Size = new Size(250, 27);
             data.TabIndex = 5;
-            // 
-            // txtkokalekua
-            // 
-            txtkokalekua.Location = new Point(113, 53);
-            txtkokalekua.Name = "txtkokalekua";
-            txtkokalekua.Size = new Size(125, 27);
-            txtkokalekua.TabIndex = 4;
             // 
             // txtMarka
             // 
@@ -165,9 +169,9 @@
             panelor.Controls.Add(label8);
             panelor.Controls.Add(label7);
             panelor.Controls.Add(label6);
-            panelor.Location = new Point(461, 218);
+            panelor.Location = new Point(461, 215);
             panelor.Name = "panelor";
-            panelor.Size = new Size(257, 117);
+            panelor.Size = new Size(257, 130);
             panelor.TabIndex = 12;
             panelor.Paint += panel2_Paint;
             // 
@@ -318,7 +322,6 @@
         private DataGridView dataaldatu;
         private Panel panel1;
         private TextBox textBox3;
-        private TextBox txtkokalekua;
         private TextBox txtMarka;
         private Label label3;
         private Label label2;
@@ -341,5 +344,6 @@
         private TextBox txtteknologia;
         private RadioButton radioinprimagailua;
         private RadioButton radioordenagailua;
+        private ComboBox txtkokalekua;
     }
 }

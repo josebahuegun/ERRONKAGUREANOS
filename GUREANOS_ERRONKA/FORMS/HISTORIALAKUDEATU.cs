@@ -16,5 +16,17 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             InitializeComponent();
         }
+
+        private void btnatzerahistoriala_Click(object sender, EventArgs e)
+        {
+            PANELA p = new PANELA();
+            p.Show();
+            this.Close(); // 🔥 importante (no Hide)
+        }
+
+        private void btnirtenhistoriala_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

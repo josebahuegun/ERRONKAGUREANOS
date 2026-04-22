@@ -38,20 +38,22 @@
             combomintegia = new ComboBox();
             label4 = new Label();
             comborola = new ComboBox();
+            irten = new Button();
             SuspendLayout();
             // 
             // btngehituerabilatzera
             // 
-            btngehituerabilatzera.Location = new Point(188, 369);
+            btngehituerabilatzera.Location = new Point(118, 369);
             btngehituerabilatzera.Name = "btngehituerabilatzera";
             btngehituerabilatzera.Size = new Size(133, 46);
             btngehituerabilatzera.TabIndex = 16;
             btngehituerabilatzera.Text = "ATZERA";
             btngehituerabilatzera.UseVisualStyleBackColor = true;
+            btngehituerabilatzera.Click += btngehituerabilatzera_Click;
             // 
             // btnsortuerabil
             // 
-            btnsortuerabil.Location = new Point(501, 369);
+            btnsortuerabil.Location = new Point(342, 369);
             btnsortuerabil.Name = "btnsortuerabil";
             btnsortuerabil.Size = new Size(133, 46);
             btnsortuerabil.TabIndex = 15;
@@ -127,12 +129,23 @@
             comborola.Size = new Size(151, 28);
             comborola.TabIndex = 27;
             // 
+            // irten
+            // 
+            irten.Location = new Point(565, 369);
+            irten.Name = "irten";
+            irten.Size = new Size(133, 46);
+            irten.TabIndex = 28;
+            irten.Text = "IRTEN";
+            irten.UseVisualStyleBackColor = true;
+            irten.Click += irten_Click;
+            // 
             // ERABILTZAILEASORTU
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(irten);
             Controls.Add(comborola);
             Controls.Add(label4);
             Controls.Add(combomintegia);
@@ -163,5 +176,6 @@
         private ComboBox combomintegia;
         private Label label4;
         private ComboBox comborola;
+        private Button irten;
     }
 }

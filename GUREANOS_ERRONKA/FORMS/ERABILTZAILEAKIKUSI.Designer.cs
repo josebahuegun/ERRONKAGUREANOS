@@ -42,6 +42,7 @@
             btnikusierabilirten.TabIndex = 5;
             btnikusierabilirten.Text = "IRTEN";
             btnikusierabilirten.UseVisualStyleBackColor = true;
+            btnikusierabilirten.Click += btnikusierabilirten_Click;
             // 
             // btnikusierabilatzera
             // 
@@ -51,6 +52,7 @@
             btnikusierabilatzera.TabIndex = 4;
             btnikusierabilatzera.Text = "ATZERA";
             btnikusierabilatzera.UseVisualStyleBackColor = true;
+            btnikusierabilatzera.Click += btnikusierabilatzera_Click;
             // 
             // dataikusierabil
             // 

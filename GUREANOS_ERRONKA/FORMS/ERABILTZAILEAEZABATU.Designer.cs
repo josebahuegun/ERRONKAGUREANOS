@@ -53,6 +53,7 @@
             btnerabilezabatuirten.TabIndex = 9;
             btnerabilezabatuirten.Text = "IRTEN";
             btnerabilezabatuirten.UseVisualStyleBackColor = true;
+            btnerabilezabatuirten.Click += btnerabilezabatuirten_Click;
             // 
             // btnerabilezabatuatzera
             // 
@@ -62,6 +63,7 @@
             btnerabilezabatuatzera.TabIndex = 8;
             btnerabilezabatuatzera.Text = "ATZERA";
             btnerabilezabatuatzera.UseVisualStyleBackColor = true;
+            btnerabilezabatuatzera.Click += btnerabilezabatuatzera_Click;
             // 
             // dataerabilezabatu
             // 
