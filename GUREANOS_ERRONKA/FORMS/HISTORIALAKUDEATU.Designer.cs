@@ -43,6 +43,7 @@
             btnirtenhistoriala.TabIndex = 5;
             btnirtenhistoriala.Text = "IRTEN";
             btnirtenhistoriala.UseVisualStyleBackColor = true;
+            btnirtenhistoriala.Click += btnirtenhistoriala_Click;
             // 
             // btnatzerahistoriala
             // 

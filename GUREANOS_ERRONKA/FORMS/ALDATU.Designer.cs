@@ -76,6 +76,7 @@
             btnaldatuirten.TabIndex = 9;
             btnaldatuirten.Text = "IRTEN";
             btnaldatuirten.UseVisualStyleBackColor = true;
+            btnaldatuirten.Click += btnaldatuirten_Click;
             // 
             // btnaldatuatzera
             // 

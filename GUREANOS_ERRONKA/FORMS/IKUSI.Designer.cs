@@ -63,6 +63,7 @@
             btnikusiirten.TabIndex = 2;
             btnikusiirten.Text = "IRTEN";
             btnikusiirten.UseVisualStyleBackColor = true;
+            btnikusiirten.Click += btnikusiirten_Click;
             // 
             // IKUSI
             // 

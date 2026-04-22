@@ -32,11 +32,12 @@
             SORTU = new Button();
             txtizena = new TextBox();
             label1 = new Label();
+            irten = new Button();
             SuspendLayout();
             // 
             // atzera
             // 
-            atzera.Location = new Point(245, 338);
+            atzera.Location = new Point(173, 340);
             atzera.Name = "atzera";
             atzera.Size = new Size(116, 33);
             atzera.TabIndex = 0;
@@ -46,7 +47,7 @@
             // 
             // SORTU
             // 
-            SORTU.Location = new Point(462, 336);
+            SORTU.Location = new Point(362, 340);
             SORTU.Name = "SORTU";
             SORTU.Size = new Size(110, 37);
             SORTU.TabIndex = 1;
@@ -70,12 +71,23 @@
             label1.TabIndex = 3;
             label1.Text = "Izena";
             // 
+            // irten
+            // 
+            irten.Location = new Point(537, 340);
+            irten.Name = "irten";
+            irten.Size = new Size(116, 33);
+            irten.TabIndex = 4;
+            irten.Text = "IRTEN";
+            irten.UseVisualStyleBackColor = true;
+            irten.Click += button1_Click;
+            // 
             // SORTUMINTEGIA
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(irten);
             Controls.Add(label1);
             Controls.Add(txtizena);
             Controls.Add(SORTU);
@@ -93,5 +105,6 @@
         private Button SORTU;
         private TextBox txtizena;
         private Label label1;
+        private Button irten;
     }
 }

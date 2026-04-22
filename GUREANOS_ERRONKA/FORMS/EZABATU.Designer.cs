@@ -43,6 +43,7 @@
             btnezabatuirten.TabIndex = 5;
             btnezabatuirten.Text = "IRTEN";
             btnezabatuirten.UseVisualStyleBackColor = true;
+            btnezabatuirten.Click += btnezabatuirten_Click;
             // 
             // btnezabatuatzera
             // 
@@ -52,6 +53,7 @@
             btnezabatuatzera.TabIndex = 4;
             btnezabatuatzera.Text = "ATZERA";
             btnezabatuatzera.UseVisualStyleBackColor = true;
+            btnezabatuatzera.Click += btnezabatuatzera_Click;
             // 
             // ezabatudata
             // 

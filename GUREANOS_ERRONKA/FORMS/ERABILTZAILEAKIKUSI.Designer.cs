@@ -42,6 +42,7 @@
             btnikusierabilirten.TabIndex = 5;
             btnikusierabilirten.Text = "IRTEN";
             btnikusierabilirten.UseVisualStyleBackColor = true;
+            btnikusierabilirten.Click += btnikusierabilirten_Click;
             // 
             // btnikusierabilatzera
             // 

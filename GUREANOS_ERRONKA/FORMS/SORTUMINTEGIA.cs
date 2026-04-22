@@ -49,5 +49,10 @@ namespace GUREANOS_ERRONKA.FORMS
             p.Show();
             this.Close(); // 🔥 importante (no Hide)
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

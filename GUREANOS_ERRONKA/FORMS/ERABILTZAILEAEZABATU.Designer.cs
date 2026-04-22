@@ -53,6 +53,7 @@
             btnerabilezabatuirten.TabIndex = 9;
             btnerabilezabatuirten.Text = "IRTEN";
             btnerabilezabatuirten.UseVisualStyleBackColor = true;
+            btnerabilezabatuirten.Click += btnerabilezabatuirten_Click;
             // 
             // btnerabilezabatuatzera
             // 

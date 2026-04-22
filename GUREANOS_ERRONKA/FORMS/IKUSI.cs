@@ -46,7 +46,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 RAM = (g is Ordenagailua) ? ((Ordenagailua)g).RAM1 : "",
                 ROM = (g is Ordenagailua) ? ((Ordenagailua)g).ROM1 : "",
                 CPU = (g is Ordenagailua) ? ((Ordenagailua)g).CPU1 : "",
-                
+
                 // Inprimagailuen datuak. Ez bada inprimagailua, hutsik ("") utziko du
                 Koloretakoa = (g is Inprimagailua) ? ((Inprimagailua)g).Koloretakoa.ToString() : "",
                 Teknologia = (g is Inprimagailua) ? ((Inprimagailua)g).Teknologia : ""
@@ -63,7 +63,12 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
+        }
+
+        private void btnikusiirten_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

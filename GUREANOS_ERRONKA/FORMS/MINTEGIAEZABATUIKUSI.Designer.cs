@@ -31,6 +31,7 @@
             dataGridView1 = new DataGridView();
             btnezabatu = new Button();
             btnatzera = new Button();
+            irten = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -46,7 +47,7 @@
             // 
             // btnezabatu
             // 
-            btnezabatu.Location = new Point(498, 378);
+            btnezabatu.Location = new Point(329, 378);
             btnezabatu.Name = "btnezabatu";
             btnezabatu.Size = new Size(139, 43);
             btnezabatu.TabIndex = 1;
@@ -56,7 +57,7 @@
             // 
             // btnatzera
             // 
-            btnatzera.Location = new Point(152, 378);
+            btnatzera.Location = new Point(107, 378);
             btnatzera.Name = "btnatzera";
             btnatzera.Size = new Size(139, 43);
             btnatzera.TabIndex = 2;
@@ -64,12 +65,23 @@
             btnatzera.UseVisualStyleBackColor = true;
             btnatzera.Click += btnatzera_Click;
             // 
+            // irten
+            // 
+            irten.Location = new Point(557, 378);
+            irten.Name = "irten";
+            irten.Size = new Size(139, 43);
+            irten.TabIndex = 3;
+            irten.Text = "IRTEN";
+            irten.UseVisualStyleBackColor = true;
+            irten.Click += irten_Click;
+            // 
             // MINTEGIAEZABATUIKUSI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(irten);
             Controls.Add(btnatzera);
             Controls.Add(btnezabatu);
             Controls.Add(dataGridView1);
@@ -86,5 +98,6 @@
         private DataGridView dataGridView1;
         private Button btnezabatu;
         private Button btnatzera;
+        private Button irten;
     }
 }

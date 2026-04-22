@@ -42,6 +42,7 @@
             btnzaborirten.TabIndex = 5;
             btnzaborirten.Text = "IRTEN";
             btnzaborirten.UseVisualStyleBackColor = true;
+            btnzaborirten.Click += btnzaborirten_Click;
             // 
             // btnzaboratzera
             // 

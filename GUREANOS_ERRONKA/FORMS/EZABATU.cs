@@ -53,5 +53,17 @@ namespace GUREANOS_ERRONKA.FORMS
             ezabatudata.DataSource = DBKONEXIOA.ikusiGailuak();
             ezabatudata.Columns["id"].Visible = false;
         }
+
+        private void btnezabatuatzera_Click(object sender, EventArgs e)
+        {
+            PANELA p = new PANELA();
+            p.Show();
+            this.Close(); // 🔥 importante (no Hide)
+        }
+
+        private void btnezabatuirten_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
