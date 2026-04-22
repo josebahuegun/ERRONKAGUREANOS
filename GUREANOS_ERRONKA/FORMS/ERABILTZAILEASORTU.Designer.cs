@@ -75,7 +75,7 @@
             // radioirakasle
             // 
             radioirakasle.AutoSize = true;
-            radioirakasle.Location = new Point(492, 216);
+            radioirakasle.Location = new Point(494, 121);
             radioirakasle.Name = "radioirakasle";
             radioirakasle.Size = new Size(105, 24);
             radioirakasle.TabIndex = 19;
@@ -86,7 +86,7 @@
             // radiomintegiburu
             // 
             radiomintegiburu.AutoSize = true;
-            radiomintegiburu.Location = new Point(492, 246);
+            radiomintegiburu.Location = new Point(494, 151);
             radiomintegiburu.Name = "radiomintegiburu";
             radiomintegiburu.Size = new Size(140, 24);
             radiomintegiburu.TabIndex = 20;
@@ -97,7 +97,7 @@
             // radioiktarduraduna
             // 
             radioiktarduraduna.AutoSize = true;
-            radioiktarduraduna.Location = new Point(492, 276);
+            radioiktarduraduna.Location = new Point(494, 181);
             radioiktarduraduna.Name = "radioiktarduraduna";
             radioiktarduraduna.Size = new Size(156, 24);
             radioiktarduraduna.TabIndex = 21;
@@ -126,7 +126,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(492, 183);
+            label3.Location = new Point(494, 88);
             label3.Name = "label3";
             label3.Size = new Size(48, 20);
             label3.TabIndex = 24;
@@ -151,6 +151,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ERABILTZAILEASORTU";
             Text = "ERABILTZAILEASORTU";
+            Load += ERABILTZAILEASORTU_Load;
             ResumeLayout(false);
             PerformLayout();
         }

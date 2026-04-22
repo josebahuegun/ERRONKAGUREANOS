@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUREANOS_ERRONKA.CODIGO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,12 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             InitializeComponent();
         }
+
+        private void ERABILTZAILEAKIKUSI_Load(object sender, EventArgs e)
+        {
+            dataikusierabil.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
+            dataikusierabil.Columns["id"].Visible = false;
+        }
     }
 }
+

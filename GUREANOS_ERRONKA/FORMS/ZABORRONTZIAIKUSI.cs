@@ -26,6 +26,7 @@ namespace GUREANOS_ERRONKA.FORMS
         private void ZABORRONTZIAIKUSI_Load(object sender, EventArgs e)
         {
             datazabor.DataSource = DBKONEXIOA.IkusiZaborrontzia();
+            datazabor.Columns["id_zaborrontzia"].Visible = false;
         }
     }
 }

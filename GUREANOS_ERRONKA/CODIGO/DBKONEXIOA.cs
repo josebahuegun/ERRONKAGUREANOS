@@ -474,5 +474,93 @@ VALUES (@marka, @kokalekua, @eroste_data, @aktibo,
 
             return tabla;
         }
+        static public DataTable IkusiErabiltzaileak()
+        {
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"
+        SELECT 
+            id,
+            izena,
+            rola,
+            aktibo
+        FROM erabiltzailea;
+        ";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, KONEXIOA.konektatu);
+                adapter.Fill(tabla);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return tabla;
+        }
+        public static bool SortuErabiltzailea(string izena, string pass, string rola, int mintegiaId)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"INSERT INTO erabiltzailea 
+        (izena, pasahitza, rola, aktibo, mintegia_id)
+        VALUES (@izena, @pass, @rola, 1, @mintegia)";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+
+                cmd.Parameters.AddWithValue("@izena", izena);
+                cmd.Parameters.AddWithValue("@pass", pass);
+                cmd.Parameters.AddWithValue("@rola", rola);
+                cmd.Parameters.AddWithValue("@mintegia", mintegiaId);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        static public DataTable LortuMintegiak()
+        {
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "SELECT id, izena FROM mintegia";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, KONEXIOA.konektatu);
+                adapter.Fill(tabla);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return tabla;
+        }
     }
 }

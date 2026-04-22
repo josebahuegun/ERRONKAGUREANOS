@@ -73,6 +73,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ERABILTZAILEAKIKUSI";
             Text = "ERABILTZAILEAKIKUSI";
+            Load += ERABILTZAILEAKIKUSI_Load;
             ((System.ComponentModel.ISupportInitialize)dataikusierabil).EndInit();
             ResumeLayout(false);
         }

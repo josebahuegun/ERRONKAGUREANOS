@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUREANOS_ERRONKA.CODIGO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace GUREANOS_ERRONKA.FORMS
         public ERABILTZAILEASORTU()
         {
             InitializeComponent();
+        }
+
+        private void ERABILTZAILEASORTU_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
