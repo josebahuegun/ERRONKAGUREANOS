@@ -25,9 +25,19 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             try
             {
-                KONEXIOA.Konektatu(); // 🔥 ESTO FALTABA
+                // 🔥 VALIDACIÓN
+                if (string.IsNullOrWhiteSpace(txtizenalogin.Text) || string.IsNullOrWhiteSpace(txtpasahitzalogin.Text))
+                {
+                    MessageBox.Show("Sartu erabiltzailea eta pasahitza");
+                    return;
+                }
 
-                string sql = "SELECT id, izena FROM erabiltzailea WHERE izena=@izena AND pasahitza=@pass";
+                KONEXIOA.Konektatu();
+
+                // 🔥 AÑADIMOS rola + mintegia_id + aktibo
+                string sql = @"SELECT id, izena, rola, mintegia_id 
+               FROM erabiltzailea 
+               WHERE izena=@izena AND pasahitza=@pass AND aktibo=1";
 
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@izena", txtizenalogin.Text);
@@ -37,8 +47,11 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 if (r.Read())
                 {
-                    sesioa.ErabiltzaileId = r.GetInt32(0);
-                    sesioa.Izena = r.GetString(1);
+                    // 🔥 GUARDAR SESIÓN COMPLETA
+                    sesioa.ErabiltzaileId = r.GetInt32("id");
+                    sesioa.Izena = r.GetString("izena");
+                    sesioa.Rola = r.GetString("rola");          
+                    sesioa.MintegiaId = r.GetInt32("mintegia_id"); 
 
                     MessageBox.Show("Login zuzena");
 
@@ -59,7 +72,7 @@ namespace GUREANOS_ERRONKA.FORMS
             }
             finally
             {
-                KONEXIOA.Deskonektatu(); // 🔥 TAMBIÉN IMPORTANTE
+                KONEXIOA.Deskonektatu();
             }
         }
 
@@ -68,5 +81,9 @@ namespace GUREANOS_ERRONKA.FORMS
             Application.Exit();
         }
 
+        private void LOGIN_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

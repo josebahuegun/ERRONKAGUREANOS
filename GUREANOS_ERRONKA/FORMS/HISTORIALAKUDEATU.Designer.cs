@@ -52,6 +52,7 @@
             btnatzerahistoriala.TabIndex = 4;
             btnatzerahistoriala.Text = "ATZERA";
             btnatzerahistoriala.UseVisualStyleBackColor = true;
+            btnatzerahistoriala.Click += btnatzerahistoriala_Click;
             // 
             // datahistoriala
             // 

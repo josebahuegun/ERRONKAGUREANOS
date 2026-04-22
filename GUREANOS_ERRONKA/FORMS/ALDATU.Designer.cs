@@ -33,6 +33,7 @@
             btnaldatuatzera = new Button();
             dataaldatu = new DataGridView();
             panel1 = new Panel();
+            txtkokalekua = new ComboBox();
             data = new DateTimePicker();
             txtMarka = new TextBox();
             label3 = new Label();
@@ -51,7 +52,6 @@
             label5 = new Label();
             radioinprimagailua = new RadioButton();
             radioordenagailua = new RadioButton();
-            txtkokalekua = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataaldatu).BeginInit();
             panel1.SuspendLayout();
             panelor.SuspendLayout();
@@ -85,6 +85,7 @@
             btnaldatuatzera.TabIndex = 8;
             btnaldatuatzera.Text = "ATZERA";
             btnaldatuatzera.UseVisualStyleBackColor = true;
+            btnaldatuatzera.Click += btnaldatuatzera_Click;
             // 
             // dataaldatu
             // 
@@ -108,6 +109,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(363, 125);
             panel1.TabIndex = 11;
+            // 
+            // txtkokalekua
+            // 
+            txtkokalekua.FormattingEnabled = true;
+            txtkokalekua.Location = new Point(113, 53);
+            txtkokalekua.Name = "txtkokalekua";
+            txtkokalekua.Size = new Size(151, 28);
+            txtkokalekua.TabIndex = 6;
+            txtkokalekua.SelectedIndexChanged += txtkokalekua_SelectedIndexChanged;
             // 
             // data
             // 
@@ -273,15 +283,6 @@
             radioordenagailua.Text = "Ordenagailua";
             radioordenagailua.UseVisualStyleBackColor = true;
             radioordenagailua.CheckedChanged += radioordenagailua_CheckedChanged;
-            // 
-            // txtkokalekua
-            // 
-            txtkokalekua.FormattingEnabled = true;
-            txtkokalekua.Location = new Point(113, 53);
-            txtkokalekua.Name = "txtkokalekua";
-            txtkokalekua.Size = new Size(151, 28);
-            txtkokalekua.TabIndex = 6;
-            txtkokalekua.SelectedIndexChanged += txtkokalekua_SelectedIndexChanged;
             // 
             // ALDATU
             // 

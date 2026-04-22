@@ -10,5 +10,8 @@ namespace GUREANOS_ERRONKA.CODIGO
     {
         public static int ErabiltzaileId { get; set; }
         public static string Izena { get; set; }
+
+        public static string Rola { get; set; }
+        public static int MintegiaId { get; set; }
     }
 }

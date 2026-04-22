@@ -51,6 +51,7 @@
             btnikusierabilatzera.TabIndex = 4;
             btnikusierabilatzera.Text = "ATZERA";
             btnikusierabilatzera.UseVisualStyleBackColor = true;
+            btnikusierabilatzera.Click += btnikusierabilatzera_Click;
             // 
             // dataikusierabil
             // 

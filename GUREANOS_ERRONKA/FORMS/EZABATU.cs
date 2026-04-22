@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
@@ -20,6 +21,16 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void btnezabatu_Click(object sender, EventArgs e)
         {
+            if (sesioa.Rola == "Mintegiburua")
+            {
+                int mintegiIdGailua = Convert.ToInt32(ezabatudata.CurrentRow.Cells["mintegia_id"].Value);
+
+                if (mintegiIdGailua != sesioa.MintegiaId)
+                {
+                    MessageBox.Show("Ezin duzu beste mintegi bateko gailua ezabatu!");
+                    return;
+                }
+            }
             if (ezabatudata.CurrentRow != null)
             {
                 int id = Convert.ToInt32(ezabatudata.CurrentRow.Cells["id"].Value);

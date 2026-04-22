@@ -62,6 +62,7 @@
             btnatzera.TabIndex = 2;
             btnatzera.Text = "ATZERA";
             btnatzera.UseVisualStyleBackColor = true;
+            btnatzera.Click += btnatzera_Click;
             // 
             // MINTEGIAEZABATUIKUSI
             // 

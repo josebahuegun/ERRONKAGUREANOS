@@ -113,6 +113,16 @@ namespace GUREANOS_ERRONKA.FORMS
         }
         private void btnaldatu_Click(object sender, EventArgs e)
         {
+            if (sesioa.Rola == "Mintegiburua")
+            {
+                int mintegiIdGailua = Convert.ToInt32(dataaldatu.CurrentRow.Cells["mintegia_id"].Value);
+
+                if (mintegiIdGailua != sesioa.MintegiaId)
+                {
+                    MessageBox.Show("Ezin duzu beste mintegi bateko gailua aldatu!");
+                    return;
+                }
+            }
             if (dataaldatu.CurrentRow == null)
             {
                 MessageBox.Show("Aukeratu gailu bat!");
@@ -206,6 +216,13 @@ namespace GUREANOS_ERRONKA.FORMS
         private void txtkokalekua_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnaldatuatzera_Click(object sender, EventArgs e)
+        {
+            PANELA p = new PANELA();
+            p.Show();
+            this.Close(); // 🔥 importante (no Hide)
         }
     }
 }

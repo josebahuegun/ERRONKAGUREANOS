@@ -51,6 +51,7 @@
             btnzaboratzera.TabIndex = 4;
             btnzaboratzera.Text = "ATZERA";
             btnzaboratzera.UseVisualStyleBackColor = true;
+            btnzaboratzera.Click += btnzaboratzera_Click;
             // 
             // datazabor
             // 

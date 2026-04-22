@@ -48,5 +48,12 @@ namespace GUREANOS_ERRONKA.FORMS
         {
 
         }
+
+        private void btnatzera_Click(object sender, EventArgs e)
+        {
+            PANELA p = new PANELA();
+            p.Show();
+            this.Close(); // 🔥 importante (no Hide)
+        }
     }
 }

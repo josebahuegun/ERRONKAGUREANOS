@@ -65,7 +65,7 @@
             // 
             // btnezabatu
             // 
-            btnezabatu.Location = new Point(325, 361);
+            btnezabatu.Location = new Point(329, 361);
             btnezabatu.Name = "btnezabatu";
             btnezabatu.Size = new Size(150, 44);
             btnezabatu.TabIndex = 6;

@@ -42,6 +42,7 @@
             atzera.TabIndex = 0;
             atzera.Text = "ATZERA";
             atzera.UseVisualStyleBackColor = true;
+            atzera.Click += atzera_Click;
             // 
             // SORTU
             // 

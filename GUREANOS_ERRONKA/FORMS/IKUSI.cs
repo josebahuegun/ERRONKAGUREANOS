@@ -20,7 +20,9 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            PANELA p = new PANELA();
+            p.Show();
+            this.Close(); // 🔥 importante (no Hide)
         }
 
         private void IKUSI_Load(object sender, EventArgs e)

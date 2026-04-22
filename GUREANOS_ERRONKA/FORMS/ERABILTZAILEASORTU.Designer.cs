@@ -48,6 +48,7 @@
             btngehituerabilatzera.TabIndex = 16;
             btngehituerabilatzera.Text = "ATZERA";
             btngehituerabilatzera.UseVisualStyleBackColor = true;
+            btngehituerabilatzera.Click += btngehituerabilatzera_Click;
             // 
             // btnsortuerabil
             // 

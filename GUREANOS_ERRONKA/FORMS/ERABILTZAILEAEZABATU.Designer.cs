@@ -62,6 +62,7 @@
             btnerabilezabatuatzera.TabIndex = 8;
             btnerabilezabatuatzera.Text = "ATZERA";
             btnerabilezabatuatzera.UseVisualStyleBackColor = true;
+            btnerabilezabatuatzera.Click += btnerabilezabatuatzera_Click;
             // 
             // dataerabilezabatu
             // 
