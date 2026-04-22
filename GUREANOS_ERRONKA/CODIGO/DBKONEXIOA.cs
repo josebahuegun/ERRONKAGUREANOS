@@ -105,7 +105,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             return gk;
         }
 
- 
+
         static public bool aldatuOrdenagailua(Ordenagailua o)
         {
             bool aldatuta = false;
@@ -658,6 +658,37 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             }
 
             return ondo;
+        }
+        public static bool MintegiakIrakasleakDitu(int mintegiaId)
+        {
+            bool ditu = false;
+            try
+            {
+                KONEXIOA.Konektatu();
+                string sql = "SELECT COUNT(*) FROM erabiltzailea WHERE mintegia_id = @id";
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@id", mintegiaId);
+                object result = cmd.ExecuteScalar();
+
+                int count = 0;
+
+                if (result != null && result != DBNull.Value)
+                {
+                    count = Convert.ToInt32(result);
+                }
+
+                ditu = count > 0;
+                ditu = count > 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+            return ditu;
         }
     }
 }
