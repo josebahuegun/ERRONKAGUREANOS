@@ -32,12 +32,12 @@
             btnsortuerabil = new Button();
             txtizenaerabil = new TextBox();
             txtpasahitzaerabil = new TextBox();
-            radioirakasle = new RadioButton();
-            radiomintegiburu = new RadioButton();
-            radioiktarduraduna = new RadioButton();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            combomintegia = new ComboBox();
+            label4 = new Label();
+            comborola = new ComboBox();
             SuspendLayout();
             // 
             // btngehituerabilatzera
@@ -57,6 +57,7 @@
             btnsortuerabil.TabIndex = 15;
             btnsortuerabil.Text = "SORTU";
             btnsortuerabil.UseVisualStyleBackColor = true;
+            btnsortuerabil.Click += btnsortuerabil_Click;
             // 
             // txtizenaerabil
             // 
@@ -71,39 +72,6 @@
             txtpasahitzaerabil.Name = "txtpasahitzaerabil";
             txtpasahitzaerabil.Size = new Size(125, 27);
             txtpasahitzaerabil.TabIndex = 18;
-            // 
-            // radioirakasle
-            // 
-            radioirakasle.AutoSize = true;
-            radioirakasle.Location = new Point(494, 121);
-            radioirakasle.Name = "radioirakasle";
-            radioirakasle.Size = new Size(105, 24);
-            radioirakasle.TabIndex = 19;
-            radioirakasle.TabStop = true;
-            radioirakasle.Text = "IRAKASLEA";
-            radioirakasle.UseVisualStyleBackColor = true;
-            // 
-            // radiomintegiburu
-            // 
-            radiomintegiburu.AutoSize = true;
-            radiomintegiburu.Location = new Point(494, 151);
-            radiomintegiburu.Name = "radiomintegiburu";
-            radiomintegiburu.Size = new Size(140, 24);
-            radiomintegiburu.TabIndex = 20;
-            radiomintegiburu.TabStop = true;
-            radiomintegiburu.Text = "MINTEGI BURUA";
-            radiomintegiburu.UseVisualStyleBackColor = true;
-            // 
-            // radioiktarduraduna
-            // 
-            radioiktarduraduna.AutoSize = true;
-            radioiktarduraduna.Location = new Point(494, 181);
-            radioiktarduraduna.Name = "radioiktarduraduna";
-            radioiktarduraduna.Size = new Size(156, 24);
-            radioiktarduraduna.TabIndex = 21;
-            radioiktarduraduna.TabStop = true;
-            radioiktarduraduna.Text = "IKT ARDURADUNA";
-            radioiktarduraduna.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -126,11 +94,38 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(494, 88);
+            label3.Location = new Point(418, 144);
             label3.Name = "label3";
             label3.Size = new Size(48, 20);
             label3.TabIndex = 24;
             label3.Text = "Rol-a:";
+            // 
+            // combomintegia
+            // 
+            combomintegia.FormattingEnabled = true;
+            combomintegia.Items.AddRange(new object[] { "Informatika", "Osasungintza" });
+            combomintegia.Location = new Point(501, 245);
+            combomintegia.Name = "combomintegia";
+            combomintegia.Size = new Size(151, 28);
+            combomintegia.TabIndex = 25;
+            combomintegia.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(418, 252);
+            label4.Name = "label4";
+            label4.Size = new Size(68, 20);
+            label4.TabIndex = 26;
+            label4.Text = "Mintegia";
+            // 
+            // comborola
+            // 
+            comborola.FormattingEnabled = true;
+            comborola.Location = new Point(501, 141);
+            comborola.Name = "comborola";
+            comborola.Size = new Size(151, 28);
+            comborola.TabIndex = 27;
             // 
             // ERABILTZAILEASORTU
             // 
@@ -138,12 +133,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(comborola);
+            Controls.Add(label4);
+            Controls.Add(combomintegia);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(radioiktarduraduna);
-            Controls.Add(radiomintegiburu);
-            Controls.Add(radioirakasle);
             Controls.Add(txtpasahitzaerabil);
             Controls.Add(txtizenaerabil);
             Controls.Add(btngehituerabilatzera);
@@ -162,11 +157,11 @@
         private Button btnsortuerabil;
         private TextBox txtizenaerabil;
         private TextBox txtpasahitzaerabil;
-        private RadioButton radioirakasle;
-        private RadioButton radiomintegiburu;
-        private RadioButton radioiktarduraduna;
         private Label label1;
         private Label label2;
         private Label label3;
+        private ComboBox combomintegia;
+        private Label label4;
+        private ComboBox comborola;
     }
 }

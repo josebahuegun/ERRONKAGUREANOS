@@ -488,7 +488,8 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             izena,
             rola,
             aktibo
-        FROM erabiltzailea;
+        FROM erabiltzailea
+        WHERE aktibo = 1;
         ";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, KONEXIOA.konektatu);
@@ -561,6 +562,102 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             }
 
             return tabla;
+        }
+        public static bool EzabatuErabiltzailea(int id)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "UPDATE erabiltzailea SET aktibo = 0 WHERE id = @id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        public static bool SortuMintegia(string izena)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "INSERT INTO mintegia (izena) VALUES (@izena)";
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+
+                cmd.Parameters.AddWithValue("@izena", izena);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        public static bool EzabatuMintegia(int id)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                // 🔹 1. obtener id de Almazena
+                string sqlAlma = "SELECT id FROM mintegia WHERE izena = 'Almazena'";
+                MySqlCommand cmdAlma = new MySqlCommand(sqlAlma, KONEXIOA.konektatu);
+                int almazenaId = Convert.ToInt32(cmdAlma.ExecuteScalar());
+
+                // 🔹 2. mover gailuak a Almazena
+                string sqlUpdate = "UPDATE gailua SET mintegia_id = @alma WHERE mintegia_id = @id";
+                MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, KONEXIOA.konektatu);
+
+                cmdUpdate.Parameters.AddWithValue("@alma", almazenaId);
+                cmdUpdate.Parameters.AddWithValue("@id", id);
+
+                cmdUpdate.ExecuteNonQuery();
+
+                // 🔹 3. borrar mintegia
+                string sqlDelete = "DELETE FROM mintegia WHERE id = @id";
+                MySqlCommand cmdDelete = new MySqlCommand(sqlDelete, KONEXIOA.konektatu);
+
+                cmdDelete.Parameters.AddWithValue("@id", id);
+
+                if (cmdDelete.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
         }
     }
 }

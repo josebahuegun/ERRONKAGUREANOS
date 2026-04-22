@@ -100,5 +100,19 @@ namespace GUREANOS_ERRONKA
             ezabatu.Show();
             this.Hide();
         }
+
+        private void iKUSIEZABATUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MINTEGIAEZABATUIKUSI ikusi = new MINTEGIAEZABATUIKUSI();
+            ikusi.Show();
+            this.Hide();
+        }
+
+        private void sORTUToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SORTUMINTEGIA sortu = new SORTUMINTEGIA();
+            sortu.Show();
+            this.Hide();
+        }
     }
 }

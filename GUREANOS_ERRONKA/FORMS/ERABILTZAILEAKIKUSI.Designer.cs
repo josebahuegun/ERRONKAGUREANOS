@@ -57,6 +57,7 @@
             dataikusierabil.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataikusierabil.Location = new Point(80, 45);
             dataikusierabil.Name = "dataikusierabil";
+            dataikusierabil.ReadOnly = true;
             dataikusierabil.RowHeadersWidth = 51;
             dataikusierabil.Size = new Size(641, 292);
             dataikusierabil.TabIndex = 3;

@@ -37,12 +37,13 @@
             // 
             // btnerabilezabatu
             // 
-            btnerabilezabatu.Location = new Point(325, 361);
+            btnerabilezabatu.Location = new Point(328, 361);
             btnerabilezabatu.Name = "btnerabilezabatu";
             btnerabilezabatu.Size = new Size(150, 44);
             btnerabilezabatu.TabIndex = 10;
             btnerabilezabatu.Text = "EZABATU";
             btnerabilezabatu.UseVisualStyleBackColor = true;
+            btnerabilezabatu.Click += btnerabilezabatu_Click;
             // 
             // btnerabilezabatuirten
             // 
@@ -67,9 +68,11 @@
             dataerabilezabatu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataerabilezabatu.Location = new Point(80, 45);
             dataerabilezabatu.Name = "dataerabilezabatu";
+            dataerabilezabatu.ReadOnly = true;
             dataerabilezabatu.RowHeadersWidth = 51;
             dataerabilezabatu.Size = new Size(641, 292);
             dataerabilezabatu.TabIndex = 7;
+            dataerabilezabatu.CellContentClick += dataerabilezabatu_CellContentClick;
             // 
             // ERABILTZAILEAEZABATU
             // 
@@ -84,6 +87,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ERABILTZAILEAEZABATU";
             Text = "ERABILTZAILEAEZABATU";
+            Load += ERABILTZAILEAEZABATU_Load;
             ((System.ComponentModel.ISupportInitialize)dataerabilezabatu).EndInit();
             ResumeLayout(false);
         }

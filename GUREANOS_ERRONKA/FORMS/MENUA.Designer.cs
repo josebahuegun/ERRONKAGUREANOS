@@ -40,13 +40,16 @@
             iKUSIToolStripMenuItem1 = new ToolStripMenuItem();
             sORTUToolStripMenuItem = new ToolStripMenuItem();
             eZABATUToolStripMenuItem1 = new ToolStripMenuItem();
+            mINTEGIAKKUDEATUToolStripMenuItem = new ToolStripMenuItem();
+            iKUSIEZABATUToolStripMenuItem = new ToolStripMenuItem();
+            sORTUToolStripMenuItem1 = new ToolStripMenuItem();
             menu1.SuspendLayout();
             SuspendLayout();
             // 
             // menu1
             // 
             menu1.ImageScalingSize = new Size(20, 20);
-            menu1.Items.AddRange(new ToolStripItem[] { gAILUKKUDEATUToolStripMenuItem, eRABILTZAILEAKKUDEATUToolStripMenuItem });
+            menu1.Items.AddRange(new ToolStripItem[] { gAILUKKUDEATUToolStripMenuItem, eRABILTZAILEAKKUDEATUToolStripMenuItem, mINTEGIAKKUDEATUToolStripMenuItem });
             menu1.Location = new Point(0, 0);
             menu1.Name = "menu1";
             menu1.Size = new Size(800, 28);
@@ -105,23 +108,44 @@
             // iKUSIToolStripMenuItem1
             // 
             iKUSIToolStripMenuItem1.Name = "iKUSIToolStripMenuItem1";
-            iKUSIToolStripMenuItem1.Size = new Size(224, 26);
+            iKUSIToolStripMenuItem1.Size = new Size(155, 26);
             iKUSIToolStripMenuItem1.Text = "IKUSI";
             iKUSIToolStripMenuItem1.Click += iKUSIToolStripMenuItem1_Click;
             // 
             // sORTUToolStripMenuItem
             // 
             sORTUToolStripMenuItem.Name = "sORTUToolStripMenuItem";
-            sORTUToolStripMenuItem.Size = new Size(224, 26);
+            sORTUToolStripMenuItem.Size = new Size(155, 26);
             sORTUToolStripMenuItem.Text = "SORTU";
             sORTUToolStripMenuItem.Click += sORTUToolStripMenuItem_Click;
             // 
             // eZABATUToolStripMenuItem1
             // 
             eZABATUToolStripMenuItem1.Name = "eZABATUToolStripMenuItem1";
-            eZABATUToolStripMenuItem1.Size = new Size(224, 26);
+            eZABATUToolStripMenuItem1.Size = new Size(155, 26);
             eZABATUToolStripMenuItem1.Text = "EZABATU";
             eZABATUToolStripMenuItem1.Click += eZABATUToolStripMenuItem1_Click;
+            // 
+            // mINTEGIAKKUDEATUToolStripMenuItem
+            // 
+            mINTEGIAKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIEZABATUToolStripMenuItem, sORTUToolStripMenuItem1 });
+            mINTEGIAKKUDEATUToolStripMenuItem.Name = "mINTEGIAKKUDEATUToolStripMenuItem";
+            mINTEGIAKKUDEATUToolStripMenuItem.Size = new Size(169, 24);
+            mINTEGIAKKUDEATUToolStripMenuItem.Text = "MINTEGIAK KUDEATU";
+            // 
+            // iKUSIEZABATUToolStripMenuItem
+            // 
+            iKUSIEZABATUToolStripMenuItem.Name = "iKUSIEZABATUToolStripMenuItem";
+            iKUSIEZABATUToolStripMenuItem.Size = new Size(224, 26);
+            iKUSIEZABATUToolStripMenuItem.Text = "IKUSI/EZABATU";
+            iKUSIEZABATUToolStripMenuItem.Click += iKUSIEZABATUToolStripMenuItem_Click;
+            // 
+            // sORTUToolStripMenuItem1
+            // 
+            sORTUToolStripMenuItem1.Name = "sORTUToolStripMenuItem1";
+            sORTUToolStripMenuItem1.Size = new Size(224, 26);
+            sORTUToolStripMenuItem1.Text = "SORTU";
+            sORTUToolStripMenuItem1.Click += sORTUToolStripMenuItem1_Click;
             // 
             // PANELA
             // 
@@ -155,5 +179,8 @@
         private ToolStripMenuItem iKUSIToolStripMenuItem1;
         private ToolStripMenuItem sORTUToolStripMenuItem;
         private ToolStripMenuItem eZABATUToolStripMenuItem1;
+        private ToolStripMenuItem mINTEGIAKKUDEATUToolStripMenuItem;
+        private ToolStripMenuItem iKUSIEZABATUToolStripMenuItem;
+        private ToolStripMenuItem sORTUToolStripMenuItem1;
     }
 }
