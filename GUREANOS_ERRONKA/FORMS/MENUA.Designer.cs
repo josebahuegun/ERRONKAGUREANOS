@@ -36,6 +36,7 @@
             aLDATUToolStripMenuItem = new ToolStripMenuItem();
             eZABATUToolStripMenuItem = new ToolStripMenuItem();
             zABORRONTZIANIKUSIToolStripMenuItem = new ToolStripMenuItem();
+            gAILUENHISTORIALAToolStripMenuItem = new ToolStripMenuItem();
             eRABILTZAILEAKKUDEATUToolStripMenuItem = new ToolStripMenuItem();
             iKUSIToolStripMenuItem1 = new ToolStripMenuItem();
             sORTUToolStripMenuItem = new ToolStripMenuItem();
@@ -58,7 +59,7 @@
             // 
             // gAILUKKUDEATUToolStripMenuItem
             // 
-            gAILUKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIToolStripMenuItem, gEHITUToolStripMenuItem, aLDATUToolStripMenuItem, eZABATUToolStripMenuItem, zABORRONTZIANIKUSIToolStripMenuItem });
+            gAILUKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIToolStripMenuItem, gEHITUToolStripMenuItem, aLDATUToolStripMenuItem, eZABATUToolStripMenuItem, zABORRONTZIANIKUSIToolStripMenuItem, gAILUENHISTORIALAToolStripMenuItem });
             gAILUKKUDEATUToolStripMenuItem.Name = "gAILUKKUDEATUToolStripMenuItem";
             gAILUKKUDEATUToolStripMenuItem.Size = new Size(152, 24);
             gAILUKKUDEATUToolStripMenuItem.Text = "GAILUAK KUDEATU";
@@ -98,6 +99,13 @@
             zABORRONTZIANIKUSIToolStripMenuItem.Text = "ZABORRONTZIAN IKUSI";
             zABORRONTZIANIKUSIToolStripMenuItem.Click += zABORRONTZIANIKUSIToolStripMenuItem_Click;
             // 
+            // gAILUENHISTORIALAToolStripMenuItem
+            // 
+            gAILUENHISTORIALAToolStripMenuItem.Name = "gAILUENHISTORIALAToolStripMenuItem";
+            gAILUENHISTORIALAToolStripMenuItem.Size = new Size(252, 26);
+            gAILUENHISTORIALAToolStripMenuItem.Text = "GAILUEN HISTORIALA";
+            gAILUENHISTORIALAToolStripMenuItem.Click += gAILUENHISTORIALAToolStripMenuItem_Click;
+            // 
             // eRABILTZAILEAKKUDEATUToolStripMenuItem
             // 
             eRABILTZAILEAKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIToolStripMenuItem1, sORTUToolStripMenuItem, eZABATUToolStripMenuItem1 });
@@ -108,22 +116,22 @@
             // iKUSIToolStripMenuItem1
             // 
             iKUSIToolStripMenuItem1.Name = "iKUSIToolStripMenuItem1";
-            iKUSIToolStripMenuItem1.Size = new Size(155, 26);
+            iKUSIToolStripMenuItem1.Size = new Size(224, 26);
             iKUSIToolStripMenuItem1.Text = "IKUSI";
             iKUSIToolStripMenuItem1.Click += iKUSIToolStripMenuItem1_Click;
             // 
             // sORTUToolStripMenuItem
             // 
             sORTUToolStripMenuItem.Name = "sORTUToolStripMenuItem";
-            sORTUToolStripMenuItem.Size = new Size(155, 26);
+            sORTUToolStripMenuItem.Size = new Size(224, 26);
             sORTUToolStripMenuItem.Text = "SORTU";
             sORTUToolStripMenuItem.Click += sORTUToolStripMenuItem_Click;
             // 
             // eZABATUToolStripMenuItem1
             // 
             eZABATUToolStripMenuItem1.Name = "eZABATUToolStripMenuItem1";
-            eZABATUToolStripMenuItem1.Size = new Size(155, 26);
-            eZABATUToolStripMenuItem1.Text = "EZABATU";
+            eZABATUToolStripMenuItem1.Size = new Size(224, 26);
+            eZABATUToolStripMenuItem1.Text = "EZABATU/ALDATU";
             eZABATUToolStripMenuItem1.Click += eZABATUToolStripMenuItem1_Click;
             // 
             // mINTEGIAKKUDEATUToolStripMenuItem
@@ -136,14 +144,14 @@
             // iKUSIEZABATUToolStripMenuItem
             // 
             iKUSIEZABATUToolStripMenuItem.Name = "iKUSIEZABATUToolStripMenuItem";
-            iKUSIEZABATUToolStripMenuItem.Size = new Size(224, 26);
+            iKUSIEZABATUToolStripMenuItem.Size = new Size(196, 26);
             iKUSIEZABATUToolStripMenuItem.Text = "IKUSI/EZABATU";
             iKUSIEZABATUToolStripMenuItem.Click += iKUSIEZABATUToolStripMenuItem_Click;
             // 
             // sORTUToolStripMenuItem1
             // 
             sORTUToolStripMenuItem1.Name = "sORTUToolStripMenuItem1";
-            sORTUToolStripMenuItem1.Size = new Size(224, 26);
+            sORTUToolStripMenuItem1.Size = new Size(196, 26);
             sORTUToolStripMenuItem1.Text = "SORTU";
             sORTUToolStripMenuItem1.Click += sORTUToolStripMenuItem1_Click;
             // 
@@ -182,5 +190,6 @@
         private ToolStripMenuItem mINTEGIAKKUDEATUToolStripMenuItem;
         private ToolStripMenuItem iKUSIEZABATUToolStripMenuItem;
         private ToolStripMenuItem sORTUToolStripMenuItem1;
+        private ToolStripMenuItem gAILUENHISTORIALAToolStripMenuItem;
     }
 }

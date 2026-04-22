@@ -145,5 +145,12 @@ namespace GUREANOS_ERRONKA
             sortu.Show();
             this.Hide();
         }
+
+        private void gAILUENHISTORIALAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HISTORIALAKUDEATU sortu = new HISTORIALAKUDEATU();
+            sortu.Show();
+            this.Hide();
+        }
     }
 }

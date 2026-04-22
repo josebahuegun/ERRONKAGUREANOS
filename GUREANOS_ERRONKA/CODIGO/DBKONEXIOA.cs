@@ -630,8 +630,28 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             {
                 KONEXIOA.Konektatu();
 
-                string sql = "UPDATE erabiltzailea SET aktibo = 0 WHERE id = @id";
+                // 🔥 comprobar cuantos IKT hay
+                string sqlCount = "SELECT COUNT(*) FROM erabiltzailea WHERE rola = 'IKTarduraduna' AND aktibo = 1";
+                MySqlCommand cmdCount = new MySqlCommand(sqlCount, KONEXIOA.konektatu);
 
+                int kopurua = Convert.ToInt32(cmdCount.ExecuteScalar());
+
+                // 🔥 saber si el que quieres borrar es IKT
+                string sqlCheck = "SELECT rola FROM erabiltzailea WHERE id = @id";
+                MySqlCommand cmdCheck = new MySqlCommand(sqlCheck, KONEXIOA.konektatu);
+                cmdCheck.Parameters.AddWithValue("@id", id);
+
+                string rola = cmdCheck.ExecuteScalar().ToString();
+
+                // ❌ si es el último IKT → bloquear
+                if (rola == "IKTarduraduna" && kopurua <= 1)
+                {
+                    MessageBox.Show("Ezin da azken IKT ezabatu!");
+                    return false;
+                }
+
+                // ✔ borrar (o desactivar)
+                string sql = "UPDATE erabiltzailea SET aktibo = 0 WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@id", id);
 
@@ -736,6 +756,177 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             }
 
             return ondo;
+        }
+        public static DataTable IkusiHistorikoa()
+        {
+            DataTable tabla = new DataTable();
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "SELECT * FROM historiala";
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, KONEXIOA.konektatu);
+                adapter.Fill(tabla);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return tabla;
+        }
+        public static bool EzabatuHistorikoa(int id)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "DELETE FROM historiala WHERE id_historiala = @id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        public static bool EditatuHistorikoa(int id, string desk, string mota)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"UPDATE historiala 
+                       SET deskribapena=@desk, mota=@mota 
+                       WHERE id_historiala=@id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@desk", desk);
+                cmd.Parameters.AddWithValue("@mota", mota);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        public static bool TxertatuHistorikoa(string mota, string desk, int gailuaId)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"INSERT INTO historiala 
+                       (data, deskribapena, mota, gailua_id)
+                       VALUES (NOW(), @desk, @mota, @id)";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+
+                cmd.Parameters.AddWithValue("@desk", desk);
+                cmd.Parameters.AddWithValue("@mota", mota);
+                cmd.Parameters.AddWithValue("@id", gailuaId);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        public static bool AldatuErabiltzailea(int id, string izena, string pass, string rola)
+        {
+            bool ondo = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"UPDATE erabiltzailea 
+                       SET izena=@izena, pasahitza=@pass, rola=@rola 
+                       WHERE id=@id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+
+                cmd.Parameters.AddWithValue("@izena", izena);
+                cmd.Parameters.AddWithValue("@pass", pass);
+                cmd.Parameters.AddWithValue("@rola", rola);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                if (cmd.ExecuteNonQuery() > 0)
+                    ondo = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return ondo;
+        }
+        public static int KontatuIKT()
+        {
+            int kopurua = 0;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "SELECT COUNT(*) FROM erabiltzailea WHERE rola = 'IKTarduraduna' AND aktibo = 1";
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+
+                kopurua = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return kopurua;
         }
     }
 }
