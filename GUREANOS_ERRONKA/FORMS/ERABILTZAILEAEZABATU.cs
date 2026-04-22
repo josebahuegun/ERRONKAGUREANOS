@@ -25,9 +25,10 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void ERABILTZAILEAEZABATU_Load(object sender, EventArgs e)
         {
+            // erabiltzailearen rola lortu
             string rola = sesioa.Rola.ToLower();
 
-            // 🔴 irakaslea fuera
+            // irakaslea bada ezin sartu
             if (rola == "irakaslea")
             {
                 MessageBox.Show("Ez daukazu baimenik!");
@@ -35,16 +36,83 @@ namespace GUREANOS_ERRONKA.FORMS
                 return;
             }
 
-            // 🟡 no IKT → ocultar botones
+            // ikt ez bada botoiak ezkutatu
             if (rola != "iktarduraduna")
             {
                 btnaldatu.Visible = false;
                 btnerabilezabatu.Visible = false;
             }
 
-            // 🔹 cargar datos
+            // datuak kargatu
             dataerabilezabatu.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
             dataerabilezabatu.Columns["id"].Visible = false;
+
+            // leihoa maximizatu
+            this.WindowState = FormWindowState.Maximized;
+
+            // fondo kolore argia
+            this.BackColor = Color.FromArgb(240, 244, 248);
+
+            // datagrid estiloa
+            dataerabilezabatu.BackgroundColor = Color.White;
+            dataerabilezabatu.GridColor = Color.LightGray;
+            dataerabilezabatu.EnableHeadersVisualStyles = false;
+            dataerabilezabatu.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
+            dataerabilezabatu.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            // botoien estiloa
+            btnerabilezabatuatzera.BackColor = Color.FromArgb(100, 100, 100);
+            btnerabilezabatuatzera.ForeColor = Color.White;
+            btnerabilezabatuatzera.FlatStyle = FlatStyle.Flat;
+
+            btnaldatu.BackColor = Color.FromArgb(0, 120, 215);
+            btnaldatu.ForeColor = Color.White;
+            btnaldatu.FlatStyle = FlatStyle.Flat;
+
+            btnerabilezabatu.BackColor = Color.FromArgb(200, 50, 50);
+            btnerabilezabatu.ForeColor = Color.White;
+            btnerabilezabatu.FlatStyle = FlatStyle.Flat;
+
+            btnerabilezabatuirten.BackColor = Color.FromArgb(120, 120, 120);
+            btnerabilezabatuirten.ForeColor = Color.White;
+            btnerabilezabatuirten.FlatStyle = FlatStyle.Flat;
+
+            // elementuak kokatu
+            rekolokatu();
+        }
+        private void rekolokatu()
+        {
+            // pantailaren erdigunea kalkulatu
+            int centroX = this.ClientSize.Width / 2;
+            int centroY = this.ClientSize.Height / 2;
+
+            // bloke osoaren tamaina
+            int anchoTotal = 900;
+            int altoTotal = 400;
+
+            int startX = centroX - anchoTotal / 2;
+            int startY = centroY - altoTotal / 2;
+
+            // datagrid erdian
+            dataerabilezabatu.Width = 700;
+            dataerabilezabatu.Height = 250;
+            dataerabilezabatu.Left = centroX - dataerabilezabatu.Width / 2;
+            dataerabilezabatu.Top = startY;
+
+            // botoiak azpian eta zentratuta
+            int botonesY = dataerabilezabatu.Bottom + 30;
+
+            btnaldatu.Top = botonesY;
+            btnaldatu.Left = centroX - btnaldatu.Width / 2;
+
+            btnerabilezabatuatzera.Top = botonesY;
+            btnerabilezabatuatzera.Left = btnaldatu.Left - 180;
+
+            btnerabilezabatu.Top = botonesY;
+            btnerabilezabatu.Left = btnaldatu.Left + 180;
+
+            btnerabilezabatuirten.Top = botonesY;
+            btnerabilezabatuirten.Left = btnerabilezabatu.Left + 180;
         }
 
         private void btnerabilezabatu_Click(object sender, EventArgs e)

@@ -95,6 +95,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "SORTUMINTEGIA";
             Text = "SORTUMINTEGIA";
+            Load += SORTUMINTEGIA_Load;
             ResumeLayout(false);
             PerformLayout();
         }

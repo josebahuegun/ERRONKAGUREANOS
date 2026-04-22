@@ -30,25 +30,27 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void ALDATU_Load(object sender, EventArgs e)
         {
-            // 🔹 cargar mintegiak en el combo
+            // 🔹 mintegiak kargatu combobox-ean
             txtkokalekua.DataSource = DBKONEXIOA.LortuMintegiak();
             txtkokalekua.DisplayMember = "izena";
             txtkokalekua.ValueMember = "id";
-            txtkokalekua.SelectedIndex = -1; // 🔥 evita selección automática
+            txtkokalekua.SelectedIndex = -1; // lehenetsitako aukerarik ez
 
-            // 🔹 cargar tabla
+            // 🔹 datagrid-a bete gailuekin
             dataaldatu.DataSource = DBKONEXIOA.ikusiGailuak();
             dataaldatu.Columns["id"].Visible = false;
 
+            // 🔹 panelak hasieran ezkutatuta
             panelor.Visible = false;
             panelin.Visible = false;
 
-            // itxura aldatu
+            // 🔹 leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
+
+            // 🔹 fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            RecolocarTodo();
-
+            // 🔹 panelen itxura txukuna
             panel1.BackColor = Color.White;
             panelor.BackColor = Color.White;
             panelin.BackColor = Color.White;
@@ -56,51 +58,63 @@ namespace GUREANOS_ERRONKA.FORMS
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panelor.BorderStyle = BorderStyle.FixedSingle;
             panelin.BorderStyle = BorderStyle.FixedSingle;
+
+            // 🔹 datagrid estiloa
+            dataaldatu.BackgroundColor = Color.White;
+            dataaldatu.GridColor = Color.LightGray;
+            dataaldatu.EnableHeadersVisualStyles = false;
+            dataaldatu.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
+            dataaldatu.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            // 🔹 elementuak kokatu
+            rekolokatu();
         }
-        private void RecolocarTodo()
+        private void rekolokatu()
         {
+            // 🔹 pantailaren erdigunea kalkulatu
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
-            // 📏 bloque total (ajústalo si quieres más grande)
-            int anchoTotal = 900;
-            int altoTotal = 500;
+            // 🔹 bloke osoaren tamaina
+            int anchoTotal = 950;
+            int altoTotal = 520;
 
+            // 🔹 hasierako posizioa (erdian jartzeko)
             int startX = centroX - anchoTotal / 2;
             int startY = centroY - altoTotal / 2;
 
-            // 📊 DATAGRID (arriba del bloque)
-            dataaldatu.Width = 500;
-            dataaldatu.Height = 180;
+            // 🔹 datagrid goian
+            dataaldatu.Width = 550;
+            dataaldatu.Height = 200;
             dataaldatu.Left = startX;
             dataaldatu.Top = startY;
 
-            // 📦 PANEL DATOS
-            panel1.Width = 500;
-            panel1.Height = 130;
+            // 🔹 datuen panela azpian
+            panel1.Width = 550;
+            panel1.Height = 140;
             panel1.Left = startX;
             panel1.Top = dataaldatu.Bottom + 15;
 
-            // 👉 DERECHA (zona secundaria)
+            // 🔹 eskuineko zona kalkulatu
             int derechaX = panel1.Right + 40;
 
-            // 🔘 RADIOS
+            // 🔹 radio botoiak
             radioordenagailua.Left = derechaX;
             radioordenagailua.Top = startY + 20;
 
             radioinprimagailua.Left = derechaX;
             radioinprimagailua.Top = radioordenagailua.Bottom + 20;
 
-            // 💻 PANEL ORDENAGAILUA
+            // 🔹 ordenagailu panela
             panelor.Left = derechaX;
             panelor.Top = panel1.Top;
 
-            // 🖨️ PANEL INPRIMAGAILUA
+            // 🔹 inprimagailu panela
             panelin.Left = derechaX;
             panelin.Top = panel1.Top;
 
-            // 🔘 BOTONES CENTRADOS ABAJO
-            int botonesY = panel1.Bottom + 30;
+            // 🔹 botoiak behean eta zentratuta
+            int botonesY = panel1.Bottom + 40;
 
             btnaldatu.Top = botonesY;
             btnaldatu.Left = centroX - btnaldatu.Width / 2;
@@ -111,6 +125,7 @@ namespace GUREANOS_ERRONKA.FORMS
             btnaldatuirten.Top = botonesY;
             btnaldatuirten.Left = btnaldatu.Left + 180;
         }
+        
         private void btnaldatu_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola == "Mintegiburua")
@@ -187,7 +202,7 @@ namespace GUREANOS_ERRONKA.FORMS
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            RecolocarTodo();
+            rekolokatu();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

@@ -54,5 +54,74 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             Application.Exit();
         }
+
+        private void MINTEGIASORTU_Load(object sender, EventArgs e)
+        {
+            // leihoa pantaila osoan
+            this.WindowState = FormWindowState.Maximized;
+
+            // fondo kolore argia
+            this.BackColor = Color.FromArgb(240, 244, 248);
+
+            // label estiloa
+            label1.ForeColor = Color.Black;
+            label1.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+
+            // textbox estiloa
+            txtizena.BackColor = Color.White;
+            txtizena.BorderStyle = BorderStyle.FixedSingle;
+
+            // botoiak estiloa
+            atzera.BackColor = Color.FromArgb(100, 100, 100);
+            atzera.ForeColor = Color.White;
+            atzera.FlatStyle = FlatStyle.Flat;
+
+            SORTU.BackColor = Color.FromArgb(0, 120, 215);
+            SORTU.ForeColor = Color.White;
+            SORTU.FlatStyle = FlatStyle.Flat;
+
+            irten.BackColor = Color.FromArgb(200, 50, 50);
+            irten.ForeColor = Color.White;
+            irten.FlatStyle = FlatStyle.Flat;
+
+            // elementuak kokatu
+            rekolokatu();
+        }
+        private void rekolokatu()
+        {
+            int centroX = this.ClientSize.Width / 2;
+            int centroY = this.ClientSize.Height / 2;
+
+            int startY = centroY - 80;
+
+            // label
+            label1.Left = centroX - 150;
+            label1.Top = startY;
+
+            // textbox
+            txtizena.Left = centroX + 20;
+            txtizena.Top = startY;
+
+            // botoiak
+            int botonesY = startY + 100;
+
+            SORTU.Top = botonesY;
+            SORTU.Left = centroX - SORTU.Width / 2;
+
+            atzera.Top = botonesY;
+            atzera.Left = SORTU.Left - 180;
+
+            irten.Top = botonesY;
+            irten.Left = SORTU.Left + 180;
+        }
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            rekolokatu();
+        }
+        private void SORTUMINTEGIA_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
