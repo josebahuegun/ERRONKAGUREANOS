@@ -21,13 +21,18 @@ namespace GUREANOS_ERRONKA.FORMS
         private void btnezabatu_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["id"].Value);
-
             string izena = dataGridView1.CurrentRow.Cells["izena"].Value.ToString();
 
             // ALMAZENA EZABATZEKO AUKERA EZ EMAN
-            if (izena == "Almazena")
+            if (izena == "Almazena" || izena == "Matxuratuak")
             {
-                MessageBox.Show("Ezin da Almazena ezabatu!");
+                MessageBox.Show("Ezin da Mintegi hori ezabatu!");
+                return;
+            }
+            // MINTEGIAK IRASAKLEAK DITUEN EGIAZTATU
+            else if (DBKONEXIOA.MintegiakIrakasleakDitu(id) == true)
+            {
+                MessageBox.Show("Ezin da mintegia ezabatu, oraindik irakasleak baititu esleituta. Mesedez, kendu irakasleak ezabatu aurretik.", "Errorea", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

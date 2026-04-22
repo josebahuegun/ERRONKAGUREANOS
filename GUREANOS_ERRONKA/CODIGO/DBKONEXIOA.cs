@@ -107,6 +107,8 @@ WHERE g.egoera = 'aktibo';";
         }
 
 
+        static public bool aldatuOrdenagailua(Ordenagailua o)
+
         static public bool aldatuInprimagailua(Inprimagailua i)
         {
             bool aldatuta = false;
