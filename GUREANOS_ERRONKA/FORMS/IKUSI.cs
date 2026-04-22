@@ -37,7 +37,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 Marka = g.Marka,
                 Kokalekua = g.Kokalekua,
                 ErosteData = g.ErosteData.ToShortDateString(), // Data garbiago ikusteko
-                Aktibo = g.Aktibo,
+                Egoera = g.Egoera,
                 Mintegia = g.Mintegia,
 
                 // Ordenagailuen datuak. Gailua ez bada ordenagailua, hutsik ("") utziko du
@@ -56,7 +56,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
             // 4. Ezkutatu Id zutabea hasieran ez agertzeko
             dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["Aktibo"].Visible = false; // Aktibo ezkutatu, ez da beharrezkoa ikusteko
+            dataGridView1.Columns["Egoera"].Visible = false; // Aktibo ezkutatu, ez da beharrezkoa ikusteko
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

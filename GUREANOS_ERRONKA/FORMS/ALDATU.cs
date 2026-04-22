@@ -55,7 +55,7 @@ namespace GUREANOS_ERRONKA.FORMS
                     data.Value,
                     txtkokalekua.Text,
                     txtMarka.Text,
-                    true,
+                    "aktibo",
                     "Informatika Mintegia"
                 );
 
