@@ -34,7 +34,6 @@
             dataaldatu = new DataGridView();
             panel1 = new Panel();
             data = new DateTimePicker();
-            txtkokalekua = new TextBox();
             txtMarka = new TextBox();
             label3 = new Label();
             label2 = new Label();
@@ -52,6 +51,7 @@
             label5 = new Label();
             radioinprimagailua = new RadioButton();
             radioordenagailua = new RadioButton();
+            txtkokalekua = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataaldatu).BeginInit();
             panel1.SuspendLayout();
             panelor.SuspendLayout();
@@ -98,8 +98,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(data);
             panel1.Controls.Add(txtkokalekua);
+            panel1.Controls.Add(data);
             panel1.Controls.Add(txtMarka);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
@@ -115,13 +115,6 @@
             data.Name = "data";
             data.Size = new Size(250, 27);
             data.TabIndex = 5;
-            // 
-            // txtkokalekua
-            // 
-            txtkokalekua.Location = new Point(113, 53);
-            txtkokalekua.Name = "txtkokalekua";
-            txtkokalekua.Size = new Size(125, 27);
-            txtkokalekua.TabIndex = 4;
             // 
             // txtMarka
             // 
@@ -165,9 +158,9 @@
             panelor.Controls.Add(label8);
             panelor.Controls.Add(label7);
             panelor.Controls.Add(label6);
-            panelor.Location = new Point(461, 218);
+            panelor.Location = new Point(461, 215);
             panelor.Name = "panelor";
-            panelor.Size = new Size(257, 117);
+            panelor.Size = new Size(257, 130);
             panelor.TabIndex = 12;
             panelor.Paint += panel2_Paint;
             // 
@@ -281,6 +274,15 @@
             radioordenagailua.UseVisualStyleBackColor = true;
             radioordenagailua.CheckedChanged += radioordenagailua_CheckedChanged;
             // 
+            // txtkokalekua
+            // 
+            txtkokalekua.FormattingEnabled = true;
+            txtkokalekua.Location = new Point(113, 53);
+            txtkokalekua.Name = "txtkokalekua";
+            txtkokalekua.Size = new Size(151, 28);
+            txtkokalekua.TabIndex = 6;
+            txtkokalekua.SelectedIndexChanged += txtkokalekua_SelectedIndexChanged;
+            // 
             // ALDATU
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -318,7 +320,6 @@
         private DataGridView dataaldatu;
         private Panel panel1;
         private TextBox textBox3;
-        private TextBox txtkokalekua;
         private TextBox txtMarka;
         private Label label3;
         private Label label2;
@@ -341,5 +342,6 @@
         private TextBox txtteknologia;
         private RadioButton radioinprimagailua;
         private RadioButton radioordenagailua;
+        private ComboBox txtkokalekua;
     }
 }
