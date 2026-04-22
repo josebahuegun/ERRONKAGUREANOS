@@ -106,8 +106,6 @@ WHERE g.egoera = 'aktibo';";
             return gk;
         }
 
-
-
         static public bool aldatuInprimagailua(Inprimagailua i)
         {
             bool aldatuta = false;
@@ -928,6 +926,35 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             }
 
             return kopurua;
+        }
+        public static bool MintegiakIrakasleakDitu(int mintegiaId)
+        {
+            bool baditu = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "SELECT COUNT(*) FROM erabiltzailea WHERE mintegia_id = @id AND aktibo = 1";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@id", mintegiaId);
+
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (count > 0)
+                    baditu = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return baditu;
         }
     }
 }
