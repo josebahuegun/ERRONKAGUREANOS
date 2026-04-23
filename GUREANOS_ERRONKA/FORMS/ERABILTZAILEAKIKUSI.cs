@@ -35,6 +35,11 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             Application.Exit();
         }
+
+        private void dataikusierabil_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 

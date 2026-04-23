@@ -108,41 +108,45 @@ WHERE g.egoera = 'aktibo';";
 
 
         static public bool aldatuOrdenagailua(Ordenagailua o)
-
-        static public bool aldatuInprimagailua(Inprimagailua i)
         {
             bool aldatuta = false;
             KONEXIOA.Konektatu();
 
             try
             {
-                // 🔧 FIX (quitado paréntesis)
+                // 1. Datu komunak (Gailua) eta espezifikoak (Ordenagailua) eguneratu.
+                // Oharra: Datu-basean taula egitura nolakoa den, SQL hau desberdina izan daiteke.
+                // Adibide honetan suposatzen da bi taula dituzula (gailua eta ordenagailua).
+
                 string sqlGailua = @"UPDATE gailua 
-                     SET marka = @marka, kokalekua = @kokalekua, 
-                         eroste_data = @eroste_data
-                     WHERE id = @id;";
+                             SET marka = @marka, kokalekua = @kokalekua, 
+                                 eroste_data = @eroste_data 
+                             WHERE id = @id;";
 
-                string sqlInprimagailua = @"UPDATE inprimagailua 
-                            SET koloretakoa = @koloretakoa, teknologia = @teknologia 
-                            WHERE id = @id;";
+                string sqlOrdenagailua = @"UPDATE ordenagailua 
+                                   SET ram = @ram, rom = @rom, cpu = @cpu 
+                                   WHERE gailua_id = @id;";
 
+                // Lehenengo, gailuaren datu orokorrak eguneratu
                 using (MySqlCommand cmdGailua = new MySqlCommand(sqlGailua, KONEXIOA.konektatu))
                 {
-                    cmdGailua.Parameters.AddWithValue("@id", i.Id);
-                    cmdGailua.Parameters.AddWithValue("@marka", i.Marka);
-                    cmdGailua.Parameters.AddWithValue("@kokalekua", i.Kokalekua);
-                    cmdGailua.Parameters.AddWithValue("@eroste_data", i.ErosteData);
+                    cmdGailua.Parameters.AddWithValue("@id", o.Id);
+                    cmdGailua.Parameters.AddWithValue("@marka", o.Marka);
+                    cmdGailua.Parameters.AddWithValue("@kokalekua", o.Kokalekua);
+                    cmdGailua.Parameters.AddWithValue("@eroste_data", o.ErosteData);
+
                     cmdGailua.ExecuteNonQuery();
                 }
 
-                using (MySqlCommand cmdInprimagailua = new MySqlCommand(sqlInprimagailua, KONEXIOA.konektatu))
+                // Ondoren, ordenagailuaren datu espezifikoak eguneratu
+                using (MySqlCommand cmdOrdenagailua = new MySqlCommand(sqlOrdenagailua, KONEXIOA.konektatu))
                 {
-                    cmdInprimagailua.Parameters.AddWithValue("@id", i.Id);
-                    cmdInprimagailua.Parameters.AddWithValue("@koloretakoa", i.Koloretakoa);
-                    cmdInprimagailua.Parameters.AddWithValue("@teknologia", i.Teknologia);
+                    cmdOrdenagailua.Parameters.AddWithValue("@id", o.Id);
+                    cmdOrdenagailua.Parameters.AddWithValue("@ram", o.RAM1); // Adibidea
+                    cmdOrdenagailua.Parameters.AddWithValue("@rom", o.ROM1); // Adibidea
+                    cmdOrdenagailua.Parameters.AddWithValue("@cpu", o.CPU1); // Adibidea
 
-                    int eraginDutenErrenkadak = cmdInprimagailua.ExecuteNonQuery();
-
+                    int eraginDutenErrenkadak = cmdOrdenagailua.ExecuteNonQuery();
                     if (eraginDutenErrenkadak > 0)
                     {
                         aldatuta = true;
@@ -151,7 +155,7 @@ WHERE g.egoera = 'aktibo';";
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Errorea inprimagailua aldatzean: " + ex.Message);
+                MessageBox.Show("Errorea ordenagailua aldatzean: " + ex.Message);
             }
             finally
             {
