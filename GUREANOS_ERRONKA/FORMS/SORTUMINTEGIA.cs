@@ -55,7 +55,9 @@ namespace GUREANOS_ERRONKA.FORMS
             Application.Exit();
         }
 
-        private void MINTEGIASORTU_Load(object sender, EventArgs e)
+
+        private void SORTUMINTEGIA_Load(object sender, EventArgs e)
+
         {
             // leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
@@ -65,10 +67,13 @@ namespace GUREANOS_ERRONKA.FORMS
 
             // label estiloa
             label1.ForeColor = Color.Black;
-            label1.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+
+            label1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
             // textbox estiloa
             txtizena.BackColor = Color.White;
+            txtizena.ForeColor = Color.Black;
+
             txtizena.BorderStyle = BorderStyle.FixedSingle;
 
             // botoiak estiloa
@@ -84,7 +89,7 @@ namespace GUREANOS_ERRONKA.FORMS
             irten.ForeColor = Color.White;
             irten.FlatStyle = FlatStyle.Flat;
 
-            // elementuak kokatu
+
             rekolokatu();
         }
         private void rekolokatu()
@@ -94,16 +99,18 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startY = centroY - 80;
 
-            // label
+
+            // label kokatu
             label1.Left = centroX - 150;
             label1.Top = startY;
 
-            // textbox
+            // textbox kokatu
             txtizena.Left = centroX + 20;
             txtizena.Top = startY;
 
-            // botoiak
-            int botonesY = startY + 100;
+            // botoiak kokatu
+            int botonesY = startY + 120;
+
 
             SORTU.Top = botonesY;
             SORTU.Left = centroX - SORTU.Width / 2;
@@ -119,9 +126,6 @@ namespace GUREANOS_ERRONKA.FORMS
             base.OnResize(e);
             rekolokatu();
         }
-        private void SORTUMINTEGIA_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

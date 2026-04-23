@@ -56,6 +56,7 @@ namespace GUREANOS_ERRONKA.FORMS
             combogailua.ValueMember = "Id";
 
             // mota aukerak
+            combomota.Items.Clear();
             combomota.Items.Add("GEHITU");
             combomota.Items.Add("ALDATU");
             combomota.Items.Add("EZABATU");
@@ -72,7 +73,7 @@ namespace GUREANOS_ERRONKA.FORMS
             // fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // label estiloa (automatikoki denak)
+            // label estiloa
             foreach (Control c in this.Controls)
             {
                 if (c is Label)
@@ -121,48 +122,87 @@ namespace GUREANOS_ERRONKA.FORMS
             // elementuak kokatu
             rekolokatu();
         }
+
         private void rekolokatu()
         {
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
-            int startY = centroY - 200;
+            int anchoTotal = 900;
+            int altoTotal = 500;
 
-            // goiko filtroak (lerro batean)
-            combogailua.Left = centroX - 350;
+            int startY = centroY - altoTotal / 2;
+
+            int anchoCombo = 200;
+            int anchoTxt = 250;
+            int separacionTop = 20;
+
+            int anchoTotalTop = anchoCombo + separacionTop + anchoCombo + separacionTop + anchoTxt;
+            int startTopX = centroX - (anchoTotalTop / 2);
+
+            combogailua.Width = anchoCombo;
+            combogailua.Left = startTopX;
             combogailua.Top = startY;
 
-            combomota.Left = centroX - 100;
+            combomota.Width = anchoCombo;
+            combomota.Left = combogailua.Right + separacionTop;
             combomota.Top = startY;
 
-            txtdeskribapena.Left = centroX + 150;
+            txtdeskribapena.Width = anchoTxt;
+            txtdeskribapena.Left = combomota.Right + separacionTop;
             txtdeskribapena.Top = startY;
 
-            // sortu botoia
-            btnsortu.Top = startY + 50;
+            // labels
+            label1.Left = combogailua.Left;
+            label1.Top = combogailua.Top - 25;
+
+            label2.Left = combomota.Left;
+            label2.Top = combomota.Top - 25;
+
+            label3.Left = txtdeskribapena.Left;
+            label3.Top = txtdeskribapena.Top - 25;
+
+
+            btnsortu.Top = combogailua.Bottom + 20;
             btnsortu.Left = centroX - btnsortu.Width / 2;
 
-            // datagrid erdian
-            datahistoriala.Width = 800;
-            datahistoriala.Height = 300;
+
+            datahistoriala.Width = 900;
+            datahistoriala.Height = 280;
             datahistoriala.Left = centroX - datahistoriala.Width / 2;
             datahistoriala.Top = btnsortu.Bottom + 20;
 
-            // botoiak azpian
-            int botonesY = datahistoriala.Bottom + 25;
+
+            int botonesY = datahistoriala.Bottom + 30;
+            int espacio = 20;
+
+            btnaldatuhistoriala.Width = 120;
+            btnezabatu.Width = 120;
+            btnatzerahistoriala.Width = 120;
+            btnirtenhistoriala.Width = 120;
+
+            int anchoTotalBotones =
+                btnaldatuhistoriala.Width +
+                btnezabatu.Width +
+                btnatzerahistoriala.Width +
+                btnirtenhistoriala.Width +
+                (espacio * 3);
+
+            int startBotonesX = centroX - (anchoTotalBotones / 2);
 
             btnaldatuhistoriala.Top = botonesY;
-            btnaldatuhistoriala.Left = centroX - 250;
+            btnaldatuhistoriala.Left = startBotonesX;
 
             btnezabatu.Top = botonesY;
-            btnezabatu.Left = centroX - 50;
+            btnezabatu.Left = btnaldatuhistoriala.Right + espacio;
 
             btnatzerahistoriala.Top = botonesY;
-            btnatzerahistoriala.Left = centroX + 150;
+            btnatzerahistoriala.Left = btnezabatu.Right + espacio;
 
             btnirtenhistoriala.Top = botonesY;
-            btnirtenhistoriala.Left = centroX + 350;
+            btnirtenhistoriala.Left = btnatzerahistoriala.Right + espacio;
         }
+
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);

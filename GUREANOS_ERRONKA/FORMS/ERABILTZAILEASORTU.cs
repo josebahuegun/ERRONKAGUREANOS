@@ -92,15 +92,15 @@ namespace GUREANOS_ERRONKA.FORMS
             txtizenaerabil.Top = startY;
 
             // rola
-            label2.Left = centroX + 50;
-            label2.Top = startY;
+            label3.Left = centroX + 50;
+            label3.Top = startY;
 
             comborola.Left = centroX + 150;
             comborola.Top = startY;
 
             // pasahitza
-            label3.Left = centroX - 250;
-            label3.Top = startY + 70;
+            label2.Left = centroX - 250;
+            label2.Top = startY + 70;
 
             txtpasahitzaerabil.Left = centroX - 100;
             txtpasahitzaerabil.Top = startY + 70;
@@ -119,7 +119,7 @@ namespace GUREANOS_ERRONKA.FORMS
             btnsortuerabil.Left = centroX - btnsortuerabil.Width / 2;
 
             btngehituerabilatzera.Top = botonesY;
-            btngehituerabilatzera.Left = btngehituerabilatzera.Left - 180;
+            btngehituerabilatzera.Left = btnsortuerabil.Left - 180;
 
             irten.Top = botonesY;
             irten.Left = btnsortuerabil.Left + 180;

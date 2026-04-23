@@ -49,6 +49,7 @@
             label4 = new Label();
             btngehituatzera = new Button();
             combomintegia = new ComboBox();
+            irten = new Button();
             panelInprimagailua.SuspendLayout();
             panelOrdenagailua.SuspendLayout();
             SuspendLayout();
@@ -194,7 +195,7 @@
             // 
             // btnGehitu
             // 
-            btnGehitu.Location = new Point(466, 371);
+            btnGehitu.Location = new Point(342, 371);
             btnGehitu.Name = "btnGehitu";
             btnGehitu.Size = new Size(133, 46);
             btnGehitu.TabIndex = 9;
@@ -231,7 +232,7 @@
             // 
             // btngehituatzera
             // 
-            btngehituatzera.Location = new Point(196, 371);
+            btngehituatzera.Location = new Point(151, 371);
             btngehituatzera.Name = "btngehituatzera";
             btngehituatzera.Size = new Size(133, 46);
             btngehituatzera.TabIndex = 14;
@@ -248,12 +249,22 @@
             combomintegia.TabIndex = 15;
             combomintegia.SelectedIndexChanged += combomintegia_SelectedIndexChanged;
             // 
+            // irten
+            // 
+            irten.Location = new Point(538, 371);
+            irten.Name = "irten";
+            irten.Size = new Size(133, 46);
+            irten.TabIndex = 16;
+            irten.Text = "IRTEN";
+            irten.UseVisualStyleBackColor = true;
+            // 
             // GEHITU
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(irten);
             Controls.Add(combomintegia);
             Controls.Add(btngehituatzera);
             Controls.Add(label4);
@@ -301,5 +312,6 @@
         private Label label5;
         private Button btngehituatzera;
         private ComboBox combomintegia;
+        private Button irten;
     }
 }
