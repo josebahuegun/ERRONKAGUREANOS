@@ -71,6 +71,7 @@ WHERE g.egoera = 'aktibo';";
                             );
 
                             i.Id = id;
+                            i.MintegiaId = mintegiaId;
                             gk.Add(i);
                         }
 
@@ -87,6 +88,7 @@ WHERE g.egoera = 'aktibo';";
                             );
 
                             o.Id = id;
+                            o.MintegiaId = mintegiaId;
                             gk.Add(o);
                         }
                     }
@@ -158,98 +160,14 @@ WHERE g.egoera = 'aktibo';";
             return aldatuta;
         }
 
-        static public bool aldatuinprimagailua(Inprimagailua i)
-        {
-            bool aldatuta = false;
-            KONEXIOA.Konektatu();
-
-            try
-            {
-                // 1. Gailuaren datu orokorrak eguneratzeko SQL-a
-                string sqlGailua = @"UPDATE gailua 
-                             SET marka = @marka, kokalekua = @kokalekua, 
-                                 eroste_data = @eroste_data)
-                             WHERE id = @id;";
-
-                // 2. Inprimagailuaren datu espezifikoak eguneratzeko SQL-a
-                // Irudian ikusten den bezala, zutabeak 'koloretakoa' eta 'teknologia' dira
-                string sqlInprimagailua = @"UPDATE inprimagailua 
-                                    SET koloretakoa = @koloretakoa, teknologia = @teknologia 
-                                    WHERE id = @id;";
-
-                // Lehenengo, gailuaren taula nagusia eguneratu
-                using (MySqlCommand cmdGailua = new MySqlCommand(sqlGailua, KONEXIOA.konektatu))
-                {
-                    cmdGailua.Parameters.AddWithValue("@id", i.Id);
-                    cmdGailua.Parameters.AddWithValue("@marka", i.Marka);
-                    cmdGailua.Parameters.AddWithValue("@kokalekua", i.Kokalekua);
-                    cmdGailua.Parameters.AddWithValue("@eroste_data", i.ErosteData);
-
-                    cmdGailua.ExecuteNonQuery();
-                }
-
-                // Ondoren, inprimagailuaren taula eguneratu
-                using (MySqlCommand cmdInprimagailua = new MySqlCommand(sqlInprimagailua, KONEXIOA.konektatu))
-                {
-                    cmdInprimagailua.Parameters.AddWithValue("@id", i.Id);
-                    cmdInprimagailua.Parameters.AddWithValue("@koloretakoa", i.Koloretakoa); // boolean bat (true/false) edo 1/0 izan ohi da
-                    cmdInprimagailua.Parameters.AddWithValue("@teknologia", i.Teknologia);   // Adibidez: "Laser" edo "Tinta"
-
-                    int eraginDutenErrenkadak = cmdInprimagailua.ExecuteNonQuery();
-
-                    // Inprimagailuaren taulan lerro bat eguneratu bada, dena ondo joan dela suposatuko dugu
-                    if (eraginDutenErrenkadak > 0)
-                    {
-                        aldatuta = true;
-                    }
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show("Errorea inprimagailua aldatzean: " + ex.Message);
-            }
-            finally
-            {
-                // Garrantzitsua konexioa ixtea, zure programan egituratuta duzun moduan
-                // KONEXIOA.Deskonektatu();
-            }
-
-            return aldatuta;
-        }
-
-        static public int gailuaEzabatu(Gailua g)
-        {
-            int num;
-            KONEXIOA.Konektatu();
-            try
-            {
-                // 🔧 FIX SQL
-                string sqlie = "UPDATE gailua SET egoera = 'baja' WHERE id=@id;";
-                using (MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu))
-                {
-                    komandue.Parameters.AddWithValue("@id", g.Id);
-                    num = komandue.ExecuteNonQuery();
-                }
-            }
-            catch (MySqlException ex)
-            {
-                num = ex.Number;
-            }
-            finally
-            {
-                KONEXIOA.Deskonektatu();
-            }
-
-            return num;
-        }
-
         static public int gailuaGehitu(Gailua g)
         {
             int txertatutakoId = -1;
 
+            // datuak balidatu
             if (string.IsNullOrWhiteSpace(g.Marka) || string.IsNullOrWhiteSpace(g.Kokalekua))
             {
-                MessageBox.Show("Datuak falta dira");
+                MessageBox.Show("datuak falta dira");
                 return -1;
             }
 
@@ -257,23 +175,7 @@ WHERE g.egoera = 'aktibo';";
 
             try
             {
-                // 🔥 COMPROBAR DUPLICADO
-                string check = @"SELECT COUNT(*) FROM gailua 
-                         WHERE marka = @marka AND kokalekua = @kokalekua AND egoera = 'aktibo'";
-
-                MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
-                cmdCheck.Parameters.AddWithValue("@marka", g.Marka);
-                cmdCheck.Parameters.AddWithValue("@kokalekua", g.Kokalekua);
-
-                int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
-
-                if (existe > 0)
-                {
-                    MessageBox.Show("Gailua existitzen da!");
-                    return -1;
-                }
-
-                // 🔹 INSERT
+                // insert zuzena (duplicadorik gabe)
                 string sqlie = @"INSERT INTO gailua 
 (marka, kokalekua, eroste_data, egoera, mintegia_id) 
 VALUES (@marka, @kokalekua, @eroste_data, @egoera, 
@@ -291,6 +193,13 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
                     MySqlCommand cmdId = new MySqlCommand("SELECT LAST_INSERT_ID()", KONEXIOA.konektatu);
                     txertatutakoId = Convert.ToInt32(cmdId.ExecuteScalar());
+
+                    // historiala gehitu
+                    DBKONEXIOA.TxertatuHistorikoa(
+                        "GEHITU",
+                        "gailu berria sortu da: " + g.Marka,
+                        txertatutakoId
+                    );
                 }
             }
             catch (MySqlException ex)
@@ -369,19 +278,26 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             {
                 KONEXIOA.Konektatu();
 
-                // insertar zaborrontzia
+                // insert zaborrontzia
                 string sql2 = "INSERT INTO zaborrontzia (ezabatze_data, gailua_id, erabiltzaile_id) VALUES (NOW(), @id, 1)";
                 MySqlCommand cmd2 = new MySqlCommand(sql2, KONEXIOA.konektatu);
                 cmd2.Parameters.AddWithValue("@id", id);
                 cmd2.ExecuteNonQuery();
 
-                // gero desaktibatu gailua
+                // desaktibatu gailua
                 string sql = "UPDATE gailua SET egoera = 'matxura' WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
 
                 ondo = true;
+
+                // historiala gehitu
+                DBKONEXIOA.TxertatuHistorikoa(
+                    "EZABATU",
+                    "Gailua ezabatu da",
+                    id
+                );
             }
             catch (MySqlException ex)
             {
@@ -402,30 +318,10 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             {
                 KONEXIOA.Konektatu();
 
-                // 🔥 COMPROBAR DUPLICADO (excepto el mismo ID)
-                string check = @"SELECT COUNT(*) FROM gailua 
-                         WHERE marka=@marka 
-                         AND kokalekua=@koka 
-                         AND id <> @id 
-                         AND egoera='aktibo'";
-
-                MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
-                cmdCheck.Parameters.AddWithValue("@marka", g.Marka);
-                cmdCheck.Parameters.AddWithValue("@koka", g.Kokalekua);
-                cmdCheck.Parameters.AddWithValue("@id", g.Id);
-
-                int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
-
-                if (existe > 0)
-                {
-                    MessageBox.Show("Gailu berdina existitzen da!");
-                    return false;
-                }
-
-                // 🔹 UPDATE NORMAL
+                // update zuzena (duplicadorik gabe)
                 string sql = @"UPDATE gailua 
-               SET marka=@marka, kokalekua=@koka, eroste_data=@data 
-               WHERE id=@id";
+SET marka=@marka, kokalekua=@koka, eroste_data=@data 
+WHERE id=@id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@marka", g.Marka);
@@ -487,16 +383,17 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
                 KONEXIOA.Konektatu();
 
                 string sql = @"
-        SELECT 
-            z.id_zaborrontzia,
-            g.marka,
-            g.kokalekua,
-            z.ezabatze_data,
-            e.izena AS erabiltzailea
-        FROM zaborrontzia z
-        JOIN gailua g ON z.gailua_id = g.id
-        JOIN erabiltzailea e ON z.erabiltzaile_id = e.id;
-        ";
+SELECT 
+    z.gailua_id,
+    z.id_zaborrontzia,
+    g.marka,
+    g.kokalekua,
+    z.ezabatze_data,
+    e.izena AS erabiltzailea
+FROM zaborrontzia z
+JOIN gailua g ON z.gailua_id = g.id
+JOIN erabiltzailea e ON z.erabiltzaile_id = e.id;
+";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, KONEXIOA.konektatu);
                 adapter.Fill(tabla);
@@ -844,11 +741,11 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
             try
             {
-                KONEXIOA.Konektatu();
+                // konexioa dagoeneko irekita dago
 
                 string sql = @"INSERT INTO historiala 
-                       (data, deskribapena, mota, gailua_id)
-                       VALUES (NOW(), @desk, @mota, @id)";
+               (data, deskribapena, mota, gailua_id)
+               VALUES (NOW(), @desk, @mota, @id)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
 
@@ -862,10 +759,6 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                KONEXIOA.Deskonektatu();
             }
 
             return ondo;
@@ -955,6 +848,29 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             }
 
             return baditu;
+        }
+        public static void EzabatuOrdenagailua(int id)
+        {
+            KONEXIOA.Konektatu();
+
+            string sql = "DELETE FROM ordenagailua WHERE id=@id";
+            MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+
+            KONEXIOA.Deskonektatu();
+        }
+
+        public static void EzabatuInprimagailua(int id)
+        {
+            KONEXIOA.Konektatu();
+
+            string sql = "DELETE FROM inprimagailua WHERE id=@id";
+            MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+
+            KONEXIOA.Deskonektatu();
         }
     }
 }

@@ -183,62 +183,6 @@ namespace GUREANOS_ERRONKA.FORMS
 
         }
 
-        /*private void btnGehitu_Click(object sender, EventArgs e)
-        {
-            if (txtmarka.Text == "" || txtkokalekua.Text == "")
-            {
-                MessageBox.Show("Bete datu guztiak");
-                return;
-            }
-
-            if (!radioordenagailua.Checked && !radioinprimagailua.Checked)
-            {
-                MessageBox.Show("Aukeratu mota bat");
-                return;
-            }
-
-            if (radioordenagailua.Checked)
-            {
-                if (txtram.Text == "" || txtcpu.Text == "" || txtrom.Text == "")
-                {
-                    MessageBox.Show("Bete ordenagailuaren datuak");
-                    return;
-                }
-            }
-            Gailua g = new Gailua(
-                erostedata.Value,
-                txtkokalekua.Text,
-                txtmarka.Text,
-                true
-            );
-
-            int id = DBKONEXIOA.gailuaGehitu(g);
-
-            if (id == -1)
-            {
-                MessageBox.Show("Errorea gailua gehitzean");
-                return;
-            }
-
-            if (radioordenagailua.Checked)
-            {
-                DBKONEXIOA.TxertatuOrdenagailua(id, txtram.Text, txtrom.Text, txtcpu.Text);
-            }
-            else if (radioinprimagailua.Checked)
-            {
-                DBKONEXIOA.TxertatuInprimagailua(id, chkKolore.Checked, txtTeknologia.Text);
-            }
-
-            MessageBox.Show("Gailua gehituta!");
-
-            txtmarka.Clear();
-            txtkokalekua.Clear();
-            txtram.Clear();
-            txtcpu.Clear();
-            txtrom.Clear();
-            txtTeknologia.Clear();
-        }*/
-
         private void erostedata_ValueChanged(object sender, EventArgs e)
         {
 
@@ -246,14 +190,14 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void btnGehitu_Click(object sender, EventArgs e)
         {
-            // VALIDACIÓN
+            // balidazioa
             if (txtmarka.Text == "" || combomintegia.Text == "")
             {
                 MessageBox.Show("Bete datu guztiak");
                 return;
             }
 
-            // 💻 ORDENAGAILUA
+            // 💻 ordenagailua
             if (radioordenagailua.Checked)
             {
                 if (txtram.Text == "" || txtrom.Text == "" || txtcpu.Text == "")
@@ -267,7 +211,7 @@ namespace GUREANOS_ERRONKA.FORMS
                     combomintegia.Text,
                     erostedata.Value,
                     "aktibo",
-                    "Informatika", // ajusta a tu mintegia
+                    "Informatika",
                     txtram.Text,
                     txtrom.Text,
                     txtcpu.Text
@@ -278,11 +222,15 @@ namespace GUREANOS_ERRONKA.FORMS
                 if (id > 0)
                 {
                     DBKONEXIOA.TxertatuOrdenagailua(id, o.RAM1, o.ROM1, o.CPU1);
+
                     MessageBox.Show("Ordenagailua gehituta");
+
+                    // formularioa garbitu
+                    GarbituFormularioa();
                 }
             }
 
-            // INPRIMAGAILUA
+            // 🖨️ inprimagailua
             else if (radioinprimagailua.Checked)
             {
                 Inprimagailua i = new Inprimagailua(
@@ -300,7 +248,11 @@ namespace GUREANOS_ERRONKA.FORMS
                 if (id > 0)
                 {
                     DBKONEXIOA.TxertatuInprimagailua(id, i.Koloretakoa, i.Teknologia);
+
                     MessageBox.Show("Inprimagailua gehituta");
+
+                    // formularioa garbitu
+                    GarbituFormularioa();
                 }
             }
             else
@@ -319,6 +271,36 @@ namespace GUREANOS_ERRONKA.FORMS
             PANELA p = new PANELA();
             p.Show();
             this.Close(); // 🔥 importante (no Hide)
+        }
+        private void GarbituFormularioa()
+        {
+            // testuak garbitu
+            txtmarka.Text = "";
+
+            txtram.Text = "";
+            txtrom.Text = "";
+            txtcpu.Text = "";
+            txtTeknologia.Text = "";
+
+            // combobox reset (mintegiburua bada ez ukitu)
+            if (sesioa.Rola != "Mintegiburua")
+            {
+                combomintegia.SelectedIndex = -1;
+            }
+
+            // data gaurko jarri
+            erostedata.Value = DateTime.Now;
+
+            // checkbox garbitu
+            chkKolore.Checked = false;
+
+            // radioak kendu
+            radioordenagailua.Checked = false;
+            radioinprimagailua.Checked = false;
+
+            // panelak ezkutatu
+            panelOrdenagailua.Visible = false;
+            panelInprimagailua.Visible = false;
         }
     }
 }

@@ -61,7 +61,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 }
                 else
                 {
-                    MessageBox.Show("Usuario incorrecto");
+                    MessageBox.Show("Erabiltzailea edo pasahitza okerra!");
                 }
 
                 r.Close();

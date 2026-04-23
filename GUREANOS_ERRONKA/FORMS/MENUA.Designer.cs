@@ -223,7 +223,7 @@
             btnsesioaItxi.Name = "btnsesioaItxi";
             btnsesioaItxi.Size = new Size(112, 29);
             btnsesioaItxi.TabIndex = 7;
-            btnsesioaItxi.Text = "SESIOA ITXI";
+            btnsesioaItxi.Text = "SAIOA ITXI";
             btnsesioaItxi.UseVisualStyleBackColor = true;
             btnsesioaItxi.Click += btnsesioaItxi_Click;
             // 

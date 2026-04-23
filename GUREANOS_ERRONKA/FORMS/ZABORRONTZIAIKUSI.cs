@@ -27,7 +27,11 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             // datuak kargatu
             datazabor.DataSource = DBKONEXIOA.IkusiZaborrontzia();
-            datazabor.Columns["id_zaborrontzia"].Visible = false;
+            datazabor.Columns["gailua_id"].Visible = true;
+            datazabor.Columns["gailua_id"].DisplayIndex = 0;
+            datazabor.Columns["gailua_id"].HeaderText = "Etiketa";
+
+
 
             // pantaila osoa
             this.WindowState = FormWindowState.Maximized;

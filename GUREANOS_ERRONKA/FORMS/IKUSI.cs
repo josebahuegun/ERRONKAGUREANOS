@@ -52,8 +52,11 @@ namespace GUREANOS_ERRONKA.FORMS
             // datagrid-ean erakutsi
             dataGridView1.DataSource = erakustekoTaula;
 
-            // zutabe batzuk ezkutatu
-            dataGridView1.Columns["Id"].Visible = false;
+            // id-a lelna eta ikusgai, etiketa izenarekin
+            dataGridView1.Columns["Id"].Visible = true;
+            dataGridView1.Columns["Id"].DisplayIndex = 0;
+            dataGridView1.Columns["Id"].HeaderText = "Etiketa";
+            // ezkutatu
             dataGridView1.Columns["Egoera"].Visible = false;
 
             // leihoa pantaila osoan

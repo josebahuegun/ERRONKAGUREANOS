@@ -1,4 +1,5 @@
 ﻿using GUREANOS_ERRONKA.CODIGO;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +39,10 @@ namespace GUREANOS_ERRONKA.FORMS
 
             // datagrid-a bete gailuekin
             dataaldatu.DataSource = DBKONEXIOA.ikusiGailuak();
-            dataaldatu.Columns["id"].Visible = false;
+            dataaldatu.Columns["id"].Visible = true;
+            dataaldatu.Columns["id"].DisplayIndex = 0;
+            dataaldatu.Columns["id"].HeaderText = "Etiketa";
+            dataaldatu.Columns["MintegiaId"].Visible = false;
 
             // panelak hasieran ezkutatuta
             panelor.Visible = false;
@@ -138,12 +142,18 @@ namespace GUREANOS_ERRONKA.FORMS
             btnaldatuirten.Top = botonesY;
             btnaldatuirten.Left = btnaldatu.Left + 180;
         }
-        
+
         private void btnaldatu_Click(object sender, EventArgs e)
         {
+            if (dataaldatu.CurrentRow == null)
+            {
+                MessageBox.Show("Aukeratu gailu bat!");
+                return;
+            }
+
             if (sesioa.Rola == "Mintegiburua")
             {
-                int mintegiIdGailua = Convert.ToInt32(dataaldatu.CurrentRow.Cells["mintegia_id"].Value);
+                int mintegiIdGailua = Convert.ToInt32(dataaldatu.CurrentRow.Cells["MintegiaId"].Value);
 
                 if (mintegiIdGailua != sesioa.MintegiaId)
                 {
@@ -151,13 +161,7 @@ namespace GUREANOS_ERRONKA.FORMS
                     return;
                 }
             }
-            if (dataaldatu.CurrentRow == null)
-            {
-                MessageBox.Show("Aukeratu gailu bat!");
-                return;
-            }
 
-            // 🔥 VALIDACIÓN COMBO
             if (txtkokalekua.SelectedIndex == -1)
             {
                 MessageBox.Show("Aukeratu mintegia!");
@@ -165,46 +169,83 @@ namespace GUREANOS_ERRONKA.FORMS
             }
 
             int id = Convert.ToInt32(dataaldatu.CurrentRow.Cells["id"].Value);
-            string mota = dataaldatu.CurrentRow.Cells["mota"].Value.ToString();
+
+            string motaActual = dataaldatu.CurrentRow.Cells["Mota"].Value.ToString();
+
+            string motaBerria = "";
+
+            if (radioordenagailua.Checked)
+                motaBerria = "Ordenagailua";
+            else if (radioinprimagailua.Checked)
+                motaBerria = "Inprimagailua";
+
+            if (motaBerria == "")
+            {
+                MessageBox.Show("Aukeratu mota!");
+                return;
+            }
 
             try
             {
-                // 🔹 actualizar gailua (usando ComboBox)
+                string ram = txtRAM?.Text ?? "";
+                string rom = txtROM?.Text ?? "";
+                string cpu = txtCPU?.Text ?? "";
+                string tekno = txttekno?.Text ?? "";
+
                 Gailua g = new Gailua(
                     id,
                     data.Value,
-                    txtkokalekua.Text, // 🔥 ComboBox
+                    txtkokalekua.Text,
                     txtMarka.Text,
                     "aktibo",
-                    txtkokalekua.Text // 🔥 ComboBox
+                    txtkokalekua.Text
                 );
 
                 DBKONEXIOA.AldatuGailua(g);
 
-                // 🔹 ORDENAGAILUA
-                if (mota == "Ordenagailua")
+                if (motaActual != motaBerria)
                 {
-                    DBKONEXIOA.AldatuOrdenagailua(
-                        id,
-                        txtRAM.Text,
-                        txtROM.Text,
-                        txtCPU.Text
+                    if (motaActual == "Ordenagailua" && motaBerria == "Inprimagailua")
+                    {
+                        DBKONEXIOA.EzabatuOrdenagailua(id);
+                        DBKONEXIOA.TxertatuInprimagailua(id, chkkolore.Checked, tekno);
+                    }
+                    else if (motaActual == "Inprimagailua" && motaBerria == "Ordenagailua")
+                    {
+                        DBKONEXIOA.EzabatuInprimagailua(id);
+                        DBKONEXIOA.TxertatuOrdenagailua(id, ram, rom, cpu);
+                    }
+
+                    // historiala (sin tocar conexión)
+                    DBKONEXIOA.TxertatuHistorikoa(
+                        "ALDATU",
+                        "mota aldatu da: " + motaActual + " -> " + motaBerria,
+                        id
                     );
                 }
-
-                // 🔹 INPRIMAGAILUA
-                else if (mota == "Inprimagailua")
+                else
                 {
-                    DBKONEXIOA.AldatuInprimagailua(
-                        id,
-                        chkkolore.Checked,
-                        txttekno.Text
+                    if (motaActual == "Ordenagailua")
+                    {
+                        DBKONEXIOA.AldatuOrdenagailua(id, ram, rom, cpu);
+                    }
+                    else if (motaActual == "Inprimagailua")
+                    {
+                        DBKONEXIOA.AldatuInprimagailua(id, chkkolore.Checked, tekno);
+                    }
+
+                    // historiala (sin tocar conexión)
+                    DBKONEXIOA.TxertatuHistorikoa(
+                        "ALDATU",
+                        "gailua eguneratu da: " + txtMarka.Text,
+                        id
                     );
                 }
 
                 MessageBox.Show("Aldatuta!");
 
-                // 🔄 refrescar tabla
+                GarbituFormularioa();
+
                 dataaldatu.DataSource = DBKONEXIOA.ikusiGailuak();
             }
             catch (Exception ex)
@@ -216,6 +257,28 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             base.OnResize(e);
             rekolokatu();
+        }
+        private void GarbituFormularioa()
+        {
+            txtMarka.Text = "";
+            txtRAM.Text = "";
+            txtROM.Text = "";
+            txtCPU.Text = "";
+            txttekno.Text = "";
+
+            // combobox segurua
+            if (txtkokalekua.Items.Count > 0)
+                txtkokalekua.SelectedIndex = 0;
+
+            data.Value = DateTime.Now;
+
+            chkkolore.Checked = false;
+
+            // radio segurua (uno siempre activo)
+            radioordenagailua.Checked = true;
+
+            panelor.Visible = false;
+            panelin.Visible = false;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

@@ -92,27 +92,21 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startY = centroY - altoTotal / 2;
 
-            // =========================
-            // 🔹 DATAGRID CENTRADO
-            // =========================
+
             dataerabilezabatu.Width = 700;
             dataerabilezabatu.Height = 250;
             dataerabilezabatu.Left = centroX - dataerabilezabatu.Width / 2;
             dataerabilezabatu.Top = startY;
 
-            // =========================
-            // 🔹 BOTONES ABAJO CENTRADOS
-            // =========================
+
             int botonesY = dataerabilezabatu.Bottom + 30;
             int espacio = 20;
 
-            // 👉 mismo tamaño (mejor estética)
             btnaldatu.Width = 120;
             btnerabilezabatu.Width = 120;
             btnerabilezabatuatzera.Width = 120;
             btnerabilezabatuirten.Width = 120;
 
-            // 👉 ancho total del grupo
             int anchoTotalBotones =
                 btnerabilezabatuatzera.Width +
                 btnaldatu.Width +
@@ -122,7 +116,6 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startBotonesX = centroX - (anchoTotalBotones / 2);
 
-            // 👉 colocación en cadena (izquierda → derecha)
             btnerabilezabatuatzera.Top = botonesY;
             btnerabilezabatuatzera.Left = startBotonesX;
 

@@ -23,7 +23,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             if (sesioa.Rola == "Mintegiburua")
             {
-                int mintegiIdGailua = Convert.ToInt32(ezabatudata.CurrentRow.Cells["mintegia_id"].Value);
+                int mintegiIdGailua = Convert.ToInt32(ezabatudata.CurrentRow.Cells["MintegiaId"].Value);
 
                 if (mintegiIdGailua != sesioa.MintegiaId)
                 {
@@ -52,7 +52,9 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             // datuak kargatu
             ezabatudata.DataSource = DBKONEXIOA.ikusiGailuak();
-            ezabatudata.Columns["id"].Visible = false;
+            ezabatudata.Columns["id"].Visible = true;
+            ezabatudata.Columns["id"].DisplayIndex = 0;
+            ezabatudata.Columns["id"].HeaderText = "Etiketa";
 
             // leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;

@@ -16,6 +16,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         private string marka;
         private string egoera;
         private string mintegia;
+        private int mintegiaid;
         public int Id { get => id; set => id = value; }
         public DateTime ErosteData { get => erosteData; set => erosteData = value; }
         public string Kokalekua { get => kokalekua; set => kokalekua = value; }
@@ -23,6 +24,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         public string Egoera { get => egoera; set => egoera = value; }
         public string Mintegia { get => mintegia; set => mintegia = value; }
         public string Mota { get => mota; set => mota = value; }
+        public int MintegiaId { get; set; }
 
         public Gailua(int ida, DateTime eData, string koka, string mark, string ego, string mint)
         {
