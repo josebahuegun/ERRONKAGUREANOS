@@ -52,7 +52,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
             // fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
-
+            
             // datagrid estiloa
             dataerabilezabatu.BackgroundColor = Color.White;
             dataerabilezabatu.GridColor = Color.LightGray;
@@ -82,37 +82,58 @@ namespace GUREANOS_ERRONKA.FORMS
         }
         private void rekolokatu()
         {
-            // pantailaren erdigunea kalkulatu
+            // 🔹 centro pantalla
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
-            // bloke osoaren tamaina
+            // 🔹 tamaño del bloque
             int anchoTotal = 900;
             int altoTotal = 400;
 
-            int startX = centroX - anchoTotal / 2;
             int startY = centroY - altoTotal / 2;
 
-            // datagrid erdian
+            // =========================
+            // 🔹 DATAGRID CENTRADO
+            // =========================
             dataerabilezabatu.Width = 700;
             dataerabilezabatu.Height = 250;
             dataerabilezabatu.Left = centroX - dataerabilezabatu.Width / 2;
             dataerabilezabatu.Top = startY;
 
-            // botoiak azpian eta zentratuta
+            // =========================
+            // 🔹 BOTONES ABAJO CENTRADOS
+            // =========================
             int botonesY = dataerabilezabatu.Bottom + 30;
+            int espacio = 20;
+
+            // 👉 mismo tamaño (mejor estética)
+            btnaldatu.Width = 120;
+            btnerabilezabatu.Width = 120;
+            btnerabilezabatuatzera.Width = 120;
+            btnerabilezabatuirten.Width = 120;
+
+            // 👉 ancho total del grupo
+            int anchoTotalBotones =
+                btnerabilezabatuatzera.Width +
+                btnaldatu.Width +
+                btnerabilezabatu.Width +
+                btnerabilezabatuirten.Width +
+                (espacio * 3);
+
+            int startBotonesX = centroX - (anchoTotalBotones / 2);
+
+            // 👉 colocación en cadena (izquierda → derecha)
+            btnerabilezabatuatzera.Top = botonesY;
+            btnerabilezabatuatzera.Left = startBotonesX;
 
             btnaldatu.Top = botonesY;
-            btnaldatu.Left = centroX - btnaldatu.Width / 2;
-
-            btnerabilezabatuatzera.Top = botonesY;
-            btnerabilezabatuatzera.Left = btnaldatu.Left - 180;
+            btnaldatu.Left = btnerabilezabatuatzera.Right + espacio;
 
             btnerabilezabatu.Top = botonesY;
-            btnerabilezabatu.Left = btnaldatu.Left + 180;
+            btnerabilezabatu.Left = btnaldatu.Right + espacio;
 
             btnerabilezabatuirten.Top = botonesY;
-            btnerabilezabatuirten.Left = btnerabilezabatu.Left + 180;
+            btnerabilezabatuirten.Left = btnerabilezabatu.Right + espacio;
         }
 
         private void btnerabilezabatu_Click(object sender, EventArgs e)
@@ -131,7 +152,6 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int id = Convert.ToInt32(dataerabilezabatu.CurrentRow.Cells["id"].Value);
 
-            // 🔥 AQUÍ
             if (id == sesioa.ErabiltzaileId)
             {
                 MessageBox.Show("Ezin duzu zeure burua ezabatu!");

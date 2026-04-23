@@ -28,6 +28,15 @@ namespace GUREANOS_ERRONKA
             lblTitulo.ForeColor = Color.FromArgb(0, 120, 215);
             lblTitulo.AutoSize = true;
 
+            //sesioa itxi eta irten botoiak
+            btnIrten.BackColor = Color.FromArgb(120, 120, 120);
+            btnIrten.ForeColor = Color.White;
+            btnIrten.FlatStyle = FlatStyle.Flat;
+
+            btnsesioaItxi.BackColor = Color.FromArgb(200, 50, 50);
+            btnsesioaItxi.ForeColor = Color.White;
+            btnsesioaItxi.FlatStyle = FlatStyle.Flat;
+
             // erabiltzailea
             lblErabiltzailea.Text = "Erabiltzailea: " + sesioa.Izena;
             lblErabiltzailea.Font = new Font("Segoe UI", 12, FontStyle.Bold);
@@ -106,6 +115,17 @@ namespace GUREANOS_ERRONKA
             // ordua
             lblHora.Left = centroX - lblHora.Width / 2;
             lblHora.Top = lblFecha.Bottom + 10;
+
+            int centroXX = this.ClientSize.Width / 2;
+            int abajoY = this.ClientSize.Height - 120;
+
+            // SESIOA ITXI (izquierda)
+            btnsesioaItxi.Top = abajoY;
+            btnsesioaItxi.Left = centroXX - 150;
+
+            // IRTEN (derecha)
+            btnIrten.Top = abajoY;
+            btnIrten.Left = centroXX + 20;
         }
         protected override void OnResize(EventArgs e)
         {
@@ -217,6 +237,25 @@ namespace GUREANOS_ERRONKA
             HISTORIALAKUDEATU sortu = new HISTORIALAKUDEATU();
             sortu.Show();
             this.Hide();
+        }
+
+        private void btnsesioaItxi_Click(object sender, EventArgs e)
+        {
+            // limpiar sesión
+            sesioa.ErabiltzaileId = 0;
+            sesioa.Izena = "";
+            sesioa.Rola = "";
+            sesioa.MintegiaId = 0;
+
+            // volver al login
+            LOGIN f = new LOGIN();
+            f.Show();
+            this.Close();
+        }
+
+        private void btnIrten_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

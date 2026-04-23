@@ -96,6 +96,9 @@ namespace GUREANOS_ERRONKA.FORMS
             btnGehitu.ForeColor = Color.White;
             btnGehitu.FlatStyle = FlatStyle.Flat;
 
+            irten.BackColor = Color.FromArgb(200, 50, 50);
+            irten.ForeColor = Color.White;
+            irten.FlatStyle = FlatStyle.Flat;
             // radio estiloa
             radioordenagailua.ForeColor = Color.Black;
             radioinprimagailua.ForeColor = Color.Black;
@@ -151,6 +154,9 @@ namespace GUREANOS_ERRONKA.FORMS
 
             btngehituatzera.Top = botonesY;
             btngehituatzera.Left = btnGehitu.Left - 180;
+
+            irten.Top = botonesY;
+            irten.Left = btnGehitu.Left + 180;
         }
         protected override void OnResize(EventArgs e)
         {

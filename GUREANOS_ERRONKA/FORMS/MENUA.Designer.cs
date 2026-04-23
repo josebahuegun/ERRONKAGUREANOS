@@ -49,6 +49,8 @@
             lblRola = new Label();
             lblFecha = new Label();
             lblHora = new Label();
+            btnIrten = new Button();
+            btnsesioaItxi = new Button();
             menu1.SuspendLayout();
             SuspendLayout();
             // 
@@ -121,21 +123,21 @@
             // iKUSIToolStripMenuItem1
             // 
             iKUSIToolStripMenuItem1.Name = "iKUSIToolStripMenuItem1";
-            iKUSIToolStripMenuItem1.Size = new Size(224, 26);
+            iKUSIToolStripMenuItem1.Size = new Size(216, 26);
             iKUSIToolStripMenuItem1.Text = "IKUSI";
             iKUSIToolStripMenuItem1.Click += iKUSIToolStripMenuItem1_Click;
             // 
             // sORTUToolStripMenuItem
             // 
             sORTUToolStripMenuItem.Name = "sORTUToolStripMenuItem";
-            sORTUToolStripMenuItem.Size = new Size(224, 26);
+            sORTUToolStripMenuItem.Size = new Size(216, 26);
             sORTUToolStripMenuItem.Text = "SORTU";
             sORTUToolStripMenuItem.Click += sORTUToolStripMenuItem_Click;
             // 
             // eZABATUToolStripMenuItem1
             // 
             eZABATUToolStripMenuItem1.Name = "eZABATUToolStripMenuItem1";
-            eZABATUToolStripMenuItem1.Size = new Size(224, 26);
+            eZABATUToolStripMenuItem1.Size = new Size(216, 26);
             eZABATUToolStripMenuItem1.Text = "EZABATU/ALDATU";
             eZABATUToolStripMenuItem1.Click += eZABATUToolStripMenuItem1_Click;
             // 
@@ -149,14 +151,14 @@
             // iKUSIEZABATUToolStripMenuItem
             // 
             iKUSIEZABATUToolStripMenuItem.Name = "iKUSIEZABATUToolStripMenuItem";
-            iKUSIEZABATUToolStripMenuItem.Size = new Size(224, 26);
+            iKUSIEZABATUToolStripMenuItem.Size = new Size(196, 26);
             iKUSIEZABATUToolStripMenuItem.Text = "IKUSI/EZABATU";
             iKUSIEZABATUToolStripMenuItem.Click += iKUSIEZABATUToolStripMenuItem_Click;
             // 
             // sORTUToolStripMenuItem1
             // 
             sORTUToolStripMenuItem1.Name = "sORTUToolStripMenuItem1";
-            sORTUToolStripMenuItem1.Size = new Size(224, 26);
+            sORTUToolStripMenuItem1.Size = new Size(196, 26);
             sORTUToolStripMenuItem1.Text = "SORTU";
             sORTUToolStripMenuItem1.Click += sORTUToolStripMenuItem1_Click;
             // 
@@ -205,12 +207,34 @@
             lblHora.TabIndex = 5;
             lblHora.Text = "label2";
             // 
+            // btnIrten
+            // 
+            btnIrten.Location = new Point(444, 185);
+            btnIrten.Name = "btnIrten";
+            btnIrten.Size = new Size(94, 29);
+            btnIrten.TabIndex = 6;
+            btnIrten.Text = "IRTEN";
+            btnIrten.UseVisualStyleBackColor = true;
+            btnIrten.Click += btnIrten_Click;
+            // 
+            // btnsesioaItxi
+            // 
+            btnsesioaItxi.Location = new Point(511, 262);
+            btnsesioaItxi.Name = "btnsesioaItxi";
+            btnsesioaItxi.Size = new Size(112, 29);
+            btnsesioaItxi.TabIndex = 7;
+            btnsesioaItxi.Text = "SESIOA ITXI";
+            btnsesioaItxi.UseVisualStyleBackColor = true;
+            btnsesioaItxi.Click += btnsesioaItxi_Click;
+            // 
             // PANELA
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnsesioaItxi);
+            Controls.Add(btnIrten);
             Controls.Add(lblHora);
             Controls.Add(lblFecha);
             Controls.Add(lblRola);
@@ -251,5 +275,7 @@
         private Label lblRola;
         private Label lblFecha;
         private Label lblHora;
+        private Button btnIrten;
+        private Button btnsesioaItxi;
     }
 }

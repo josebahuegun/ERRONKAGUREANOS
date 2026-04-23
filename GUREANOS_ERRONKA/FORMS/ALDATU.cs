@@ -30,27 +30,27 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void ALDATU_Load(object sender, EventArgs e)
         {
-            // 🔹 mintegiak kargatu combobox-ean
+            // mintegiak kargatu combobox-ean
             txtkokalekua.DataSource = DBKONEXIOA.LortuMintegiak();
             txtkokalekua.DisplayMember = "izena";
             txtkokalekua.ValueMember = "id";
             txtkokalekua.SelectedIndex = -1; // lehenetsitako aukerarik ez
 
-            // 🔹 datagrid-a bete gailuekin
+            // datagrid-a bete gailuekin
             dataaldatu.DataSource = DBKONEXIOA.ikusiGailuak();
             dataaldatu.Columns["id"].Visible = false;
 
-            // 🔹 panelak hasieran ezkutatuta
+            // panelak hasieran ezkutatuta
             panelor.Visible = false;
             panelin.Visible = false;
 
-            // 🔹 leihoa pantaila osoan
+            // leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // 🔹 fondo kolore argia
+            // fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // 🔹 panelen itxura txukuna
+            // panelen itxura txukuna
             panel1.BackColor = Color.White;
             panelor.BackColor = Color.White;
             panelin.BackColor = Color.White;
@@ -59,14 +59,27 @@ namespace GUREANOS_ERRONKA.FORMS
             panelor.BorderStyle = BorderStyle.FixedSingle;
             panelin.BorderStyle = BorderStyle.FixedSingle;
 
-            // 🔹 datagrid estiloa
+            // datagrid estiloa
             dataaldatu.BackgroundColor = Color.White;
             dataaldatu.GridColor = Color.LightGray;
             dataaldatu.EnableHeadersVisualStyles = false;
             dataaldatu.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             dataaldatu.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            // atzera 
+            btnaldatuatzera.BackColor = Color.FromArgb(100, 100, 100);
+            btnaldatuatzera.ForeColor = Color.White;
+            btnaldatuatzera.FlatStyle = FlatStyle.Flat;
 
-            // 🔹 elementuak kokatu
+            // aldatu 
+            btnaldatu.BackColor = Color.FromArgb(0, 120, 215);
+            btnaldatu.ForeColor = Color.White;
+            btnaldatu.FlatStyle = FlatStyle.Flat;
+
+            // irten 
+            btnaldatuirten.BackColor = Color.FromArgb(200, 50, 50);
+            btnaldatuirten.ForeColor = Color.White;
+            btnaldatuirten.FlatStyle = FlatStyle.Flat;
+            // elementuak kokatu
             rekolokatu();
         }
         private void rekolokatu()
