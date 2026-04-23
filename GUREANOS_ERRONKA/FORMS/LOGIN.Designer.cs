@@ -34,6 +34,7 @@
             label2 = new Label();
             txtizenalogin = new TextBox();
             txtpasahitzalogin = new TextBox();
+            lblTitulo = new Label();
             SuspendLayout();
             // 
             // sartulogin
@@ -88,12 +89,22 @@
             txtpasahitzalogin.Size = new Size(125, 27);
             txtpasahitzalogin.TabIndex = 5;
             // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Location = new Point(360, 57);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(86, 20);
+            lblTitulo.TabIndex = 6;
+            lblTitulo.Text = "GUREANOS";
+            // 
             // LOGIN
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblTitulo);
             Controls.Add(txtpasahitzalogin);
             Controls.Add(txtizenalogin);
             Controls.Add(label2);
@@ -116,5 +127,6 @@
         private Label label2;
         private TextBox txtizenalogin;
         private TextBox txtpasahitzalogin;
+        private Label lblTitulo;
     }
 }

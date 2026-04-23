@@ -32,12 +32,13 @@
             btnerabilezabatuirten = new Button();
             btnerabilezabatuatzera = new Button();
             dataerabilezabatu = new DataGridView();
+            btnaldatu = new Button();
             ((System.ComponentModel.ISupportInitialize)dataerabilezabatu).BeginInit();
             SuspendLayout();
             // 
             // btnerabilezabatu
             // 
-            btnerabilezabatu.Location = new Point(328, 361);
+            btnerabilezabatu.Location = new Point(406, 361);
             btnerabilezabatu.Name = "btnerabilezabatu";
             btnerabilezabatu.Size = new Size(150, 44);
             btnerabilezabatu.TabIndex = 10;
@@ -76,12 +77,23 @@
             dataerabilezabatu.TabIndex = 7;
             dataerabilezabatu.CellContentClick += dataerabilezabatu_CellContentClick;
             // 
+            // btnaldatu
+            // 
+            btnaldatu.Location = new Point(238, 361);
+            btnaldatu.Name = "btnaldatu";
+            btnaldatu.Size = new Size(150, 44);
+            btnaldatu.TabIndex = 11;
+            btnaldatu.Text = "ALDATU";
+            btnaldatu.UseVisualStyleBackColor = true;
+            btnaldatu.Click += btnaldatu_Click;
+            // 
             // ERABILTZAILEAEZABATU
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnaldatu);
             Controls.Add(btnerabilezabatu);
             Controls.Add(btnerabilezabatuirten);
             Controls.Add(btnerabilezabatuatzera);
@@ -100,5 +112,6 @@
         private Button btnerabilezabatuirten;
         private Button btnerabilezabatuatzera;
         private DataGridView dataerabilezabatu;
+        private Button btnaldatu;
     }
 }

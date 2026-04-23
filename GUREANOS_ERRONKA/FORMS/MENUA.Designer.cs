@@ -36,6 +36,7 @@
             aLDATUToolStripMenuItem = new ToolStripMenuItem();
             eZABATUToolStripMenuItem = new ToolStripMenuItem();
             zABORRONTZIANIKUSIToolStripMenuItem = new ToolStripMenuItem();
+            gAILUENHISTORIALAToolStripMenuItem = new ToolStripMenuItem();
             eRABILTZAILEAKKUDEATUToolStripMenuItem = new ToolStripMenuItem();
             iKUSIToolStripMenuItem1 = new ToolStripMenuItem();
             sORTUToolStripMenuItem = new ToolStripMenuItem();
@@ -43,6 +44,11 @@
             mINTEGIAKKUDEATUToolStripMenuItem = new ToolStripMenuItem();
             iKUSIEZABATUToolStripMenuItem = new ToolStripMenuItem();
             sORTUToolStripMenuItem1 = new ToolStripMenuItem();
+            lblTitulo = new Label();
+            lblErabiltzailea = new Label();
+            lblRola = new Label();
+            lblFecha = new Label();
+            lblHora = new Label();
             menu1.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,7 +64,7 @@
             // 
             // gAILUKKUDEATUToolStripMenuItem
             // 
-            gAILUKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIToolStripMenuItem, gEHITUToolStripMenuItem, aLDATUToolStripMenuItem, eZABATUToolStripMenuItem, zABORRONTZIANIKUSIToolStripMenuItem });
+            gAILUKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIToolStripMenuItem, gEHITUToolStripMenuItem, aLDATUToolStripMenuItem, eZABATUToolStripMenuItem, zABORRONTZIANIKUSIToolStripMenuItem, gAILUENHISTORIALAToolStripMenuItem });
             gAILUKKUDEATUToolStripMenuItem.Name = "gAILUKKUDEATUToolStripMenuItem";
             gAILUKKUDEATUToolStripMenuItem.Size = new Size(152, 24);
             gAILUKKUDEATUToolStripMenuItem.Text = "GAILUAK KUDEATU";
@@ -98,6 +104,13 @@
             zABORRONTZIANIKUSIToolStripMenuItem.Text = "ZABORRONTZIAN IKUSI";
             zABORRONTZIANIKUSIToolStripMenuItem.Click += zABORRONTZIANIKUSIToolStripMenuItem_Click;
             // 
+            // gAILUENHISTORIALAToolStripMenuItem
+            // 
+            gAILUENHISTORIALAToolStripMenuItem.Name = "gAILUENHISTORIALAToolStripMenuItem";
+            gAILUENHISTORIALAToolStripMenuItem.Size = new Size(252, 26);
+            gAILUENHISTORIALAToolStripMenuItem.Text = "GAILUEN HISTORIALA";
+            gAILUENHISTORIALAToolStripMenuItem.Click += gAILUENHISTORIALAToolStripMenuItem_Click;
+            // 
             // eRABILTZAILEAKKUDEATUToolStripMenuItem
             // 
             eRABILTZAILEAKKUDEATUToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iKUSIToolStripMenuItem1, sORTUToolStripMenuItem, eZABATUToolStripMenuItem1 });
@@ -108,22 +121,22 @@
             // iKUSIToolStripMenuItem1
             // 
             iKUSIToolStripMenuItem1.Name = "iKUSIToolStripMenuItem1";
-            iKUSIToolStripMenuItem1.Size = new Size(155, 26);
+            iKUSIToolStripMenuItem1.Size = new Size(224, 26);
             iKUSIToolStripMenuItem1.Text = "IKUSI";
             iKUSIToolStripMenuItem1.Click += iKUSIToolStripMenuItem1_Click;
             // 
             // sORTUToolStripMenuItem
             // 
             sORTUToolStripMenuItem.Name = "sORTUToolStripMenuItem";
-            sORTUToolStripMenuItem.Size = new Size(155, 26);
+            sORTUToolStripMenuItem.Size = new Size(224, 26);
             sORTUToolStripMenuItem.Text = "SORTU";
             sORTUToolStripMenuItem.Click += sORTUToolStripMenuItem_Click;
             // 
             // eZABATUToolStripMenuItem1
             // 
             eZABATUToolStripMenuItem1.Name = "eZABATUToolStripMenuItem1";
-            eZABATUToolStripMenuItem1.Size = new Size(155, 26);
-            eZABATUToolStripMenuItem1.Text = "EZABATU";
+            eZABATUToolStripMenuItem1.Size = new Size(224, 26);
+            eZABATUToolStripMenuItem1.Text = "EZABATU/ALDATU";
             eZABATUToolStripMenuItem1.Click += eZABATUToolStripMenuItem1_Click;
             // 
             // mINTEGIAKKUDEATUToolStripMenuItem
@@ -147,12 +160,62 @@
             sORTUToolStripMenuItem1.Text = "SORTU";
             sORTUToolStripMenuItem1.Click += sORTUToolStripMenuItem1_Click;
             // 
+            // lblTitulo
+            // 
+            lblTitulo.AutoSize = true;
+            lblTitulo.Location = new Point(206, 203);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(50, 20);
+            lblTitulo.TabIndex = 1;
+            lblTitulo.Text = "label1";
+            // 
+            // lblErabiltzailea
+            // 
+            lblErabiltzailea.AutoSize = true;
+            lblErabiltzailea.Location = new Point(206, 251);
+            lblErabiltzailea.Name = "lblErabiltzailea";
+            lblErabiltzailea.Size = new Size(50, 20);
+            lblErabiltzailea.TabIndex = 2;
+            lblErabiltzailea.Text = "label2";
+            // 
+            // lblRola
+            // 
+            lblRola.AutoSize = true;
+            lblRola.Location = new Point(294, 203);
+            lblRola.Name = "lblRola";
+            lblRola.Size = new Size(50, 20);
+            lblRola.TabIndex = 3;
+            lblRola.Text = "label3";
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(294, 251);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(50, 20);
+            lblFecha.TabIndex = 4;
+            lblFecha.Text = "label1";
+            // 
+            // lblHora
+            // 
+            lblHora.AutoSize = true;
+            lblHora.Location = new Point(266, 303);
+            lblHora.Name = "lblHora";
+            lblHora.Size = new Size(50, 20);
+            lblHora.TabIndex = 5;
+            lblHora.Text = "label2";
+            // 
             // PANELA
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblHora);
+            Controls.Add(lblFecha);
+            Controls.Add(lblRola);
+            Controls.Add(lblErabiltzailea);
+            Controls.Add(lblTitulo);
             Controls.Add(menu1);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -182,5 +245,11 @@
         private ToolStripMenuItem mINTEGIAKKUDEATUToolStripMenuItem;
         private ToolStripMenuItem iKUSIEZABATUToolStripMenuItem;
         private ToolStripMenuItem sORTUToolStripMenuItem1;
+        private ToolStripMenuItem gAILUENHISTORIALAToolStripMenuItem;
+        private Label lblTitulo;
+        private Label lblErabiltzailea;
+        private Label lblRola;
+        private Label lblFecha;
+        private Label lblHora;
     }
 }

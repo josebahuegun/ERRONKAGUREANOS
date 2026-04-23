@@ -137,7 +137,7 @@
             panelOrdenagailua.Controls.Add(txtcpu);
             panelOrdenagailua.Controls.Add(txtrom);
             panelOrdenagailua.Controls.Add(txtram);
-            panelOrdenagailua.Location = new Point(463, 199);
+            panelOrdenagailua.Location = new Point(463, 202);
             panelOrdenagailua.Name = "panelOrdenagailua";
             panelOrdenagailua.Size = new Size(250, 125);
             panelOrdenagailua.TabIndex = 8;
@@ -235,7 +235,7 @@
             btngehituatzera.Name = "btngehituatzera";
             btngehituatzera.Size = new Size(133, 46);
             btngehituatzera.TabIndex = 14;
-            btngehituatzera.Text = "AZTERA";
+            btngehituatzera.Text = "ATZERA";
             btngehituatzera.UseVisualStyleBackColor = true;
             btngehituatzera.Click += btngehituatzera_Click;
             // 
@@ -257,8 +257,8 @@
             Controls.Add(combomintegia);
             Controls.Add(btngehituatzera);
             Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(panelOrdenagailua);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(btnGehitu);
             Controls.Add(panelInprimagailua);
