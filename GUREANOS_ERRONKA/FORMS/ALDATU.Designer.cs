@@ -33,7 +33,7 @@
             btnaldatuatzera = new Button();
             dataaldatu = new DataGridView();
             panel1 = new Panel();
-            txtkokalekua = new ComboBox();
+            comboMintegia = new ComboBox();
             data = new DateTimePicker();
             txtMarka = new TextBox();
             label3 = new Label();
@@ -52,6 +52,8 @@
             label5 = new Label();
             radioinprimagailua = new RadioButton();
             radioordenagailua = new RadioButton();
+            label4 = new Label();
+            txtKokalekua = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataaldatu).BeginInit();
             panel1.SuspendLayout();
             panelor.SuspendLayout();
@@ -93,14 +95,14 @@
             dataaldatu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataaldatu.Location = new Point(80, 29);
             dataaldatu.Name = "dataaldatu";
+            dataaldatu.ReadOnly = true;
             dataaldatu.RowHeadersWidth = 51;
             dataaldatu.Size = new Size(363, 185);
             dataaldatu.TabIndex = 7;
-            dataaldatu.CellContentClick += dataaldatu_CellContentClick;
             // 
             // panel1
             // 
-            panel1.Controls.Add(txtkokalekua);
+            panel1.Controls.Add(comboMintegia);
             panel1.Controls.Add(data);
             panel1.Controls.Add(txtMarka);
             panel1.Controls.Add(label3);
@@ -111,14 +113,13 @@
             panel1.Size = new Size(363, 125);
             panel1.TabIndex = 11;
             // 
-            // txtkokalekua
+            // comboMintegia
             // 
-            txtkokalekua.FormattingEnabled = true;
-            txtkokalekua.Location = new Point(113, 53);
-            txtkokalekua.Name = "txtkokalekua";
-            txtkokalekua.Size = new Size(151, 28);
-            txtkokalekua.TabIndex = 6;
-            txtkokalekua.SelectedIndexChanged += txtkokalekua_SelectedIndexChanged;
+            comboMintegia.FormattingEnabled = true;
+            comboMintegia.Location = new Point(113, 53);
+            comboMintegia.Name = "comboMintegia";
+            comboMintegia.Size = new Size(151, 28);
+            comboMintegia.TabIndex = 6;
             // 
             // data
             // 
@@ -148,9 +149,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(14, 53);
             label2.Name = "label2";
-            label2.Size = new Size(77, 20);
+            label2.Size = new Size(68, 20);
             label2.TabIndex = 1;
-            label2.Text = "Kokalekua";
+            label2.Text = "Mintegia";
             // 
             // label1
             // 
@@ -173,7 +174,6 @@
             panelor.Name = "panelor";
             panelor.Size = new Size(257, 130);
             panelor.TabIndex = 12;
-            panelor.Paint += panel2_Paint;
             // 
             // txtCPU
             // 
@@ -250,7 +250,6 @@
             chkkolore.TabIndex = 5;
             chkkolore.Text = "Koloretakoa";
             chkkolore.UseVisualStyleBackColor = true;
-            chkkolore.CheckedChanged += checkBox1_CheckedChanged;
             // 
             // label5
             // 
@@ -285,12 +284,30 @@
             radioordenagailua.UseVisualStyleBackColor = true;
             radioordenagailua.CheckedChanged += radioordenagailua_CheckedChanged;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(471, 179);
+            label4.Name = "label4";
+            label4.Size = new Size(77, 20);
+            label4.TabIndex = 16;
+            label4.Text = "Kokalekua";
+            // 
+            // txtKokalekua
+            // 
+            txtKokalekua.Location = new Point(586, 179);
+            txtKokalekua.Name = "txtKokalekua";
+            txtKokalekua.Size = new Size(125, 27);
+            txtKokalekua.TabIndex = 17;
+            // 
             // ALDATU
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtKokalekua);
+            Controls.Add(label4);
             Controls.Add(radioinprimagailua);
             Controls.Add(panelor);
             Controls.Add(radioordenagailua);
@@ -344,6 +361,8 @@
         private TextBox txtteknologia;
         private RadioButton radioinprimagailua;
         private RadioButton radioordenagailua;
-        private ComboBox txtkokalekua;
+        private ComboBox comboMintegia;
+        private Label label4;
+        private TextBox txtKokalekua;
     }
 }

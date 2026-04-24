@@ -68,6 +68,7 @@
             datahistoriala.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             datahistoriala.Location = new Point(80, 176);
             datahistoriala.Name = "datahistoriala";
+            datahistoriala.ReadOnly = true;
             datahistoriala.RowHeadersWidth = 51;
             datahistoriala.Size = new Size(641, 161);
             datahistoriala.TabIndex = 3;

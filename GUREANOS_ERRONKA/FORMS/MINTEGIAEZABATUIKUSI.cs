@@ -29,6 +29,17 @@ namespace GUREANOS_ERRONKA.FORMS
                 MessageBox.Show("Ezin da Mintegi hori ezabatu!");
                 return;
             }
+
+            //bajan edo ez batenbat badago ez utzi ezabatzen
+
+            int id1 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["id1"].Value);
+
+            // 🔒 comprobar usuarios
+            if (DBKONEXIOA.MintegiakErabiltzaileakDitu(id))
+            {
+                MessageBox.Show("Mintegi honek erabiltzaileak ditu! Ezin da ezabatu.");
+                return;
+            }
             // MINTEGIAK IRASAKLEAK DITUEN EGIAZTATU
             else if (DBKONEXIOA.MintegiakIrakasleakDitu(id) == true)
             {

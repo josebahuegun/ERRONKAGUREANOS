@@ -60,6 +60,7 @@
             ezabatudata.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ezabatudata.Location = new Point(80, 45);
             ezabatudata.Name = "ezabatudata";
+            ezabatudata.ReadOnly = true;
             ezabatudata.RowHeadersWidth = 51;
             ezabatudata.Size = new Size(641, 292);
             ezabatudata.TabIndex = 3;

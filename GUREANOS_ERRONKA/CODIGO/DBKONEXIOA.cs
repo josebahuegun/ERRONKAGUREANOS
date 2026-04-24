@@ -278,24 +278,27 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             {
                 KONEXIOA.Konektatu();
 
-                // insert zaborrontzia
-                string sql2 = "INSERT INTO zaborrontzia (ezabatze_data, gailua_id, erabiltzaile_id) VALUES (NOW(), @id, 1)";
+                // 🔹 zaborrontzira sartu (erabiltzaile izena gorde)
+                string sql2 = "INSERT INTO zaborrontzia (ezabatze_data, gailua_id, erabiltzailea) VALUES (NOW(), @id, @user)";
                 MySqlCommand cmd2 = new MySqlCommand(sql2, KONEXIOA.konektatu);
+
                 cmd2.Parameters.AddWithValue("@id", id);
+                cmd2.Parameters.AddWithValue("@user", sesioa.Izena); // 👈 hemen izena
+
                 cmd2.ExecuteNonQuery();
 
-                // desaktibatu gailua
-                string sql = "UPDATE gailua SET egoera = 'matxura' WHERE id = @id";
+                // 🔹 gailua baja egoeran jarri
+                string sql = "UPDATE gailua SET egoera = 'baja' WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
 
                 ondo = true;
 
-                // historiala gehitu
+                // 🔹 historiala gehitu
                 DBKONEXIOA.TxertatuHistorikoa(
                     "EZABATU",
-                    "Gailua ezabatu da",
+                    "gailua baja moduan jarri da",
                     id
                 );
             }
@@ -316,36 +319,33 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
             try
             {
-                KONEXIOA.Konektatu();
-
-                // update zuzena (duplicadorik gabe)
                 string sql = @"UPDATE gailua 
-SET marka=@marka, kokalekua=@koka, eroste_data=@data 
+SET marka=@marka, 
+    kokalekua=@koka, 
+    eroste_data=@data,
+    mintegia_id = @mintegia
 WHERE id=@id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+
                 cmd.Parameters.AddWithValue("@marka", g.Marka);
                 cmd.Parameters.AddWithValue("@koka", g.Kokalekua);
                 cmd.Parameters.AddWithValue("@data", g.ErosteData);
+                cmd.Parameters.AddWithValue("@mintegia", g.MintegiaId);
                 cmd.Parameters.AddWithValue("@id", g.Id);
 
                 if (cmd.ExecuteNonQuery() > 0)
                     ondo = true;
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                KONEXIOA.Deskonektatu();
             }
 
             return ondo;
         }
         public static void AldatuOrdenagailua(int id, string ram, string rom, string cpu)
         {
-            KONEXIOA.Konektatu();
 
             string sql = "UPDATE ordenagailua SET ram=@ram, rom=@rom, cpu=@cpu WHERE id=@id";
             MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
@@ -357,11 +357,9 @@ WHERE id=@id";
 
             cmd.ExecuteNonQuery();
 
-            KONEXIOA.Deskonektatu();
         }
         public static void AldatuInprimagailua(int id, bool kolorea, string teknologia)
         {
-            KONEXIOA.Konektatu();
 
             string sql = "UPDATE inprimagailua SET koloretakoa=@kol, teknologia=@tek WHERE id=@id";
             MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
@@ -372,7 +370,6 @@ WHERE id=@id";
 
             cmd.ExecuteNonQuery();
 
-            KONEXIOA.Deskonektatu();
         }
         static public DataTable IkusiZaborrontzia()
         {
@@ -384,15 +381,16 @@ WHERE id=@id";
 
                 string sql = @"
 SELECT 
-    z.gailua_id,
+    z.gailua_id AS Etiketa,
     z.id_zaborrontzia,
     g.marka,
     g.kokalekua,
+    m.izena AS Mintegia,  -- 🔥 añadido
     z.ezabatze_data,
-    e.izena AS erabiltzailea
+    z.erabiltzailea
 FROM zaborrontzia z
 JOIN gailua g ON z.gailua_id = g.id
-JOIN erabiltzailea e ON z.erabiltzaile_id = e.id;
+JOIN mintegia m ON g.mintegia_id = m.id;
 ";
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, KONEXIOA.konektatu);
@@ -417,15 +415,33 @@ JOIN erabiltzailea e ON z.erabiltzaile_id = e.id;
             {
                 KONEXIOA.Konektatu();
 
-                string sql = @"
-        SELECT 
-            id,
-            izena,
-            rola,
-            aktibo
-        FROM erabiltzailea
-        WHERE aktibo = 1;
-        ";
+                string sql = "";
+
+                // ikt denak ikusi
+                if (sesioa.Rola == "IKTarduraduna")
+                {
+                    sql = @"
+SELECT 
+    id,
+    izena,
+    rola,
+    aktibo
+FROM erabiltzailea;
+";
+                }
+                else
+                {
+                    // besteak bakarrik aktiboak
+                    sql = @"
+SELECT 
+    id,
+    izena,
+    rola,
+    aktibo
+FROM erabiltzailea
+WHERE aktibo = 1;
+";
+                }
 
                 MySqlDataAdapter adapter = new MySqlDataAdapter(sql, KONEXIOA.konektatu);
                 adapter.Fill(tabla);
@@ -763,27 +779,29 @@ JOIN erabiltzailea e ON z.erabiltzaile_id = e.id;
 
             return ondo;
         }
-        public static bool AldatuErabiltzailea(int id, string izena, string pass, string rola)
+        // erabiltzailea eguneratu (mintegia barne)
+        public static void AldatuErabiltzailea(int id, string izena, string pass, string rola, int mintegiId)
         {
-            bool ondo = false;
-
             try
             {
                 KONEXIOA.Konektatu();
 
                 string sql = @"UPDATE erabiltzailea 
-                       SET izena=@izena, pasahitza=@pass, rola=@rola 
-                       WHERE id=@id";
+SET izena=@iz, 
+    pasahitza=@pas, 
+    rola=@rol, 
+    mintegia_id=@min
+WHERE id=@id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
 
-                cmd.Parameters.AddWithValue("@izena", izena);
-                cmd.Parameters.AddWithValue("@pass", pass);
-                cmd.Parameters.AddWithValue("@rola", rola);
+                cmd.Parameters.AddWithValue("@iz", izena);
+                cmd.Parameters.AddWithValue("@pas", pass);
+                cmd.Parameters.AddWithValue("@rol", rola);
+                cmd.Parameters.AddWithValue("@min", mintegiId);
                 cmd.Parameters.AddWithValue("@id", id);
 
-                if (cmd.ExecuteNonQuery() > 0)
-                    ondo = true;
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -793,8 +811,6 @@ JOIN erabiltzailea e ON z.erabiltzaile_id = e.id;
             {
                 KONEXIOA.Deskonektatu();
             }
-
-            return ondo;
         }
         public static int KontatuIKT()
         {
@@ -872,5 +888,118 @@ JOIN erabiltzailea e ON z.erabiltzaile_id = e.id;
 
             KONEXIOA.Deskonektatu();
         }
+        public static bool mintegiburuaexistitu(int mintegiId, int erabiltzaileaid)
+        {
+            bool badago = false;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = @"SELECT COUNT(*) 
+FROM erabiltzailea 
+WHERE rola='Mintegiburua' 
+AND mintegia_id=@mintegiId
+AND id != @id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@mintegiId", mintegiId);
+                cmd.Parameters.AddWithValue("@id", erabiltzaileaid);
+
+                int kop = Convert.ToInt32(cmd.ExecuteScalar());
+
+                if (kop > 0)
+                    badago = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return badago;
+        }
+        // mintegi izenetik id lortu
+        public static int LortuMintegiIdIzena(string izena)
+        {
+            int id = -1;
+
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "SELECT id FROM mintegia WHERE izena=@izena";
+
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@izena", izena);
+
+                object emaitza = cmd.ExecuteScalar();
+
+                if (emaitza != null && emaitza != DBNull.Value)
+                    id = Convert.ToInt32(emaitza);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+
+            return id;
+        }
+        public static void AktibatuErabiltzailea(int id)
+        {
+            try
+            {
+                KONEXIOA.Konektatu();
+
+                string sql = "UPDATE erabiltzailea SET aktibo = 1 WHERE id = @id";
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                KONEXIOA.Deskonektatu();
+            }
+        }
+        public static bool MintegiakErabiltzaileakDitu(int mintegiId)
+{
+    bool baditu = false;
+
+    try
+    {
+        KONEXIOA.Konektatu();
+
+        string sql = "SELECT COUNT(*) FROM erabiltzailea WHERE mintegia_id = @id AND aktibo = 1";
+        MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
+        cmd.Parameters.AddWithValue("@id", mintegiId);
+
+        int kop = Convert.ToInt32(cmd.ExecuteScalar());
+
+        if (kop > 0)
+            baditu = true;
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show(ex.Message);
+    }
+    finally
+    {
+        KONEXIOA.Deskonektatu();
+    }
+
+    return baditu;
+}
     }
 }

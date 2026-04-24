@@ -9,15 +9,23 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     public class KONEXIOA
     {
-        private static string connectionString = "server=10.33.28.209;database=GureanosErronkaDB;user=joseba;password=1234;";
-        //private static string connectionString = "server=localhost;database=inbentarioa;user=root;password=root;";
-        public static MySqlConnection konektatu = new MySqlConnection(connectionString);
+        private static string connectionString = "server=192.168.80.21;database=GureanosErronkaDB;user=joseba;password=1234;";
+
+        public static MySqlConnection konektatu;
 
         public static void Konektatu()
         {
             try
             {
-                konektatu.Open();
+                if (konektatu == null)
+                {
+                    konektatu = new MySqlConnection(connectionString);
+                }
+
+                if (konektatu.State != System.Data.ConnectionState.Open)
+                {
+                    konektatu.Open();
+                }
             }
             catch (Exception ex)
             {
@@ -29,11 +37,13 @@ namespace GUREANOS_ERRONKA.CODIGO
         {
             try
             {
-                konektatu.Close();
+                if (konektatu != null && konektatu.State == System.Data.ConnectionState.Open)
+                {
+                    konektatu.Close();
+                }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
             }
         }
     }

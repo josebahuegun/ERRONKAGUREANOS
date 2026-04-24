@@ -49,6 +49,10 @@ namespace GUREANOS_ERRONKA.FORMS
                 btnezabatu.Visible = false;
                 btnaldatuhistoriala.Visible = false;
             }
+            if (sesioa.Rola == "Mintegiburua")
+            {
+                btnsortu.Enabled = false;   // 🔴 oculta botón
+            }
 
             // gailuak combobox-ean kargatu
             combogailua.DataSource = DBKONEXIOA.ikusiGailuak();

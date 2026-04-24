@@ -27,9 +27,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             // datuak kargatu
             datazabor.DataSource = DBKONEXIOA.IkusiZaborrontzia();
-            datazabor.Columns["gailua_id"].Visible = true;
-            datazabor.Columns["gailua_id"].DisplayIndex = 0;
-            datazabor.Columns["gailua_id"].HeaderText = "Etiketa";
+            datazabor.Columns["Etiketa"].DisplayIndex = 0;
 
 
 

@@ -59,6 +59,7 @@
             datazabor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             datazabor.Location = new Point(80, 45);
             datazabor.Name = "datazabor";
+            datazabor.ReadOnly = true;
             datazabor.RowHeadersWidth = 51;
             datazabor.Size = new Size(641, 292);
             datazabor.TabIndex = 3;

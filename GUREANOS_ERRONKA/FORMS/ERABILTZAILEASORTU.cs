@@ -141,14 +141,27 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void btnsortuerabil_Click(object sender, EventArgs e)
         {
+            // datuak bete diren egiaztatu
             if (txtizenaerabil.Text == "" || txtpasahitzaerabil.Text == "")
             {
                 MessageBox.Show("Bete datu guztiak!");
                 return;
             }
 
+            // mintegia hartu
             int mintegiaId = Convert.ToInt32(combomintegia.SelectedValue);
 
+            // mintegiburua bada → kontrolatu
+            if (comborola.Text == "Mintegiburua")
+            {
+                if (DBKONEXIOA.mintegiburuaexistitu(mintegiaId, 0))
+                {
+                    MessageBox.Show("Mintegi honek dagoeneko Mintegiburua dauka!");
+                    return;
+                }
+            }
+
+            // sortu erabiltzailea
             bool sortuta = DBKONEXIOA.SortuErabiltzailea(
                 txtizenaerabil.Text,
                 txtpasahitzaerabil.Text,
@@ -160,9 +173,11 @@ namespace GUREANOS_ERRONKA.FORMS
             {
                 MessageBox.Show("Erabiltzailea sortuta!");
 
+                // garbitu formularioa
                 txtizenaerabil.Clear();
                 txtpasahitzaerabil.Clear();
                 comborola.SelectedIndex = 0;
+                combomintegia.SelectedIndex = 0;
             }
         }
 

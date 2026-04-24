@@ -24,6 +24,7 @@ namespace GUREANOS_ERRONKA.FORMS
             dataikusierabil.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
             dataikusierabil.Columns["id"].Visible = false;
 
+
             // leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 

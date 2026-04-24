@@ -52,7 +52,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
             // fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
-            
+
             // datagrid estiloa
             dataerabilezabatu.BackgroundColor = Color.White;
             dataerabilezabatu.GridColor = Color.LightGray;
@@ -77,28 +77,29 @@ namespace GUREANOS_ERRONKA.FORMS
             btnerabilezabatuirten.ForeColor = Color.White;
             btnerabilezabatuirten.FlatStyle = FlatStyle.Flat;
 
+            //aktibatu botoia
+
+            btnaktibatu.BackColor = Color.FromArgb(40, 167, 69);
+            btnaktibatu.ForeColor = Color.White;
+            btnaktibatu.FlatStyle = FlatStyle.Flat;
+
             // elementuak kokatu
             rekolokatu();
         }
         private void rekolokatu()
         {
-            // 🔹 centro pantalla
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
-            // 🔹 tamaño del bloque
-            int anchoTotal = 900;
-            int altoTotal = 400;
+            int startY = centroY - 180;
 
-            int startY = centroY - altoTotal / 2;
-
-
+            // 🔹 tabla
             dataerabilezabatu.Width = 700;
             dataerabilezabatu.Height = 250;
             dataerabilezabatu.Left = centroX - dataerabilezabatu.Width / 2;
             dataerabilezabatu.Top = startY;
 
-
+            // 🔹 botones
             int botonesY = dataerabilezabatu.Bottom + 30;
             int espacio = 20;
 
@@ -106,13 +107,15 @@ namespace GUREANOS_ERRONKA.FORMS
             btnerabilezabatu.Width = 120;
             btnerabilezabatuatzera.Width = 120;
             btnerabilezabatuirten.Width = 120;
+            btnaktibatu.Width = 120;
 
             int anchoTotalBotones =
                 btnerabilezabatuatzera.Width +
                 btnaldatu.Width +
                 btnerabilezabatu.Width +
+                btnaktibatu.Width +
                 btnerabilezabatuirten.Width +
-                (espacio * 3);
+                (espacio * 4);
 
             int startBotonesX = centroX - (anchoTotalBotones / 2);
 
@@ -125,8 +128,11 @@ namespace GUREANOS_ERRONKA.FORMS
             btnerabilezabatu.Top = botonesY;
             btnerabilezabatu.Left = btnaldatu.Right + espacio;
 
+            btnaktibatu.Top = botonesY;
+            btnaktibatu.Left = btnerabilezabatu.Right + espacio;
+
             btnerabilezabatuirten.Top = botonesY;
-            btnerabilezabatuirten.Left = btnerabilezabatu.Right + espacio;
+            btnerabilezabatuirten.Left = btnaktibatu.Right + espacio;
         }
 
         private void btnerabilezabatu_Click(object sender, EventArgs e)
@@ -175,7 +181,105 @@ namespace GUREANOS_ERRONKA.FORMS
 
         private void btnaldatu_Click(object sender, EventArgs e)
         {
-            // 🔒 solo IKT
+            // 🔒 bakarrik ikt
+            if (sesioa.Rola != "IKTarduraduna")
+            {
+                MessageBox.Show("Ez daukazu baimenik!");
+                return;
+            }
+
+            // 🔹 aukeraketa egiaztatu
+            if (dataerabilezabatu.CurrentRow == null)
+            {
+                MessageBox.Show("Aukeratu erabiltzaile bat!");
+                return;
+            }
+
+            // 🔹 datuak hartu
+            int id = Convert.ToInt32(dataerabilezabatu.CurrentRow.Cells["id"].Value);
+            string izena = dataerabilezabatu.CurrentRow.Cells["izena"].Value.ToString();
+            string rolaActual = dataerabilezabatu.CurrentRow.Cells["rola"].Value.ToString();
+
+            // 🔥 mintegia izena hartu (EZ ID)
+            string mintegiIzena = dataerabilezabatu.CurrentRow.Cells["Mintegia"].Value.ToString();
+
+            // 🔥 id lortu datu basetik
+            int mintegiId = DBKONEXIOA.LortuMintegiIdIzena(mintegiIzena);
+
+            // 🔹 datu berriak eskatu
+            string nuevaIzena = Microsoft.VisualBasic.Interaction.InputBox("Izena berria:", "Editatu", izena);
+            string nuevaPass = Microsoft.VisualBasic.Interaction.InputBox("Pasahitza berria:", "Editatu", "");
+            string nuevaRola = Microsoft.VisualBasic.Interaction.InputBox("Rola berria (Irakaslea / Mintegiburua / IKTarduraduna):", "Editatu", rolaActual);
+
+            // 🔥 mintegi berria testu moduan
+            string nuevaMintegi = Microsoft.VisualBasic.Interaction.InputBox("Mintegia berria:", "Editatu", mintegiIzena);
+
+            // 🔒 hutsik ez
+            if (string.IsNullOrWhiteSpace(nuevaIzena) || string.IsNullOrWhiteSpace(nuevaPass))
+            {
+                MessageBox.Show("Datuak falta dira!");
+                return;
+            }
+
+            // 🔹 rola normalizatu
+            string r = nuevaRola.ToLower();
+
+            if (r != "irakaslea" && r != "mintegiburua" && r != "iktarduraduna")
+            {
+                MessageBox.Show("Rola okerra!");
+                return;
+            }
+
+            if (r == "irakaslea") nuevaRola = "Irakaslea";
+            if (r == "mintegiburua") nuevaRola = "Mintegiburua";
+            if (r == "iktarduraduna") nuevaRola = "IKTarduraduna";
+
+            // 🔥 mintegi berria -> id bihurtu
+            int mintegiBerriaId = DBKONEXIOA.LortuMintegiIdIzena(nuevaMintegi);
+
+            if (mintegiBerriaId == -1)
+            {
+                MessageBox.Show("Mintegia ez da existitzen!");
+                return;
+            }
+
+            // 🔹 ikt kopurua
+            int kopurua = DBKONEXIOA.KontatuIKT();
+
+            if (rolaActual == "IKTarduraduna" && kopurua <= 1 && nuevaRola != "IKTarduraduna")
+            {
+                MessageBox.Show("Ezin da azken IKT aldatu!");
+                return;
+            }
+
+            if (id == sesioa.ErabiltzaileId && rolaActual == "IKTarduraduna" && nuevaRola != "IKTarduraduna")
+            {
+                MessageBox.Show("Ezin duzu zeure rola kendu!");
+                return;
+            }
+
+            // 🔥 mintegiburua bakarra
+            if (nuevaRola == "Mintegiburua")
+            {
+                if (DBKONEXIOA.mintegiburuaexistitu(mintegiBerriaId, id))
+                {
+                    MessageBox.Show("Mintegi honek dagoeneko Mintegiburua dauka!");
+                    return;
+                }
+            }
+
+            // 🔥 EGUNERATU (ORAIN ONDO)
+            DBKONEXIOA.AldatuErabiltzailea(id, nuevaIzena, nuevaPass, nuevaRola, mintegiBerriaId);
+
+            MessageBox.Show("Erabiltzailea aldatuta!");
+
+            // 🔄 taula berritu
+            dataerabilezabatu.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
+        }
+
+        private void btnaktibatu_Click(object sender, EventArgs e)
+        {
+            // 🔒 solo ikt
             if (sesioa.Rola != "IKTarduraduna")
             {
                 MessageBox.Show("Ez daukazu baimenik!");
@@ -189,60 +293,22 @@ namespace GUREANOS_ERRONKA.FORMS
                 return;
             }
 
-            // 🔹 coger datos
             int id = Convert.ToInt32(dataerabilezabatu.CurrentRow.Cells["id"].Value);
-            string izena = dataerabilezabatu.CurrentRow.Cells["izena"].Value.ToString();
-            string rolaActual = dataerabilezabatu.CurrentRow.Cells["rola"].Value.ToString();
+            bool aktibo = Convert.ToBoolean(dataerabilezabatu.CurrentRow.Cells["aktibo"].Value);
 
-            // 🔹 pedir datos nuevos
-            string nuevaIzena = Microsoft.VisualBasic.Interaction.InputBox("Izena berria:", "Editatu", izena);
-            string nuevaPass = Microsoft.VisualBasic.Interaction.InputBox("Pasahitza berria:", "Editatu", "");
-            string nuevaRola = Microsoft.VisualBasic.Interaction.InputBox("Rola berria (Irakaslea / Mintegiburua / IKTarduraduna):", "Editatu", rolaActual);
-
-            // 🔒 validar vacío
-            if (string.IsNullOrWhiteSpace(nuevaIzena) || string.IsNullOrWhiteSpace(nuevaPass))
+            // 🔒 si ya está activo
+            if (aktibo)
             {
-                MessageBox.Show("Datuak falta dira!");
+                MessageBox.Show("Erabiltzailea jada aktibo dago!");
                 return;
             }
 
-            // 🔒 normalizar rola
-            string r = nuevaRola.ToLower();
+            // 🔹 activar
+            DBKONEXIOA.AktibatuErabiltzailea(id);
 
-            if (r != "irakaslea" && r != "mintegiburua" && r != "iktarduraduna")
-            {
-                MessageBox.Show("Rola okerra!");
-                return;
-            }
+            MessageBox.Show("Erabiltzailea aktibatuta!");
 
-            // 👉 guardar bonito
-            if (r == "irakaslea") nuevaRola = "Irakaslea";
-            if (r == "mintegiburua") nuevaRola = "Mintegiburua";
-            if (r == "iktarduraduna") nuevaRola = "IKTarduraduna";
-
-            // 🔥 contar IKT
-            int kopurua = DBKONEXIOA.KontatuIKT();
-
-            // ❌ no quitar último IKT
-            if (rolaActual == "IKTarduraduna" && kopurua <= 1 && nuevaRola != "IKTarduraduna")
-            {
-                MessageBox.Show("Ezin da azken IKT aldatu!");
-                return;
-            }
-
-            // ❌ no quitarte tu propio rol
-            if (id == sesioa.ErabiltzaileId && rolaActual == "IKTarduraduna" && nuevaRola != "IKTarduraduna")
-            {
-                MessageBox.Show("Ezin duzu zeure rola kendu!");
-                return;
-            }
-
-            // 🔹 actualizar
-            DBKONEXIOA.AldatuErabiltzailea(id, nuevaIzena, nuevaPass, nuevaRola);
-
-            MessageBox.Show("Erabiltzailea aldatuta!");
-
-            // 🔄 refrescar
+            // 🔄 refrescar tabla
             dataerabilezabatu.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
         }
     }

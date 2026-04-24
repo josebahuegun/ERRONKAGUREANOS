@@ -34,6 +34,11 @@ namespace GUREANOS_ERRONKA.CODIGO
             kokalekua = koka;
             erosteData = eData;
             egoera = ego;
+            mintegia = mint;
+            if (int.TryParse(mint, out int idMintegi))
+            {
+                MintegiaId = idMintegi;
+            }
         }
         public Gailua(string mott, string markk, string kokaa, DateTime eDataa, string egoo, string mintt)
         {
@@ -44,6 +49,7 @@ namespace GUREANOS_ERRONKA.CODIGO
             egoera = egoo;
             mintegia = mintt;
         }
+
         public Gailua(int idd)
         {
             id = idd;
