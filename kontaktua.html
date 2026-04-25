@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="eu">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1041/1041916.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <title>Kontaktua</title>
 </head>
 
-<body>
+<body class="bg-light">
 
 <div class="container mt-5">
-<h2 class="mb-4">Kontaktua</h2>
+<div class="card p-4 shadow border-0">
 
-<p>Jarri gurekin harremanetan zalantzak edo informazio gehiago eskatzeko.</p>
+<h2>📞 Kontaktua</h2>
 
-<div class="mb-3">
-<label>Izena</label>
-<input type="text" id="izena" class="form-control">
+<input type="text" id="izena" class="form-control mb-3" placeholder="Izena">
+<input type="email" id="emaila" class="form-control mb-3" placeholder="Emaila">
+<textarea id="mezua" class="form-control mb-3" placeholder="Mezua"></textarea>
+
+<button class="btn btn-primary w-100" onclick="enviar()">Bidali</button>
+
+<!-- MAPA -->
+<div class="mt-4">
+<iframe 
+src="https://www.google.com/maps?q=izarraitz&output=embed"
+width="100%" height="250" style="border:0;">
+</iframe>
 </div>
 
-<div class="mb-3">
-<label>Emaila</label>
-<input type="email" id="emaila" class="form-control">
 </div>
-
-<div class="mb-3">
-<label>Mezua</label>
-<textarea id="mezua" class="form-control"></textarea>
-</div>
-
-<button class="btn btn-primary" onclick="enviar()">Bidali</button>
-
 </div>
 
 <script>
@@ -39,11 +39,11 @@ function enviar() {
     let mezua = document.getElementById("mezua").value;
 
     if(izena === "" || emaila === "" || mezua === "") {
-        alert("Mesedez, bete eremu guztiak");
+        alert("Mesedez bete guztiak");
         return;
     }
 
-    let url = "jhuegun25@izarraitz.eus"
+    let url = "mailto:jhuegun25@izarraitz.eus"
         + "?subject=Kontaktua"
         + "&body=Izena: " + izena
         + "%0AEmaila: " + emaila
