@@ -83,7 +83,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             PANELA p = new PANELA();
             p.Show();
-            this.Close(); // 🔥 importante (no Hide)
+            this.Close();
         }
 
         private void btnzaborirten_Click(object sender, EventArgs e)

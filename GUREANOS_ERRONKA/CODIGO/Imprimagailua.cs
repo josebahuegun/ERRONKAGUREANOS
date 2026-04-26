@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GUREANOS_ERRONKA.CODIGO
 {
+    // : Gailua jarriz herentzia aplikatzen da eta Gailuaren propietateak jasotzen dira, gailua + inpresora kasu hontan
     public class Inprimagailua : Gailua
     {
         private bool koloretakoa;

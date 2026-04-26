@@ -25,7 +25,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             try
             {
-                // 🔥 VALIDACIÓN
+                // balidatu erabiltzailea eta pasahitza ez daudela hutsik
                 if (string.IsNullOrWhiteSpace(txtizenalogin.Text) || string.IsNullOrWhiteSpace(txtpasahitzalogin.Text))
                 {
                     MessageBox.Show("Sartu erabiltzailea eta pasahitza");
@@ -34,7 +34,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 KONEXIOA.Konektatu();
 
-                // 🔥 AÑADIMOS rola + mintegia_id + aktibo
+                // gehitu SQL kontsulta erabiltzailea eta pasahitza balidatzeko, eta aktibo den egiaztatzeko
                 string sql = @"SELECT id, izena, rola, mintegia_id 
                FROM erabiltzailea 
                WHERE izena=@izena AND pasahitza=@pass AND aktibo=1";
@@ -47,7 +47,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 if (r.Read())
                 {
-                    // 🔥 GUARDAR SESIÓN COMPLETA
+                    // sesiioa gorde
                     sesioa.ErabiltzaileId = r.GetInt32("id");
                     sesioa.Izena = r.GetString("izena");
                     sesioa.Rola = r.GetString("rola");          

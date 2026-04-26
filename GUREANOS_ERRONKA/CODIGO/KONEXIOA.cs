@@ -9,6 +9,8 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     public class KONEXIOA
     {
+        // unaien ordenagailuko datuak, ip-a, datu basearen izena, erabiltzailea eta pasahitza (ip-a mugikorra da, ahal da aldau)
+        // erabiltzailea eta pasahitza lehenago CREATE USER komandoarekin sortu behar dira mysql-en
         private static string connectionString = "server=192.168.80.21;database=GureanosErronkaDB;user=joseba;password=1234;";
 
         public static MySqlConnection konektatu;

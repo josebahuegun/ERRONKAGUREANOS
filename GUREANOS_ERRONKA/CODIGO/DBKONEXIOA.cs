@@ -11,6 +11,7 @@ namespace GUREANOS_ERRONKA.CODIGO
 {
     internal class DBKONEXIOA
     {
+        // ikusi gailuak (ordenagailuak eta inprimagailuak batera, egoera aktiboa dutenak bakarrik)
         static public List<Gailua> ikusiGailuak()
         {
             KONEXIOA.Konektatu();
@@ -51,7 +52,7 @@ WHERE g.egoera = 'aktibo';";
                     while (r.Read())
                     {
                         int id = r.GetInt32(0);
-                        int mintegiaId = r.GetInt32(1); // 🔥 NUEVO
+                        int mintegiaId = r.GetInt32(1); 
                         string mota = r.GetString(2);
                         string marka = r.GetString(3);
                         string kokalekua = r.GetString(4);
@@ -59,7 +60,7 @@ WHERE g.egoera = 'aktibo';";
                         string egoera = r.GetString(6);
                         string mintegia = r.GetString(7);
 
-                        // 🖨️ INPRIMAGAILUA
+                        
                         if (mota == "Inprimagailua")
                         {
                             bool koloretakoa = r.IsDBNull(11) ? false : r.GetBoolean(11);
@@ -75,7 +76,7 @@ WHERE g.egoera = 'aktibo';";
                             gk.Add(i);
                         }
 
-                        // 💻 ORDENAGAILUA
+                        // ordenagailua bada, ram, rom eta cpu datuak jaso
                         else if (mota == "Ordenagailua")
                         {
                             string ram = r.IsDBNull(8) ? "" : r.GetString(8);
@@ -107,7 +108,7 @@ WHERE g.egoera = 'aktibo';";
 
             return gk;
         }
-
+        // update inprimagailua (gailua taula eta inprimagailua taula biyaak aldatuko dira)
         static public bool aldatuInprimagailua(Inprimagailua i)
         {
             bool aldatuta = false;
@@ -115,7 +116,7 @@ WHERE g.egoera = 'aktibo';";
 
             try
             {
-                // 🔧 FIX (quitado paréntesis)
+                
                 string sqlGailua = @"UPDATE gailua 
                      SET marka = @marka, kokalekua = @kokalekua, 
                          eroste_data = @eroste_data
@@ -154,7 +155,7 @@ WHERE g.egoera = 'aktibo';";
             }
             finally
             {
-                // KONEXIOA.Deskonektatu();
+                // deskonektatuta kendun nun errorea ematen zuelako (bi aldiz saiatzen zen izten konexioa)
             }
 
             return aldatuta;
@@ -278,16 +279,16 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             {
                 KONEXIOA.Konektatu();
 
-                // 🔹 zaborrontzira sartu (erabiltzaile izena gorde)
+                // zaborrontzira sartu (erabiltzaile izena gorde)
                 string sql2 = "INSERT INTO zaborrontzia (ezabatze_data, gailua_id, erabiltzailea) VALUES (NOW(), @id, @user)";
                 MySqlCommand cmd2 = new MySqlCommand(sql2, KONEXIOA.konektatu);
 
                 cmd2.Parameters.AddWithValue("@id", id);
-                cmd2.Parameters.AddWithValue("@user", sesioa.Izena); // 👈 hemen izena
+                cmd2.Parameters.AddWithValue("@user", sesioa.Izena); // hemen izena
 
                 cmd2.ExecuteNonQuery();
 
-                // 🔹 gailua baja egoeran jarri
+                // gailua baja egoeran jarri
                 string sql = "UPDATE gailua SET egoera = 'baja' WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@id", id);
@@ -295,7 +296,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
                 ondo = true;
 
-                // 🔹 historiala gehitu
+                // historiala gehitu
                 DBKONEXIOA.TxertatuHistorikoa(
                     "EZABATU",
                     "gailua baja moduan jarri da",
@@ -471,7 +472,7 @@ WHERE aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                // 🔥 COMPROBAR DUPLICADO
+                // duplikatua egiaztatu
                 string check = "SELECT COUNT(*) FROM erabiltzailea WHERE izena = @izena AND aktibo = 1";
                 MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
                 cmdCheck.Parameters.AddWithValue("@izena", izena);
@@ -484,7 +485,7 @@ WHERE aktibo = 1;
                     return false;
                 }
 
-                // 🔹 INSERT
+                // insert erabiltzailea
                 string sql = @"INSERT INTO erabiltzailea 
         (izena, pasahitza, rola, aktibo, mintegia_id)
         VALUES (@izena, @pass, @rola, 1, @mintegia)";
@@ -542,27 +543,27 @@ WHERE aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                // 🔥 comprobar cuantos IKT hay
+                // zenbat ikt?
                 string sqlCount = "SELECT COUNT(*) FROM erabiltzailea WHERE rola = 'IKTarduraduna' AND aktibo = 1";
                 MySqlCommand cmdCount = new MySqlCommand(sqlCount, KONEXIOA.konektatu);
 
                 int kopurua = Convert.ToInt32(cmdCount.ExecuteScalar());
 
-                // 🔥 saber si el que quieres borrar es IKT
+                // ikt den egiaztatu
                 string sqlCheck = "SELECT rola FROM erabiltzailea WHERE id = @id";
                 MySqlCommand cmdCheck = new MySqlCommand(sqlCheck, KONEXIOA.konektatu);
                 cmdCheck.Parameters.AddWithValue("@id", id);
 
                 string rola = cmdCheck.ExecuteScalar().ToString();
 
-                // ❌ si es el último IKT → bloquear
+                // azken ikt bada, ez utzi ezabatzen
                 if (rola == "IKTarduraduna" && kopurua <= 1)
                 {
                     MessageBox.Show("Ezin da azken IKT ezabatu!");
                     return false;
                 }
 
-                // ✔ borrar (o desactivar)
+                // ezabatzen den erabiltzailea baja moduan jarri (aktibo = 0)
                 string sql = "UPDATE erabiltzailea SET aktibo = 0 WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@id", id);
@@ -595,7 +596,7 @@ WHERE aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                // 🔥 COMPROBAR DUPLICADO
+                // duplikatua egiaztatu
                 string check = "SELECT COUNT(*) FROM mintegia WHERE izena = @izena";
                 MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
                 cmdCheck.Parameters.AddWithValue("@izena", izena);
@@ -608,7 +609,7 @@ WHERE aktibo = 1;
                     return false;
                 }
 
-                // 🔹 INSERT
+                // insert mintegia
                 string sql = "INSERT INTO mintegia (izena) VALUES (@izena)";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@izena", izena);
@@ -635,12 +636,12 @@ WHERE aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                // 🔹 1. obtener id de Almazena
+                // idtik mintegiaren izena lortu
                 string sqlAlma = "SELECT id FROM mintegia WHERE izena = 'Almazena'";
                 MySqlCommand cmdAlma = new MySqlCommand(sqlAlma, KONEXIOA.konektatu);
                 int almazenaId = Convert.ToInt32(cmdAlma.ExecuteScalar());
 
-                // 🔹 2. mover gailuak a Almazena
+                // gailuak almazenera pasa
                 string sqlUpdate = "UPDATE gailua SET mintegia_id = @alma WHERE mintegia_id = @id";
                 MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, KONEXIOA.konektatu);
 
@@ -649,7 +650,7 @@ WHERE aktibo = 1;
 
                 cmdUpdate.ExecuteNonQuery();
 
-                // 🔹 3. borrar mintegia
+                // ezabatu mintegia
                 string sqlDelete = "DELETE FROM mintegia WHERE id = @id";
                 MySqlCommand cmdDelete = new MySqlCommand(sqlDelete, KONEXIOA.konektatu);
 
@@ -699,6 +700,7 @@ WHERE aktibo = 1;
 
             try
             {
+                // ezabatu historiala id-aren arabera
                 KONEXIOA.Konektatu();
 
                 string sql = "DELETE FROM historiala WHERE id_historiala = @id";
@@ -720,6 +722,7 @@ WHERE aktibo = 1;
 
             return ondo;
         }
+        // editatu historiala (deskribapena eta mota bakarrik editatu ahal izango dira, data eta gailua_id ez dira editatuko)
         public static bool EditatuHistorikoa(int id, string desk, string mota)
         {
             bool ondo = false;
@@ -757,7 +760,7 @@ WHERE aktibo = 1;
 
             try
             {
-                // konexioa dagoeneko irekita dago
+                // ionsert historiala (data automatikoki sartu, NOW() erabiliz)
 
                 string sql = @"INSERT INTO historiala 
                (data, deskribapena, mota, gailua_id)
@@ -779,7 +782,7 @@ WHERE aktibo = 1;
 
             return ondo;
         }
-        // erabiltzailea eguneratu (mintegia barne)
+        // erabiltzailea eguneratu 
         public static void AldatuErabiltzailea(int id, string izena, string pass, string rola, int mintegiId)
         {
             try

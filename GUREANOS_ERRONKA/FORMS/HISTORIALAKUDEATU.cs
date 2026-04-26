@@ -22,7 +22,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             PANELA p = new PANELA();
             p.Show();
-            this.Close(); // 🔥 importante (no Hide)
+            this.Close();
         }
 
         private void btnirtenhistoriala_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace GUREANOS_ERRONKA.FORMS
             }
             if (sesioa.Rola == "Mintegiburua")
             {
-                btnsortu.Enabled = false;   // 🔴 oculta botón
+                btnsortu.Enabled = false;   // ixkutatu botoia
             }
 
             // gailuak combobox-ean kargatu
@@ -264,7 +264,7 @@ namespace GUREANOS_ERRONKA.FORMS
             string desk = datahistoriala.CurrentRow.Cells["deskribapena"].Value.ToString();
             string mota = datahistoriala.CurrentRow.Cells["mota"].Value.ToString();
 
-            // 👉 puedes usar TextBox o InputBox
+            
             string nuevaDesk = Microsoft.VisualBasic.Interaction.InputBox("Deskribapena berria:", "Editatu", desk);
             string nuevaMota = Microsoft.VisualBasic.Interaction.InputBox("Mota berria:", "Editatu", mota);
 

@@ -65,7 +65,7 @@ namespace GUREANOS_ERRONKA
             // kokatu elementuak
             rekolokatu();
 
-            // 🔐 permisos
+            // baimenak rolaren arabera
             if (sesioa.Rola == "Irakaslea")
             {
                 gEHITUToolStripMenuItem.Visible = false;
@@ -119,11 +119,11 @@ namespace GUREANOS_ERRONKA
             int centroXX = this.ClientSize.Width / 2;
             int abajoY = this.ClientSize.Height - 120;
 
-            // SESIOA ITXI (izquierda)
+            // SESIOA ITXI 
             btnsesioaItxi.Top = abajoY;
             btnsesioaItxi.Left = centroXX - 150;
 
-            // IRTEN (derecha)
+            // IRTEN 
             btnIrten.Top = abajoY;
             btnIrten.Left = centroXX + 20;
         }
@@ -133,7 +133,7 @@ namespace GUREANOS_ERRONKA
             rekolokatu();
         }
 
-        // 🔍 IKUSI GAILUAK
+        // IKUSI GAILUAK
         private void iKUSIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IKUSI ikusi = new IKUSI();
@@ -141,7 +141,7 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
-        // ➕ GEHITU GAILUA
+        // GEHITU GAILUA
         private void gEHITUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GEHITU gehitu = new GEHITU();
@@ -149,7 +149,7 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
-        // ✏️ ALDATU GAILUA
+        // ALDATU GAILUA
         private void aLDATUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ALDATU a = new ALDATU();
@@ -157,7 +157,7 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
-        // ❌ EZABATU GAILUA
+        // EZABATU GAILUA
         private void eZABATUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EZABATU ee = new EZABATU();
@@ -165,7 +165,7 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
-        // 🗑️ ZABORRONTZIA
+        // ZABORRONTZIA
         private void zABORRONTZIANIKUSIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ZABORRONTZIAIKUSI z = new ZABORRONTZIAIKUSI();
@@ -174,19 +174,19 @@ namespace GUREANOS_ERRONKA
         }
 
 
-        // ➕ ERABILTZAILEA SORTU
+        // ERABILTZAILEA SORTU
         private void erabiltzaileakSortuToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        // ❌ ERABILTZAILEA EZABATU
+        // ERABILTZAILEA EZABATU
         private void erabiltzaileakEzabatuToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
-        // 🚪 IRTEN
+        // IRTEN
         private void irtenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -241,13 +241,13 @@ namespace GUREANOS_ERRONKA
 
         private void btnsesioaItxi_Click(object sender, EventArgs e)
         {
-            // limpiar sesión
+            // garbitu sesioa
             sesioa.ErabiltzaileId = 0;
             sesioa.Izena = "";
             sesioa.Rola = "";
             sesioa.MintegiaId = 0;
 
-            // volver al login
+            // loginera itzuli
             LOGIN f = new LOGIN();
             f.Show();
             this.Close();

@@ -33,8 +33,10 @@ namespace GUREANOS_ERRONKA.FORMS
             //bajan edo ez batenbat badago ez utzi ezabatzen
 
             int id1 = Convert.ToInt32(dataGridView1.CurrentRow.Cells["id1"].Value);
+            
+            // hemen bi funtzioa "ia" berdinak ditut, bazpanere ez det bat ezabatuko programa ondo dijua ta.
 
-            // 🔒 comprobar usuarios
+            // erabiltzaileak ea mintegiak dituen ezabatu aurretik egiaztatu
             if (DBKONEXIOA.MintegiakErabiltzaileakDitu(id))
             {
                 MessageBox.Show("Mintegi honek erabiltzaileak ditu! Ezin da ezabatu.");
@@ -130,7 +132,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             PANELA p = new PANELA();
             p.Show();
-            this.Close(); // 🔥 importante (no Hide)
+            this.Close(); 
         }
 
         private void irten_Click(object sender, EventArgs e)

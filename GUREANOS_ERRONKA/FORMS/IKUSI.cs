@@ -22,7 +22,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             PANELA p = new PANELA();
             p.Show();
-            this.Close(); // 🔥 importante (no Hide)
+            this.Close(); 
         }
 
         private void IKUSI_Load(object sender, EventArgs e)

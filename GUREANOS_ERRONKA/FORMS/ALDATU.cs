@@ -66,14 +66,14 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 int mintegiAukeratua = Convert.ToInt32(comboMintegia.SelectedValue);
 
-                // ❌ no puede editar otros
+                // ez duzu gailua aldatzeko baimenik, baina mintegi bereko gailuak bakarrik alda ditzakezu
                 if (mintegiIdGailua != sesioa.MintegiaId)
                 {
                     MessageBox.Show("Ezin duzu beste mintegi bateko gailua aldatu!");
                     return;
                 }
 
-                // ❌ no puede cambiar de mintegi
+                // ezin duzu mintegiz moitu
                 if (mintegiAukeratua != sesioa.MintegiaId)
                 {
                     MessageBox.Show("Ezin duzu gailua beste mintegi batera mugitu!");
@@ -245,7 +245,7 @@ namespace GUREANOS_ERRONKA.FORMS
             dataaldatu.BackgroundColor = Color.White;
             dataaldatu.GridColor = Color.LightGray;
 
-            // 🔹 BOTONES ESTILO
+            // botoien estiloa
             btnaldatuatzera.BackColor = Color.FromArgb(100, 100, 100);
             btnaldatuatzera.ForeColor = Color.White;
             btnaldatuatzera.FlatStyle = FlatStyle.Flat;
@@ -267,13 +267,13 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startY = 50;
 
-            // 🔹 DATA GRID
+            // dataaldatu kokatu eta tamaina ezarri
             dataaldatu.Width = 750;
             dataaldatu.Height = 200;
             dataaldatu.Left = centroX - dataaldatu.Width / 2;
             dataaldatu.Top = startY;
 
-            // 🔹 FILA RADIO + KOKALEKUA
+            // kokalekua eta mota
             int fila1Y = dataaldatu.Bottom + 15;
 
             radioordenagailua.Left = centroX - 300;
@@ -288,7 +288,6 @@ namespace GUREANOS_ERRONKA.FORMS
             txtKokalekua.Left = label4.Right + 10;
             txtKokalekua.Top = fila1Y;
 
-            // 🔹 PANEL DERECHO (RAM / IMPRESORA)
             int panelX = centroX + 200;
 
             panelor.Left = panelX;
@@ -297,11 +296,9 @@ namespace GUREANOS_ERRONKA.FORMS
             panelin.Left = panelX;
             panelin.Top = fila1Y;
 
-            // 🔹 PANEL1 (SUBIDO Y CENTRADO)
             panel1.Left = centroX - panel1.Width / 2;
             panel1.Top = fila1Y + 60;
 
-            // 🔹 BOTONES
             int botonesY = panel1.Bottom + 20;
             int separacion = 160;
 

@@ -197,7 +197,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 return;
             }
 
-            // 💻 ordenagailua
+            // ordenagailua
             if (radioordenagailua.Checked)
             {
                 if (txtram.Text == "" || txtrom.Text == "" || txtcpu.Text == "")
@@ -230,7 +230,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 }
             }
 
-            // 🖨️ inprimagailua
+            //  inprimagailua
             else if (radioinprimagailua.Checked)
             {
                 Inprimagailua i = new Inprimagailua(
@@ -270,7 +270,7 @@ namespace GUREANOS_ERRONKA.FORMS
         {
             PANELA p = new PANELA();
             p.Show();
-            this.Close(); // 🔥 importante (no Hide)
+            this.Close(); 
         }
         private void GarbituFormularioa()
         {
