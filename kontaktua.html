@@ -15,11 +15,20 @@
 
 <h2>📞 Kontaktua</h2>
 
-<input type="text" id="izena" class="form-control mb-3" placeholder="Izena">
-<input type="email" id="emaila" class="form-control mb-3" placeholder="Emaila">
-<textarea id="mezua" class="form-control mb-3" placeholder="Mezua"></textarea>
+<form action="https://formsubmit.co/jhuegun25@izarraitz.eus" method="POST">
 
-<button class="btn btn-primary w-100" onclick="enviar()">Bidali</button>
+<input type="text" name="Izena" class="form-control mb-3" placeholder="Izena" required>
+
+<input type="email" name="Emaila" class="form-control mb-3" placeholder="Emaila" required>
+
+<textarea name="Mezua" class="form-control mb-3" placeholder="Mezua" required></textarea>
+
+<input type="hidden" name="_next" value="index.html">
+<input type="hidden" name="_captcha" value="false">
+
+<button type="submit" class="btn btn-primary w-100">Bidali</button>
+
+</form>
 
 <div class="mt-4">
 <iframe 
@@ -30,18 +39,6 @@ width="100%" height="250" style="border:0;">
 
 </div>
 </div>
-
-<form action="https://formsubmit.co/jhuegun25@izarraitz.eus" method="POST">
-
-<input type="text" name="Izena" class="form-control mb-3" placeholder="Izena" required>
-
-<input type="email" name="Emaila" class="form-control mb-3" placeholder="Emaila" required>
-
-<textarea name="Mezua" class="form-control mb-3" placeholder="Mezua" required></textarea>
-
-<button type="submit" class="btn btn-primary w-100">Bidali</button>
-
-</form>
 
 </body>
 </html>
