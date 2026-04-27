@@ -11,18 +11,35 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ERABILTZAILEAEZABATU : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ERABILTZAILEAEZABATU"/> class.
+        /// </summary>
         public ERABILTZAILEAEZABATU()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the CellContentClick event of the dataerabilezabatu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void dataerabilezabatu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Load event of the ERABILTZAILEAEZABATU control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ERABILTZAILEAEZABATU_Load(object sender, EventArgs e)
         {
             // erabiltzailearen rola lortu
@@ -86,6 +103,9 @@ namespace GUREANOS_ERRONKA.FORMS
             // elementuak kokatu
             rekolokatu();
         }
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             int centroX = this.ClientSize.Width / 2;
@@ -135,6 +155,11 @@ namespace GUREANOS_ERRONKA.FORMS
             btnerabilezabatuirten.Left = btnaktibatu.Right + espacio;
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnerabilezabatu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnerabilezabatu_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola != "IKTarduraduna")
@@ -167,6 +192,11 @@ namespace GUREANOS_ERRONKA.FORMS
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnerabilezabatuatzera control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnerabilezabatuatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -174,11 +204,21 @@ namespace GUREANOS_ERRONKA.FORMS
             this.Close(); 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnerabilezabatuirten control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnerabilezabatuirten_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnaldatu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnaldatu_Click(object sender, EventArgs e)
         {
             // bakarrik ikt
@@ -277,6 +317,11 @@ namespace GUREANOS_ERRONKA.FORMS
             dataerabilezabatu.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnaktibatu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnaktibatu_Click(object sender, EventArgs e)
         {
             // ikt bakarrik

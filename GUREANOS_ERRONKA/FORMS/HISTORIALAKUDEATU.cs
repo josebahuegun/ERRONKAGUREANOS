@@ -11,13 +11,25 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class HISTORIALAKUDEATU : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HISTORIALAKUDEATU"/> class.
+        /// </summary>
         public HISTORIALAKUDEATU()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnatzerahistoriala control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnatzerahistoriala_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -25,11 +37,21 @@ namespace GUREANOS_ERRONKA.FORMS
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnirtenhistoriala control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnirtenhistoriala_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Handles the Load event of the HISTORIALAKUDEATU control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void HISTORIALAKUDEATU_Load(object sender, EventArgs e)
         {
             // erabiltzailearen rola lortu
@@ -127,6 +149,9 @@ namespace GUREANOS_ERRONKA.FORMS
             rekolokatu();
         }
 
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             int centroX = this.ClientSize.Width / 2;
@@ -207,17 +232,31 @@ namespace GUREANOS_ERRONKA.FORMS
             btnirtenhistoriala.Left = btnatzerahistoriala.Right + espacio;
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             rekolokatu();
         }
 
+        /// <summary>
+        /// Handles the CellContentClick event of the datahistoriala control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void datahistoriala_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnezabatu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnezabatu_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola != "IKTarduraduna")
@@ -246,6 +285,11 @@ namespace GUREANOS_ERRONKA.FORMS
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnaldatuhistoriala control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnaldatuhistoriala_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola != "IKTarduraduna")
@@ -275,6 +319,11 @@ namespace GUREANOS_ERRONKA.FORMS
             datahistoriala.DataSource = DBKONEXIOA.IkusiHistorikoa();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnsortu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnsortu_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola.ToLower() != "iktarduraduna")

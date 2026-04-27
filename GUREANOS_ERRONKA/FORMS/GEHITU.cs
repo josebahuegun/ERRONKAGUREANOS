@@ -11,13 +11,25 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class GEHITU : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GEHITU"/> class.
+        /// </summary>
         public GEHITU()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the radioButton1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioordenagailua.Checked)
@@ -27,16 +39,31 @@ namespace GUREANOS_ERRONKA.FORMS
             }
         }
 
+        /// <summary>
+        /// Handles the Paint event of the panel2 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the TextChanged event of the textBox1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Load event of the GEHITU control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void GEHITU_Load(object sender, EventArgs e)
         {
             // panelak hasieran ezkutatu
@@ -106,6 +133,9 @@ namespace GUREANOS_ERRONKA.FORMS
             // elementuak kokatu
             rekolokatu();
         }
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             // pantailaren erdigunea
@@ -158,17 +188,31 @@ namespace GUREANOS_ERRONKA.FORMS
             irten.Top = botonesY;
             irten.Left = btnGehitu.Left + 180;
         }
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             rekolokatu();
         }
 
+        /// <summary>
+        /// Handles the Paint event of the panelInprimagailua control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="PaintEventArgs"/> instance containing the event data.</param>
         private void panelInprimagailua_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the radioinprimagailua control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radioinprimagailua_CheckedChanged(object sender, EventArgs e)
         {
             if (radioinprimagailua.Checked)
@@ -178,16 +222,31 @@ namespace GUREANOS_ERRONKA.FORMS
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the label1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the ValueChanged event of the erostedata control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void erostedata_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnGehitu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnGehitu_Click(object sender, EventArgs e)
         {
             // balidazioa
@@ -261,17 +320,30 @@ namespace GUREANOS_ERRONKA.FORMS
             }
         }
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the combomintegia control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void combomintegia_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btngehituatzera control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btngehituatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
             p.Show();
-            this.Close(); 
+            this.Close();
         }
+        /// <summary>
+        /// Garbitus the formularioa.
+        /// </summary>
         private void GarbituFormularioa()
         {
             // testuak garbitu
@@ -301,6 +373,16 @@ namespace GUREANOS_ERRONKA.FORMS
             // panelak ezkutatu
             panelOrdenagailua.Visible = false;
             panelInprimagailua.Visible = false;
+        }
+
+        /// <summary>
+        /// Handles the TextChanged event of the txtmarka control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void txtmarka_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

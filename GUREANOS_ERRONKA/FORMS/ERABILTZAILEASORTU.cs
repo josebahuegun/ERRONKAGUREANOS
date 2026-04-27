@@ -11,13 +11,25 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ERABILTZAILEASORTU : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ERABILTZAILEASORTU"/> class.
+        /// </summary>
         public ERABILTZAILEASORTU()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the Load event of the ERABILTZAILEASORTU control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ERABILTZAILEASORTU_Load(object sender, EventArgs e)
         {
             // rolak gehitu
@@ -76,6 +88,9 @@ namespace GUREANOS_ERRONKA.FORMS
             // elementuak kokatu
             rekolokatu();
         }
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             // pantailaren erdigunea
@@ -124,21 +139,40 @@ namespace GUREANOS_ERRONKA.FORMS
             irten.Top = botonesY;
             irten.Left = btnsortuerabil.Left + 180;
         }
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             rekolokatu();
         }
+        /// <summary>
+        /// Handles the CheckedChanged event of the radioirakasle control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radioirakasle_CheckedChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event of the comboBox1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnsortuerabil control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnsortuerabil_Click(object sender, EventArgs e)
         {
             // datuak bete diren egiaztatu
@@ -181,6 +215,11 @@ namespace GUREANOS_ERRONKA.FORMS
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btngehituerabilatzera control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btngehituerabilatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -188,6 +227,11 @@ namespace GUREANOS_ERRONKA.FORMS
             this.Close(); 
         }
 
+        /// <summary>
+        /// Handles the Click event of the irten control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void irten_Click(object sender, EventArgs e)
         {
             Application.Exit();

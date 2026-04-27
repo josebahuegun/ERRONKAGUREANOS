@@ -11,13 +11,25 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ERABILTZAILEAKIKUSI : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ERABILTZAILEAKIKUSI"/> class.
+        /// </summary>
         public ERABILTZAILEAKIKUSI()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the Load event of the ERABILTZAILEAKIKUSI control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ERABILTZAILEAKIKUSI_Load(object sender, EventArgs e)
         {
             // datuak kargatu
@@ -50,6 +62,9 @@ namespace GUREANOS_ERRONKA.FORMS
             // elementuak kokatu
             rekolokatuikusi();
         }
+        /// <summary>
+        /// Rekolokatuikusis this instance.
+        /// </summary>
         private void rekolokatuikusi()
         {
             // pantailaren erdigunea kalkulatu
@@ -75,19 +90,33 @@ namespace GUREANOS_ERRONKA.FORMS
             btnikusierabilirten.Top = botonesY;
             btnikusierabilirten.Left = centroX + 80;
         }
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             rekolokatuikusi();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnikusierabilatzera control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnikusierabilatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
             p.Show();
-            this.Close(); // 🔥 importante (no Hide)
+            this.Close(); 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnikusierabilirten control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnikusierabilirten_Click(object sender, EventArgs e)
         {
             Application.Exit();

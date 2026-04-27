@@ -11,13 +11,25 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class MINTEGIAEZABATUIKUSI : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MINTEGIAEZABATUIKUSI"/> class.
+        /// </summary>
         public MINTEGIAEZABATUIKUSI()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnezabatu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnezabatu_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dataGridView1.CurrentRow.Cells["id"].Value);
@@ -56,6 +68,11 @@ namespace GUREANOS_ERRONKA.FORMS
             dataGridView1.DataSource = DBKONEXIOA.LortuMintegiak();
         }
 
+        /// <summary>
+        /// Handles the Load event of the MINTEGIAEZABATUIKUSI control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void MINTEGIAEZABATUIKUSI_Load(object sender, EventArgs e)
         {
             // datuak kargatu
@@ -91,6 +108,9 @@ namespace GUREANOS_ERRONKA.FORMS
             // elementuak kokatu
             rekolokatu();
         }
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             int centroX = this.ClientSize.Width / 2;
@@ -117,17 +137,31 @@ namespace GUREANOS_ERRONKA.FORMS
             irten.Top = botonesY;
             irten.Left = btnezabatu.Left + 180;
         }
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             rekolokatu();
         }
 
+        /// <summary>
+        /// Handles the CellContentClick event of the dataGridView1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnatzera control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -135,6 +169,11 @@ namespace GUREANOS_ERRONKA.FORMS
             this.Close(); 
         }
 
+        /// <summary>
+        /// Handles the Click event of the irten control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void irten_Click(object sender, EventArgs e)
         {
             Application.Exit();

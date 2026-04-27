@@ -9,9 +9,15 @@ using System.Threading.Tasks;
 
 namespace GUREANOS_ERRONKA.CODIGO
 {
-    internal class DBKONEXIOA
+    /// <summary>
+    ///   <br />
+    /// </summary>
+    public class DBKONEXIOA
     {
-        // ikusi gailuak (ordenagailuak eta inprimagailuak batera, egoera aktiboa dutenak bakarrik)
+        /// <summary>
+        /// Gailu aktiboen zerrenda bueltatzen du (ordenagailuak eta inprimagailuak).
+        /// </summary>
+        /// <returns>Gailuen zerrenda</returns>
         static public List<Gailua> ikusiGailuak()
         {
             KONEXIOA.Konektatu();
@@ -109,6 +115,11 @@ WHERE g.egoera = 'aktibo';";
             return gk;
         }
         // update inprimagailua (gailua taula eta inprimagailua taula biyaak aldatuko dira)
+        /// <summary>
+        /// Aldatus the inprimagailua.
+        /// </summary>
+        /// <param name="i">The i.</param>
+        /// <returns></returns>
         static public bool aldatuInprimagailua(Inprimagailua i)
         {
             bool aldatuta = false;
@@ -161,6 +172,11 @@ WHERE g.egoera = 'aktibo';";
             return aldatuta;
         }
 
+        /// <summary>
+        /// Gailuas the gehitu.
+        /// </summary>
+        /// <param name="g">The g.</param>
+        /// <returns></returns>
         static public int gailuaGehitu(Gailua g)
         {
             int txertatutakoId = -1;
@@ -215,6 +231,14 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             return txertatutakoId;
         }
 
+        /// <summary>
+        /// Txertatus the ordenagailua.
+        /// </summary>
+        /// <param name="gailuId">The gailu identifier.</param>
+        /// <param name="ram">The ram.</param>
+        /// <param name="rom">The rom.</param>
+        /// <param name="cpu">The cpu.</param>
+        /// <returns></returns>
         public static bool TxertatuOrdenagailua(int gailuId, string ram, string rom, string cpu)
         {
             bool ondo = false;
@@ -243,6 +267,13 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
             return ondo;
         }
+        /// <summary>
+        /// Txertatus the inprimagailua.
+        /// </summary>
+        /// <param name="gailuId">The gailu identifier.</param>
+        /// <param name="koloretakoa">if set to <c>true</c> [koloretakoa].</param>
+        /// <param name="teknologia">The teknologia.</param>
+        /// <returns></returns>
         public static bool TxertatuInprimagailua(int gailuId, bool koloretakoa, string teknologia)
         {
             bool ondo = false;
@@ -271,6 +302,11 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
             return ondo;
         }
+        /// <summary>
+        /// Ezabatus the gailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static bool EzabatuGailua(int id)
         {
             bool ondo = false;
@@ -314,6 +350,11 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
             return ondo;
         }
+        /// <summary>
+        /// Aldatus the gailua.
+        /// </summary>
+        /// <param name="g">The g.</param>
+        /// <returns></returns>
         public static bool AldatuGailua(Gailua g)
         {
             bool ondo = false;
@@ -345,6 +386,13 @@ WHERE id=@id";
 
             return ondo;
         }
+        /// <summary>
+        /// Aldatus the ordenagailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="ram">The ram.</param>
+        /// <param name="rom">The rom.</param>
+        /// <param name="cpu">The cpu.</param>
         public static void AldatuOrdenagailua(int id, string ram, string rom, string cpu)
         {
 
@@ -359,6 +407,12 @@ WHERE id=@id";
             cmd.ExecuteNonQuery();
 
         }
+        /// <summary>
+        /// Aldatus the inprimagailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="kolorea">if set to <c>true</c> [kolorea].</param>
+        /// <param name="teknologia">The teknologia.</param>
         public static void AldatuInprimagailua(int id, bool kolorea, string teknologia)
         {
 
@@ -372,6 +426,10 @@ WHERE id=@id";
             cmd.ExecuteNonQuery();
 
         }
+        /// <summary>
+        /// Ikusis the zaborrontzia.
+        /// </summary>
+        /// <returns></returns>
         static public DataTable IkusiZaborrontzia()
         {
             DataTable tabla = new DataTable();
@@ -408,6 +466,10 @@ JOIN mintegia m ON g.mintegia_id = m.id;
 
             return tabla;
         }
+        /// <summary>
+        /// Ikusis the erabiltzaileak.
+        /// </summary>
+        /// <returns></returns>
         static public DataTable IkusiErabiltzaileak()
         {
             DataTable tabla = new DataTable();
@@ -458,6 +520,14 @@ WHERE aktibo = 1;
 
             return tabla;
         }
+        /// <summary>
+        /// Sortus the erabiltzailea.
+        /// </summary>
+        /// <param name="izena">The izena.</param>
+        /// <param name="pass">The pass.</param>
+        /// <param name="rola">The rola.</param>
+        /// <param name="mintegiaId">The mintegia identifier.</param>
+        /// <returns></returns>
         public static bool SortuErabiltzailea(string izena, string pass, string rola, int mintegiaId)
         {
             bool ondo = false;
@@ -511,6 +581,10 @@ WHERE aktibo = 1;
 
             return ondo;
         }
+        /// <summary>
+        /// Lortus the mintegiak.
+        /// </summary>
+        /// <returns></returns>
         static public DataTable LortuMintegiak()
         {
             DataTable tabla = new DataTable();
@@ -535,6 +609,11 @@ WHERE aktibo = 1;
 
             return tabla;
         }
+        /// <summary>
+        /// Ezabatus the erabiltzailea.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static bool EzabatuErabiltzailea(int id)
         {
             bool ondo = false;
@@ -582,6 +661,11 @@ WHERE aktibo = 1;
 
             return ondo;
         }
+        /// <summary>
+        /// Sortus the mintegia.
+        /// </summary>
+        /// <param name="izena">The izena.</param>
+        /// <returns></returns>
         public static bool SortuMintegia(string izena)
         {
             bool ondo = false;
@@ -628,6 +712,11 @@ WHERE aktibo = 1;
 
             return ondo;
         }
+        /// <summary>
+        /// Ezabatus the mintegia.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static bool EzabatuMintegia(int id)
         {
             bool ondo = false;
@@ -670,6 +759,10 @@ WHERE aktibo = 1;
 
             return ondo;
         }
+        /// <summary>
+        /// Ikusis the historikoa.
+        /// </summary>
+        /// <returns></returns>
         public static DataTable IkusiHistorikoa()
         {
             DataTable tabla = new DataTable();
@@ -694,6 +787,11 @@ WHERE aktibo = 1;
 
             return tabla;
         }
+        /// <summary>
+        /// Ezabatus the historikoa.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static bool EzabatuHistorikoa(int id)
         {
             bool ondo = false;
@@ -723,6 +821,13 @@ WHERE aktibo = 1;
             return ondo;
         }
         // editatu historiala (deskribapena eta mota bakarrik editatu ahal izango dira, data eta gailua_id ez dira editatuko)
+        /// <summary>
+        /// Editatus the historikoa.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="desk">The desk.</param>
+        /// <param name="mota">The mota.</param>
+        /// <returns></returns>
         public static bool EditatuHistorikoa(int id, string desk, string mota)
         {
             bool ondo = false;
@@ -754,6 +859,13 @@ WHERE aktibo = 1;
 
             return ondo;
         }
+        /// <summary>
+        /// Txertatus the historikoa.
+        /// </summary>
+        /// <param name="mota">The mota.</param>
+        /// <param name="desk">The desk.</param>
+        /// <param name="gailuaId">The gailua identifier.</param>
+        /// <returns></returns>
         public static bool TxertatuHistorikoa(string mota, string desk, int gailuaId)
         {
             bool ondo = false;
@@ -783,6 +895,14 @@ WHERE aktibo = 1;
             return ondo;
         }
         // erabiltzailea eguneratu 
+        /// <summary>
+        /// Aldatus the erabiltzailea.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="izena">The izena.</param>
+        /// <param name="pass">The pass.</param>
+        /// <param name="rola">The rola.</param>
+        /// <param name="mintegiId">The mintegi identifier.</param>
         public static void AldatuErabiltzailea(int id, string izena, string pass, string rola, int mintegiId)
         {
             try
@@ -815,6 +935,10 @@ WHERE id=@id";
                 KONEXIOA.Deskonektatu();
             }
         }
+        /// <summary>
+        /// Kontatus the ikt.
+        /// </summary>
+        /// <returns></returns>
         public static int KontatuIKT()
         {
             int kopurua = 0;
@@ -839,6 +963,11 @@ WHERE id=@id";
 
             return kopurua;
         }
+        /// <summary>
+        /// Mintegiaks the irakasleak ditu.
+        /// </summary>
+        /// <param name="mintegiaId">The mintegia identifier.</param>
+        /// <returns></returns>
         public static bool MintegiakIrakasleakDitu(int mintegiaId)
         {
             bool baditu = false;
@@ -868,6 +997,10 @@ WHERE id=@id";
 
             return baditu;
         }
+        /// <summary>
+        /// Ezabatus the ordenagailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public static void EzabatuOrdenagailua(int id)
         {
             KONEXIOA.Konektatu();
@@ -880,6 +1013,10 @@ WHERE id=@id";
             KONEXIOA.Deskonektatu();
         }
 
+        /// <summary>
+        /// Ezabatus the inprimagailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public static void EzabatuInprimagailua(int id)
         {
             KONEXIOA.Konektatu();
@@ -891,6 +1028,12 @@ WHERE id=@id";
 
             KONEXIOA.Deskonektatu();
         }
+        /// <summary>
+        /// Mintegiburuaexistitus the specified mintegi identifier.
+        /// </summary>
+        /// <param name="mintegiId">The mintegi identifier.</param>
+        /// <param name="erabiltzaileaid">The erabiltzaileaid.</param>
+        /// <returns></returns>
         public static bool mintegiburuaexistitu(int mintegiId, int erabiltzaileaid)
         {
             bool badago = false;
@@ -926,6 +1069,11 @@ AND id != @id";
             return badago;
         }
         // mintegi izenetik id lortu
+        /// <summary>
+        /// Lortus the mintegi identifier izena.
+        /// </summary>
+        /// <param name="izena">The izena.</param>
+        /// <returns></returns>
         public static int LortuMintegiIdIzena(string izena)
         {
             int id = -1;
@@ -955,6 +1103,10 @@ AND id != @id";
 
             return id;
         }
+        /// <summary>
+        /// Aktibatus the erabiltzailea.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public static void AktibatuErabiltzailea(int id)
         {
             try
@@ -976,6 +1128,11 @@ AND id != @id";
                 KONEXIOA.Deskonektatu();
             }
         }
+        /// <summary>
+        /// Mintegiaks the erabiltzaileak ditu.
+        /// </summary>
+        /// <param name="mintegiId">The mintegi identifier.</param>
+        /// <returns></returns>
         public static bool MintegiakErabiltzaileakDitu(int mintegiId)
 {
     bool baditu = false;

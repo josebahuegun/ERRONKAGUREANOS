@@ -11,13 +11,25 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class IKUSI : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IKUSI"/> class.
+        /// </summary>
         public IKUSI()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the Click event of the button1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void button1_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -25,6 +37,11 @@ namespace GUREANOS_ERRONKA.FORMS
             this.Close(); 
         }
 
+        /// <summary>
+        /// Handles the Load event of the IKUSI control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void IKUSI_Load(object sender, EventArgs e)
         {
             // datu-basetik gailuen zerrenda ekarri
@@ -84,6 +101,9 @@ namespace GUREANOS_ERRONKA.FORMS
             // elementuak kokatu
             rekolokatu();
         }
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             // pantailaren erdigunea kalkulatu
@@ -108,17 +128,31 @@ namespace GUREANOS_ERRONKA.FORMS
             btnikusiirten.Top = botonesY;
             btnikusiirten.Left = centroX + 80;
         }
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
             rekolokatu();
         }
 
+        /// <summary>
+        /// Handles the CellContentClick event of the dataGridView1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnikusiirten control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnikusiirten_Click(object sender, EventArgs e)
         {
             Application.Exit();

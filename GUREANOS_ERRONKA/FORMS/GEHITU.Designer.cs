@@ -68,6 +68,7 @@
             txtmarka.Name = "txtmarka";
             txtmarka.Size = new Size(125, 27);
             txtmarka.TabIndex = 1;
+            txtmarka.TextChanged += txtmarka_TextChanged;
             // 
             // radioordenagailua
             // 

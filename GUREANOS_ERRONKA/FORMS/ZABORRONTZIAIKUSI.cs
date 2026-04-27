@@ -11,18 +11,35 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ZABORRONTZIAIKUSI : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ZABORRONTZIAIKUSI"/> class.
+        /// </summary>
         public ZABORRONTZIAIKUSI()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the CellContentClick event of the datazabor control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void datazabor_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Load event of the ZABORRONTZIAIKUSI control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ZABORRONTZIAIKUSI_Load(object sender, EventArgs e)
         {
             // datuak kargatu
@@ -56,6 +73,9 @@ namespace GUREANOS_ERRONKA.FORMS
             // kokatu elementuak
             rekolokatu();
         }
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             int centroX = this.ClientSize.Width / 2;
@@ -79,6 +99,11 @@ namespace GUREANOS_ERRONKA.FORMS
             btnzaborirten.Left = centroX + 80;
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnzaboratzera control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnzaboratzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -86,6 +111,11 @@ namespace GUREANOS_ERRONKA.FORMS
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnzaborirten control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnzaborirten_Click(object sender, EventArgs e)
         {
             Application.Exit();

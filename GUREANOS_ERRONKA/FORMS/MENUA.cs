@@ -5,15 +5,30 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class PANELA : Form
     {
+        /// <summary>
+        /// The reloj
+        /// </summary>
         System.Windows.Forms.Timer reloj = new System.Windows.Forms.Timer();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PANELA"/> class.
+        /// </summary>
         public PANELA()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the Load event of the PANELA control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void PANELA_Load(object sender, EventArgs e)
         {
             // fondo garbia
@@ -87,10 +102,18 @@ namespace GUREANOS_ERRONKA
                 iKUSIEZABATUToolStripMenuItem.Visible = false;
             }
         }
+        /// <summary>
+        /// Erlojuas the specified sender.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void erlojua(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             int centroX = this.ClientSize.Width / 2;
@@ -127,6 +150,10 @@ namespace GUREANOS_ERRONKA
             btnIrten.Top = abajoY;
             btnIrten.Left = centroXX + 20;
         }
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -134,6 +161,11 @@ namespace GUREANOS_ERRONKA
         }
 
         // IKUSI GAILUAK
+        /// <summary>
+        /// Handles the Click event of the iKUSIToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void iKUSIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IKUSI ikusi = new IKUSI();
@@ -142,6 +174,11 @@ namespace GUREANOS_ERRONKA
         }
 
         // GEHITU GAILUA
+        /// <summary>
+        /// Handles the Click event of the gEHITUToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void gEHITUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GEHITU gehitu = new GEHITU();
@@ -150,6 +187,11 @@ namespace GUREANOS_ERRONKA
         }
 
         // ALDATU GAILUA
+        /// <summary>
+        /// Handles the Click event of the aLDATUToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void aLDATUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ALDATU a = new ALDATU();
@@ -158,6 +200,11 @@ namespace GUREANOS_ERRONKA
         }
 
         // EZABATU GAILUA
+        /// <summary>
+        /// Handles the Click event of the eZABATUToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void eZABATUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EZABATU ee = new EZABATU();
@@ -166,6 +213,11 @@ namespace GUREANOS_ERRONKA
         }
 
         // ZABORRONTZIA
+        /// <summary>
+        /// Handles the Click event of the zABORRONTZIANIKUSIToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void zABORRONTZIANIKUSIToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ZABORRONTZIAIKUSI z = new ZABORRONTZIAIKUSI();
@@ -175,23 +227,43 @@ namespace GUREANOS_ERRONKA
 
 
         // ERABILTZAILEA SORTU
+        /// <summary>
+        /// Handles the Click event of the erabiltzaileakSortuToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void erabiltzaileakSortuToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
         // ERABILTZAILEA EZABATU
+        /// <summary>
+        /// Handles the Click event of the erabiltzaileakEzabatuToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void erabiltzaileakEzabatuToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
         // IRTEN
+        /// <summary>
+        /// Handles the Click event of the irtenToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void irtenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Handles the Click event of the iKUSIToolStripMenuItem1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void iKUSIToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ERABILTZAILEAKIKUSI ikusi = new ERABILTZAILEAKIKUSI();
@@ -199,6 +271,11 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the sORTUToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void sORTUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ERABILTZAILEASORTU sortu = new ERABILTZAILEASORTU();
@@ -206,11 +283,21 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the aLDATUToolStripMenuItem1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void aLDATUToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Handles the Click event of the eZABATUToolStripMenuItem1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void eZABATUToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ERABILTZAILEAEZABATU ezabatu = new ERABILTZAILEAEZABATU();
@@ -218,6 +305,11 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the iKUSIEZABATUToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void iKUSIEZABATUToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MINTEGIAEZABATUIKUSI ikusi = new MINTEGIAEZABATUIKUSI();
@@ -225,6 +317,11 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the sORTUToolStripMenuItem1 control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void sORTUToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             SORTUMINTEGIA sortu = new SORTUMINTEGIA();
@@ -232,6 +329,11 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the gAILUENHISTORIALAToolStripMenuItem control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void gAILUENHISTORIALAToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HISTORIALAKUDEATU sortu = new HISTORIALAKUDEATU();
@@ -239,6 +341,11 @@ namespace GUREANOS_ERRONKA
             this.Hide();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnsesioaItxi control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnsesioaItxi_Click(object sender, EventArgs e)
         {
             // garbitu sesioa
@@ -253,6 +360,11 @@ namespace GUREANOS_ERRONKA
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnIrten control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnIrten_Click(object sender, EventArgs e)
         {
             Application.Exit();

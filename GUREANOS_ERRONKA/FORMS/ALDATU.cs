@@ -6,14 +6,26 @@ using System.Windows.Forms;
 
 namespace GUREANOS_ERRONKA.FORMS
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class ALDATU : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ALDATU"/> class.
+        /// </summary>
         public ALDATU()
         {
             InitializeComponent();
         }
 
 
+        /// <summary>
+        /// Handles the Click event of the btnaldatu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnaldatu_Click(object sender, EventArgs e)
         {
             if (dataaldatu.CurrentRow == null)
@@ -143,6 +155,11 @@ namespace GUREANOS_ERRONKA.FORMS
             }
         }
 
+        /// <summary>
+        /// Handles the CellClick event of the dataaldatu control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void dataaldatu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataaldatu.CurrentRow == null) return;
@@ -169,6 +186,9 @@ namespace GUREANOS_ERRONKA.FORMS
             }
         }
 
+        /// <summary>
+        /// Garbitus the formularioa.
+        /// </summary>
         private void GarbituFormularioa()
         {
             if (txtMarka != null) txtMarka.Text = "";
@@ -191,18 +211,33 @@ namespace GUREANOS_ERRONKA.FORMS
             panelin.Visible = false;
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the radioordenagailua control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radioordenagailua_CheckedChanged(object sender, EventArgs e)
         {
             panelor.Visible = radioordenagailua.Checked;
             panelin.Visible = false;
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the radioinprimagailua control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radioinprimagailua_CheckedChanged(object sender, EventArgs e)
         {
             panelin.Visible = radioinprimagailua.Checked;
             panelor.Visible = false;
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnaldatuatzera control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnaldatuatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -210,10 +245,20 @@ namespace GUREANOS_ERRONKA.FORMS
             this.Close();
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnaldatuirten control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnaldatuirten_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+        /// <summary>
+        /// Handles the Load event of the ALDATU control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ALDATU_Load(object sender, EventArgs e)
         {
             // mintegiak kargatu
@@ -261,6 +306,9 @@ namespace GUREANOS_ERRONKA.FORMS
             rekolokatu();
         }
 
+        /// <summary>
+        /// Rekolokatus this instance.
+        /// </summary>
         private void rekolokatu()
         {
             int centroX = this.ClientSize.Width / 2;
@@ -312,6 +360,10 @@ namespace GUREANOS_ERRONKA.FORMS
             btnaldatuirten.Left = btnaldatu.Left + separacion;
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
+        /// </summary>
+        /// <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);

@@ -26,6 +26,13 @@ namespace GUREANOS_ERRONKA.CODIGO
         public string Mota { get => mota; set => mota = value; }
         public int MintegiaId { get; set; }
 
+        /// <summary>Initializes a new instance of the <see cref="Gailua" /> class.</summary>
+        /// <param name="ida">The ida.</param>
+        /// <param name="eData">The e data.</param>
+        /// <param name="koka">The koka.</param>
+        /// <param name="mark">The mark.</param>
+        /// <param name="ego">The ego.</param>
+        /// <param name="mint">The mint.</param>
         public Gailua(int ida, DateTime eData, string koka, string mark, string ego, string mint)
         {
 
