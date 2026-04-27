@@ -317,6 +317,7 @@ namespace GUREANOS_ERRONKA.FORMS
             MessageBox.Show("Aldatuta!");
 
             datahistoriala.DataSource = DBKONEXIOA.IkusiHistorikoa();
+            datahistoriala.Columns["mintegiaId"].Visible = false;
         }
 
         /// <summary>
