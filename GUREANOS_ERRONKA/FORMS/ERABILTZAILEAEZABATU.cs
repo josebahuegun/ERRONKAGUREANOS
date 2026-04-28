@@ -154,6 +154,40 @@ namespace GUREANOS_ERRONKA.FORMS
             btnerabilezabatuirten.Top = botonesY;
             btnerabilezabatuirten.Left = btnaktibatu.Right + espacio;
         }
+        private void rekolokatu()
+        {
+            // pantailaren erdigunea kalkulatu
+            int centroX = this.ClientSize.Width / 2;
+            int centroY = this.ClientSize.Height / 2;
+
+            // bloke osoaren tamaina
+            int anchoTotal = 900;
+            int altoTotal = 400;
+
+            int startX = centroX - anchoTotal / 2;
+            int startY = centroY - altoTotal / 2;
+
+            // datagrid erdian
+            dataerabilezabatu.Width = 700;
+            dataerabilezabatu.Height = 250;
+            dataerabilezabatu.Left = centroX - dataerabilezabatu.Width / 2;
+            dataerabilezabatu.Top = startY;
+
+            // botoiak azpian eta zentratuta
+            int botonesY = dataerabilezabatu.Bottom + 30;
+
+            btnaldatu.Top = botonesY;
+            btnaldatu.Left = centroX - btnaldatu.Width / 2;
+
+            btnerabilezabatuatzera.Top = botonesY;
+            btnerabilezabatuatzera.Left = btnaldatu.Left - 180;
+
+            btnerabilezabatu.Top = botonesY;
+            btnerabilezabatu.Left = btnaldatu.Left + 180;
+
+            btnerabilezabatuirten.Top = botonesY;
+            btnerabilezabatuirten.Left = btnerabilezabatu.Left + 180;
+        }
 
         /// <summary>
         /// Handles the Click event of the btnerabilezabatu control.

@@ -43,6 +43,7 @@ namespace GUREANOS_ERRONKA
             lblTitulo.ForeColor = Color.FromArgb(0, 120, 215);
             lblTitulo.AutoSize = true;
 
+
             //sesioa itxi eta irten botoiak
             btnIrten.BackColor = Color.FromArgb(120, 120, 120);
             btnIrten.ForeColor = Color.White;
@@ -139,6 +140,7 @@ namespace GUREANOS_ERRONKA
             lblHora.Left = centroX - lblHora.Width / 2;
             lblHora.Top = lblFecha.Bottom + 10;
 
+
             int centroXX = this.ClientSize.Width / 2;
             int abajoY = this.ClientSize.Height - 120;
 
@@ -149,6 +151,7 @@ namespace GUREANOS_ERRONKA
             // IRTEN 
             btnIrten.Top = abajoY;
             btnIrten.Left = centroXX + 20;
+
         }
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.Resize" /> event.
@@ -369,5 +372,6 @@ namespace GUREANOS_ERRONKA
         {
             Application.Exit();
         }
+
     }
 }

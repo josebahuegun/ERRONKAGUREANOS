@@ -63,6 +63,7 @@
             dataikusierabil.RowHeadersWidth = 51;
             dataikusierabil.Size = new Size(641, 292);
             dataikusierabil.TabIndex = 3;
+            dataikusierabil.CellContentClick += dataikusierabil_CellContentClick;
             // 
             // ERABILTZAILEAKIKUSI
             // 

@@ -83,6 +83,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void SORTUMINTEGIA_Load(object sender, EventArgs e)
+
         {
             // leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
@@ -92,11 +93,13 @@ namespace GUREANOS_ERRONKA.FORMS
 
             // label estiloa
             label1.ForeColor = Color.Black;
+
             label1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
             // textbox estiloa
             txtizena.BackColor = Color.White;
             txtizena.ForeColor = Color.Black;
+
             txtizena.BorderStyle = BorderStyle.FixedSingle;
 
             // botoiak estiloa
@@ -112,7 +115,7 @@ namespace GUREANOS_ERRONKA.FORMS
             irten.ForeColor = Color.White;
             irten.FlatStyle = FlatStyle.Flat;
 
-            // elementuak erdian jarri
+
             rekolokatu();
         }
         /// <summary>
@@ -125,6 +128,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startY = centroY - 80;
 
+
             // label kokatu
             label1.Left = centroX - 150;
             label1.Top = startY;
@@ -135,6 +139,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
             // botoiak kokatu
             int botonesY = startY + 120;
+
 
             SORTU.Top = botonesY;
             SORTU.Left = centroX - SORTU.Width / 2;
@@ -154,5 +159,6 @@ namespace GUREANOS_ERRONKA.FORMS
             base.OnResize(e);
             rekolokatu();
         }
+
     }
 }
