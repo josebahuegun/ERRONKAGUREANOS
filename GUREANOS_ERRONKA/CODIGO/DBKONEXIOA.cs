@@ -180,7 +180,7 @@ WHERE g.egoera = 'aktibo';";
             return aldatuta;
         }
 
-        static public bool aldatuinprimagailua(Inprimagailua i)
+        static public bool aldatuordenagailua(Ordenagailua o)
         {
             bool aldatuta = false;
             KONEXIOA.Konektatu();
