@@ -6,54 +6,103 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
-body {
-    background: linear-gradient(135deg, #1d2671, #c33764);
-    height: 100vh;
-}
-.card { border-radius: 15px; transition: 0.3s; }
-.card:hover { transform: scale(1.03); }
+.card:hover { transform: translateY(-5px); transition: 0.3s; }
 </style>
 
-<title>Login</title>
+<title>Gure Inbentarioa</title>
 </head>
 
-<body class="d-flex align-items-center">
+<body>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-11 col-sm-8 col-md-6 col-lg-4">
-
-      <div class="card p-4 shadow-lg border-0">
-        <h3 class="text-center mb-3">🔐 Login</h3>
-
-        <input type="text" id="user" class="form-control mb-2" placeholder="Erabiltzailea">
-        <input type="password" id="pass" class="form-control mb-3" placeholder="Pasahitza">
-
-        <button class="btn btn-primary w-100" onclick="login()">Sartu</button>
-      </div>
-
-    </div>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+    <span class="navbar-brand">Inbentarioa</span>
+    <a href="login.html" class="btn btn-outline-light">Admin Login</a>
   </div>
+</nav>
+
+<div class="container mt-4">
+
+<h1>Gure Inbentario Sistema</h1>
+<p class="lead">Ikastetxeko gailuen kontrol osoa egiteko aplikazioa</p>
+
+<!-- CAROUSEL -->
+<div id="carouselExample" class="carousel slide mt-4" data-bs-ride="carousel">
+
+  <div class="carousel-inner rounded shadow">
+
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
+           class="d-block w-100" 
+           style="height:350px; object-fit:cover;">
+      <div class="carousel-caption bg-dark bg-opacity-50 rounded">
+        <h5>Gure Sistema</h5>
+        <p>Ikastetxeko gailuen kudeaketa digitala</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" 
+           class="d-block w-100" 
+           style="height:350px; object-fit:cover;">
+      <div class="carousel-caption bg-dark bg-opacity-50 rounded">
+        <h5>Gailuen Kudeaketa</h5>
+        <p>Ordenagailuak eta inprimagailuak kontrolpean</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" 
+           class="d-block w-100" 
+           style="height:350px; object-fit:cover;">
+      <div class="carousel-caption bg-dark bg-opacity-50 rounded">
+        <h5>Historial Sistema</h5>
+        <p>Datuak eta aldaketak kontrolatuta</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" 
+           class="d-block w-100" 
+           style="height:350px; object-fit:cover;">
+      <div class="carousel-caption bg-dark bg-opacity-50 rounded">
+        <h5>Erabiltzaile Rolak</h5>
+        <p>IKT, Mintegia eta Irakasleen kontrola</p>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
 </div>
 
-<script>
-function login() {
-    let user = document.getElementById("user").value;
-    let pass = document.getElementById("pass").value;
+<!-- INFO -->
+<div class="mt-5">
+<h2>Proiektuaren azalpena</h2>
+<p>
+Sistema honek ikastetxeko gailu digitalen inbentarioa kudeatzen du.
+</p>
 
-    if(user === "admin" && pass === "1234") {
-        localStorage.setItem("rol", "admin");
-        window.location.href = "admin.html";
-    }
-    else if(user === "user" && pass === "1234") {
-        localStorage.setItem("rol", "user");
-        window.location.href = "user.html";
-    }
-    else {
-        alert("Datu okerrak");
-    }
-}
-</script>
+<ul>
+<li>Gailuak gehitu, aldatu eta ezabatu</li>
+<li>Erabiltzaile rolak</li>
+<li>Historial sistema</li>
+<li>Zaborrontzia</li>
+</ul>
+</div>
+
+<a href="kontaktua.html" class="btn btn-success mt-3">Kontaktua</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
