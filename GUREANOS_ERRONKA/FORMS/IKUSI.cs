@@ -18,7 +18,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class IKUSI : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="IKUSI"/> class.
+        /// Initializes a new instance of the <see cref="IKUSI" /> class.
         /// </summary>
         public IKUSI()
         {
@@ -29,7 +29,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the button1 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void button1_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -41,13 +41,13 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the IKUSI control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void IKUSI_Load(object sender, EventArgs e)
         {
-            // datu-basetik gailuen zerrenda ekarri
+            /// datu-basetik gailuen zerrenda ekarri
             List<Gailua> gailuZerrenda = DBKONEXIOA.ikusiGailuak();
 
-            // zerrenda eraldatu datuak erakusteko
+            /// zerrenda eraldatu datuak erakusteko
             var erakustekoTaula = gailuZerrenda.Select(g => new
             {
                 Id = g.Id,
@@ -66,30 +66,30 @@ namespace GUREANOS_ERRONKA.FORMS
                 Teknologia = (g is Inprimagailua) ? ((Inprimagailua)g).Teknologia : ""
             }).ToList();
 
-            // datagrid-ean erakutsi
+            /// datagrid-ean erakutsi
             dataGridView1.DataSource = erakustekoTaula;
 
-            // id-a lelna eta ikusgai, etiketa izenarekin
+            /// id-a lelna eta ikusgai, etiketa izenarekin
             dataGridView1.Columns["Id"].Visible = true;
             dataGridView1.Columns["Id"].DisplayIndex = 0;
             dataGridView1.Columns["Id"].HeaderText = "Etiketa";
-            // ezkutatu
+            /// ezkutatu
             dataGridView1.Columns["Egoera"].Visible = false;
 
-            // leihoa pantaila osoan
+            /// leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // datagrid estiloa
+            /// datagrid estiloa
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.GridColor = Color.LightGray;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
-            // botoiak estiloa
+            /// botoiak estiloa
             btnikusiatzera.BackColor = Color.FromArgb(100, 100, 100);
             btnikusiatzera.ForeColor = Color.White;
             btnikusiatzera.FlatStyle = FlatStyle.Flat;
@@ -98,7 +98,7 @@ namespace GUREANOS_ERRONKA.FORMS
             btnikusiirten.ForeColor = Color.White;
             btnikusiirten.FlatStyle = FlatStyle.Flat;
 
-            // elementuak kokatu
+            /// elementuak kokatu
             rekolokatu();
         }
         /// <summary>
@@ -106,20 +106,20 @@ namespace GUREANOS_ERRONKA.FORMS
         /// </summary>
         private void rekolokatu()
         {
-            // pantailaren erdigunea kalkulatu
+            /// pantailaren erdigunea kalkulatu
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
             int altoTotal = 400;
             int startY = centroY - altoTotal / 2;
 
-            // datagrid erdian
+            /// datagrid erdian
             dataGridView1.Width = 900;
             dataGridView1.Height = 300;
             dataGridView1.Left = centroX - dataGridView1.Width / 2;
             dataGridView1.Top = startY;
 
-            // botoiak azpian
+            /// botoiak azpian
             int botonesY = dataGridView1.Bottom + 30;
 
             btnikusiatzera.Top = botonesY;
@@ -142,7 +142,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CellContentClick event of the dataGridView1 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -152,7 +152,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnikusiirten control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnikusiirten_Click(object sender, EventArgs e)
         {
             Application.Exit();

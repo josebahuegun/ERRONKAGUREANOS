@@ -53,25 +53,25 @@
             panelInprimagailua.SuspendLayout();
             panelOrdenagailua.SuspendLayout();
             SuspendLayout();
-            // 
-            // erostedata
-            // 
+            /// 
+            /// erostedata
+            /// 
             erostedata.Location = new Point(151, 222);
             erostedata.Name = "erostedata";
             erostedata.Size = new Size(250, 27);
             erostedata.TabIndex = 0;
             erostedata.ValueChanged += erostedata_ValueChanged;
-            // 
-            // txtmarka
-            // 
+            /// 
+            /// txtmarka
+            /// 
             txtmarka.Location = new Point(151, 44);
             txtmarka.Name = "txtmarka";
             txtmarka.Size = new Size(125, 27);
             txtmarka.TabIndex = 1;
             txtmarka.TextChanged += txtmarka_TextChanged;
-            // 
-            // radioordenagailua
-            // 
+            /// 
+            /// radioordenagailua
+            /// 
             radioordenagailua.AutoSize = true;
             radioordenagailua.Location = new Point(463, 51);
             radioordenagailua.Name = "radioordenagailua";
@@ -81,9 +81,9 @@
             radioordenagailua.Text = "Ordenagailua";
             radioordenagailua.UseVisualStyleBackColor = true;
             radioordenagailua.CheckedChanged += radioButton1_CheckedChanged;
-            // 
-            // radioinprimagailua
-            // 
+            /// 
+            /// radioinprimagailua
+            /// 
             radioinprimagailua.AutoSize = true;
             radioinprimagailua.Location = new Point(464, 128);
             radioinprimagailua.Name = "radioinprimagailua";
@@ -93,9 +93,9 @@
             radioinprimagailua.Text = "Inprimagailua";
             radioinprimagailua.UseVisualStyleBackColor = true;
             radioinprimagailua.CheckedChanged += radioinprimagailua_CheckedChanged;
-            // 
-            // panelInprimagailua
-            // 
+            /// 
+            /// panelInprimagailua
+            /// 
             panelInprimagailua.Controls.Add(label8);
             panelInprimagailua.Controls.Add(txtTeknologia);
             panelInprimagailua.Controls.Add(chkKolore);
@@ -104,25 +104,25 @@
             panelInprimagailua.Size = new Size(250, 125);
             panelInprimagailua.TabIndex = 7;
             panelInprimagailua.Paint += panelInprimagailua_Paint;
-            // 
-            // label8
-            // 
+            /// 
+            /// label8
+            /// 
             label8.AutoSize = true;
             label8.Location = new Point(3, 23);
             label8.Name = "label8";
             label8.Size = new Size(97, 20);
             label8.TabIndex = 16;
             label8.Text = "TEKNOLOGIA";
-            // 
-            // txtTeknologia
-            // 
+            /// 
+            /// txtTeknologia
+            /// 
             txtTeknologia.Location = new Point(106, 20);
             txtTeknologia.Name = "txtTeknologia";
             txtTeknologia.Size = new Size(125, 27);
             txtTeknologia.TabIndex = 1;
-            // 
-            // chkKolore
-            // 
+            /// 
+            /// chkKolore
+            /// 
             chkKolore.AutoSize = true;
             chkKolore.Location = new Point(91, 81);
             chkKolore.Name = "chkKolore";
@@ -130,9 +130,9 @@
             chkKolore.TabIndex = 0;
             chkKolore.Text = "Koloretakoa da?";
             chkKolore.UseVisualStyleBackColor = true;
-            // 
-            // panelOrdenagailua
-            // 
+            /// 
+            /// panelOrdenagailua
+            /// 
             panelOrdenagailua.Controls.Add(label7);
             panelOrdenagailua.Controls.Add(label6);
             panelOrdenagailua.Controls.Add(label5);
@@ -144,58 +144,58 @@
             panelOrdenagailua.Size = new Size(250, 125);
             panelOrdenagailua.TabIndex = 8;
             panelOrdenagailua.Paint += panel2_Paint;
-            // 
-            // label7
-            // 
+            /// 
+            /// label7
+            /// 
             label7.AutoSize = true;
             label7.Location = new Point(11, 98);
             label7.Name = "label7";
             label7.Size = new Size(36, 20);
             label7.TabIndex = 16;
             label7.Text = "CPU";
-            // 
-            // label6
-            // 
+            /// 
+            /// label6
+            /// 
             label6.AutoSize = true;
             label6.Location = new Point(11, 53);
             label6.Name = "label6";
             label6.Size = new Size(42, 20);
             label6.TabIndex = 15;
             label6.Text = "ROM";
-            // 
-            // label5
-            // 
+            /// 
+            /// label5
+            /// 
             label5.AutoSize = true;
             label5.Location = new Point(12, 6);
             label5.Name = "label5";
             label5.Size = new Size(41, 20);
             label5.TabIndex = 14;
             label5.Text = "RAM";
-            // 
-            // txtcpu
-            // 
+            /// 
+            /// txtcpu
+            /// 
             txtcpu.Location = new Point(103, 95);
             txtcpu.Name = "txtcpu";
             txtcpu.Size = new Size(125, 27);
             txtcpu.TabIndex = 2;
-            // 
-            // txtrom
-            // 
+            /// 
+            /// txtrom
+            /// 
             txtrom.Location = new Point(103, 50);
             txtrom.Name = "txtrom";
             txtrom.Size = new Size(125, 27);
             txtrom.TabIndex = 1;
-            // 
-            // txtram
-            // 
+            /// 
+            /// txtram
+            /// 
             txtram.Location = new Point(103, 3);
             txtram.Name = "txtram";
             txtram.Size = new Size(125, 27);
             txtram.TabIndex = 0;
             txtram.TextChanged += textBox1_TextChanged;
-            // 
-            // btnGehitu
-            // 
+            /// 
+            /// btnGehitu
+            /// 
             btnGehitu.Location = new Point(342, 371);
             btnGehitu.Name = "btnGehitu";
             btnGehitu.Size = new Size(133, 46);
@@ -203,36 +203,36 @@
             btnGehitu.Text = "GEHITU";
             btnGehitu.UseVisualStyleBackColor = true;
             btnGehitu.Click += btnGehitu_Click;
-            // 
-            // label2
-            // 
+            /// 
+            /// label2
+            /// 
             label2.AutoSize = true;
             label2.Location = new Point(39, 51);
             label2.Name = "label2";
             label2.Size = new Size(50, 20);
             label2.TabIndex = 11;
             label2.Text = "Marka";
-            // 
-            // label3
-            // 
+            /// 
+            /// label3
+            /// 
             label3.AutoSize = true;
             label3.Location = new Point(39, 135);
             label3.Name = "label3";
             label3.Size = new Size(68, 20);
             label3.TabIndex = 12;
             label3.Text = "Mintegia";
-            // 
-            // label4
-            // 
+            /// 
+            /// label4
+            /// 
             label4.AutoSize = true;
             label4.Location = new Point(39, 229);
             label4.Name = "label4";
             label4.Size = new Size(86, 20);
             label4.TabIndex = 13;
             label4.Text = "Eroste Data";
-            // 
-            // btngehituatzera
-            // 
+            /// 
+            /// btngehituatzera
+            /// 
             btngehituatzera.Location = new Point(151, 371);
             btngehituatzera.Name = "btngehituatzera";
             btngehituatzera.Size = new Size(133, 46);
@@ -240,27 +240,27 @@
             btngehituatzera.Text = "ATZERA";
             btngehituatzera.UseVisualStyleBackColor = true;
             btngehituatzera.Click += btngehituatzera_Click;
-            // 
-            // combomintegia
-            // 
+            /// 
+            /// combomintegia
+            /// 
             combomintegia.FormattingEnabled = true;
             combomintegia.Location = new Point(151, 132);
             combomintegia.Name = "combomintegia";
             combomintegia.Size = new Size(151, 28);
             combomintegia.TabIndex = 15;
             combomintegia.SelectedIndexChanged += combomintegia_SelectedIndexChanged;
-            // 
-            // irten
-            // 
+            /// 
+            /// irten
+            /// 
             irten.Location = new Point(538, 371);
             irten.Name = "irten";
             irten.Size = new Size(133, 46);
             irten.TabIndex = 16;
             irten.Text = "IRTEN";
             irten.UseVisualStyleBackColor = true;
-            // 
-            // GEHITU
-            // 
+            /// 
+            /// GEHITU
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

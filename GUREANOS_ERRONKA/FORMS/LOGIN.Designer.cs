@@ -36,9 +36,9 @@
             txtpasahitzalogin = new TextBox();
             lblTitulo = new Label();
             SuspendLayout();
-            // 
-            // sartulogin
-            // 
+            /// 
+            /// sartulogin
+            /// 
             sartulogin.Location = new Point(205, 364);
             sartulogin.Name = "sartulogin";
             sartulogin.Size = new Size(94, 29);
@@ -46,9 +46,9 @@
             sartulogin.Text = "SARTU";
             sartulogin.UseVisualStyleBackColor = true;
             sartulogin.Click += sartulogin_Click;
-            // 
-            // irtenlogin
-            // 
+            /// 
+            /// irtenlogin
+            /// 
             irtenlogin.Location = new Point(450, 364);
             irtenlogin.Name = "irtenlogin";
             irtenlogin.Size = new Size(94, 29);
@@ -56,50 +56,50 @@
             irtenlogin.Text = "IRTEN";
             irtenlogin.UseVisualStyleBackColor = true;
             irtenlogin.Click += irtenlogin_Click;
-            // 
-            // label1
-            // 
+            /// 
+            /// label1
+            /// 
             label1.AutoSize = true;
             label1.Location = new Point(217, 140);
             label1.Name = "label1";
             label1.Size = new Size(111, 20);
             label1.TabIndex = 2;
             label1.Text = "ERABILTZAILEA";
-            // 
-            // label2
-            // 
+            /// 
+            /// label2
+            /// 
             label2.AutoSize = true;
             label2.Location = new Point(242, 217);
             label2.Name = "label2";
             label2.Size = new Size(86, 20);
             label2.TabIndex = 3;
             label2.Text = "PASAHITZA";
-            // 
-            // txtizenalogin
-            // 
+            /// 
+            /// txtizenalogin
+            /// 
             txtizenalogin.Location = new Point(419, 140);
             txtizenalogin.Name = "txtizenalogin";
             txtizenalogin.Size = new Size(125, 27);
             txtizenalogin.TabIndex = 4;
-            // 
-            // txtpasahitzalogin
-            // 
+            /// 
+            /// txtpasahitzalogin
+            /// 
             txtpasahitzalogin.Location = new Point(419, 214);
             txtpasahitzalogin.Name = "txtpasahitzalogin";
             txtpasahitzalogin.Size = new Size(125, 27);
             txtpasahitzalogin.TabIndex = 5;
-            // 
-            // lblTitulo
-            // 
+            /// 
+            /// lblTitulo
+            /// 
             lblTitulo.AutoSize = true;
             lblTitulo.Location = new Point(360, 57);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(86, 20);
             lblTitulo.TabIndex = 6;
             lblTitulo.Text = "GUREANOS";
-            // 
-            // LOGIN
-            // 
+            /// 
+            /// LOGIN
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

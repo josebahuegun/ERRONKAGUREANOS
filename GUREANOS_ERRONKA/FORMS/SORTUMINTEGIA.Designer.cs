@@ -34,9 +34,9 @@
             label1 = new Label();
             irten = new Button();
             SuspendLayout();
-            // 
-            // atzera
-            // 
+            /// 
+            /// atzera
+            /// 
             atzera.Location = new Point(173, 340);
             atzera.Name = "atzera";
             atzera.Size = new Size(116, 33);
@@ -44,9 +44,9 @@
             atzera.Text = "ATZERA";
             atzera.UseVisualStyleBackColor = true;
             atzera.Click += atzera_Click;
-            // 
-            // SORTU
-            // 
+            /// 
+            /// SORTU
+            /// 
             SORTU.Location = new Point(362, 340);
             SORTU.Name = "SORTU";
             SORTU.Size = new Size(110, 37);
@@ -54,25 +54,25 @@
             SORTU.Text = "SORTU";
             SORTU.UseVisualStyleBackColor = true;
             SORTU.Click += SORTU_Click;
-            // 
-            // txtizena
-            // 
+            /// 
+            /// txtizena
+            /// 
             txtizena.Location = new Point(432, 167);
             txtizena.Name = "txtizena";
             txtizena.Size = new Size(125, 27);
             txtizena.TabIndex = 2;
-            // 
-            // label1
-            // 
+            /// 
+            /// label1
+            /// 
             label1.AutoSize = true;
             label1.Location = new Point(245, 167);
             label1.Name = "label1";
             label1.Size = new Size(44, 20);
             label1.TabIndex = 3;
             label1.Text = "Izena";
-            // 
-            // irten
-            // 
+            /// 
+            /// irten
+            /// 
             irten.Location = new Point(537, 340);
             irten.Name = "irten";
             irten.Size = new Size(116, 33);
@@ -80,9 +80,9 @@
             irten.Text = "IRTEN";
             irten.UseVisualStyleBackColor = true;
             irten.Click += button1_Click;
-            // 
-            // SORTUMINTEGIA
-            // 
+            /// 
+            /// SORTUMINTEGIA
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

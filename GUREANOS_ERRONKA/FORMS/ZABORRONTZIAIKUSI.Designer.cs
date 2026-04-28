@@ -33,9 +33,9 @@
             datazabor = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)datazabor).BeginInit();
             SuspendLayout();
-            // 
-            // btnzaborirten
-            // 
+            /// 
+            /// btnzaborirten
+            /// 
             btnzaborirten.Location = new Point(524, 361);
             btnzaborirten.Name = "btnzaborirten";
             btnzaborirten.Size = new Size(150, 44);
@@ -43,9 +43,9 @@
             btnzaborirten.Text = "IRTEN";
             btnzaborirten.UseVisualStyleBackColor = true;
             btnzaborirten.Click += btnzaborirten_Click;
-            // 
-            // btnzaboratzera
-            // 
+            /// 
+            /// btnzaboratzera
+            /// 
             btnzaboratzera.Location = new Point(126, 361);
             btnzaboratzera.Name = "btnzaboratzera";
             btnzaboratzera.Size = new Size(150, 44);
@@ -53,9 +53,9 @@
             btnzaboratzera.Text = "ATZERA";
             btnzaboratzera.UseVisualStyleBackColor = true;
             btnzaboratzera.Click += btnzaboratzera_Click;
-            // 
-            // datazabor
-            // 
+            /// 
+            /// datazabor
+            /// 
             datazabor.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             datazabor.Location = new Point(80, 45);
             datazabor.Name = "datazabor";
@@ -64,9 +64,9 @@
             datazabor.Size = new Size(641, 292);
             datazabor.TabIndex = 3;
             datazabor.CellContentClick += datazabor_CellContentClick;
-            // 
-            // ZABORRONTZIAIKUSI
-            // 
+            /// 
+            /// ZABORRONTZIAIKUSI
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

@@ -18,7 +18,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class ERABILTZAILEASORTU : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ERABILTZAILEASORTU"/> class.
+        /// Initializes a new instance of the <see cref="ERABILTZAILEASORTU" /> class.
         /// </summary>
         public ERABILTZAILEASORTU()
         {
@@ -29,28 +29,28 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the ERABILTZAILEASORTU control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void ERABILTZAILEASORTU_Load(object sender, EventArgs e)
         {
-            // rolak gehitu
+            /// rolak gehitu
             comborola.Items.Clear();
             comborola.Items.Add("IKT arduraduna");
             comborola.Items.Add("Mintegiburua");
             comborola.Items.Add("Irakaslea");
             comborola.SelectedIndex = 0;
 
-            // mintegiak kargatu
+            /// mintegiak kargatu
             combomintegia.DataSource = DBKONEXIOA.LortuMintegiak();
             combomintegia.DisplayMember = "izena";
             combomintegia.ValueMember = "id";
 
-            // leihoa pantaila osoan
+            /// leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // label estiloa
+            /// label estiloa
             label1.ForeColor = Color.Black;
             label2.ForeColor = Color.Black;
             label3.ForeColor = Color.Black;
@@ -61,18 +61,18 @@ namespace GUREANOS_ERRONKA.FORMS
             label3.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             label4.Font = new Font("Segoe UI", 10, FontStyle.Bold);
 
-            // textbox estiloa
+            /// textbox estiloa
             txtizenaerabil.BackColor = Color.White;
             txtizenaerabil.BorderStyle = BorderStyle.FixedSingle;
 
             txtpasahitzaerabil.BackColor = Color.White;
             txtpasahitzaerabil.BorderStyle = BorderStyle.FixedSingle;
 
-            // combobox estiloa
+            /// combobox estiloa
             comborola.BackColor = Color.White;
             combomintegia.BackColor = Color.White;
 
-            // botoiak estiloa
+            /// botoiak estiloa
             btngehituerabilatzera.BackColor = Color.FromArgb(100, 100, 100);
             btngehituerabilatzera.ForeColor = Color.White;
             btngehituerabilatzera.FlatStyle = FlatStyle.Flat;
@@ -85,7 +85,7 @@ namespace GUREANOS_ERRONKA.FORMS
             irten.ForeColor = Color.White;
             irten.FlatStyle = FlatStyle.Flat;
 
-            // elementuak kokatu
+            /// elementuak kokatu
             rekolokatu();
         }
         /// <summary>
@@ -93,41 +93,41 @@ namespace GUREANOS_ERRONKA.FORMS
         /// </summary>
         private void rekolokatu()
         {
-            // pantailaren erdigunea
+            /// pantailaren erdigunea
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
             int startY = centroY - 120;
 
-            // izena
+            /// izena
             label1.Left = centroX - 250;
             label1.Top = startY;
 
             txtizenaerabil.Left = centroX - 100;
             txtizenaerabil.Top = startY;
 
-            // rola
+            /// rola
             label3.Left = centroX + 50;
             label3.Top = startY;
 
             comborola.Left = centroX + 150;
             comborola.Top = startY;
 
-            // pasahitza
+            /// pasahitza
             label2.Left = centroX - 250;
             label2.Top = startY + 70;
 
             txtpasahitzaerabil.Left = centroX - 100;
             txtpasahitzaerabil.Top = startY + 70;
 
-            // mintegia
+            /// mintegia
             label4.Left = centroX + 50;
             label4.Top = startY + 70;
 
             combomintegia.Left = centroX + 150;
             combomintegia.Top = startY + 70;
 
-            // botoiak
+            /// botoiak
             int botonesY = startY + 160;
 
             btnsortuerabil.Top = botonesY;
@@ -152,7 +152,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CheckedChanged event of the radioirakasle control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void radioirakasle_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -162,7 +162,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the SelectedIndexChanged event of the comboBox1 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -172,20 +172,20 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnsortuerabil control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnsortuerabil_Click(object sender, EventArgs e)
         {
-            // datuak bete diren egiaztatu
+            /// datuak bete diren egiaztatu
             if (txtizenaerabil.Text == "" || txtpasahitzaerabil.Text == "")
             {
                 MessageBox.Show("Bete datu guztiak!");
                 return;
             }
 
-            // mintegia hartu
+            /// mintegia hartu
             int mintegiaId = Convert.ToInt32(combomintegia.SelectedValue);
 
-            // mintegiburua bada → kontrolatu
+            /// mintegiburua bada → kontrolatu
             if (comborola.Text == "Mintegiburua")
             {
                 if (DBKONEXIOA.mintegiburuaexistitu(mintegiaId, 0))
@@ -195,7 +195,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 }
             }
 
-            // sortu erabiltzailea
+            /// sortu erabiltzailea
             bool sortuta = DBKONEXIOA.SortuErabiltzailea(
                 txtizenaerabil.Text,
                 txtpasahitzaerabil.Text,
@@ -207,7 +207,7 @@ namespace GUREANOS_ERRONKA.FORMS
             {
                 MessageBox.Show("Erabiltzailea sortuta!");
 
-                // garbitu formularioa
+                /// garbitu formularioa
                 txtizenaerabil.Clear();
                 txtpasahitzaerabil.Clear();
                 comborola.SelectedIndex = 0;
@@ -219,7 +219,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btngehituerabilatzera control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btngehituerabilatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -231,7 +231,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the irten control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void irten_Click(object sender, EventArgs e)
         {
             Application.Exit();

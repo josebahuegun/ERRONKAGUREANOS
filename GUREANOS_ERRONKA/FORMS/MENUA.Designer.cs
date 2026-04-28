@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PANELA));
             menu1 = new MenuStrip();
             gAILUKKUDEATUToolStripMenuItem = new ToolStripMenuItem();
             iKUSIToolStripMenuItem = new ToolStripMenuItem();
@@ -123,21 +122,21 @@
             // iKUSIToolStripMenuItem1
             // 
             iKUSIToolStripMenuItem1.Name = "iKUSIToolStripMenuItem1";
-            iKUSIToolStripMenuItem1.Size = new Size(224, 26);
+            iKUSIToolStripMenuItem1.Size = new Size(216, 26);
             iKUSIToolStripMenuItem1.Text = "IKUSI";
             iKUSIToolStripMenuItem1.Click += iKUSIToolStripMenuItem1_Click;
             // 
             // sORTUToolStripMenuItem
             // 
             sORTUToolStripMenuItem.Name = "sORTUToolStripMenuItem";
-            sORTUToolStripMenuItem.Size = new Size(224, 26);
+            sORTUToolStripMenuItem.Size = new Size(216, 26);
             sORTUToolStripMenuItem.Text = "SORTU";
             sORTUToolStripMenuItem.Click += sORTUToolStripMenuItem_Click;
             // 
             // eZABATUToolStripMenuItem1
             // 
             eZABATUToolStripMenuItem1.Name = "eZABATUToolStripMenuItem1";
-            eZABATUToolStripMenuItem1.Size = new Size(224, 26);
+            eZABATUToolStripMenuItem1.Size = new Size(216, 26);
             eZABATUToolStripMenuItem1.Text = "EZABATU/ALDATU";
             eZABATUToolStripMenuItem1.Click += eZABATUToolStripMenuItem1_Click;
             // 
@@ -151,14 +150,14 @@
             // iKUSIEZABATUToolStripMenuItem
             // 
             iKUSIEZABATUToolStripMenuItem.Name = "iKUSIEZABATUToolStripMenuItem";
-            iKUSIEZABATUToolStripMenuItem.Size = new Size(224, 26);
+            iKUSIEZABATUToolStripMenuItem.Size = new Size(196, 26);
             iKUSIEZABATUToolStripMenuItem.Text = "IKUSI/EZABATU";
             iKUSIEZABATUToolStripMenuItem.Click += iKUSIEZABATUToolStripMenuItem_Click;
             // 
             // sORTUToolStripMenuItem1
             // 
             sORTUToolStripMenuItem1.Name = "sORTUToolStripMenuItem1";
-            sORTUToolStripMenuItem1.Size = new Size(224, 26);
+            sORTUToolStripMenuItem1.Size = new Size(196, 26);
             sORTUToolStripMenuItem1.Text = "SORTU";
             sORTUToolStripMenuItem1.Click += sORTUToolStripMenuItem1_Click;
             // 
@@ -242,7 +241,6 @@
             Controls.Add(lblTitulo);
             Controls.Add(menu1);
             FormBorderStyle = FormBorderStyle.None;
-            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menu1;
             Name = "PANELA";
             Text = "MENUA";

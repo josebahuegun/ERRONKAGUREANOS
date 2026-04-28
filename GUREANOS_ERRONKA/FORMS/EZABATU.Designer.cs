@@ -34,9 +34,9 @@
             btnezabatu = new Button();
             ((System.ComponentModel.ISupportInitialize)ezabatudata).BeginInit();
             SuspendLayout();
-            // 
-            // btnezabatuirten
-            // 
+            /// 
+            /// btnezabatuirten
+            /// 
             btnezabatuirten.Location = new Point(571, 361);
             btnezabatuirten.Name = "btnezabatuirten";
             btnezabatuirten.Size = new Size(150, 44);
@@ -44,9 +44,9 @@
             btnezabatuirten.Text = "IRTEN";
             btnezabatuirten.UseVisualStyleBackColor = true;
             btnezabatuirten.Click += btnezabatuirten_Click;
-            // 
-            // btnezabatuatzera
-            // 
+            /// 
+            /// btnezabatuatzera
+            /// 
             btnezabatuatzera.Location = new Point(80, 361);
             btnezabatuatzera.Name = "btnezabatuatzera";
             btnezabatuatzera.Size = new Size(150, 44);
@@ -54,9 +54,9 @@
             btnezabatuatzera.Text = "ATZERA";
             btnezabatuatzera.UseVisualStyleBackColor = true;
             btnezabatuatzera.Click += btnezabatuatzera_Click;
-            // 
-            // ezabatudata
-            // 
+            /// 
+            /// ezabatudata
+            /// 
             ezabatudata.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             ezabatudata.Location = new Point(80, 45);
             ezabatudata.Name = "ezabatudata";
@@ -65,9 +65,9 @@
             ezabatudata.Size = new Size(641, 292);
             ezabatudata.TabIndex = 3;
             ezabatudata.CellContentClick += ezabatudata_CellContentClick;
-            // 
-            // btnezabatu
-            // 
+            /// 
+            /// btnezabatu
+            /// 
             btnezabatu.Location = new Point(329, 361);
             btnezabatu.Name = "btnezabatu";
             btnezabatu.Size = new Size(150, 44);
@@ -75,9 +75,9 @@
             btnezabatu.Text = "EZABATU";
             btnezabatu.UseVisualStyleBackColor = true;
             btnezabatu.Click += btnezabatu_Click;
-            // 
-            // EZABATU
-            // 
+            /// 
+            /// EZABATU
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

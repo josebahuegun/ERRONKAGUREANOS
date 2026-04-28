@@ -18,7 +18,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class HISTORIALAKUDEATU : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HISTORIALAKUDEATU"/> class.
+        /// Initializes a new instance of the <see cref="HISTORIALAKUDEATU" /> class.
         /// </summary>
         public HISTORIALAKUDEATU()
         {
@@ -29,7 +29,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnatzerahistoriala control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnatzerahistoriala_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -41,7 +41,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnirtenhistoriala control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnirtenhistoriala_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -51,13 +51,13 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the HISTORIALAKUDEATU control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void HISTORIALAKUDEATU_Load(object sender, EventArgs e)
         {
-            // erabiltzailearen rola lortu
+            /// erabiltzailearen rola lortu
             string rola = sesioa.Rola.ToLower();
 
-            // irakaslea bada ezin sartu
+            /// irakaslea bada ezin sartu
             if (rola == "irakaslea")
             {
                 MessageBox.Show("Ez daukazu baimenik!");
@@ -65,7 +65,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 return;
             }
 
-            // ikt ez bada botoiak ezkutatu
+            /// ikt ez bada botoiak ezkutatu
             if (rola != "iktarduraduna")
             {
                 btnezabatu.Visible = false;
@@ -73,15 +73,15 @@ namespace GUREANOS_ERRONKA.FORMS
             }
             if (sesioa.Rola == "Mintegiburua")
             {
-                btnsortu.Enabled = false;   // ixkutatu botoia
+                btnsortu.Enabled = false;   /// ixkutatu botoia
             }
 
-            // gailuak combobox-ean kargatu
+            /// gailuak combobox-ean kargatu
             combogailua.DataSource = DBKONEXIOA.ikusiGailuak();
             combogailua.DisplayMember = "Marka";
             combogailua.ValueMember = "Id";
 
-            // mota aukerak
+            /// mota aukerak
             combomota.Items.Clear();
             combomota.Items.Add("GEHITU");
             combomota.Items.Add("ALDATU");
@@ -89,17 +89,17 @@ namespace GUREANOS_ERRONKA.FORMS
             combomota.Items.Add("MATXURA");
             combomota.Items.Add("KONPONDU");
 
-            // datagrid kargatu
+            /// datagrid kargatu
             datahistoriala.AutoGenerateColumns = true;
             datahistoriala.DataSource = DBKONEXIOA.IkusiHistorikoa();
 
-            // leihoa pantaila osoan
+            /// leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // label estiloa
+            /// label estiloa
             foreach (Control c in this.Controls)
             {
                 if (c is Label)
@@ -109,22 +109,22 @@ namespace GUREANOS_ERRONKA.FORMS
                 }
             }
 
-            // combobox estiloa
+            /// combobox estiloa
             combogailua.BackColor = Color.White;
             combomota.BackColor = Color.White;
 
-            // textbox estiloa
+            /// textbox estiloa
             txtdeskribapena.BackColor = Color.White;
             txtdeskribapena.BorderStyle = BorderStyle.FixedSingle;
 
-            // datagrid estiloa
+            /// datagrid estiloa
             datahistoriala.BackgroundColor = Color.White;
             datahistoriala.GridColor = Color.LightGray;
             datahistoriala.EnableHeadersVisualStyles = false;
             datahistoriala.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             datahistoriala.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
-            // botoiak estiloa
+            /// botoiak estiloa
             btnatzerahistoriala.BackColor = Color.FromArgb(100, 100, 100);
             btnatzerahistoriala.ForeColor = Color.White;
             btnatzerahistoriala.FlatStyle = FlatStyle.Flat;
@@ -145,7 +145,7 @@ namespace GUREANOS_ERRONKA.FORMS
             btnirtenhistoriala.ForeColor = Color.White;
             btnirtenhistoriala.FlatStyle = FlatStyle.Flat;
 
-            // elementuak kokatu
+            /// elementuak kokatu
             rekolokatu();
         }
 
@@ -181,7 +181,7 @@ namespace GUREANOS_ERRONKA.FORMS
             txtdeskribapena.Left = combomota.Right + separacionTop;
             txtdeskribapena.Top = startY;
 
-            // labels
+            /// labels
             label1.Left = combogailua.Left;
             label1.Top = combogailua.Top - 25;
 
@@ -246,7 +246,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CellContentClick event of the datahistoriala control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
         private void datahistoriala_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -256,7 +256,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnezabatu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnezabatu_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola != "IKTarduraduna")
@@ -289,7 +289,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnaldatuhistoriala control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnaldatuhistoriala_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola != "IKTarduraduna")
@@ -324,7 +324,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnsortu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnsortu_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola.ToLower() != "iktarduraduna")

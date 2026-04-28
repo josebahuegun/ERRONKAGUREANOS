@@ -31,7 +31,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         /// <param name="rom"></param>
         /// <param name="cpu"></param>
         public Ordenagailua(string markk, string kokaa, DateTime eDataa, string egoo, string mintt, string ram, string rom, string cpu)
-            : base("Ordenagailua", markk, kokaa, eDataa, egoo, mintt) // Aitaren konstruktoreari deitzen dio
+            : base("Ordenagailua", markk, kokaa, eDataa, egoo, mintt) /// Aitaren konstruktoreari deitzen dio
         {
             RAM = ram;
             ROM = rom;

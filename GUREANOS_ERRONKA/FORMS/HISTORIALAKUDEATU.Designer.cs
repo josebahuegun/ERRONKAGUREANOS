@@ -42,9 +42,9 @@
             label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)datahistoriala).BeginInit();
             SuspendLayout();
-            // 
-            // btnirtenhistoriala
-            // 
+            /// 
+            /// btnirtenhistoriala
+            /// 
             btnirtenhistoriala.Location = new Point(608, 361);
             btnirtenhistoriala.Name = "btnirtenhistoriala";
             btnirtenhistoriala.Size = new Size(113, 44);
@@ -52,9 +52,9 @@
             btnirtenhistoriala.Text = "IRTEN";
             btnirtenhistoriala.UseVisualStyleBackColor = true;
             btnirtenhistoriala.Click += btnirtenhistoriala_Click;
-            // 
-            // btnatzerahistoriala
-            // 
+            /// 
+            /// btnatzerahistoriala
+            /// 
             btnatzerahistoriala.Location = new Point(80, 361);
             btnatzerahistoriala.Name = "btnatzerahistoriala";
             btnatzerahistoriala.Size = new Size(104, 44);
@@ -62,9 +62,9 @@
             btnatzerahistoriala.Text = "ATZERA";
             btnatzerahistoriala.UseVisualStyleBackColor = true;
             btnatzerahistoriala.Click += btnatzerahistoriala_Click;
-            // 
-            // datahistoriala
-            // 
+            /// 
+            /// datahistoriala
+            /// 
             datahistoriala.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             datahistoriala.Location = new Point(80, 176);
             datahistoriala.Name = "datahistoriala";
@@ -73,9 +73,9 @@
             datahistoriala.Size = new Size(641, 161);
             datahistoriala.TabIndex = 3;
             datahistoriala.CellContentClick += datahistoriala_CellContentClick;
-            // 
-            // btnaldatuhistoriala
-            // 
+            /// 
+            /// btnaldatuhistoriala
+            /// 
             btnaldatuhistoriala.Location = new Point(255, 361);
             btnaldatuhistoriala.Name = "btnaldatuhistoriala";
             btnaldatuhistoriala.Size = new Size(109, 44);
@@ -83,9 +83,9 @@
             btnaldatuhistoriala.Text = "ALDATU";
             btnaldatuhistoriala.UseVisualStyleBackColor = true;
             btnaldatuhistoriala.Click += btnaldatuhistoriala_Click;
-            // 
-            // btnezabatu
-            // 
+            /// 
+            /// btnezabatu
+            /// 
             btnezabatu.Location = new Point(442, 361);
             btnezabatu.Name = "btnezabatu";
             btnezabatu.Size = new Size(109, 44);
@@ -93,9 +93,9 @@
             btnezabatu.Text = "EZABATU";
             btnezabatu.UseVisualStyleBackColor = true;
             btnezabatu.Click += btnezabatu_Click;
-            // 
-            // btnsortu
-            // 
+            /// 
+            /// btnsortu
+            /// 
             btnsortu.Location = new Point(345, 126);
             btnsortu.Name = "btnsortu";
             btnsortu.Size = new Size(109, 44);
@@ -103,59 +103,59 @@
             btnsortu.Text = "SORTU";
             btnsortu.UseVisualStyleBackColor = true;
             btnsortu.Click += btnsortu_Click;
-            // 
-            // combogailua
-            // 
+            /// 
+            /// combogailua
+            /// 
             combogailua.FormattingEnabled = true;
             combogailua.Location = new Point(90, 63);
             combogailua.Name = "combogailua";
             combogailua.Size = new Size(151, 28);
             combogailua.TabIndex = 9;
-            // 
-            // combomota
-            // 
+            /// 
+            /// combomota
+            /// 
             combomota.FormattingEnabled = true;
             combomota.Location = new Point(324, 62);
             combomota.Name = "combomota";
             combomota.Size = new Size(151, 28);
             combomota.TabIndex = 10;
-            // 
-            // txtdeskribapena
-            // 
+            /// 
+            /// txtdeskribapena
+            /// 
             txtdeskribapena.Location = new Point(550, 63);
             txtdeskribapena.Name = "txtdeskribapena";
             txtdeskribapena.Size = new Size(149, 27);
             txtdeskribapena.TabIndex = 11;
-            // 
-            // label1
-            // 
+            /// 
+            /// label1
+            /// 
             label1.AutoSize = true;
             label1.Location = new Point(133, 25);
             label1.Name = "label1";
             label1.Size = new Size(60, 20);
             label1.TabIndex = 12;
             label1.Text = "GAILUA";
-            // 
-            // label2
-            // 
+            /// 
+            /// label2
+            /// 
             label2.AutoSize = true;
             label2.Location = new Point(370, 25);
             label2.Name = "label2";
             label2.Size = new Size(49, 20);
             label2.TabIndex = 13;
             label2.Text = "MOTA";
-            // 
-            // label3
-            // 
+            /// 
+            /// label3
+            /// 
             label3.AutoSize = true;
             label3.Location = new Point(571, 25);
             label3.Name = "label3";
             label3.Size = new Size(114, 20);
             label3.TabIndex = 14;
             label3.Text = "DESKRIBAPENA";
-            // 
-            // HISTORIALAKUDEATU
-            // 
+            /// 
+            /// HISTORIALAKUDEATU
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

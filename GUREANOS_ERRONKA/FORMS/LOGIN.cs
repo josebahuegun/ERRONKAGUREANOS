@@ -21,7 +21,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class LOGIN : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LOGIN"/> class.
+        /// Initializes a new instance of the <see cref="LOGIN" /> class.
         /// </summary>
         public LOGIN()
         {
@@ -32,12 +32,12 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the sartulogin control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void sartulogin_Click(object sender, EventArgs e)
         {
             try
             {
-                // balidatu erabiltzailea eta pasahitza ez daudela hutsik
+                /// balidatu erabiltzailea eta pasahitza ez daudela hutsik
                 if (string.IsNullOrWhiteSpace(txtizenalogin.Text) || string.IsNullOrWhiteSpace(txtpasahitzalogin.Text))
                 {
                     MessageBox.Show("Sartu erabiltzailea eta pasahitza");
@@ -46,7 +46,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 KONEXIOA.Konektatu();
 
-                // gehitu SQL kontsulta erabiltzailea eta pasahitza balidatzeko, eta aktibo den egiaztatzeko
+                /// gehitu SQL kontsulta erabiltzailea eta pasahitza balidatzeko, eta aktibo den egiaztatzeko
                 string sql = @"SELECT id, izena, rola, mintegia_id 
                FROM erabiltzailea 
                WHERE izena=@izena AND pasahitza=@pass AND aktibo=1";
@@ -59,7 +59,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 if (r.Read())
                 {
-                    // sesiioa gorde
+                    /// sesiioa gorde
                     sesioa.ErabiltzaileId = r.GetInt32("id");
                     sesioa.Izena = r.GetString("izena");
                     sesioa.Rola = r.GetString("rola");          
@@ -92,7 +92,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the irtenlogin control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void irtenlogin_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -102,28 +102,28 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the LOGIN control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void LOGIN_Load(object sender, EventArgs e)
         {
-            // leihoa pantaila osoan
+            /// leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // titulua estiloa
+            /// titulua estiloa
             lblTitulo.Font = new Font("Segoe UI", 28, FontStyle.Bold);
             lblTitulo.ForeColor = Color.FromArgb(0, 120, 215);
             lblTitulo.AutoSize = true;
 
-            // labelak
+            /// labelak
             label1.ForeColor = Color.Black;
             label2.ForeColor = Color.Black;
 
             label1.Font = new Font("Segoe UI", 11, FontStyle.Bold);
             label2.Font = new Font("Segoe UI", 11, FontStyle.Bold);
 
-            // textbox estiloa
+            /// textbox estiloa
             txtizenalogin.BackColor = Color.White;
             txtizenalogin.ForeColor = Color.Black;
             txtizenalogin.BorderStyle = BorderStyle.FixedSingle;
@@ -132,10 +132,10 @@ namespace GUREANOS_ERRONKA.FORMS
             txtpasahitzalogin.ForeColor = Color.Black;
             txtpasahitzalogin.BorderStyle = BorderStyle.FixedSingle;
 
-            // pasahitza ezkutatu
+            /// pasahitza ezkutatu
             txtpasahitzalogin.UseSystemPasswordChar = true;
 
-            // botoiak
+            /// botoiak
             sartulogin.BackColor = Color.FromArgb(0, 120, 215);
             sartulogin.ForeColor = Color.White;
             sartulogin.FlatStyle = FlatStyle.Flat;
@@ -144,7 +144,7 @@ namespace GUREANOS_ERRONKA.FORMS
             irtenlogin.ForeColor = Color.White;
             irtenlogin.FlatStyle = FlatStyle.Flat;
 
-            // elementuak kokatu
+            /// elementuak kokatu
             rekolokatu();
         }
         /// <summary>
@@ -157,25 +157,25 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startY = centroY - 120;
 
-            // titulua goian
+            /// titulua goian
             lblTitulo.Left = centroX - lblTitulo.Width / 2;
             lblTitulo.Top = 80;
 
-            // erabiltzailea
+            /// erabiltzailea
             label1.Left = centroX - 150;
             label1.Top = startY;
 
             txtizenalogin.Left = centroX + 20;
             txtizenalogin.Top = startY;
 
-            // pasahitza
+            /// pasahitza
             label2.Left = centroX - 150;
             label2.Top = startY + 60;
 
             txtpasahitzalogin.Left = centroX + 20;
             txtpasahitzalogin.Top = startY + 60;
 
-            // botoiak
+            /// botoiak
             sartulogin.Top = startY + 130;
             sartulogin.Left = centroX - 120;
 

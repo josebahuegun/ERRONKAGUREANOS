@@ -12,12 +12,19 @@ namespace GUREANOS_ERRONKA.CODIGO
     /// <summary>
     ///   <br />
     /// </summary>
+    /// <summary>
+    /// 
+    /// </summary>
     public class DBKONEXIOA
     {
         /// <summary>
         /// Gailu aktiboen zerrenda bueltatzen du (ordenagailuak eta inprimagailuak).
         /// </summary>
         /// <returns>Gailuen zerrenda</returns>
+        /// <summary>
+        /// Ikusis the gailuak.
+        /// </summary>
+        /// <returns></returns>
         static public List<Gailua> ikusiGailuak()
         {
             KONEXIOA.Konektatu();
@@ -82,7 +89,7 @@ WHERE g.egoera = 'aktibo';";
                             gk.Add(i);
                         }
 
-                        // ordenagailua bada, ram, rom eta cpu datuak jaso
+                        /// ordenagailua bada, ram, rom eta cpu datuak jaso
                         else if (mota == "Ordenagailua")
                         {
                             string ram = r.IsDBNull(8) ? "" : r.GetString(8);
@@ -114,7 +121,12 @@ WHERE g.egoera = 'aktibo';";
 
             return gk;
         }
-        // update inprimagailua (gailua taula eta inprimagailua taula biyaak aldatuko dira)
+        /// <summary>
+        /// Gailuas the gehitu.
+        /// </summary>
+        /// <param name="g">The g.</param>
+        /// <returns></returns>
+        /// update inprimagailua (gailua taula eta inprimagailua taula biyaak aldatuko dira)
         /// <summary>
         /// Aldatus the inprimagailua.
         /// </summary>
@@ -131,7 +143,7 @@ WHERE g.egoera = 'aktibo';";
         {
             int txertatutakoId = -1;
 
-            // datuak balidatu
+            /// datuak balidatu
             if (string.IsNullOrWhiteSpace(g.Marka) || string.IsNullOrWhiteSpace(g.Kokalekua))
             {
                 MessageBox.Show("datuak falta dira");
@@ -142,7 +154,7 @@ WHERE g.egoera = 'aktibo';";
 
             try
             {
-                // insert zuzena (duplicadorik gabe)
+                /// insert zuzena (duplicadorik gabe)
                 string sqlie = @"INSERT INTO gailua 
 (marka, kokalekua, eroste_data, egoera, mintegia_id) 
 VALUES (@marka, @kokalekua, @eroste_data, @egoera, 
@@ -161,7 +173,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
                     MySqlCommand cmdId = new MySqlCommand("SELECT LAST_INSERT_ID()", KONEXIOA.konektatu);
                     txertatutakoId = Convert.ToInt32(cmdId.ExecuteScalar());
 
-                    // historiala gehitu
+                    /// historiala gehitu
                     DBKONEXIOA.TxertatuHistorikoa(
                         "GEHITU",
                         "gailu berria sortu da: " + g.Marka,
@@ -181,6 +193,14 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             return txertatutakoId;
         }
 
+        /// <summary>
+        /// Txertatus the ordenagailua.
+        /// </summary>
+        /// <param name="gailuId">The gailu identifier.</param>
+        /// <param name="ram">The ram.</param>
+        /// <param name="rom">The rom.</param>
+        /// <param name="cpu">The cpu.</param>
+        /// <returns></returns>
         /// <summary>
         /// Txertatus the ordenagailua.
         /// </summary>
@@ -224,6 +244,13 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
         /// <param name="koloretakoa">if set to <c>true</c> [koloretakoa].</param>
         /// <param name="teknologia">The teknologia.</param>
         /// <returns></returns>
+        /// <summary>
+        /// Txertatus the inprimagailua.
+        /// </summary>
+        /// <param name="gailuId">The gailu identifier.</param>
+        /// <param name="koloretakoa">if set to <c>true</c> [koloretakoa].</param>
+        /// <param name="teknologia">The teknologia.</param>
+        /// <returns></returns>
         public static bool TxertatuInprimagailua(int gailuId, bool koloretakoa, string teknologia)
         {
             bool ondo = false;
@@ -257,6 +284,11 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
+        /// <summary>
+        /// Ezabatus the gailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static bool EzabatuGailua(int id)
         {
             bool ondo = false;
@@ -265,16 +297,16 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
             {
                 KONEXIOA.Konektatu();
 
-                // zaborrontzira sartu (erabiltzaile izena gorde)
+                /// zaborrontzira sartu (erabiltzaile izena gorde)
                 string sql2 = "INSERT INTO zaborrontzia (ezabatze_data, gailua_id, erabiltzailea) VALUES (NOW(), @id, @user)";
                 MySqlCommand cmd2 = new MySqlCommand(sql2, KONEXIOA.konektatu);
 
                 cmd2.Parameters.AddWithValue("@id", id);
-                cmd2.Parameters.AddWithValue("@user", sesioa.Izena); // hemen izena
+                cmd2.Parameters.AddWithValue("@user", sesioa.Izena); /// hemen izena
 
                 cmd2.ExecuteNonQuery();
 
-                // gailua baja egoeran jarri
+                /// gailua baja egoeran jarri
                 string sql = "UPDATE gailua SET egoera = 'baja' WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@id", id);
@@ -282,7 +314,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
                 ondo = true;
 
-                // historiala gehitu
+                /// historiala gehitu
                 DBKONEXIOA.TxertatuHistorikoa(
                     "EZABATU",
                     "gailua baja moduan jarri da",
@@ -300,6 +332,11 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
 
             return ondo;
         }
+        /// <summary>
+        /// Aldatus the gailua.
+        /// </summary>
+        /// <param name="g">The g.</param>
+        /// <returns></returns>
         /// <summary>
         /// Aldatus the gailua.
         /// </summary>
@@ -343,6 +380,13 @@ WHERE id=@id";
         /// <param name="ram">The ram.</param>
         /// <param name="rom">The rom.</param>
         /// <param name="cpu">The cpu.</param>
+        /// <summary>
+        /// Aldatus the ordenagailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="ram">The ram.</param>
+        /// <param name="rom">The rom.</param>
+        /// <param name="cpu">The cpu.</param>
         public static void AldatuOrdenagailua(int id, string ram, string rom, string cpu)
         {
 
@@ -363,6 +407,12 @@ WHERE id=@id";
         /// <param name="id">The identifier.</param>
         /// <param name="kolorea">if set to <c>true</c> [kolorea].</param>
         /// <param name="teknologia">The teknologia.</param>
+        /// <summary>
+        /// Aldatus the inprimagailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="kolorea">if set to <c>true</c> [kolorea].</param>
+        /// <param name="teknologia">The teknologia.</param>
         public static void AldatuInprimagailua(int id, bool kolorea, string teknologia)
         {
 
@@ -376,6 +426,10 @@ WHERE id=@id";
             cmd.ExecuteNonQuery();
 
         }
+        /// <summary>
+        /// Ikusis the zaborrontzia.
+        /// </summary>
+        /// <returns></returns>
         /// <summary>
         /// Ikusis the zaborrontzia.
         /// </summary>
@@ -420,6 +474,10 @@ JOIN mintegia m ON g.mintegia_id = m.id;
         /// Ikusis the erabiltzaileak.
         /// </summary>
         /// <returns></returns>
+        /// <summary>
+        /// Ikusis the erabiltzaileak.
+        /// </summary>
+        /// <returns></returns>
         static public DataTable IkusiErabiltzaileak()
         {
             DataTable tabla = new DataTable();
@@ -430,7 +488,7 @@ JOIN mintegia m ON g.mintegia_id = m.id;
 
                 string sql = "";
 
-                // ikt denak ikusi
+                /// ikt denak ikusi
                 if (sesioa.Rola == "IKTarduraduna")
                 {
                     sql = @"
@@ -444,7 +502,7 @@ FROM erabiltzailea;
                 }
                 else
                 {
-                    // besteak bakarrik aktiboak
+                    /// besteak bakarrik aktiboak
                     sql = @"
 SELECT 
     id,
@@ -478,6 +536,14 @@ WHERE aktibo = 1;
         /// <param name="rola">The rola.</param>
         /// <param name="mintegiaId">The mintegia identifier.</param>
         /// <returns></returns>
+        /// <summary>
+        /// Sortus the erabiltzailea.
+        /// </summary>
+        /// <param name="izena">The izena.</param>
+        /// <param name="pass">The pass.</param>
+        /// <param name="rola">The rola.</param>
+        /// <param name="mintegiaId">The mintegia identifier.</param>
+        /// <returns></returns>
         public static bool SortuErabiltzailea(string izena, string pass, string rola, int mintegiaId)
         {
             bool ondo = false;
@@ -492,7 +558,7 @@ WHERE aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                // duplikatua egiaztatu
+                /// duplikatua egiaztatu
                 string check = "SELECT COUNT(*) FROM erabiltzailea WHERE izena = @izena AND aktibo = 1";
                 MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
                 cmdCheck.Parameters.AddWithValue("@izena", izena);
@@ -505,7 +571,7 @@ WHERE aktibo = 1;
                     return false;
                 }
 
-                // insert erabiltzailea
+                /// insert erabiltzailea
                 string sql = @"INSERT INTO erabiltzailea 
         (izena, pasahitza, rola, aktibo, mintegia_id)
         VALUES (@izena, @pass, @rola, 1, @mintegia)";
@@ -531,6 +597,10 @@ WHERE aktibo = 1;
 
             return ondo;
         }
+        /// <summary>
+        /// Lortus the mintegiak.
+        /// </summary>
+        /// <returns></returns>
         /// <summary>
         /// Lortus the mintegiak.
         /// </summary>
@@ -564,6 +634,11 @@ WHERE aktibo = 1;
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
+        /// <summary>
+        /// Ezabatus the erabiltzailea.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static bool EzabatuErabiltzailea(int id)
         {
             bool ondo = false;
@@ -572,27 +647,27 @@ WHERE aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                // zenbat ikt?
+                /// zenbat ikt?
                 string sqlCount = "SELECT COUNT(*) FROM erabiltzailea WHERE rola = 'IKTarduraduna' AND aktibo = 1";
                 MySqlCommand cmdCount = new MySqlCommand(sqlCount, KONEXIOA.konektatu);
 
                 int kopurua = Convert.ToInt32(cmdCount.ExecuteScalar());
 
-                // ikt den egiaztatu
+                /// ikt den egiaztatu
                 string sqlCheck = "SELECT rola FROM erabiltzailea WHERE id = @id";
                 MySqlCommand cmdCheck = new MySqlCommand(sqlCheck, KONEXIOA.konektatu);
                 cmdCheck.Parameters.AddWithValue("@id", id);
 
                 string rola = cmdCheck.ExecuteScalar().ToString();
 
-                // azken ikt bada, ez utzi ezabatzen
+                /// azken ikt bada, ez utzi ezabatzen
                 if (rola == "IKTarduraduna" && kopurua <= 1)
                 {
                     MessageBox.Show("Ezin da azken IKT ezabatu!");
                     return false;
                 }
 
-                // ezabatzen den erabiltzailea baja moduan jarri (aktibo = 0)
+                /// ezabatzen den erabiltzailea baja moduan jarri (aktibo = 0)
                 string sql = "UPDATE erabiltzailea SET aktibo = 0 WHERE id = @id";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@id", id);
@@ -616,6 +691,11 @@ WHERE aktibo = 1;
         /// </summary>
         /// <param name="izena">The izena.</param>
         /// <returns></returns>
+        /// <summary>
+        /// Sortus the mintegia.
+        /// </summary>
+        /// <param name="izena">The izena.</param>
+        /// <returns></returns>
         public static bool SortuMintegia(string izena)
         {
             bool ondo = false;
@@ -630,7 +710,7 @@ WHERE aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                // duplikatua egiaztatu
+                /// duplikatua egiaztatu
                 string check = "SELECT COUNT(*) FROM mintegia WHERE izena = @izena";
                 MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
                 cmdCheck.Parameters.AddWithValue("@izena", izena);
@@ -643,7 +723,7 @@ WHERE aktibo = 1;
                     return false;
                 }
 
-                // insert mintegia
+                /// insert mintegia
                 string sql = "INSERT INTO mintegia (izena) VALUES (@izena)";
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
                 cmd.Parameters.AddWithValue("@izena", izena);
@@ -667,6 +747,11 @@ WHERE aktibo = 1;
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
+        /// <summary>
+        /// Ezabatus the mintegia.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static bool EzabatuMintegia(int id)
         {
             bool ondo = false;
@@ -675,12 +760,12 @@ WHERE aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                // idtik mintegiaren izena lortu
+                /// idtik mintegiaren izena lortu
                 string sqlAlma = "SELECT id FROM mintegia WHERE izena = 'Almazena'";
                 MySqlCommand cmdAlma = new MySqlCommand(sqlAlma, KONEXIOA.konektatu);
                 int almazenaId = Convert.ToInt32(cmdAlma.ExecuteScalar());
 
-                // gailuak almazenera pasa
+                /// gailuak almazenera pasa
                 string sqlUpdate = "UPDATE gailua SET mintegia_id = @alma WHERE mintegia_id = @id";
                 MySqlCommand cmdUpdate = new MySqlCommand(sqlUpdate, KONEXIOA.konektatu);
 
@@ -689,7 +774,7 @@ WHERE aktibo = 1;
 
                 cmdUpdate.ExecuteNonQuery();
 
-                // ezabatu mintegia
+                /// ezabatu mintegia
                 string sqlDelete = "DELETE FROM mintegia WHERE id = @id";
                 MySqlCommand cmdDelete = new MySqlCommand(sqlDelete, KONEXIOA.konektatu);
 
@@ -709,6 +794,10 @@ WHERE aktibo = 1;
 
             return ondo;
         }
+        /// <summary>
+        /// Ikusis the historikoa.
+        /// </summary>
+        /// <returns></returns>
         /// <summary>
         /// Ikusis the historikoa.
         /// </summary>
@@ -742,13 +831,18 @@ WHERE aktibo = 1;
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
+        /// <summary>
+        /// Ezabatus the historikoa.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public static bool EzabatuHistorikoa(int id)
         {
             bool ondo = false;
 
             try
             {
-                // ezabatu historiala id-aren arabera
+                /// ezabatu historiala id-aren arabera
                 KONEXIOA.Konektatu();
 
                 string sql = "DELETE FROM historiala WHERE id_historiala = @id";
@@ -770,7 +864,14 @@ WHERE aktibo = 1;
 
             return ondo;
         }
-        // editatu historiala (deskribapena eta mota bakarrik editatu ahal izango dira, data eta gailua_id ez dira editatuko)
+        /// <summary>
+        /// Editatus the historikoa.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="desk">The desk.</param>
+        /// <param name="mota">The mota.</param>
+        /// <returns></returns>
+        /// editatu historiala (deskribapena eta mota bakarrik editatu ahal izango dira, data eta gailua_id ez dira editatuko)
         /// <summary>
         /// Editatus the historikoa.
         /// </summary>
@@ -816,13 +917,20 @@ WHERE aktibo = 1;
         /// <param name="desk">The desk.</param>
         /// <param name="gailuaId">The gailua identifier.</param>
         /// <returns></returns>
+        /// <summary>
+        /// Txertatus the historikoa.
+        /// </summary>
+        /// <param name="mota">The mota.</param>
+        /// <param name="desk">The desk.</param>
+        /// <param name="gailuaId">The gailua identifier.</param>
+        /// <returns></returns>
         public static bool TxertatuHistorikoa(string mota, string desk, int gailuaId)
         {
             bool ondo = false;
 
             try
             {
-                // ionsert historiala (data automatikoki sartu, NOW() erabiliz)
+                /// ionsert historiala (data automatikoki sartu, NOW() erabiliz)
 
                 string sql = @"INSERT INTO historiala 
                (data, deskribapena, mota, gailua_id)
@@ -844,7 +952,15 @@ WHERE aktibo = 1;
 
             return ondo;
         }
-        // erabiltzailea eguneratu 
+        /// <summary>
+        /// Aldatus the erabiltzailea.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="izena">The izena.</param>
+        /// <param name="pass">The pass.</param>
+        /// <param name="rola">The rola.</param>
+        /// <param name="mintegiId">The mintegi identifier.</param>
+        /// erabiltzailea eguneratu
         /// <summary>
         /// Aldatus the erabiltzailea.
         /// </summary>
@@ -889,6 +1005,10 @@ WHERE id=@id";
         /// Kontatus the ikt.
         /// </summary>
         /// <returns></returns>
+        /// <summary>
+        /// Kontatus the ikt.
+        /// </summary>
+        /// <returns></returns>
         public static int KontatuIKT()
         {
             int kopurua = 0;
@@ -913,6 +1033,11 @@ WHERE id=@id";
 
             return kopurua;
         }
+        /// <summary>
+        /// Mintegiaks the irakasleak ditu.
+        /// </summary>
+        /// <param name="mintegiaId">The mintegia identifier.</param>
+        /// <returns></returns>
         /// <summary>
         /// Mintegiaks the irakasleak ditu.
         /// </summary>
@@ -951,6 +1076,10 @@ WHERE id=@id";
         /// Ezabatus the ordenagailua.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <summary>
+        /// Ezabatus the ordenagailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public static void EzabatuOrdenagailua(int id)
         {
             KONEXIOA.Konektatu();
@@ -967,6 +1096,10 @@ WHERE id=@id";
         /// Ezabatus the inprimagailua.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <summary>
+        /// Ezabatus the inprimagailua.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public static void EzabatuInprimagailua(int id)
         {
             KONEXIOA.Konektatu();
@@ -978,6 +1111,12 @@ WHERE id=@id";
 
             KONEXIOA.Deskonektatu();
         }
+        /// <summary>
+        /// Mintegiburuaexistitus the specified mintegi identifier.
+        /// </summary>
+        /// <param name="mintegiId">The mintegi identifier.</param>
+        /// <param name="erabiltzaileaid">The erabiltzaileaid.</param>
+        /// <returns></returns>
         /// <summary>
         /// Mintegiburuaexistitus the specified mintegi identifier.
         /// </summary>
@@ -1018,7 +1157,12 @@ AND id != @id";
 
             return badago;
         }
-        // mintegi izenetik id lortu
+        /// <summary>
+        /// Lortus the mintegi identifier izena.
+        /// </summary>
+        /// <param name="izena">The izena.</param>
+        /// <returns></returns>
+        /// mintegi izenetik id lortu
         /// <summary>
         /// Lortus the mintegi identifier izena.
         /// </summary>
@@ -1057,6 +1201,10 @@ AND id != @id";
         /// Aktibatus the erabiltzailea.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <summary>
+        /// Aktibatus the erabiltzailea.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
         public static void AktibatuErabiltzailea(int id)
         {
             try
@@ -1078,6 +1226,11 @@ AND id != @id";
                 KONEXIOA.Deskonektatu();
             }
         }
+        /// <summary>
+        /// Mintegiaks the erabiltzaileak ditu.
+        /// </summary>
+        /// <param name="mintegiId">The mintegi identifier.</param>
+        /// <returns></returns>
         /// <summary>
         /// Mintegiaks the erabiltzaileak ditu.
         /// </summary>

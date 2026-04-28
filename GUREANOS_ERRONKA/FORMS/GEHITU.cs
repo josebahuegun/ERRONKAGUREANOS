@@ -66,29 +66,29 @@ namespace GUREANOS_ERRONKA.FORMS
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void GEHITU_Load(object sender, EventArgs e)
         {
-            // panelak hasieran ezkutatu
+            /// panelak hasieran ezkutatu
             panelOrdenagailua.Visible = false;
             panelInprimagailua.Visible = false;
 
-            // mintegiak kargatu
+            /// mintegiak kargatu
             combomintegia.DataSource = DBKONEXIOA.LortuMintegiak();
             combomintegia.DisplayMember = "izena";
             combomintegia.ValueMember = "id";
 
-            // mintegiburua bada bere mintegia bakarrik
+            /// mintegiburua bada bere mintegia bakarrik
             if (sesioa.Rola == "Mintegiburua")
             {
                 combomintegia.SelectedValue = sesioa.MintegiaId;
                 combomintegia.Enabled = false;
             }
 
-            // leihoa pantaila osoan
+            /// leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // label estiloa
+            /// label estiloa
             label2.ForeColor = Color.Black;
             label3.ForeColor = Color.Black;
             label4.ForeColor = Color.Black;
@@ -97,24 +97,24 @@ namespace GUREANOS_ERRONKA.FORMS
             label3.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             label4.Font = new Font("Segoe UI", 10, FontStyle.Bold);
 
-            // textbox estiloa
+            /// textbox estiloa
             txtmarka.BackColor = Color.White;
             txtmarka.BorderStyle = BorderStyle.FixedSingle;
 
-            // combobox estiloa
+            /// combobox estiloa
             combomintegia.BackColor = Color.White;
 
-            // datetime estiloa
+            /// datetime estiloa
             erostedata.CalendarMonthBackground = Color.White;
 
-            // panel estiloa
+            /// panel estiloa
             panelOrdenagailua.BackColor = Color.White;
             panelInprimagailua.BackColor = Color.White;
 
             panelOrdenagailua.BorderStyle = BorderStyle.FixedSingle;
             panelInprimagailua.BorderStyle = BorderStyle.FixedSingle;
 
-            // botoiak estiloa
+            /// botoiak estiloa
             btngehituatzera.BackColor = Color.FromArgb(100, 100, 100);
             btngehituatzera.ForeColor = Color.White;
             btngehituatzera.FlatStyle = FlatStyle.Flat;
@@ -127,11 +127,11 @@ namespace GUREANOS_ERRONKA.FORMS
             irten.ForeColor = Color.White;
             irten.FlatStyle = FlatStyle.Flat;
 
-            // radio estiloa
+            /// radio estiloa
             radioordenagailua.ForeColor = Color.Black;
             radioinprimagailua.ForeColor = Color.Black;
 
-            // elementuak kokatu
+            /// elementuak kokatu
             rekolokatu();
         }
         /// <summary>
@@ -139,13 +139,13 @@ namespace GUREANOS_ERRONKA.FORMS
         /// </summary>
         private void rekolokatu()
         {
-            // pantailaren erdigunea
+            /// pantailaren erdigunea
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
             int startY = centroY - 150;
 
-            // ezkerreko zona (datu nagusiak)
+            /// ezkerreko zona (datu nagusiak)
             label2.Left = centroX - 300;
             label2.Top = startY;
 
@@ -164,7 +164,7 @@ namespace GUREANOS_ERRONKA.FORMS
             erostedata.Left = centroX - 150;
             erostedata.Top = startY + 140;
 
-            // eskuineko zona (radio + panelak)
+            /// eskuineko zona (radio + panelak)
             radioordenagailua.Left = centroX + 50;
             radioordenagailua.Top = startY;
 
@@ -177,7 +177,7 @@ namespace GUREANOS_ERRONKA.FORMS
             panelInprimagailua.Left = centroX + 50;
             panelInprimagailua.Top = startY + 90;
 
-            // botoiak
+            /// botoiak
             int botonesY = startY + 250;
 
             btnGehitu.Top = botonesY;
@@ -252,14 +252,14 @@ namespace GUREANOS_ERRONKA.FORMS
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnGehitu_Click(object sender, EventArgs e)
         {
-            // balidazioa
+            /// balidazioa
             if (txtmarka.Text == "" || combomintegia.Text == "")
             {
                 MessageBox.Show("Bete datu guztiak");
                 return;
             }
 
-            // ordenagailua
+            /// ordenagailua
             if (radioordenagailua.Checked)
             {
                 if (txtram.Text == "" || txtrom.Text == "" || txtcpu.Text == "")
@@ -287,12 +287,12 @@ namespace GUREANOS_ERRONKA.FORMS
 
                     MessageBox.Show("Ordenagailua gehituta");
 
-                    // formularioa garbitu
+                    /// formularioa garbitu
                     GarbituFormularioa();
                 }
             }
 
-            //  inprimagailua
+            ///  inprimagailua
             else if (radioinprimagailua.Checked)
             {
                 Inprimagailua i = new Inprimagailua(
@@ -313,7 +313,7 @@ namespace GUREANOS_ERRONKA.FORMS
 
                     MessageBox.Show("Inprimagailua gehituta");
 
-                    // formularioa garbitu
+                    /// formularioa garbitu
                     GarbituFormularioa();
                 }
             }
@@ -349,7 +349,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// </summary>
         private void GarbituFormularioa()
         {
-            // testuak garbitu
+            /// testuak garbitu
             txtmarka.Text = "";
 
             txtram.Text = "";
@@ -357,23 +357,23 @@ namespace GUREANOS_ERRONKA.FORMS
             txtcpu.Text = "";
             txtTeknologia.Text = "";
 
-            // combobox reset (mintegiburua bada ez ukitu)
+            /// combobox reset (mintegiburua bada ez ukitu)
             if (sesioa.Rola != "Mintegiburua")
             {
                 combomintegia.SelectedIndex = -1;
             }
 
-            // data gaurko jarri
+            /// data gaurko jarri
             erostedata.Value = DateTime.Now;
 
-            // checkbox garbitu
+            /// checkbox garbitu
             chkKolore.Checked = false;
 
-            // radioak kendu
+            /// radioak kendu
             radioordenagailua.Checked = false;
             radioinprimagailua.Checked = false;
 
-            // panelak ezkutatu
+            /// panelak ezkutatu
             panelOrdenagailua.Visible = false;
             panelInprimagailua.Visible = false;
         }

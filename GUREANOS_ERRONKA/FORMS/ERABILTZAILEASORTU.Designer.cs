@@ -40,9 +40,9 @@
             comborola = new ComboBox();
             irten = new Button();
             SuspendLayout();
-            // 
-            // btngehituerabilatzera
-            // 
+            /// 
+            /// btngehituerabilatzera
+            /// 
             btngehituerabilatzera.Location = new Point(118, 369);
             btngehituerabilatzera.Name = "btngehituerabilatzera";
             btngehituerabilatzera.Size = new Size(133, 46);
@@ -50,9 +50,9 @@
             btngehituerabilatzera.Text = "ATZERA";
             btngehituerabilatzera.UseVisualStyleBackColor = true;
             btngehituerabilatzera.Click += btngehituerabilatzera_Click;
-            // 
-            // btnsortuerabil
-            // 
+            /// 
+            /// btnsortuerabil
+            /// 
             btnsortuerabil.Location = new Point(342, 369);
             btnsortuerabil.Name = "btnsortuerabil";
             btnsortuerabil.Size = new Size(133, 46);
@@ -60,50 +60,50 @@
             btnsortuerabil.Text = "SORTU";
             btnsortuerabil.UseVisualStyleBackColor = true;
             btnsortuerabil.Click += btnsortuerabil_Click;
-            // 
-            // txtizenaerabil
-            // 
+            /// 
+            /// txtizenaerabil
+            /// 
             txtizenaerabil.Location = new Point(188, 144);
             txtizenaerabil.Name = "txtizenaerabil";
             txtizenaerabil.Size = new Size(125, 27);
             txtizenaerabil.TabIndex = 17;
-            // 
-            // txtpasahitzaerabil
-            // 
+            /// 
+            /// txtpasahitzaerabil
+            /// 
             txtpasahitzaerabil.Location = new Point(188, 245);
             txtpasahitzaerabil.Name = "txtpasahitzaerabil";
             txtpasahitzaerabil.Size = new Size(125, 27);
             txtpasahitzaerabil.TabIndex = 18;
-            // 
-            // label1
-            // 
+            /// 
+            /// label1
+            /// 
             label1.AutoSize = true;
             label1.Location = new Point(90, 151);
             label1.Name = "label1";
             label1.Size = new Size(47, 20);
             label1.TabIndex = 22;
             label1.Text = "Izena:";
-            // 
-            // label2
-            // 
+            /// 
+            /// label2
+            /// 
             label2.AutoSize = true;
             label2.Location = new Point(90, 252);
             label2.Name = "label2";
             label2.Size = new Size(73, 20);
             label2.TabIndex = 23;
             label2.Text = "Pasahitza:";
-            // 
-            // label3
-            // 
+            /// 
+            /// label3
+            /// 
             label3.AutoSize = true;
             label3.Location = new Point(418, 144);
             label3.Name = "label3";
             label3.Size = new Size(48, 20);
             label3.TabIndex = 24;
             label3.Text = "Rol-a:";
-            // 
-            // combomintegia
-            // 
+            /// 
+            /// combomintegia
+            /// 
             combomintegia.FormattingEnabled = true;
             combomintegia.Items.AddRange(new object[] { "Informatika", "Osasungintza" });
             combomintegia.Location = new Point(501, 245);
@@ -111,26 +111,26 @@
             combomintegia.Size = new Size(151, 28);
             combomintegia.TabIndex = 25;
             combomintegia.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
-            // label4
-            // 
+            /// 
+            /// label4
+            /// 
             label4.AutoSize = true;
             label4.Location = new Point(418, 252);
             label4.Name = "label4";
             label4.Size = new Size(68, 20);
             label4.TabIndex = 26;
             label4.Text = "Mintegia";
-            // 
-            // comborola
-            // 
+            /// 
+            /// comborola
+            /// 
             comborola.FormattingEnabled = true;
             comborola.Location = new Point(501, 141);
             comborola.Name = "comborola";
             comborola.Size = new Size(151, 28);
             comborola.TabIndex = 27;
-            // 
-            // irten
-            // 
+            /// 
+            /// irten
+            /// 
             irten.Location = new Point(565, 369);
             irten.Name = "irten";
             irten.Size = new Size(133, 46);
@@ -138,9 +138,9 @@
             irten.Text = "IRTEN";
             irten.UseVisualStyleBackColor = true;
             irten.Click += irten_Click;
-            // 
-            // ERABILTZAILEASORTU
-            // 
+            /// 
+            /// ERABILTZAILEASORTU
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

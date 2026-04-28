@@ -18,7 +18,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class SORTUMINTEGIA : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SORTUMINTEGIA"/> class.
+        /// Initializes a new instance of the <see cref="SORTUMINTEGIA" /> class.
         /// </summary>
         public SORTUMINTEGIA()
         {
@@ -29,7 +29,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the SORTU control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void SORTU_Click(object sender, EventArgs e)
         {
             if (txtizena.Text == "")
@@ -38,7 +38,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 return;
             }
 
-            // ez utzi Almazena izena erabiltzen
+            /// ez utzi Almazena izena erabiltzen
             if (txtizena.Text == "Almazena")
             {
                 MessageBox.Show("Izena erabilia!");
@@ -59,7 +59,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the atzera control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void atzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -71,7 +71,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the button1 control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -81,28 +81,28 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the SORTUMINTEGIA control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void SORTUMINTEGIA_Load(object sender, EventArgs e)
 
         {
-            // leihoa pantaila osoan
+            /// leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // label estiloa
+            /// label estiloa
             label1.ForeColor = Color.Black;
 
             label1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
-            // textbox estiloa
+            /// textbox estiloa
             txtizena.BackColor = Color.White;
             txtizena.ForeColor = Color.Black;
 
             txtizena.BorderStyle = BorderStyle.FixedSingle;
 
-            // botoiak estiloa
+            /// botoiak estiloa
             atzera.BackColor = Color.FromArgb(100, 100, 100);
             atzera.ForeColor = Color.White;
             atzera.FlatStyle = FlatStyle.Flat;
@@ -129,15 +129,15 @@ namespace GUREANOS_ERRONKA.FORMS
             int startY = centroY - 80;
 
 
-            // label kokatu
+            /// label kokatu
             label1.Left = centroX - 150;
             label1.Top = startY;
 
-            // textbox kokatu
+            /// textbox kokatu
             txtizena.Left = centroX + 20;
             txtizena.Top = startY;
 
-            // botoiak kokatu
+            /// botoiak kokatu
             int botonesY = startY + 120;
 
 

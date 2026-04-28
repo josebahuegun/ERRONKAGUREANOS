@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GUREANOS_ERRONKA.CODIGO
 {
-    // : Gailua jarriz herentzia aplikatzen da eta Gailuaren propietateak jasotzen dira, gailua + inpresora kasu hontan
     /// <summary>
     /// 
     /// </summary>
+    /// : Gailua jarriz herentzia aplikatzen da eta Gailuaren propietateak jasotzen dira, gailua + inpresora kasu hontan
     /// <seealso cref="GUREANOS_ERRONKA.CODIGO.Gailua" />
     public class Inprimagailua : Gailua
     {
@@ -23,7 +23,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         private string teknologia;
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="Inprimagailua"/> is koloretakoa.
+        /// Gets or sets a value indicating whether this <see cref="Inprimagailua" /> is koloretakoa.
         /// </summary>
         /// <value>
         ///   <c>true</c> if koloretakoa; otherwise, <c>false</c>.
@@ -37,7 +37,7 @@ namespace GUREANOS_ERRONKA.CODIGO
         /// </value>
         public string Teknologia { get => teknologia; set => teknologia = value; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Inprimagailua"/> class.
+        /// Initializes a new instance of the <see cref="Inprimagailua" /> class.
         /// </summary>
         /// <param name="mark">The mark.</param>
         /// <param name="koka">The koka.</param>

@@ -18,7 +18,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class ZABORRONTZIAIKUSI : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ZABORRONTZIAIKUSI"/> class.
+        /// Initializes a new instance of the <see cref="ZABORRONTZIAIKUSI" /> class.
         /// </summary>
         public ZABORRONTZIAIKUSI()
         {
@@ -29,7 +29,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CellContentClick event of the datazabor control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
         private void datazabor_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -39,29 +39,29 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the ZABORRONTZIAIKUSI control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void ZABORRONTZIAIKUSI_Load(object sender, EventArgs e)
         {
-            // datuak kargatu
+            /// datuak kargatu
             datazabor.DataSource = DBKONEXIOA.IkusiZaborrontzia();
             datazabor.Columns["Etiketa"].DisplayIndex = 0;
 
 
 
-            // pantaila osoa
+            /// pantaila osoa
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo garbia
+            /// fondo garbia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // datagrid estiloa
+            /// datagrid estiloa
             datazabor.BackgroundColor = Color.White;
             datazabor.GridColor = Color.LightGray;
             datazabor.EnableHeadersVisualStyles = false;
             datazabor.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             datazabor.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
-            // botoiak estiloa
+            /// botoiak estiloa
             btnzaboratzera.BackColor = Color.FromArgb(100, 100, 100);
             btnzaboratzera.ForeColor = Color.White;
             btnzaboratzera.FlatStyle = FlatStyle.Flat;
@@ -70,7 +70,7 @@ namespace GUREANOS_ERRONKA.FORMS
             btnzaborirten.ForeColor = Color.White;
             btnzaborirten.FlatStyle = FlatStyle.Flat;
 
-            // kokatu elementuak
+            /// kokatu elementuak
             rekolokatu();
         }
         /// <summary>
@@ -83,13 +83,13 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startY = centroY - 180;
 
-            // datagrid erdian
+            /// datagrid erdian
             datazabor.Width = 800;
             datazabor.Height = 300;
             datazabor.Left = centroX - datazabor.Width / 2;
             datazabor.Top = startY;
 
-            // botoiak azpian
+            /// botoiak azpian
             int botonesY = datazabor.Bottom + 30;
 
             btnzaboratzera.Top = botonesY;
@@ -103,7 +103,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnzaboratzera control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnzaboratzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -115,7 +115,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnzaborirten control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnzaborirten_Click(object sender, EventArgs e)
         {
             Application.Exit();

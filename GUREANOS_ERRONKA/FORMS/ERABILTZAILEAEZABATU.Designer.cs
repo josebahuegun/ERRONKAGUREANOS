@@ -36,9 +36,9 @@
             btnaktibatu = new Button();
             ((System.ComponentModel.ISupportInitialize)dataerabilezabatu).BeginInit();
             SuspendLayout();
-            // 
-            // btnerabilezabatu
-            // 
+            /// 
+            /// btnerabilezabatu
+            /// 
             btnerabilezabatu.Location = new Point(406, 361);
             btnerabilezabatu.Name = "btnerabilezabatu";
             btnerabilezabatu.Size = new Size(150, 44);
@@ -46,9 +46,9 @@
             btnerabilezabatu.Text = "EZABATU";
             btnerabilezabatu.UseVisualStyleBackColor = true;
             btnerabilezabatu.Click += btnerabilezabatu_Click;
-            // 
-            // btnerabilezabatuirten
-            // 
+            /// 
+            /// btnerabilezabatuirten
+            /// 
             btnerabilezabatuirten.Location = new Point(571, 361);
             btnerabilezabatuirten.Name = "btnerabilezabatuirten";
             btnerabilezabatuirten.Size = new Size(150, 44);
@@ -56,9 +56,9 @@
             btnerabilezabatuirten.Text = "IRTEN";
             btnerabilezabatuirten.UseVisualStyleBackColor = true;
             btnerabilezabatuirten.Click += btnerabilezabatuirten_Click;
-            // 
-            // btnerabilezabatuatzera
-            // 
+            /// 
+            /// btnerabilezabatuatzera
+            /// 
             btnerabilezabatuatzera.Location = new Point(80, 361);
             btnerabilezabatuatzera.Name = "btnerabilezabatuatzera";
             btnerabilezabatuatzera.Size = new Size(150, 44);
@@ -66,9 +66,9 @@
             btnerabilezabatuatzera.Text = "ATZERA";
             btnerabilezabatuatzera.UseVisualStyleBackColor = true;
             btnerabilezabatuatzera.Click += btnerabilezabatuatzera_Click;
-            // 
-            // dataerabilezabatu
-            // 
+            /// 
+            /// dataerabilezabatu
+            /// 
             dataerabilezabatu.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataerabilezabatu.Location = new Point(80, 45);
             dataerabilezabatu.Name = "dataerabilezabatu";
@@ -77,9 +77,9 @@
             dataerabilezabatu.Size = new Size(641, 292);
             dataerabilezabatu.TabIndex = 7;
             dataerabilezabatu.CellContentClick += dataerabilezabatu_CellContentClick;
-            // 
-            // btnaldatu
-            // 
+            /// 
+            /// btnaldatu
+            /// 
             btnaldatu.Location = new Point(238, 361);
             btnaldatu.Name = "btnaldatu";
             btnaldatu.Size = new Size(150, 44);
@@ -87,9 +87,9 @@
             btnaldatu.Text = "ALDATU";
             btnaldatu.UseVisualStyleBackColor = true;
             btnaldatu.Click += btnaldatu_Click;
-            // 
-            // btnaktibatu
-            // 
+            /// 
+            /// btnaktibatu
+            /// 
             btnaktibatu.Location = new Point(356, 411);
             btnaktibatu.Name = "btnaktibatu";
             btnaktibatu.Size = new Size(94, 29);
@@ -97,9 +97,9 @@
             btnaktibatu.Text = "AKTIBATU";
             btnaktibatu.UseVisualStyleBackColor = true;
             btnaktibatu.Click += btnaktibatu_Click;
-            // 
-            // ERABILTZAILEAEZABATU
-            // 
+            /// 
+            /// ERABILTZAILEAEZABATU
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

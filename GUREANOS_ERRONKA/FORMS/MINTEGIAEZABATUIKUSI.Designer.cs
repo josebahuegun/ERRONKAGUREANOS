@@ -34,9 +34,9 @@
             irten = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridView1
-            // 
+            /// 
+            /// dataGridView1
+            /// 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(73, 29);
             dataGridView1.Name = "dataGridView1";
@@ -45,9 +45,9 @@
             dataGridView1.Size = new Size(632, 331);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // btnezabatu
-            // 
+            /// 
+            /// btnezabatu
+            /// 
             btnezabatu.Location = new Point(329, 378);
             btnezabatu.Name = "btnezabatu";
             btnezabatu.Size = new Size(139, 43);
@@ -55,9 +55,9 @@
             btnezabatu.Text = "EZABATU";
             btnezabatu.UseVisualStyleBackColor = true;
             btnezabatu.Click += btnezabatu_Click;
-            // 
-            // btnatzera
-            // 
+            /// 
+            /// btnatzera
+            /// 
             btnatzera.Location = new Point(107, 378);
             btnatzera.Name = "btnatzera";
             btnatzera.Size = new Size(139, 43);
@@ -65,9 +65,9 @@
             btnatzera.Text = "ATZERA";
             btnatzera.UseVisualStyleBackColor = true;
             btnatzera.Click += btnatzera_Click;
-            // 
-            // irten
-            // 
+            /// 
+            /// irten
+            /// 
             irten.Location = new Point(557, 378);
             irten.Name = "irten";
             irten.Size = new Size(139, 43);
@@ -75,9 +75,9 @@
             irten.Text = "IRTEN";
             irten.UseVisualStyleBackColor = true;
             irten.Click += irten_Click;
-            // 
-            // MINTEGIAEZABATUIKUSI
-            // 
+            /// 
+            /// MINTEGIAEZABATUIKUSI
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

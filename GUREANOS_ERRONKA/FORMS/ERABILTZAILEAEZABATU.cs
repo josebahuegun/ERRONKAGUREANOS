@@ -18,7 +18,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class ERABILTZAILEAEZABATU : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ERABILTZAILEAEZABATU"/> class.
+        /// Initializes a new instance of the <see cref="ERABILTZAILEAEZABATU" /> class.
         /// </summary>
         public ERABILTZAILEAEZABATU()
         {
@@ -29,7 +29,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CellContentClick event of the dataerabilezabatu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
         private void dataerabilezabatu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -39,13 +39,13 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the ERABILTZAILEAEZABATU control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void ERABILTZAILEAEZABATU_Load(object sender, EventArgs e)
         {
-            // erabiltzailearen rola lortu
+            /// erabiltzailearen rola lortu
             string rola = sesioa.Rola.ToLower();
 
-            // irakaslea bada ezin sartu
+            /// irakaslea bada ezin sartu
             if (rola == "irakaslea")
             {
                 MessageBox.Show("Ez daukazu baimenik!");
@@ -53,31 +53,31 @@ namespace GUREANOS_ERRONKA.FORMS
                 return;
             }
 
-            // ikt ez bada botoiak ezkutatu
+            /// ikt ez bada botoiak ezkutatu
             if (rola != "iktarduraduna")
             {
                 btnaldatu.Visible = false;
                 btnerabilezabatu.Visible = false;
             }
 
-            // datuak kargatu
+            /// datuak kargatu
             dataerabilezabatu.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
             dataerabilezabatu.Columns["id"].Visible = false;
 
-            // leihoa maximizatu
+            /// leihoa maximizatu
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // datagrid estiloa
+            /// datagrid estiloa
             dataerabilezabatu.BackgroundColor = Color.White;
             dataerabilezabatu.GridColor = Color.LightGray;
             dataerabilezabatu.EnableHeadersVisualStyles = false;
             dataerabilezabatu.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             dataerabilezabatu.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
-            // botoien estiloa
+            /// botoien estiloa
             btnerabilezabatuatzera.BackColor = Color.FromArgb(100, 100, 100);
             btnerabilezabatuatzera.ForeColor = Color.White;
             btnerabilezabatuatzera.FlatStyle = FlatStyle.Flat;
@@ -94,13 +94,13 @@ namespace GUREANOS_ERRONKA.FORMS
             btnerabilezabatuirten.ForeColor = Color.White;
             btnerabilezabatuirten.FlatStyle = FlatStyle.Flat;
 
-            //aktibatu botoia
+            ///aktibatu botoia
 
             btnaktibatu.BackColor = Color.FromArgb(40, 167, 69);
             btnaktibatu.ForeColor = Color.White;
             btnaktibatu.FlatStyle = FlatStyle.Flat;
 
-            // elementuak kokatu
+            /// elementuak kokatu
             rekolokatu();
         }
         /// <summary>
@@ -113,13 +113,13 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startY = centroY - 180;
 
-            // tabla
+            /// tabla
             dataerabilezabatu.Width = 700;
             dataerabilezabatu.Height = 250;
             dataerabilezabatu.Left = centroX - dataerabilezabatu.Width / 2;
             dataerabilezabatu.Top = startY;
 
-            // botoiak azpian
+            /// botoiak azpian
             int botonesY = dataerabilezabatu.Bottom + 30;
             int espacio = 20;
 
@@ -159,7 +159,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnerabilezabatu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnerabilezabatu_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola != "IKTarduraduna")
@@ -196,7 +196,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnerabilezabatuatzera control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnerabilezabatuatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -208,7 +208,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnerabilezabatuirten control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnerabilezabatuirten_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -218,50 +218,50 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnaldatu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnaldatu_Click(object sender, EventArgs e)
         {
-            // bakarrik ikt
+            /// bakarrik ikt
             if (sesioa.Rola != "IKTarduraduna")
             {
                 MessageBox.Show("Ez daukazu baimenik!");
                 return;
             }
 
-            // aukeraketa egiaztatu
+            /// aukeraketa egiaztatu
             if (dataerabilezabatu.CurrentRow == null)
             {
                 MessageBox.Show("Aukeratu erabiltzaile bat!");
                 return;
             }
 
-            // datuak hartu
+            /// datuak hartu
             int id = Convert.ToInt32(dataerabilezabatu.CurrentRow.Cells["id"].Value);
             string izena = dataerabilezabatu.CurrentRow.Cells["izena"].Value.ToString();
             string rolaActual = dataerabilezabatu.CurrentRow.Cells["rola"].Value.ToString();
 
-            // mintegia izena hartu (EZ ID)
+            /// mintegia izena hartu (EZ ID)
             string mintegiIzena = dataerabilezabatu.CurrentRow.Cells["Mintegia"].Value.ToString();
 
-            // id lortu datu basetik
+            /// id lortu datu basetik
             int mintegiId = DBKONEXIOA.LortuMintegiIdIzena(mintegiIzena);
 
-            // datu berriak eskatu
+            /// datu berriak eskatu
             string nuevaIzena = Microsoft.VisualBasic.Interaction.InputBox("Izena berria:", "Editatu", izena);
             string nuevaPass = Microsoft.VisualBasic.Interaction.InputBox("Pasahitza berria:", "Editatu", "");
             string nuevaRola = Microsoft.VisualBasic.Interaction.InputBox("Rola berria (Irakaslea / Mintegiburua / IKTarduraduna):", "Editatu", rolaActual);
 
-            // mintegi berria testu moduan
+            /// mintegi berria testu moduan
             string nuevaMintegi = Microsoft.VisualBasic.Interaction.InputBox("Mintegia berria:", "Editatu", mintegiIzena);
 
-            // hutsik ez
+            /// hutsik ez
             if (string.IsNullOrWhiteSpace(nuevaIzena) || string.IsNullOrWhiteSpace(nuevaPass))
             {
                 MessageBox.Show("Datuak falta dira!");
                 return;
             }
 
-            // rola normalizatu
+            /// rola normalizatu
             string r = nuevaRola.ToLower();
 
             if (r != "irakaslea" && r != "mintegiburua" && r != "iktarduraduna")
@@ -274,7 +274,7 @@ namespace GUREANOS_ERRONKA.FORMS
             if (r == "mintegiburua") nuevaRola = "Mintegiburua";
             if (r == "iktarduraduna") nuevaRola = "IKTarduraduna";
 
-            // mintegi berria id bihurtu
+            /// mintegi berria id bihurtu
             int mintegiBerriaId = DBKONEXIOA.LortuMintegiIdIzena(nuevaMintegi);
 
             if (mintegiBerriaId == -1)
@@ -283,7 +283,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 return;
             }
 
-            // ikt kopurua
+            /// ikt kopurua
             int kopurua = DBKONEXIOA.KontatuIKT();
 
             if (rolaActual == "IKTarduraduna" && kopurua <= 1 && nuevaRola != "IKTarduraduna")
@@ -298,7 +298,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 return;
             }
 
-            // mintegiburua bakarra
+            /// mintegiburua bakarra
             if (nuevaRola == "Mintegiburua")
             {
                 if (DBKONEXIOA.mintegiburuaexistitu(mintegiBerriaId, id))
@@ -308,12 +308,12 @@ namespace GUREANOS_ERRONKA.FORMS
                 }
             }
 
-            // EGUNERATU (ORAIN ONDO)
+            /// EGUNERATU (ORAIN ONDO)
             DBKONEXIOA.AldatuErabiltzailea(id, nuevaIzena, nuevaPass, nuevaRola, mintegiBerriaId);
 
             MessageBox.Show("Erabiltzailea aldatuta!");
 
-            // taula berritu
+            /// taula berritu
             dataerabilezabatu.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
         }
 
@@ -321,17 +321,17 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnaktibatu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnaktibatu_Click(object sender, EventArgs e)
         {
-            // ikt bakarrik
+            /// ikt bakarrik
             if (sesioa.Rola != "IKTarduraduna")
             {
                 MessageBox.Show("Ez daukazu baimenik!");
                 return;
             }
 
-            // egiaztatu aukeraketa
+            /// egiaztatu aukeraketa
             if (dataerabilezabatu.CurrentRow == null)
             {
                 MessageBox.Show("Aukeratu erabiltzaile bat!");
@@ -341,19 +341,19 @@ namespace GUREANOS_ERRONKA.FORMS
             int id = Convert.ToInt32(dataerabilezabatu.CurrentRow.Cells["id"].Value);
             bool aktibo = Convert.ToBoolean(dataerabilezabatu.CurrentRow.Cells["aktibo"].Value);
 
-            // aktibo dagoen egiaztatu
+            /// aktibo dagoen egiaztatu
             if (aktibo)
             {
                 MessageBox.Show("Erabiltzailea jada aktibo dago!");
                 return;
             }
 
-            // aktibatu
+            /// aktibatu
             DBKONEXIOA.AktibatuErabiltzailea(id);
 
             MessageBox.Show("Erabiltzailea aktibatuta!");
 
-            // refreshhhh
+            /// refreshhhh
             dataerabilezabatu.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
         }
     }

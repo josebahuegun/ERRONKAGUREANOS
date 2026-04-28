@@ -33,9 +33,9 @@
             btnikusiirten = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // dataGridView1
-            // 
+            /// 
+            /// dataGridView1
+            /// 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(77, 78);
             dataGridView1.Name = "dataGridView1";
@@ -44,9 +44,9 @@
             dataGridView1.Size = new Size(641, 292);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // btnikusiatzera
-            // 
+            /// 
+            /// btnikusiatzera
+            /// 
             btnikusiatzera.Location = new Point(123, 394);
             btnikusiatzera.Name = "btnikusiatzera";
             btnikusiatzera.Size = new Size(150, 44);
@@ -54,9 +54,9 @@
             btnikusiatzera.Text = "ATZERA";
             btnikusiatzera.UseVisualStyleBackColor = true;
             btnikusiatzera.Click += button1_Click;
-            // 
-            // btnikusiirten
-            // 
+            /// 
+            /// btnikusiirten
+            /// 
             btnikusiirten.Location = new Point(521, 394);
             btnikusiirten.Name = "btnikusiirten";
             btnikusiirten.Size = new Size(150, 44);
@@ -64,9 +64,9 @@
             btnikusiirten.Text = "IRTEN";
             btnikusiirten.UseVisualStyleBackColor = true;
             btnikusiirten.Click += btnikusiirten_Click;
-            // 
-            // IKUSI
-            // 
+            /// 
+            /// IKUSI
+            /// 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Red;

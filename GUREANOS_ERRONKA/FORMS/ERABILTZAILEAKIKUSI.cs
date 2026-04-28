@@ -18,7 +18,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class ERABILTZAILEAKIKUSI : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ERABILTZAILEAKIKUSI"/> class.
+        /// Initializes a new instance of the <see cref="ERABILTZAILEAKIKUSI" /> class.
         /// </summary>
         public ERABILTZAILEAKIKUSI()
         {
@@ -29,28 +29,28 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the ERABILTZAILEAKIKUSI control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void ERABILTZAILEAKIKUSI_Load(object sender, EventArgs e)
         {
-            // datuak kargatu
+            /// datuak kargatu
             dataikusierabil.DataSource = DBKONEXIOA.IkusiErabiltzaileak();
             dataikusierabil.Columns["id"].Visible = false;
 
 
-            // leihoa pantaila osoan
+            /// leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // datagrid estiloa
+            /// datagrid estiloa
             dataikusierabil.BackgroundColor = Color.White;
             dataikusierabil.GridColor = Color.LightGray;
             dataikusierabil.EnableHeadersVisualStyles = false;
             dataikusierabil.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             dataikusierabil.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
-            // botoiak estiloa
+            /// botoiak estiloa
             btnikusierabilatzera.BackColor = Color.FromArgb(100, 100, 100);
             btnikusierabilatzera.ForeColor = Color.White;
             btnikusierabilatzera.FlatStyle = FlatStyle.Flat;
@@ -59,7 +59,7 @@ namespace GUREANOS_ERRONKA.FORMS
             btnikusierabilirten.ForeColor = Color.White;
             btnikusierabilirten.FlatStyle = FlatStyle.Flat;
 
-            // elementuak kokatu
+            /// elementuak kokatu
             rekolokatuikusi();
         }
         /// <summary>
@@ -67,21 +67,21 @@ namespace GUREANOS_ERRONKA.FORMS
         /// </summary>
         private void rekolokatuikusi()
         {
-            // pantailaren erdigunea kalkulatu
+            /// pantailaren erdigunea kalkulatu
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
-            // bloke altuera
+            /// bloke altuera
             int altoTotal = 350;
             int startY = centroY - altoTotal / 2;
 
-            // datagrid erdian
+            /// datagrid erdian
             dataikusierabil.Width = 700;
             dataikusierabil.Height = 250;
             dataikusierabil.Left = centroX - dataikusierabil.Width / 2;
             dataikusierabil.Top = startY;
 
-            // botoiak azpian
+            /// botoiak azpian
             int botonesY = dataikusierabil.Bottom + 30;
 
             btnikusierabilatzera.Top = botonesY;
@@ -104,7 +104,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnikusierabilatzera control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnikusierabilatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -116,12 +116,17 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnikusierabilirten control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnikusierabilirten_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Handles the CellContentClick event of the dataikusierabil control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
         private void dataikusierabil_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

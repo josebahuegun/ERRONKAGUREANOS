@@ -19,7 +19,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class EZABATU : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EZABATU"/> class.
+        /// Initializes a new instance of the <see cref="EZABATU" /> class.
         /// </summary>
         public EZABATU()
         {
@@ -30,7 +30,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnezabatu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnezabatu_Click(object sender, EventArgs e)
         {
             if (sesioa.Rola == "Mintegiburua")
@@ -59,7 +59,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CellContentClick event of the ezabatudata control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
         private void ezabatudata_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -69,29 +69,29 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the EZABATU control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void EZABATU_Load(object sender, EventArgs e)
         {
-            // datuak kargatu
+            /// datuak kargatu
             ezabatudata.DataSource = DBKONEXIOA.ikusiGailuak();
             ezabatudata.Columns["id"].Visible = true;
             ezabatudata.Columns["id"].DisplayIndex = 0;
             ezabatudata.Columns["id"].HeaderText = "Etiketa";
 
-            // leihoa pantaila osoan
+            /// leihoa pantaila osoan
             this.WindowState = FormWindowState.Maximized;
 
-            // fondo kolore argia
+            /// fondo kolore argia
             this.BackColor = Color.FromArgb(240, 244, 248);
 
-            // datagrid estiloa
+            /// datagrid estiloa
             ezabatudata.BackgroundColor = Color.White;
             ezabatudata.GridColor = Color.LightGray;
             ezabatudata.EnableHeadersVisualStyles = false;
             ezabatudata.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 120, 215);
             ezabatudata.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
-            // botoiak estiloa
+            /// botoiak estiloa
             btnezabatuatzera.BackColor = Color.FromArgb(100, 100, 100);
             btnezabatuatzera.ForeColor = Color.White;
             btnezabatuatzera.FlatStyle = FlatStyle.Flat;
@@ -104,7 +104,7 @@ namespace GUREANOS_ERRONKA.FORMS
             btnezabatuirten.ForeColor = Color.White;
             btnezabatuirten.FlatStyle = FlatStyle.Flat;
 
-            // elementuak kokatu
+            /// elementuak kokatu
             rekolokatu();
         }
         /// <summary>
@@ -112,20 +112,20 @@ namespace GUREANOS_ERRONKA.FORMS
         /// </summary>
         private void rekolokatu()
         {
-            // pantailaren erdigunea
+            /// pantailaren erdigunea
             int centroX = this.ClientSize.Width / 2;
             int centroY = this.ClientSize.Height / 2;
 
             int altoTotal = 350;
             int startY = centroY - altoTotal / 2;
 
-            // datagrid erdian
+            /// datagrid erdian
             ezabatudata.Width = 700;
             ezabatudata.Height = 250;
             ezabatudata.Left = centroX - ezabatudata.Width / 2;
             ezabatudata.Top = startY;
 
-            // botoiak azpian
+            /// botoiak azpian
             int botonesY = ezabatudata.Bottom + 30;
 
             btnezabatu.Top = botonesY;
@@ -150,7 +150,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnezabatuatzera control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnezabatuatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -162,7 +162,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnezabatuirten control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnezabatuirten_Click(object sender, EventArgs e)
         {
             Application.Exit();

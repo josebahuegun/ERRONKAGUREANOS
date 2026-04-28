@@ -13,7 +13,7 @@ namespace GUREANOS_ERRONKA.FORMS
     public partial class ALDATU : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ALDATU"/> class.
+        /// Initializes a new instance of the <see cref="ALDATU" /> class.
         /// </summary>
         public ALDATU()
         {
@@ -25,7 +25,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnaldatu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnaldatu_Click(object sender, EventArgs e)
         {
             if (dataaldatu.CurrentRow == null)
@@ -78,14 +78,14 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 int mintegiAukeratua = Convert.ToInt32(comboMintegia.SelectedValue);
 
-                // ez duzu gailua aldatzeko baimenik, baina mintegi bereko gailuak bakarrik alda ditzakezu
+                /// ez duzu gailua aldatzeko baimenik, baina mintegi bereko gailuak bakarrik alda ditzakezu
                 if (mintegiIdGailua != sesioa.MintegiaId)
                 {
                     MessageBox.Show("Ezin duzu beste mintegi bateko gailua aldatu!");
                     return;
                 }
 
-                // ezin duzu mintegiz moitu
+                /// ezin duzu mintegiz moitu
                 if (mintegiAukeratua != sesioa.MintegiaId)
                 {
                     MessageBox.Show("Ezin duzu gailua beste mintegi batera mugitu!");
@@ -102,7 +102,7 @@ namespace GUREANOS_ERRONKA.FORMS
                 string cpu = txtCPU?.Text ?? "";
                 string tekno = txttekno?.Text ?? "";
 
-                // gailua sortu
+                /// gailua sortu
                 Gailua g = new Gailua(
                     id,
                     data.Value,
@@ -159,7 +159,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CellClick event of the dataaldatu control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="DataGridViewCellEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="DataGridViewCellEventArgs" /> instance containing the event data.</param>
         private void dataaldatu_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataaldatu.CurrentRow == null) return;
@@ -215,7 +215,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CheckedChanged event of the radioordenagailua control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void radioordenagailua_CheckedChanged(object sender, EventArgs e)
         {
             panelor.Visible = radioordenagailua.Checked;
@@ -226,7 +226,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the CheckedChanged event of the radioinprimagailua control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void radioinprimagailua_CheckedChanged(object sender, EventArgs e)
         {
             panelin.Visible = radioinprimagailua.Checked;
@@ -237,7 +237,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnaldatuatzera control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnaldatuatzera_Click(object sender, EventArgs e)
         {
             PANELA p = new PANELA();
@@ -249,7 +249,7 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Click event of the btnaldatuirten control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void btnaldatuirten_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -258,39 +258,39 @@ namespace GUREANOS_ERRONKA.FORMS
         /// Handles the Load event of the ALDATU control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void ALDATU_Load(object sender, EventArgs e)
         {
-            // mintegiak kargatu
+            /// mintegiak kargatu
             comboMintegia.DataSource = DBKONEXIOA.LortuMintegiak();
             comboMintegia.DisplayMember = "izena";
             comboMintegia.ValueMember = "id";
             comboMintegia.SelectedIndex = 0;
 
-            // datuak kargatu
+            /// datuak kargatu
             dataaldatu.DataSource = DBKONEXIOA.ikusiGailuak();
 
-            // etiketa
+            /// etiketa
             dataaldatu.Columns["id"].DisplayIndex = 0;
             dataaldatu.Columns["id"].HeaderText = "Etiketa";
 
-            // zutabeak
+            /// zutabeak
             dataaldatu.Columns["MintegiaId"].Visible = false;
             dataaldatu.Columns["Mintegia"].HeaderText = "Mintegia";
             dataaldatu.Columns["kokalekua"].HeaderText = "Kokalekua";
 
-            // panelak ezkutatu
+            /// panelak ezkutatu
             panelor.Visible = false;
             panelin.Visible = false;
 
-            // estiloa
+            /// estiloa
             this.WindowState = FormWindowState.Maximized;
             this.BackColor = Color.FromArgb(240, 244, 248);
 
             dataaldatu.BackgroundColor = Color.White;
             dataaldatu.GridColor = Color.LightGray;
 
-            // botoien estiloa
+            /// botoien estiloa
             btnaldatuatzera.BackColor = Color.FromArgb(100, 100, 100);
             btnaldatuatzera.ForeColor = Color.White;
             btnaldatuatzera.FlatStyle = FlatStyle.Flat;
@@ -315,13 +315,13 @@ namespace GUREANOS_ERRONKA.FORMS
 
             int startY = 50;
 
-            // dataaldatu kokatu eta tamaina ezarri
+            /// dataaldatu kokatu eta tamaina ezarri
             dataaldatu.Width = 750;
             dataaldatu.Height = 200;
             dataaldatu.Left = centroX - dataaldatu.Width / 2;
             dataaldatu.Top = startY;
 
-            // kokalekua eta mota
+            /// kokalekua eta mota
             int fila1Y = dataaldatu.Bottom + 15;
 
             radioordenagailua.Left = centroX - 300;
