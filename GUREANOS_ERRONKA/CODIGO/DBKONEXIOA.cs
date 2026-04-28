@@ -488,29 +488,33 @@ JOIN mintegia m ON g.mintegia_id = m.id;
 
                 string sql = "";
 
-                /// ikt denak ikusi
+                // ikt → denak ikusi
                 if (sesioa.Rola == "IKTarduraduna")
                 {
                     sql = @"
 SELECT 
-    id,
-    izena,
-    rola,
-    aktibo
-FROM erabiltzailea;
+    e.id,
+    e.izena,
+    e.rola,
+    e.aktibo,
+    m.izena AS mintegia
+FROM erabiltzailea e
+LEFT JOIN mintegia m ON e.mintegia_id = m.id;
 ";
                 }
                 else
                 {
-                    /// besteak bakarrik aktiboak
+                    // besteak → aktibo bakarrik
                     sql = @"
 SELECT 
-    id,
-    izena,
-    rola,
-    aktibo
-FROM erabiltzailea
-WHERE aktibo = 1;
+    e.id,
+    e.izena,
+    e.rola,
+    e.aktibo,
+    m.izena AS mintegia
+FROM erabiltzailea e
+LEFT JOIN mintegia m ON e.mintegia_id = m.id
+WHERE e.aktibo = 1;
 ";
                 }
 
