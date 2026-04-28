@@ -1,0 +1,154 @@
+GUREANOS ERRONKA – DOKUMENTAZIO TEKNIKOA
+
+--------------------------------------------------
+
+1. SARRERA
+
+Dokumentu honetan GUREANOS_ERRONKA aplikazioaren azalpena, instalazioa eta erabilera azaltzen dira.
+
+Aplikazio honen helburua gailuen inbentarioa modu erraz eta eraginkorrean kudeatzea da, erabiltzaile mota desberdinak kontuan hartuta.
+
+--------------------------------------------------
+
+2. SISTEMAREN ESKAKIZUNAK
+
+Aplikazioa erabiltzeko beharrezkoa da:
+
+- Sistema eragilea: Windows 10 edo berriagoa
+- .NET instalatuta egotea (gomendatua)
+- Internet konexioa (datu-basearekin konektatzeko)
+
+--------------------------------------------------
+
+3. INSTALAZIOA
+
+Aplikazioa instalatzeko pausuak:
+
+1. Web orrialdera sartu
+2. Administratzailearen atalean "Deskargatu" botoian klik egin
+3. Fitxategia deskargatu (programa.zip edo programa.rar)
+4. Fitxategia deskonprimitu
+5. Barruan dagoen ".exe" fitxategia exekutatu
+
+OHARRA:
+Windows-ek segurtasun abisua erakutsi dezake. Kasu horretan, "Exekutatu hala ere" aukeratu.
+
+--------------------------------------------------
+
+4. APLIKAZIOAREN ERABILERA
+
+4.1 LOGIN
+
+Aplikazioa irekitzean login pantaila agertzen da. Bertan erabiltzaileak bere datuak sartu behar ditu:
+
+- Erabiltzailea
+- Pasahitza
+
+Ondoren, menu nagusira sartuko da.
+
+--------------------------------------------------
+
+4.2 MENU NAGUSIA
+
+Menu nagusitik honako aukerak daude:
+
+GAILUAK KUDEATU:
+- IKUSI
+- GEHITU
+- ALDATU
+- EZABATU
+- ZABORRONTZIAN IKUSI
+- GAILUEN HISTORIALA
+
+ERABILTZAILEAK KUDEATU:
+- IKUSI
+- SORTU
+- EZABATU/ALDATU
+
+MINTEGIAK KUDEATU:
+- IKUSI/EZABATU
+- SORTU
+
+--------------------------------------------------
+
+4.3 GAILUEN KUDEAKETA
+
+Erabiltzaileak honako ekintzak egin ditzake:
+
+- Gailu berriak gehitu (ordenagailuak edo inprimagailuak)
+- Gailuen datuak aldatu
+- Gailuak ezabatu
+- Gailuen zerrenda ikusi
+- Gailuen historiala kontsultatu
+
+--------------------------------------------------
+
+4.4 ERABILTZAILEEN KUDEAKETA
+
+Aplikazioan hiru erabiltzaile mota definitzen dira:
+
+- IKT arduraduna:
+  Aplikazio osoaren kontrola dauka. Gailuak eta erabiltzaileak sortu, aldatu, ezabatu eta ikusi ditzake.
+
+- Mintegi burua:
+  Bere mintegiari dagokion kudeaketa egin dezake. Bere mintegiko gailuak gehitu, aldatu eta ezabatu ditzake, baina ezin ditu erabiltzaileak kudeatu.
+
+- Irakaslea:
+  Ikuspen bakarra dauka. Gailuen informazioa ikusi dezake, baina ezin du aldaketarik egin.
+
+Sistema honek segurtasuna eta kontrola bermatzen ditu, erabiltzaile bakoitzari dagokion sarbidea emanez.
+
+--------------------------------------------------
+
+5. DATU-BASEA
+
+Aplikazioak MySQL datu-base bat erabiltzen du.
+
+Taula nagusiak:
+- gailua
+- ordenagailua
+- inprimagailua
+- erabiltzailea
+- historiala
+- zaborrontzia
+- mintegia
+
+Taulen artean erlazioak daude, gailuen eta erabiltzaileen kudeaketa egokia bermatzeko.
+
+--------------------------------------------------
+
+6. WEB APLIKAZIOA
+
+Web aplikazioa Bootstrap erabiliz garatu da, eta erabiltzaileari informazioa modu bisual eta errazean erakusten dio.
+
+Webean atal hauek daude:
+- index.html (login)
+- user.html (erabiltzaile arrunta)
+- admin.html (administratzailea)
+- kontaktua.html (kontaktua)
+
+Erabiltzaile arruntak orrialde komertziala bakarrik ikusten du.
+
+Erregistratutako erabiltzaileak (admin) ondorengo elementuak ikusteko aukera du:
+- Instaladorea deskargatu
+- Instalazio gida kontsultatu
+- Dokumentazio teknikoa ikusi
+- Bideo tutoriala ikusi
+
+Webean Bootstrap kontrol ezberdinak erabili dira:
+- Carrusela
+- Card-ak
+- Modal-ak
+- Bideoa
+- Mapa
+- Formularioa (email bidez bidaltzen du)
+
+Gainera, weba responsive da eta pantaila ezberdinetara egokitzen da.
+
+--------------------------------------------------
+
+7. ONDORIOAK
+
+GUREANOS_ERRONKA aplikazioa gailuen kudeaketa errazteko garatu da, erabiltzaile mota desberdinen arabera kontrol egokia eskainiz.
+
+Web aplikazioarekin batera, sistema osoa osatzen da, erabiltzaileari baliabideak eta informazioa modu argian eskaintzeko.
