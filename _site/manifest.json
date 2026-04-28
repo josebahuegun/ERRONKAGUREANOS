@@ -1,0 +1,420 @@
+{
+  "source_base_path": "C:/Users/josebahuegun/Desktop/ERRONKAK/3/PROGRAMAZIOA/GUREANOS_ERRONKA_V2",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.CODIGO.DBKONEXIOA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.CODIGO.DBKONEXIOA.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.CODIGO.DBKONEXIOA",
+      "Summary": "<br>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.CODIGO.Gailua.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.CODIGO.Gailua.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.CODIGO.Gailua",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.CODIGO.Inprimagailua.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.CODIGO.Inprimagailua.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.CODIGO.Inprimagailua",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.CODIGO.KONEXIOA_1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.CODIGO.KONEXIOA_1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.CODIGO.KONEXIOA",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.CODIGO.Konexioa.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.CODIGO.Konexioa.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.CODIGO.KONEXIOA",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.CODIGO.Ordenagailua.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.CODIGO.Ordenagailua.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.CODIGO.Ordenagailua",
+      "Summary": "<p sourcefile=\"api/GUREANOS_ERRONKA.CODIGO.Ordenagailua.yml\" sourcestartlinenumber=\"1\">: Gailua jarriz gero herentzia aplikatzen da eta Gailuaren propietateak jasotzen dira</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.CODIGO.sesioa.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.CODIGO.sesioa.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.CODIGO.sesioa",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.CODIGO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.CODIGO.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.CODIGO",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.ALDATU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.ALDATU.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.ALDATU",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.ERABILTZAILEAEZABATU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.ERABILTZAILEAEZABATU.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.ERABILTZAILEAEZABATU",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.ERABILTZAILEAKIKUSI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.ERABILTZAILEAKIKUSI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.ERABILTZAILEAKIKUSI",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.ERABILTZAILEASORTU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.ERABILTZAILEASORTU.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.ERABILTZAILEASORTU",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.EZABATU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.EZABATU.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.EZABATU",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.GEHITU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.GEHITU.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.GEHITU",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.HISTORIALAKUDEATU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.HISTORIALAKUDEATU.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.HISTORIALAKUDEATU",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.IKUSI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.IKUSI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.IKUSI",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.LOGIN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.LOGIN.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.LOGIN",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.MINTEGIAEZABATUIKUSI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.MINTEGIAEZABATUIKUSI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.MINTEGIAEZABATUIKUSI",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.SORTUMINTEGIA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.SORTUMINTEGIA.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.SORTUMINTEGIA",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.ZABORRONTZIAIKUSI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.ZABORRONTZIAIKUSI.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS.ZABORRONTZIAIKUSI",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.FORMS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.FORMS.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.FORMS",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.PANELA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.PANELA.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA.PANELA",
+      "Summary": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/GUREANOS_ERRONKA.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/GUREANOS_ERRONKA.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "GUREANOS_ERRONKA",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
