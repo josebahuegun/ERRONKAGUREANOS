@@ -283,7 +283,8 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 if (id > 0)
                 {
-                    DBKONEXIOA.TxertatuOrdenagailua(id, o.RAM1, o.ROM1, o.CPU1);
+                    o.Id = id;
+                    DBKONEXIOA.TxertatuOrdenagailua(o);
 
                     MessageBox.Show("Ordenagailua gehituta");
 
@@ -309,7 +310,8 @@ namespace GUREANOS_ERRONKA.FORMS
 
                 if (id > 0)
                 {
-                    DBKONEXIOA.TxertatuInprimagailua(id, i.Koloretakoa, i.Teknologia);
+                    i.Id = id;
+                    DBKONEXIOA.TxertatuInprimagailua(i);
 
                     MessageBox.Show("Inprimagailua gehituta");
 

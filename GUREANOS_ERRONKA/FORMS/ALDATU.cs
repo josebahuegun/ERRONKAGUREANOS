@@ -119,12 +119,28 @@ namespace GUREANOS_ERRONKA.FORMS
                     if (motaActual == "Ordenagailua")
                     {
                         DBKONEXIOA.EzabatuOrdenagailua(id);
-                        DBKONEXIOA.TxertatuInprimagailua(id, chkkolore.Checked, tekno);
+                        Inprimagailua i = new Inprimagailua(
+    txtMarka.Text,
+    txtKokalekua.Text,
+    data.Value,
+    "aktibo",
+    comboMintegia.Text,
+    chkkolore.Checked,
+    tekno
+);
+
+                        i.Id = id;
+                        i.MintegiaId = Convert.ToInt32(comboMintegia.SelectedValue);
+
+                        DBKONEXIOA.TxertatuInprimagailua(i);
                     }
                     else
                     {
                         DBKONEXIOA.EzabatuInprimagailua(id);
-                        DBKONEXIOA.TxertatuOrdenagailua(id, ram, rom, cpu);
+                        Ordenagailua o = new Ordenagailua("", "", DateTime.Now, "", "", ram, rom, cpu);
+                        o.Id = id;
+
+                        DBKONEXIOA.TxertatuOrdenagailua(o);
                     }
 
                     DBKONEXIOA.TxertatuHistorikoa("ALDATU", "mota aldatu da", id);

@@ -209,25 +209,26 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
         /// <param name="rom">The rom.</param>
         /// <param name="cpu">The cpu.</param>
         /// <returns></returns>
-        public static bool TxertatuOrdenagailua(int gailuId, string ram, string rom, string cpu)
+        public static bool TxertatuOrdenagailua(Ordenagailua o)
         {
             bool ondo = false;
+
             try
             {
                 KONEXIOA.Konektatu();
 
-                string sqlie = "INSERT INTO ordenagailua (id, ram, rom, cpu) VALUES (@id, @ram, @rom, @cpu);";
-                MySqlCommand komandue = new MySqlCommand(sqlie, KONEXIOA.konektatu);
+                string sql = "INSERT INTO ordenagailua (id, ram, rom, cpu) VALUES (@id, @ram, @rom, @cpu)";
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
 
-                komandue.Parameters.AddWithValue("@id", gailuId);
-                komandue.Parameters.AddWithValue("@ram", ram);
-                komandue.Parameters.AddWithValue("@rom", rom);
-                komandue.Parameters.AddWithValue("@cpu", cpu);
+                cmd.Parameters.AddWithValue("@id", o.Id);
+                cmd.Parameters.AddWithValue("@ram", o.RAM1);
+                cmd.Parameters.AddWithValue("@rom", o.ROM1);
+                cmd.Parameters.AddWithValue("@cpu", o.CPU1);
 
-                if (komandue.ExecuteNonQuery() > 0)
+                if (cmd.ExecuteNonQuery() > 0)
                     ondo = true;
             }
-            catch (MySqlException ex)
+            catch (MySqlException)
             {
             }
             finally
@@ -251,7 +252,7 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
         /// <param name="koloretakoa">if set to <c>true</c> [koloretakoa].</param>
         /// <param name="teknologia">The teknologia.</param>
         /// <returns></returns>
-        public static bool TxertatuInprimagailua(int gailuId, bool koloretakoa, string teknologia)
+        public static bool TxertatuInprimagailua(Inprimagailua i)
         {
             bool ondo = false;
 
@@ -260,16 +261,16 @@ VALUES (@marka, @kokalekua, @eroste_data, @egoera,
                 KONEXIOA.Konektatu();
 
                 string sql = "INSERT INTO inprimagailua (id, koloretakoa, teknologia) VALUES (@id, @kolorea, @tekno)";
-                MySqlCommand komandoa = new MySqlCommand(sql, KONEXIOA.konektatu);
+                MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
 
-                komandoa.Parameters.AddWithValue("@id", gailuId);
-                komandoa.Parameters.AddWithValue("@kolorea", koloretakoa);
-                komandoa.Parameters.AddWithValue("@tekno", teknologia);
+                cmd.Parameters.AddWithValue("@id", i.Id);
+                cmd.Parameters.AddWithValue("@kolorea", i.Koloretakoa);
+                cmd.Parameters.AddWithValue("@tekno", i.Teknologia);
 
-                if (komandoa.ExecuteNonQuery() > 0)
+                if (cmd.ExecuteNonQuery() > 0)
                     ondo = true;
             }
-            catch (MySqlException e)
+            catch (MySqlException)
             {
             }
             finally
@@ -448,7 +449,7 @@ SELECT
     z.id_zaborrontzia,
     g.marka,
     g.kokalekua,
-    m.izena AS Mintegia,  -- 🔥 añadido
+    m.izena AS Mintegia,  
     z.ezabatze_data,
     z.erabiltzailea
 FROM zaborrontzia z
