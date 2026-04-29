@@ -549,11 +549,11 @@ WHERE e.aktibo = 1;
         /// <param name="rola">The rola.</param>
         /// <param name="mintegiaId">The mintegia identifier.</param>
         /// <returns></returns>
-        public static bool SortuErabiltzailea(string izena, string pass, string rola, int mintegiaId)
+        public static bool SortuErabiltzailea(ERABILTZAILEA e)
         {
             bool ondo = false;
 
-            if (string.IsNullOrWhiteSpace(izena) || string.IsNullOrWhiteSpace(pass))
+            if (string.IsNullOrWhiteSpace(e.Izena) || string.IsNullOrWhiteSpace(e.Pasahitza))
             {
                 MessageBox.Show("Datuak falta dira");
                 return false;
@@ -563,10 +563,10 @@ WHERE e.aktibo = 1;
             {
                 KONEXIOA.Konektatu();
 
-                /// duplikatua egiaztatu
+                // duplicado
                 string check = "SELECT COUNT(*) FROM erabiltzailea WHERE izena = @izena AND aktibo = 1";
                 MySqlCommand cmdCheck = new MySqlCommand(check, KONEXIOA.konektatu);
-                cmdCheck.Parameters.AddWithValue("@izena", izena);
+                cmdCheck.Parameters.AddWithValue("@izena", e.Izena);
 
                 int existe = Convert.ToInt32(cmdCheck.ExecuteScalar());
 
@@ -576,17 +576,17 @@ WHERE e.aktibo = 1;
                     return false;
                 }
 
-                /// insert erabiltzailea
+                // insert
                 string sql = @"INSERT INTO erabiltzailea 
-        (izena, pasahitza, rola, aktibo, mintegia_id)
-        VALUES (@izena, @pass, @rola, 1, @mintegia)";
+(izena, pasahitza, rola, aktibo, mintegia_id)
+VALUES (@izena, @pass, @rola, 1, @mintegia)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
 
-                cmd.Parameters.AddWithValue("@izena", izena);
-                cmd.Parameters.AddWithValue("@pass", pass);
-                cmd.Parameters.AddWithValue("@rola", rola);
-                cmd.Parameters.AddWithValue("@mintegia", mintegiaId);
+                cmd.Parameters.AddWithValue("@izena", e.Izena);
+                cmd.Parameters.AddWithValue("@pass", e.Pasahitza);
+                cmd.Parameters.AddWithValue("@rola", e.Rola);
+                cmd.Parameters.AddWithValue("@mintegia", e.MintegiaId);
 
                 if (cmd.ExecuteNonQuery() > 0)
                     ondo = true;

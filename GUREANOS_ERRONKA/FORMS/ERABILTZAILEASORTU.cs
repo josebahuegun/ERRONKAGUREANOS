@@ -196,12 +196,15 @@ namespace GUREANOS_ERRONKA.FORMS
             }
 
             /// sortu erabiltzailea
-            bool sortuta = DBKONEXIOA.SortuErabiltzailea(
-                txtizenaerabil.Text,
-                txtpasahitzaerabil.Text,
-                comborola.Text,
-                mintegiaId
-            );
+            ERABILTZAILEA ee = new ERABILTZAILEA()
+            {
+                Izena = txtizenaerabil.Text,
+                Pasahitza = txtpasahitzaerabil.Text,
+                Rola = comborola.Text,
+                MintegiaId = mintegiaId
+            };
+
+            bool sortuta = DBKONEXIOA.SortuErabiltzailea(ee);
 
             if (sortuta)
             {
