@@ -309,7 +309,16 @@ namespace GUREANOS_ERRONKA.FORMS
             }
 
             /// EGUNERATU (ORAIN ONDO)
-            DBKONEXIOA.AldatuErabiltzailea(id, nuevaIzena, nuevaPass, nuevaRola, mintegiBerriaId);
+            ERABILTZAILEA ee = new ERABILTZAILEA()
+            {
+                Id = id,
+                Izena = nuevaIzena,
+                Pasahitza = nuevaPass,
+                Rola = nuevaRola,
+                MintegiaId = mintegiBerriaId
+            };
+
+            DBKONEXIOA.AldatuErabiltzailea(ee);
 
             MessageBox.Show("Erabiltzailea aldatuta!");
 

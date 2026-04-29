@@ -974,7 +974,7 @@ WHERE e.aktibo = 1;
         /// <param name="pass">The pass.</param>
         /// <param name="rola">The rola.</param>
         /// <param name="mintegiId">The mintegi identifier.</param>
-        public static void AldatuErabiltzailea(int id, string izena, string pass, string rola, int mintegiId)
+        public static void AldatuErabiltzailea(ERABILTZAILEA e)
         {
             try
             {
@@ -989,11 +989,11 @@ WHERE id=@id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, KONEXIOA.konektatu);
 
-                cmd.Parameters.AddWithValue("@iz", izena);
-                cmd.Parameters.AddWithValue("@pas", pass);
-                cmd.Parameters.AddWithValue("@rol", rola);
-                cmd.Parameters.AddWithValue("@min", mintegiId);
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@iz", e.Izena);
+                cmd.Parameters.AddWithValue("@pas", e.Pasahitza);
+                cmd.Parameters.AddWithValue("@rol", e.Rola);
+                cmd.Parameters.AddWithValue("@min", e.MintegiaId);
+                cmd.Parameters.AddWithValue("@id", e.Id);
 
                 cmd.ExecuteNonQuery();
             }
